@@ -1,0 +1,103 @@
+.refund-policy-modal-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999999999;
+    backdrop-filter: blur(5px);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.refund-policy-modal-main-container.show-refund-modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.refund-modal-inner-container {
+    width: 90%;
+    height: 90%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    background-color: #FFF;
+    gap: 20px;
+    border-radius: 10px;
+    transform: translateY(200%);
+    transition: all 0.3s ease-in-out;
+}
+
+.refund-modal-inner-container.show-refund-modal-inner {
+    transform: translateY(0%);
+}
+
+.refund-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+
+.refund-modal-head > h3 {
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #961502;
+}
+
+.refund-policy-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    gap: 25px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+.refund-policy-content-container::-webkit-scrollbar {
+    display: none;
+}
+
+.content-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.heading-one {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #961502;
+}
+
+.heading-two {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #961502;
+}
+
+.para-font {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #000;
+}
+

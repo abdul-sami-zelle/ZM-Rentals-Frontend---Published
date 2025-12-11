@@ -1,0 +1,31 @@
+.ajax-loader .wheel {
+    transform-origin: center;
+    animation: spin 1.5s linear infinite;
+    fill: #666;
+  }
+  
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .trail-major {
+    fill: #ccc;
+    animation: blink 1s infinite ease-in-out;
+  }
+  
+  .trail-minor {
+    fill: #eee;
+    animation: blink 1.2s infinite ease-in-out alternate;
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  

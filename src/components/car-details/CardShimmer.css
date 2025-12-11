@@ -1,0 +1,158 @@
+/* Shimmer Styling */
+.card-shimmer-main-contianer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 15px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    overflow: hidden;
+    border: 1px solid #f9f9f9;
+}
+
+.card-shimmer-image {
+    display: flex;
+    width: 100%;
+    height: 175px;
+    background: linear-gradient(
+    100deg,
+    #e0e0e0 20%,
+    #f8f8f8 50%,
+    #e0e0e0 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.card-shimmer-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+}
+
+.card-shimmer-name-model {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.card-shimmer-name {
+    display: flex;
+    width: 70%;
+    height: 15px;
+    border-radius: 20px;
+    background: linear-gradient(
+    100deg,
+    #e0e0e0 20%,
+    #f8f8f8 50%,
+    #e0e0e0 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.card-shimmer-model {
+    display: flex;
+    width: 50%;
+    height: 15px;
+    border-radius: 20px;
+    background: linear-gradient(
+    100deg,
+    #e0e0e0 20%,
+    #f8f8f8 50%,
+    #e0e0e0 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.card-shimmer-line {
+    display: flex;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+    100deg,
+    #e0e0e0 20%,
+    #f8f8f8 50%,
+    #e0e0e0 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.card-shimmer-price {
+    display: flex;
+    width: 50%;
+    height: 15px;
+    border-radius: 20px;
+    background: linear-gradient(100deg,
+            #e0e0e0 20%,
+            #f8f8f8 50%,
+            #e0e0e0 80%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear;
+    margin-left: 10px;
+}
+
+.card-shimmer-info {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 10px;
+}
+
+.card-shimmer-engine-and-gear {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.card-shimmer-engine-and-gear>div {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: linear-gradient(100deg,
+            #e0e0e0 20%,
+            #f8f8f8 50%,
+            #e0e0e0 80%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear;
+}
+
+.car-shimmer-info-text {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: linear-gradient(100deg,
+            #e0e0e0 20%,
+            #f8f8f8 50%,
+            #e0e0e0 80%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}

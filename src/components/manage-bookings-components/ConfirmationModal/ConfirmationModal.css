@@ -1,0 +1,102 @@
+.confirmation-modal-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999999999999;
+    transition: all o.3s ease-in-out;
+}
+
+.confirmation-modal-main-contianer.show-confirmation-modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.confirmation-inner-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 320px;
+    max-width: 480px;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 15px 25px;
+    min-height: 240px;
+    transform: translate(0%, 200%);
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.confirmation-inner-modal.slide-up-inner-modal {
+    transform: translate(0%, 0%);
+}
+
+.confirmation-close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.content-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    gap: 25px;
+    text-align: center;
+}
+
+.title-and-slogan-span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    text-align: center;
+}
+
+.title-and-slogan-span > h3 {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #000;
+}
+
+.title-and-slogan-span > p {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #000;
+}
+
+.explore-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #FFF;
+    background-color: #961502;
+    border: 1px solid #961502;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+}

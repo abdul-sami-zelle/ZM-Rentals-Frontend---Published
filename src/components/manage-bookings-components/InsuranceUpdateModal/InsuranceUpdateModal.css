@@ -1,0 +1,231 @@
+.insurance-update-modal-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.insurance-update-modal-main-contianer.show-insurance-modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.insurance-modal-inner-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 40vw;
+    height: auto;
+    min-height: 30vh;
+    overflow: hidden;
+    padding: 20px 30px;
+    border-radius: 10px;
+    background-color: #FFF;
+    gap: 20px;
+    transform: translate(0%, 200%);
+    transition: all 0.3s ease-in-out;
+}
+
+.insurance-modal-inner-contianer.show-inner-modal {
+    transform: translate(0%, 0%);
+}
+
+.insurance-update-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    width: 100%;
+    min-height: 36px;
+}
+
+.insurance-update-head > h3 {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+/* Modal Top vehicle data */
+.insurance-update-vehicle-contianer {
+    display: flex;
+    align-items: stretch;
+    justify-content: start;
+    width: 100%;
+    padding: 10px;
+    background-color: #961502;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.insurance-modal-vehilce-image-contianer {
+    width: 120px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.insurance-modal-vehilce-image-contianer > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.insurance-update-vehicle-details-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    /* gap: 5px; */
+}
+
+.insurance-update-vehicle-details-section > h3 {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #FFF;
+}
+
+.insurance-update-vehicle-details-section > p {
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #FFF;
+    margin-top: 3px;
+}
+
+.insurance-update-vehicle-details-section > span {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #FFF;
+    margin-top: 10px;
+}
+
+/* Inpusrance Options */
+.insurace-update-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    height: auto;
+    column-gap: 15px;
+    row-gap: 15px;
+}
+
+.insurance-update-single-option {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+    padding: 10px;
+    background-color: rgba(150, 21, 2, 0.1);
+    border: 1px solid rgba(150, 21, 2, 0.1);
+    cursor: pointer;
+}
+
+.insurance-update-head {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.insurance-update-head > h3 {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+
+.insurance-update-head input[type='radio'] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    /* padding: 2px; */
+    border: 2px solid rgba(150, 21, 2, 0.6);
+    /* Light border */
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+.insurance-update-head input[type='radio']:checked {
+    border-color: #961502;
+}
+
+.insurance-update-head input[type='radio']:checked::after {
+    content: '';
+    /* position: absolute; */
+    flex-shrink: 0;
+    top: 0px;
+    left: 0px;
+    width: 18px;
+    height: 18px;
+    background-color: #961502;
+    border-radius: 50%;
+}
+
+.insuranceupdate-bond-and-excees {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    width: 100%;
+}
+
+.insuranceupdate-bond-and-excees > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.insuranceupdate-bond-and-excees > span > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.insuranceupdate-bond-and-excees > span > p:nth-child(2) {
+    font-weight: 500;
+}
+
+.insurance-update-price {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+}
+
+.insurance-update-price {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #961502;
+}

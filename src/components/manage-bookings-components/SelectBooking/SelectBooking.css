@@ -1,0 +1,92 @@
+.select-booking-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.select-booking-heaing-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: auto;
+    /* gap: 10px; */
+}
+
+.select-booking-heaing-contianer > h3 {
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+.select-booking-heaing-contianer > p {
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #000;
+}
+
+.select-booking-inputs-continaer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.select-booking-inputs-continaer > label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: auto;
+    gap: 5px;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #000;
+}
+
+.select-booking-inputs-continaer > label > input {
+    width: 100%;
+    height: 40px;
+    padding: 5px 15px;
+    border: 1px solid #000;
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.manage-booking-steper-button-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+
+}
+
+.manage-booking-steper-button-contianer > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    border-radius: 25px;
+    background-color: #000;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+}

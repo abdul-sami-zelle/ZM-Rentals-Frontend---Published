@@ -1,0 +1,129 @@
+.driver-licence-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.driver-licence-width-controller {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 750px;
+    padding: 10px 0;
+}
+
+.driver-licence-main-heading {
+    font-size: 38px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.driver-licence-inputs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.driver-licence-dual-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.driver-licence-dual-inputs > label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    background-color: #FFF;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #535353;
+    gap: 5px;
+}
+
+.driver-licence-dual-inputs > label > input {
+    width: 100%;
+    height: 28px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #535353;
+}
+
+.driver-licence-dual-inputs > label > input::placeholder {
+    color: #535353;
+    font-weight: 500;
+}
+
+
+/* Licence number and expiry */
+.licence-number-and-expiry-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.licence-number-and-expiry-container > label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    background-color: #FFF;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #535353;
+    gap: 5px;
+    
+}
+
+.licence-number-and-expiry-container > label > input {
+    width: 100%;
+    height: 28px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #535353;
+}
+
+.licence-number-and-expiry-container > label > input::placeholder {
+    color: #535353;
+    font-weight: 500;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .driver-licence-dual-inputs {
+        flex-direction: column;
+    }
+
+    .driver-licence-dual-inputs > label {
+        width: 100%;
+    }
+}

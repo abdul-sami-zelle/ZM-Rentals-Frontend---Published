@@ -1,0 +1,195 @@
+.feedback-gallery-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    position: relative;
+    gap: 16px;
+    max-width: 1323px;
+    margin-bottom: 25px;
+}
+
+.feedback-gallery-images-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.feedback-gallery-images-single-image-container {
+    display: flex;
+    width: 50%;
+    height: 311px;
+    position: relative;
+}
+
+.feedback-gallery-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.feedback-gallery-image-two {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.feedback-gallery-description-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 16px;
+    gap: 16px;
+    align-items: start;
+    justify-content: start;
+}
+
+.feedback-gallery-description-container>h3 {
+    font-size: var(--font-heading-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+}
+
+.feedback-gallery-description-container>p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    color: #000;
+}
+
+.feedback-gallery-customer-comment-card-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 16px;
+}
+
+.feedback-gallery-customer-comment-card-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    padding: 16px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.feedback-gallery-customer-comment-card-inner-container>p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-color);
+    text-align: start;
+}
+
+.feedback-gallery-user-profile-section {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.feedback-gallery-profile-container {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-gallery-user-profile-section>img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+}
+
+.feedback-gallery-user-profile-section>span {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+}
+
+.feedback-gallery-user-profile-section>span>h3 {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-semibold);
+}
+
+.feedback-gallery-user-profile-section>span>p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+@media only screen and (min-width: 768px) {
+    .feedback-gallery-main-container {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 25px 65px;
+        width: 100%;
+        position: relative;
+        margin-bottom: 0px;
+    }
+
+    .feedback-gallery-description-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 16px;
+        gap: 32px;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .feedback-gallery-description-container>h3 {
+        font-size: var(--font-heading-lg);
+    }
+
+    .feedback-gallery-description-container>p {
+        display: flex;
+        width: 85%;
+        text-align: start;
+        font-size: var(--font-body-18);
+    }
+
+    .feedback-gallery-customer-comment-card-main-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 350px;
+        height: auto;
+        transform: translate(-15%, -50%);
+
+    }
+
+    .feedback-gallery-customer-comment-card-inner-container {
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    .feedback-gallery-images-single-image-container {
+        height: 465px;
+    }
+
+    /* .feedback-gallery-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    
+    .feedback-gallery-image-two {
+        width: 50%;
+    } */
+}

@@ -1,0 +1,134 @@
+.user-dash-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    gap: 20px;
+
+}
+
+.user-dash-head-contianer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 20px;
+
+}
+
+.user-dash-car-and-total-booking-contianer {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+}
+
+.user-dash-car-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 20px;
+}
+
+
+.user-dashboard-booked-car-image-and-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    border: 1px solid #afafaf;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+
+.user-dashboard-booked-car-image-and-name>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-dashboard-booked-car-name-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.user-dashboard-booked-car-name-contianer>h3 {
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.user-dashboard-booked-car-features-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.user-dashboard-booked-car-features-contianer>span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 10px;
+}
+
+.user-dashboard-booked-car-features-contianer>span>p {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.user-dash-total-bookings-chart {
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%; */
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    height: 100%;
+    padding: 10px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .user-dash-car-and-total-booking-contianer {
+        flex-direction: column;
+    }
+    .user-dash-car-contianer {
+        width: 100%;
+    }
+    .user-dash-total-bookings-chart {
+        width: 100%;
+    }
+    .user-dashboard-booked-car-features-contianer {
+        gap: 10px;
+    }
+}

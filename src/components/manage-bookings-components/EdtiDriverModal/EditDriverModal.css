@@ -1,0 +1,765 @@
+.edit-driver-modal-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-driver-modal-main.show-is-edit-driver {
+    opacity: 1;
+    visibility: visible;
+}
+
+.edit-driver-modal-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 40vw;
+    height: auto;
+    min-height: 30vh;
+    overflow: hidden;
+    padding: 20px 30px;
+    border-radius: 10px;
+    background-color: #FFF;
+    gap: 20px;
+    transform: translate(0%, 200%);
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-driver-modal-inner.show-edit-driver-inner {
+    transform: translate(0%, 0%);
+}
+
+.edit-driver-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.edit-and-close-modal-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 15px;
+}
+
+.edit-driver-modal-head > h3 {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+/* Edit Driver inputs  */
+.edit-driver-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.driver-two-equal-columns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.driver-two-equal-columns > label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.driver-two-equal-columns > label > input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #afafaf;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 5px 15px;
+    outline: none;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.driver-two-equal-columns > label > textarea {
+    width: 100%;
+    height: 75px;
+    border: 1px solid #afafaf;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 5px 15px;
+    outline: none;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+/* Date of birth dropdown */
+.driver-bod-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    position: relative;
+}
+
+.driver-bod-contianer > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.edit-driver-dob-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 35px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.edit-driver-dob-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+/* DOB Dropdown */
+.edit-driver-dob-calender {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    height: 0;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0px;
+    z-index: 999999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-driver-dob-calender.show-driver-dob-calender {
+    height: auto;
+    max-height: 220px;
+    background-color: #FFF;
+    /* padding: 2px 10px; */
+    border: 1px solid #afafaf;
+}
+
+
+/* Calander style */
+
+
+.react-calendar {
+    width: 100%;
+    min-width: unset !important;
+}
+
+.edit-driver-dob-calender .react-calendar {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px !important;
+    border: none !important;
+}
+
+.edit-driver-dob-calender .react-calendar .react-calendar__navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px !important;
+    background-color: transparent !important;
+    height: max-content;
+    margin: 0;
+}
+
+.edit-driver-dob-calender .react-calendar .react-calendar__viewContainer {
+    padding: 10px 10px 10px 10px !important;
+    background-color: transparent !important;
+}
+
+.edit-driver-dob-calender .react-calendar__navigation__label {
+    padding-top: 2px !important;
+    background-color: transparent !important;
+}
+
+.edit-driver-dob-calender .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+}
+
+.edit-driver-dob-calender .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: transparent !important;
+}
+
+.edit-driver-dob-calender .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover {
+    background-color: transparent !important; 
+}
+
+.edit-driver-dob-calender .react-calendar__navigation__arrow.react-calendar__navigation__next-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    background-color: transparent !important;
+}
+
+.edit-driver-dob-calender .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover {
+    background-color: transparent !important;
+}
+
+.edit-driver-dob-calender .react-calendar__month-view__weekdays__weekday {
+    color: var(--primary-color) !important;
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+}
+
+
+.edit-driver-dob-calender .react-calendar__month-view__weekdays abbr {
+    text-decoration: none !important;
+}
+
+.edit-driver-dob-calender .react-calendar__tile {
+    color: var(--primary-color) !important;
+    font-size: 10px;
+    font-weight: var(--font-weight-regular);
+    padding: 5px;
+}
+
+
+.edit-driver-dob-calender .react-calendar__tile--active,
+.edit-driver-dob-calender .react-calendar__tile--now {
+    width: 100% !important;
+    line-height: 18px !important;
+    font-size: 10px !important;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* Selected date background */
+.edit-driver-dob-calender .react-calendar__tile--active  {
+    background: var(--primary-color);
+    color: var(--color-white) !important;
+}
+
+/* Today (only if not selected) - light border */
+.edit-driver-dob-calender .react-calendar__tile--now:not(.react-calendar__tile--active){
+    border: 1px solid #ccc;
+    background: transparent;
+}
+
+.react-calendar__tile:disabled {
+    background-color: transparent !important;
+    color: #aaa !important;        
+    opacity: 0.5 !important;       
+    cursor: not-allowed !important; 
+    pointer-events: none;           
+  }
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #f0f8ff !important; 
+  color: #000;
+  border-radius: 5px; 
+}
+
+/* Calander Style */
+
+
+
+/* Driver Age */
+.edit-driver-age-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 30%;
+    gap: 5px;
+    position: relative;
+}
+
+.edit-driver-age-dropdown > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.driver-age-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    height: 35px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.driver-age-head > h3  {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.driver-age-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.driver-age-list::-webkit-scrollbar {
+    display: none;
+}
+
+.driver-age-list.show-age-list {
+    height: auto;
+    max-height: 120px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+}
+
+.driver-age-list-item {
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    background-color: transparent;
+    padding: 5px 10px;
+}
+
+.driver-age-list-item:hover {
+    background-color: #961502;
+    color: #fff;
+}
+.driver-age-list-item.active-driver-age-list-item {
+    background-color: #961502;
+    color: #fff;
+}
+
+
+/* Licence Country */
+.licence-country-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+    position: relative;
+    width: 100%;
+}
+
+.licence-country-dropdown > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.licence-country-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    height: 35px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.licence-country-head > h3  {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.licence-country-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.licence-country-list::-webkit-scrollbar {
+    display: none;
+}
+
+.licence-country-list.show-licence-countries {
+    height: auto;
+    max-height: 120px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+}
+
+.licence-country-list-item {
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    background-color: transparent;
+    padding: 5px 10px;
+}
+
+.licence-country-list-item:hover {
+    background-color: #961502;
+    color: #fff;
+}
+.licence-country-list-item.active-licence-country-item {
+    background-color: #961502;
+    color: #fff;
+}
+
+/* Expiry Date */
+
+.licence-expiry-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+    position: relative;
+}
+
+.licence-expiry-dropdown > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.licence-expiry-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    padding: 5px 15px;
+    height: 35px;
+    border: 1px solid #afafaf;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.licence-expiry-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.licence-expiry-calender {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 0;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 999999999;
+    transition: all 0.33s ease-in-out;
+}
+
+.licence-expiry-calender.show-licence-expiry {
+    height: auto;
+    max-height: 220px;
+    padding: 2px;
+    background-color: #fff;
+}
+
+
+/* Calander style */
+
+
+.react-calendar {
+    width: 100%;
+    min-width: 280px;
+}
+
+.licence-expiry-calender .react-calendar {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 15px;
+    border: none !important;
+}
+
+.licence-expiry-calender .react-calendar .react-calendar__navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px !important;
+    background-color: transparent !important;
+    height: max-content;
+    margin: 0;
+}
+
+.licence-expiry-calender .react-calendar .react-calendar__viewContainer {
+    padding: 10px 10px 10px 10px !important;
+    background-color: transparent !important;
+}
+
+.licence-expiry-calender .react-calendar__navigation__label {
+    padding-top: 2px !important;
+    background-color: transparent !important;
+}
+
+.licence-expiry-calender .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+}
+
+.licence-expiry-calender .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: transparent !important;
+}
+
+.licence-expiry-calender .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover {
+    background-color: transparent !important; 
+}
+
+.licence-expiry-calender .react-calendar__navigation__arrow.react-calendar__navigation__next-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    background-color: transparent !important;
+}
+
+.licence-expiry-calender .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover {
+    background-color: transparent !important;
+}
+
+.licence-expiry-calender .react-calendar__month-view__weekdays__weekday {
+    color: var(--primary-color) !important;
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+}
+
+
+.licence-expiry-calender .react-calendar__month-view__weekdays abbr {
+    text-decoration: none !important;
+}
+
+.licence-expiry-calender .react-calendar__tile {
+    color: var(--primary-color) !important;
+    font-size: 10px;
+    font-weight: var(--font-weight-regular);
+    padding: 5px;
+}
+
+
+.licence-expiry-calender .react-calendar__tile--active,
+.licence-expiry-calender .react-calendar__tile--now {
+    width: 100% !important;
+    line-height: 18px !important;
+    font-size: 10px !important;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* Selected date background */
+.licence-expiry-calender .react-calendar__tile--active  {
+    background: var(--primary-color);
+    color: var(--color-white) !important;
+}
+
+/* Today (only if not selected) - light border */
+.licence-expiry-calender .react-calendar__tile--now:not(.react-calendar__tile--active){
+    border: 1px solid #ccc;
+    background: transparent;
+}
+
+.react-calendar__tile:disabled {
+    background-color: transparent !important;
+    color: #aaa !important;        
+    opacity: 0.5 !important;       
+    cursor: not-allowed !important; 
+    pointer-events: none;           
+  }
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #f0f8ff !important; 
+  color: #000;
+  border-radius: 5px; 
+}
+
+/* Calander Style */
+
+
+/* Licenc Upload */
+.licence-upload-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 75px !important;
+    border: 1px dashed #afafaf;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.licence-upload-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.licence-upload-message > p {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.licence-update-show-front-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.licence-update-show-front-contianer > img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.licence-remove-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.edit-driver-update-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.edit-driver-update-button > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 35px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #FFF;
+    background-color: #961502;
+    border: 1px solid #961502;
+    border-radius: 5px;
+}

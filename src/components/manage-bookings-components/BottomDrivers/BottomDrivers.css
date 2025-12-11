@@ -1,0 +1,626 @@
+.mobile-driver-edit-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.mobile-add-new-driver-contianer {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    width: 100%;
+    height: auto;
+}
+
+.mobile-add-new-driver-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.mobile-driver-update-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 20px;
+}
+
+.mobile-driver-update-container::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-driver-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.mobile-driver-list-item-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.mobile-driver-list-item-head.remove-driver-item-radius {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.mobile-driver-edit-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+
+    width: 100%;
+    gap: 10px;
+    padding: 0 15px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    height: 0;
+    max-height: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-driver-edit-section.show-edit-driver-option {
+    height: auto;
+    padding: 15px;
+    max-height: 1500px;
+    background-color: #FFF;
+    border: 1px solid #eee;
+    overflow: visible;
+
+}
+
+.mobile-driver-input-outer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.mobile-driver-input-outer > label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.mobile-driver-input-outer > label > input {
+    width: 100%;
+    height: 32px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    color: #000;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    outline: none;
+}
+
+.mobile-driver-input-outer > label > textarea {
+    width: 100%;
+    height: 75px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    color: #000;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    outline: none;
+}
+
+.mobile-driver-dob {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    position: relative;
+}
+
+.mobile-driver-dob > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.mobile-driver-dob-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 32px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+}
+
+.mobile-driver-dob-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.mobile-driver-dob-head.remove-item-radius {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.driver-dob-calender {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    border: 1px solid transparent;
+    background-color: transparent;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.driver-dob-calender.driver-dob-show {
+    height: auto;
+    max-height: 220px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+}
+
+/* Calander style */
+
+
+.react-calendar {
+    width: 100%;
+    min-width: unset !important;
+}
+
+.mobile-expiry-calender-contianer .react-calendar,
+.driver-dob-calender .react-calendar {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px !important;
+    border: none !important;
+}
+
+
+
+.mobile-expiry-calender-contianer .react-calendar .react-calendar__navigation,
+.driver-dob-calender .react-calendar .react-calendar__navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px !important;
+    background-color: transparent !important;
+    height: max-content;
+    margin: 0;
+}
+
+.mobile-expiry-calender-contianer .react-calendar .react-calendar__viewContainer,
+.driver-dob-calender .react-calendar .react-calendar__viewContainer {
+    padding: 10px 10px 10px 10px !important;
+    background-color: transparent !important;
+}
+
+.mobile-expiry-calender-contianer .react-calendar__navigation__label,
+.driver-dob-calender .react-calendar__navigation__label {
+    padding-top: 2px !important;
+    background-color: transparent !important;
+}
+
+.mobile-expiry-calender-contianer .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from,
+.driver-dob-calender .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+}
+
+.mobile-expiry-calender-contianer .react-calendar__navigation__arrow.react-calendar__navigation__prev-button,
+.driver-dob-calender .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: transparent !important;
+}
+
+.mobile-expiry-calender-contianer .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover,
+.driver-dob-calender .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover {
+    background-color: transparent !important; 
+}
+
+.mobile-expiry-calender-contianer .react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.driver-dob-calender .react-calendar__navigation__arrow.react-calendar__navigation__next-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    background-color: transparent !important;
+}
+
+.mobile-expiry-calender-contianer .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover,
+.driver-dob-calender .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover {
+    background-color: transparent !important;
+}
+
+.mobile-expiry-calender-contianer .react-calendar__month-view__weekdays__weekday,
+.driver-dob-calender .react-calendar__month-view__weekdays__weekday {
+    color: var(--primary-color) !important;
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+}
+
+
+.mobile-expiry-calender-contianer .react-calendar__month-view__weekdays abbr,
+.driver-dob-calender .react-calendar__month-view__weekdays abbr {
+    text-decoration: none !important;
+}
+
+.mobile-expiry-calender-contianer .react-calendar__tile,
+.driver-dob-calender .react-calendar__tile {
+    color: var(--primary-color) !important;
+    font-size: 10px;
+    font-weight: var(--font-weight-regular);
+    padding: 5px;
+}
+
+
+
+
+.mobile-expiry-calender-contianer .react-calendar__tile--active,
+.mobile-expiry-calender-contianer .react-calendar__tile--now,
+.driver-dob-calender .react-calendar__tile--active,
+.driver-dob-calender .react-calendar__tile--now {
+    width: 100% !important;
+    line-height: 18px !important;
+    font-size: 10px !important;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* Selected date background */
+.mobile-expiry-calender-contianer .react-calendar__tile--active, 
+.driver-dob-calender .react-calendar__tile--active  {
+    background: var(--primary-color);
+    color: var(--color-white) !important;
+}
+
+/* Today (only if not selected) - light border */
+.mobile-expiry-calender-contianer .react-calendar__tile--now:not(.react-calendar__tile--active), 
+.driver-dob-calender .react-calendar__tile--now:not(.react-calendar__tile--active){
+    border: 1px solid #ccc;
+    background: transparent;
+}
+
+.react-calendar__tile:disabled {
+    background-color: transparent !important;
+    color: #aaa !important;        
+    opacity: 0.5 !important;       
+    cursor: not-allowed !important; 
+    pointer-events: none;           
+  }
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #f0f8ff !important; 
+  color: #000;
+  border-radius: 5px; 
+}
+
+/* Calander Style */
+
+
+.mobille-driver-age-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 30%;
+    gap: 5px;
+    position: relative;
+}
+
+.mobille-driver-age-contianer > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.mobile-driver-age-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+}
+
+.mobile-driver-age-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.mobile-driver-age-list-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border: 1px solid transparent;
+    background-color: transparent;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-driver-age-list-contianer::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-driver-age-list-contianer.show-mobile-driver-age-list {
+    height: auto;
+    max-height: 160px;
+    background-color: #FFF;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #afafaf;
+}
+
+.driver-age-item {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.driver-age-item:hover {
+    background-color: #961502;
+    color: #FFF;
+}
+
+.mobile-licence-country {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 70%;
+    gap: 5px;
+    position: relative;
+}
+
+.mobile-licence-country > p {
+    font-size: 12px; 
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.mobile-licence-country-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+}
+
+.mobile-licence-country-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.mobile-licence-country-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-licence-country-body::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-licence-country-body.show-licence-country{
+    height: auto;
+    max-height: 220px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.licence-country-item {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.licence-country-item:hover{
+    background-color: #961502; 
+    color: #FFF;
+}
+
+.mobile-licence-expiry-date {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    position: relative;
+}
+
+.mobile-licence-expiry-date > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.mobile-licence-expiry-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+
+}
+
+.mobile-licence-expiry-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.mobile-expiry-calender-contianer {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999999999;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-expiry-calender-contianer.show-mobile-licence-contianer {
+    height: auto;
+    max-height: 220px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+}
+
+.mobile-update-driver-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    flex-shrink: 0;
+}
+
+.mobile-update-driver-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #FFF;
+    background-color: #961502;
+    border: 1px solid #961502;
+    border-radius: 5px;
+}
+
+.expty-drivers-add-new-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.expty-drivers-add-new-contianer > button {
+    display: flex;
+    width: 100%;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #FFF;
+    background-color: #961502;
+    border-radius: 5px;
+    border: 1px solid #961502;
+}

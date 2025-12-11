@@ -1,0 +1,292 @@
+.vehicle-card-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: space-between;
+    /* min-width: 320px; */
+    gap: 0;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+
+}
+
+.vehicle-card-image-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    max-height: 175px;
+    overflow: hidden;
+    border-top: 1px solid #f9f9f9;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #f9f9f9;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    opacity: 1;
+    border-bottom: none;
+}
+
+.vehicle-card-image-container.sold-out-car {
+    opacity: 0.4;
+}
+
+
+.vehicle-card-image-container>img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.vehicle-details-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    gap: 0;
+}
+
+.vehicle-name-and-price {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    padding: 16px;
+}
+
+.vehicle-name-and-price>span {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.vehicle-name-and-price>span>h3 {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-bold);
+    height: 48px;
+}
+
+.vehicle-age-and-fuel-efficiency-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vehicle-age-and-fuel-efficiency-container>p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.vehicle-age-and-fuel-efficiency-container>img {
+    width: 50px;
+    height: auto;
+    object-fit: cover;
+}
+
+.price-and-book-now {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-and-book-now.items-align-end {
+    justify-content: end;
+    height: 40px;
+}
+
+.price-and-book-now-ammount {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: max-content;
+    height: max-content;
+    gap: 5px;
+}
+
+.price-and-book-now-ammount>span {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: max-content;
+    gap: 0px;
+}
+
+.price-and-book-now-ammount>span>h3 {
+    font-size: var(--font-body-18);
+    line-height: 1;
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-color);
+}
+
+.price-and-book-now-ammount>span del {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: var(--font-weight-regular);
+    color: #535353;
+    opacity: 0.5;
+}
+
+
+.total-price-after-discount {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    width: max-content;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: var(--font-weight-regular);
+}
+
+.total-price-after-discount > p {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: var(--font-weight-regular);
+}
+
+.price-and-book-now-ammount>span>p {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: var(--font-weight-regular);
+    color: #595959;
+    opacity: 0.7;
+}
+
+.vehicle-price-heading {
+    font-size: var(--font-body-lg);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-body);
+    color: var(--primary-color);
+}
+
+.booking-button {
+    display: none;
+    width: max-content;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #FFF;
+    font-weight: 400;
+    flex-shrink: 0;
+    background-color: var(--primary-color);
+    /* background-image: linear-gradient(to right top, #113b84, #0e3f92, #0c43a1, #0c47af, #0f4bbe); */
+    color: var(--color-white);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.booking-button.show-booking-button {
+    display: flex;
+}
+
+
+.sold-button {
+    display: none;
+    width: 140px;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #FFF;
+    font-weight: 500;
+    background-color: #D10000;
+    /* background-image: linear-gradient(to right top, #113b84, #0e3f92, #0c43a1, #0c47af, #0f4bbe); */
+    color: var(--color-white);
+    border-radius: 25px;
+    cursor: not-allowed;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.sold-button.show-booking-button {
+    display: flex;
+}
+
+.vehicle-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background-color: #F0F0F0;
+}
+
+.vehicle-fuel-type-and-gear-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 15px;
+
+}
+
+.vehicle-fuel-type-and-gear-container>span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 5px;
+    font-size: var(--font-body-sm);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.vehicle-type-info {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    .vehicle-card-image-container {
+        max-height: 235px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .vehicle-card-image-container {
+        max-height: 292px;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+    .vehicle-card-main-container {
+        min-width: 320px;
+    }
+
+    .vehicle-card-image-container {
+        min-height: 215px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .vehicle-card-main-container {
+        flex: 0 0 auto !important;
+        min-width: 250px !important;
+        /* You can adjust this based on your design */
+        width: auto !important;
+        /* Override the desktop 100% */
+    }
+}

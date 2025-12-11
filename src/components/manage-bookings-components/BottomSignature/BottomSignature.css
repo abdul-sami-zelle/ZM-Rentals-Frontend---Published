@@ -1,0 +1,92 @@
+.mobile-signature-section {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+}
+
+.mobile-signature-modal-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.mobile-signature-modal-inner >img {
+    width: auto;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.mobile-signature-section {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+}
+
+.mobile-signature-modal-pad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    background-color: #eee;
+    /* background-color: orange; */
+}
+
+/* .mobile-signature-modal-pad canvas {
+    width: 100% !important;
+    height: 100% !important;
+} */
+
+.mobile-signature-modal-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.mobile-signature-upload-and-clear {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+     width: 100%;
+     gap: 15px;
+}
+
+.mobile-signature-upload-and-clear > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 32px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #961502;
+    border: 1px solid #961502;
+    border-radius: 5px;
+}
+
+.mobile-save-signature-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #FFF;
+    background-color: #961502;
+    border-radius: 5px;
+    border: 1px solid #961502;
+}

@@ -1,0 +1,123 @@
+.extras-main-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    column-gap: 16px;
+    row-gap: 16px;
+}
+
+.single-extra-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    gap: 16px;
+}
+
+.add-or-remove-quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+}
+
+/* Extra option inputs */
+.quantity-add-main-container {
+    display: flex;
+    width: max-content;
+    align-items: stretch;
+    justify-content: center;
+    background-color: #F0F0F0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quantity-minus-button {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-right: 1px solid #DCDCDC;
+    cursor: pointer;
+}
+
+.quantity-add-button{
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-left: 1px solid #DCDCDC;
+    cursor: pointer;
+}
+
+.quantity-show-input{
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+    border: none;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+}
+
+
+.extra-item-and-price-container {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    align-items: start;
+    justify-content: center;
+    gap: 0px;
+}
+
+.extra-item-and-price-container > h3 {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+}
+
+.extra-item-and-price-container > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-regular);
+}
+
+@media only screen and (min-width: 999px) and (max-width: 1250px) {
+    .quantity-add-main-container {
+        height: 40px;
+    }
+
+    .quantity-minus-button,
+    .quantity-show-input,
+    .quantity-add-button {
+        width: 40px;
+        padding: 10px;
+    }
+
+    .single-extra-item {
+        gap: 10px;
+    }
+}
+
+.extra-item-and-price-container > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+@media only screen and (max-width: 767px) {
+    .extras-main-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 7px;
+    }
+}

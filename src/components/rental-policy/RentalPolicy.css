@@ -1,0 +1,121 @@
+.rental-poliecies-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+}
+
+.rental-policies-heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    flex-direction: column;
+}
+
+/* .rental-policies-heading-container > h3 {
+    font-size: var(--font-heading-sm);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+} */
+
+.rental-policy-under-line-container {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    gap: 5px;
+}
+
+.rental-policy-single-line-right-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: max-content;
+}
+
+.rental-policy-right-line {
+    width: 80%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.rental-policy-left-line-container {
+    display: flex;
+    width: 100%;
+    align-items: end;
+    justify-content: end;
+    height: max-content;
+}
+
+.rental-policy-left-line {
+    width: 80%;
+    height: 3px;
+    /* background-color: var(--primary-color); */
+    background-color: var(--primary-color);
+}
+
+.rental-policies-slogan-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.rental-policies-slogan-container > p{
+    font-size: var(--font-body-18);
+    line-height: var(--line-heightbody);
+    font-weight: var(--font-weight-regular);
+}
+
+.rental-policies-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    column-gap: 16px;
+    row-gap: 16px;
+}
+
+.rental-policy-single-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+}
+
+.rental-policy-single-item > h3 {
+    font-size: var(--font-heading-sm);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--secondary-color);
+}
+
+@media only screen and (max-width: 767px) {
+    .rental-policies-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+        gap: 16px;
+        padding: 0px;
+    }
+
+    .rental-policies-slogan-container {
+        padding: 0px;
+    }
+
+    .rental-policies-slogan-container > p {
+        text-align: center;
+        font-size: var(--font-body-lg);
+    }
+    
+}

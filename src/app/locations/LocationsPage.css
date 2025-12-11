@@ -1,0 +1,197 @@
+.locations-main-outer-contaienr {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.location-max-width-control-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 16;
+    gap: 32px;
+}
+
+.page-main-heading-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 16px;
+}
+
+.booking-form-inner-shadow-container {}
+
+.location-page-location-section-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.location-page-location-section-width-controller {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* .vehicles-main-heading {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-color);
+} */
+
+.page-main-heading-container>p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-semibold);
+}
+
+
+/* Navigate Easy Section */
+
+.navigate-easy-main-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 16px;
+    height: auto;
+}
+
+.navigate-easy-inner-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+/* .navigate-easy-inner-container > p {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    text-align: start;
+} */
+
+
+.navigate-easy-options-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 16px;
+}
+
+.navigate-easy-single-container {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+}
+
+.navigate-easy-single-container>p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.navigate-arrow {
+    display: flex;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.prime-location-details-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* .prime-location-details-container > h3 {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-color);
+}
+
+.prime-location-details-container > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+} */
+
+
+
+@media only screen and (min-width: 768px) {
+    .locations-main-outer-contaienr {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page-main-heading-container {
+        display: flex;
+        width: 100%;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .booking-form-inner-shadow-container {
+        display: flex;
+        /* margin-top: 25px; */
+        border-radius: 15px;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        width: 100%;
+        gap: 25px;
+        padding: 16px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    .location-page-location-section-container {
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        width: 100%;
+    }
+
+    .location-page-location-section-width-controller {
+        display: flex;
+        width: 95%;
+        align-items: start;
+        justify-content: start;
+        border-bottom-left-radius: 25px;
+        overflow: hidden;
+    }
+
+    .location-max-width-control-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .navigate-easy-main-container {
+        padding: 25px 56px;
+    }
+
+}

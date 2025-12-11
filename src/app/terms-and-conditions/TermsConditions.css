@@ -1,0 +1,40 @@
+.terms-conditions-main-contianer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.terms-condition-width-controll {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 25px 56px;
+    gap: 32px;
+}
+
+.term-condition-points {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+}
+
+.terms-list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    list-style: disc;
+    padding: 0 25px;
+}

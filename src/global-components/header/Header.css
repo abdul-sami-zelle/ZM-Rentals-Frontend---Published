@@ -1,0 +1,211 @@
+.header-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: auto;
+    gap: 0;
+    position: sticky !important;
+    top: 0;
+    z-index: 999999;
+    background-color: #FFFFFF;
+    /* left: 0; */
+}
+
+.header-section-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 36px;
+    opacity: 1;
+    background-color: var(--secondary-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.header-section-container.hide-promotion-banner {
+    height: 0;
+    opacity: 0;
+    padding: 0;
+}
+
+.header-inner-section-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 36px;
+    position: relative;
+}
+
+.rotating-message {
+    color: var(--white-color);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    display: flex;
+    flex-shrink: 0;
+    width: max-content;
+}
+
+.rotating-message span a {
+    color: var(--white-color);
+}
+
+
+/*  */
+
+
+.rotating-message-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promotion-announcement {
+    position: absolute;
+    opacity: 0;
+    margin-left: -171px;
+    transform: translateY(100%);
+    transition: all 0.8s ease-in-out;
+}
+
+.promotion-announcement.active {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.promotion-announcement.inactive {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.rotating-text {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+/*  */
+
+
+/* 
+.promotion-announcment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    height: 100%;
+    transform: translate(0%, 200%);
+    transition: all 0.3s ease-in-out;
+}
+
+.promotion-announcment.transform-to-display {
+    transform: translate(0%, 100%) !important;
+    opacity: 1 !important;
+}
+.promotion-announcment.transformt-to-hide {
+    transform: translate(0%, 0%);
+    opacity: 0;
+} */
+
+.header-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 30px;
+    list-style: none;
+}
+
+.header-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: max-content;
+    gap: 10px;
+    color: var(--white-color);
+    cursor: pointer;
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-bold);
+}
+
+.promotion-login-and-manage-booking {
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 15px;
+}
+
+
+.promotion-login-item {
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: max-content;
+    cursor: pointer;
+    display: flex;
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-bold);
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 1023px) {
+    .promotion-login-and-manage-booking {
+        display: flex !important;
+    }
+    .promotion-login-item {
+        display: flex !important;
+    }
+
+    .promotion-announcement {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .promotion-login-item {
+        display: none !important;
+    }
+
+    .promotion-announcement {
+        margin-left: 0;
+    }
+
+    .rotating-message {
+        display: none;
+    }
+
+    .rotating-text {
+        font-size: 12px;
+    }
+
+
+    .header-section-container.hide-promotion-banner {
+        height: 36px;
+        opacity: 1;
+        /* padding: ; */
+    }
+
+    .header-inner-section-container {
+        padding: 0 15px;
+    }
+}

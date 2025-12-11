@@ -1,0 +1,13 @@
+.secondary-button-main {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+.secondary-button-main:hover{
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+}

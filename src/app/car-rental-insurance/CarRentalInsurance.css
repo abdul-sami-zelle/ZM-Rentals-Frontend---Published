@@ -1,0 +1,40 @@
+.car-rental-insurance-main-page {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.car-rental-insurance-page-width-control {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 25px 56px;
+    gap: 32px;
+}
+
+.car-rental-insurance-inner-para {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 32px;
+}
+
+.car-rental-insurance-list-contianer {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    padding: 0 25px;
+    list-style: disc;
+}

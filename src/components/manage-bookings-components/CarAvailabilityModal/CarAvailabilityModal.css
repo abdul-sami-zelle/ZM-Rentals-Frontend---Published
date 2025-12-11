@@ -1,0 +1,799 @@
+.car-available-modal-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.car-available-modal-main-contianer.show-car-available-modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.car-available-modal-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 40vw;
+    /* min-width: 30vw;
+    max-width: 40vw; */
+    height: auto;
+    min-height: 50vh;
+    background-color: #FFF;
+    transform: translate(0%, 200%);
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    padding: 20px 30px;
+    gap: 20px;
+}
+
+.car-available-modal-inner.show-car-available-inner-modal {
+    transform: translate(0%, 0%);
+}
+
+.car-available-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.car-available-modal-head > h3 {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #000;
+}
+
+.car-available-selected-modal-info {
+    display: flex;
+    align-items: stretch;
+    justify-content: start;
+    width: 100%;
+    padding: 10px;
+    background-color: #961502;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.current-car-img-contianer {
+    width: 120px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.current-car-img-contianer > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.current-car-details-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    /* gap: 5px; */
+}
+
+.current-car-details-section > h3 {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #FFF;
+}
+
+.current-car-details-section > p {
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #FFF;
+    margin-top: 3px;
+}
+
+.current-car-details-section > span {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #FFF;
+    margin-top: 10px;
+}
+
+.car-available-edit-pickup-and-drop {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    gap: 30px;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+}
+
+.car-available-edit-pickup {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.car-available-edit-pickup > h3 {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #000;
+}
+
+.car-available-pick-up-inputs-main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
+}
+
+.pick-up-location-dropdown {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    position: relative;
+    flex-direction: column;
+}
+
+.pickup-dropdown-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #afafaf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.pickup-dropdown-head > h3 {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #000;
+}
+
+.pickup-dropdown-body {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    height: 0;
+    max-height: 0;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.pickup-dropdown-body.show-pick-up-locations-list {
+    height: auto;
+    max-height: 200px;
+    border: 1px solid #afafaf;
+    background-color: #FFF;
+}
+
+.pick-up-location-item {
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.pick-up-location-item:hover {
+    background-color: #961502;
+    color: #FFF;
+}
+
+.pick-up-location-item.active-pick-up-location-index {
+    background-color: #961502;
+    color: #FFF;
+}
+
+
+.pick-up-location-time-and-date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.pick-up-location-date {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    position: relative;
+}
+
+.pick-up-location-date > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.pick-up-location-date > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #afafaf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pick-up-location-date > h3 {
+    /* width: 100%;
+    border: 1px solid #afafaf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer; */
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #000;
+}
+
+/* calander */
+.pickup-date-calander-contianer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100% !important;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 999999;
+    overflow: hidden;
+    border: 1px solid #afafaf;
+}
+.drop-date-calander-contianer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 999999999;
+    overflow: hidden;
+    border: 1px solid #afafaf;
+}
+
+/* Calander style */
+
+
+.react-calendar {
+    width: 100%;
+    min-width: unset !important;
+}
+
+.pickup-date-calander-contianer .react-calendar,
+.drop-date-calander-contianer .react-calendar {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px !important;
+    border: none !important;
+}
+
+
+
+.pickup-date-calander-contianer .react-calendar .react-calendar__navigation,
+.drop-date-calander-contianer .react-calendar .react-calendar__navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px !important;
+    background-color: transparent !important;
+    height: max-content;
+    margin: 0;
+}
+
+.pickup-date-calander-contianer .react-calendar .react-calendar__viewContainer,
+.drop-date-calander-contianer .react-calendar .react-calendar__viewContainer {
+    padding: 10px 10px 10px 10px !important;
+    background-color: transparent !important;
+}
+
+.pickup-date-calander-contianer .react-calendar__navigation__label,
+.drop-date-calander-contianer .react-calendar__navigation__label {
+    padding-top: 2px !important;
+    background-color: transparent !important;
+}
+
+.pickup-date-calander-contianer .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from,
+.drop-date-calander-contianer .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+}
+
+.pickup-date-calander-contianer .react-calendar__navigation__arrow.react-calendar__navigation__prev-button,
+.drop-date-calander-contianer .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: transparent !important;
+}
+
+.pickup-date-calander-contianer .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover,
+.drop-date-calander-contianer .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover {
+    background-color: transparent !important; 
+}
+
+.pickup-date-calander-contianer .react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.drop-date-calander-contianer .react-calendar__navigation__arrow.react-calendar__navigation__next-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    background-color: transparent !important;
+}
+
+.pickup-date-calander-contianer .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover,
+.drop-date-calander-contianer .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover {
+    background-color: transparent !important;
+}
+
+.pickup-date-calander-contianer .react-calendar__month-view__weekdays__weekday,
+.drop-date-calander-contianer .react-calendar__month-view__weekdays__weekday {
+    color: var(--primary-color) !important;
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+}
+
+
+.pickup-date-calander-contianer .react-calendar__month-view__weekdays abbr,
+.drop-date-calander-contianer .react-calendar__month-view__weekdays abbr {
+    text-decoration: none !important;
+}
+
+.pickup-date-calander-contianer .react-calendar__tile,
+.drop-date-calander-contianer .react-calendar__tile {
+    color: var(--primary-color) !important;
+    font-size: 10px;
+    font-weight: var(--font-weight-regular);
+    padding: 5px;
+}
+
+
+
+
+.pickup-date-calander-contianer .react-calendar__tile--active,
+.pickup-date-calander-contianer .react-calendar__tile--now,
+.drop-date-calander-contianer .react-calendar__tile--active,
+.drop-date-calander-contianer .react-calendar__tile--now {
+    width: 100% !important;
+    line-height: 18px !important;
+    font-size: 10px !important;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* Selected date background */
+.pickup-date-calander-contianer .react-calendar__tile--active, 
+.drop-date-calander-contianer .react-calendar__tile--active  {
+    background: var(--primary-color);
+    color: var(--color-white) !important;
+}
+
+/* Today (only if not selected) - light border */
+.pickup-date-calander-contianer .react-calendar__tile--now:not(.react-calendar__tile--active), 
+.drop-date-calander-contianer .react-calendar__tile--now:not(.react-calendar__tile--active){
+    border: 1px solid #ccc;
+    background: transparent;
+}
+
+.react-calendar__tile:disabled {
+    background-color: transparent !important;
+    color: #aaa !important;        
+    opacity: 0.5 !important;       
+    cursor: not-allowed !important; 
+    pointer-events: none;           
+  }
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #f0f8ff !important; 
+  color: #000;
+  border-radius: 5px; 
+}
+
+/* Calander Style */
+
+.pick-up-location-time {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    position: relative;
+
+}
+
+.pick-up-location-time > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.pick-up-time-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #afafaf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pick-up-time-head > h3 {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #000;
+}
+
+.pick-up-time-body {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    overflow: hidden;
+    background-color: transparent;
+    border: 1px solid transparent;
+    height: 0;
+    max-height: 0;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.pick-up-time-body::-webkit-scrollbar {
+    display: none;
+}
+
+.pick-up-time-body.show-pick-up-time-body {
+    height: auto;
+    max-height: 120px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #afafaf;
+}
+
+.pick-up-time-item {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #000;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    width: 100%;
+    cursor: pointer;
+}
+
+.pick-up-time-item:hover {
+    background-color: #961502;
+    color: #FFF;
+}
+
+.pick-up-time-item.active-pickup-time-item{
+    background-color: #961502;
+    color: #FFF;
+}
+
+
+.drop-off-time-body {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    overflow: hidden;
+    background-color: transparent;
+    border: 1px solid transparent;
+    height: 0;
+    max-height: 0;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.drop-off-time-body::-webkit-scrollbar {
+    display: none;
+}
+
+.drop-off-time-body.show-drop-off-time-body {
+    height: auto;
+    max-height: 120px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #afafaf;
+}
+
+.drop-off-time-item{
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #000;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    width: 100%;
+    cursor: pointer;
+}
+
+.drop-off-time-item:hover {
+    background-color: #961502;
+    color: #FFF;
+}
+
+.drop-off-time-item.active-drop-time-item {
+    background-color: #961502;
+    color: #FFF;
+}
+
+/* Drop Location SEction */
+.car-available-edit-drop {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.car-available-edit-drop > h3 {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #000;
+}
+
+.drop-dropdown-body {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    height: 0;
+    max-height: 0;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.drop-dropdown-body.show-drop-off-locations-list {
+    height: auto;
+    max-height: 200px;
+    border: 1px solid #afafaf;
+    background-color: #FFF;
+}
+
+.drop-location-item {
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.drop-location-item:hover {
+    background-color: #961502;
+    color: #FFF;
+}
+.drop-location-item.active-drop-location-off {
+    background-color: #961502;
+    color: #FFF;
+}
+
+.available-or-not-contianer {
+    display: flex;
+    width: 100%;
+    height: 88px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.available-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+    padding: 0 15px;
+}
+
+.available-icon-color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #223A84;
+    
+}
+
+.available-message {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+}
+
+.available-message > h3 {
+    font-size: 35px;
+    line-height: 45px;
+    font-weight: 500;
+    color: #223A84;
+}
+
+.available-message > p {
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #223A84;
+}
+
+/*  Not available */
+.not-available-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+    padding: 0 15px;
+}
+
+.not-available-icon-color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #961502;
+}
+
+.not-available-message {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+}
+
+.not-available-message > h3 {
+    font-size: 35px;
+    line-height: 45px;
+    font-weight: 500;
+    color: #961502;
+}
+
+.not-available-message > p {
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #961502;
+}
+
+
+/* .available-or-not-contianer > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+} */
+
+.recheck-availability {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-shrink: 0;
+    width: max-content;
+    height: max-content;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.car-availability-check-button-contianer {
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    width: 100%;
+    height: 100%;
+}
+
+.car-availability-check-button-contianer > h3 {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #961502;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.check-availability-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 35px;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #afafaf;
+    border-radius: 10px;
+    border: 1px solid #afafaf;
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+.check-availability-button.active-availability {
+    background-color: #961502;
+    border: 1px solid #961502;
+    cursor: pointer;
+    color: #FFF;
+}   

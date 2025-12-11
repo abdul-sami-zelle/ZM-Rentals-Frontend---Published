@@ -1,0 +1,46 @@
+.quantity-add-main-container {
+    display: flex;
+    width: max-content;
+    align-items: stretch;
+    justify-content: center;
+    background-color: #F0F0F0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quantity-minus-button {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-right: 1px solid #DCDCDC;
+    cursor: pointer;
+}
+
+.quantity-add-button{
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-left: 1px solid #DCDCDC;
+    cursor: pointer;
+}
+
+.quantity-show-input{
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+    border: none;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+}

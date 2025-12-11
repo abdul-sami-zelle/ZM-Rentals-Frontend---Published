@@ -1,0 +1,130 @@
+.bottom-extras-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.bottom-extras-items-list-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.bottom-single-extras-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+}
+
+.bottom-extras-single-item-name-and-price {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.bottom-extras-single-item-name-and-price > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #00000080;
+}
+
+.bottom-extras-single-item-name-and-price > p {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.bottom-single-extras-increase-decrease {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    width: max-content;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.bottom-single-extra-increas-decrease-buttons-and-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    border: 1px solid #961502;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.bottom-single-extra-decrease-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: #961502;
+    cursor: pointer;
+}
+
+.bottom-single-extra-input-value {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.bottom-single-extra-increase-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: #961502;
+    cursor: pointer;
+}
+
+
+
+/* Update Extras Option */
+
+.bottom-extras-update-button-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.bottom-extras-update-button-contianer > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 42px;
+    border: 1px solid #961502;
+    background-color: #961502;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    cursor: pointer;
+}

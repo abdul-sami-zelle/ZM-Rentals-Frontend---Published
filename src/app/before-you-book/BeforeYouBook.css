@@ -1,0 +1,51 @@
+.before-you-book-main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.before-you-book-width-controller {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 25px 56px;
+    gap: 32px;
+}
+
+.before-you-book-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+}
+
+.before-you-book-requirments {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    
+}
+
+.before-you-book-requirments > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    padding: 0 25px;
+    list-style: disc;
+}

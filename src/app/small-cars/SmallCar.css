@@ -1,0 +1,41 @@
+.small-car-main-contianer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.smal-car-width-controlar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 25px 56px;
+    gap: 32px;
+}
+
+.small-cars-list-contianer {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    
+}
+
+.small-cars-list {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    padding: 0 25px;
+    width: 100%;
+    gap: 16px;
+    flex-direction: column;
+    list-style: disc;
+}

@@ -1,0 +1,62 @@
+.van-people-carrier-width-controler {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 25px 56px;
+    gap: 32px;
+}
+
+.van-people-carrrier-second-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 32px;
+}
+
+.van-people-carrier-list-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    width: 0 25px;
+    gap: 32px;
+    
+}
+
+.van-people-list-items {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    padding: 0 20px;
+}
+
+.van-people-list-items > li {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.list-item-heading {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-color);
+}
+
+.list-item-content {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    color: var(--black);
+}

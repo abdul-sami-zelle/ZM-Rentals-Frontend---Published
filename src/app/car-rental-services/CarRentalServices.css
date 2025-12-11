@@ -1,0 +1,75 @@
+.rental-services-details-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+}
+
+.page-main-heading-container {
+    display: flex;
+    margin-top: 25px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 25px 56px; 
+}
+
+.page-main-booking-form-container {
+    display: flex;
+    margin-top: 25px;
+    border-radius: 15px;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 25px;
+    padding: 16px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.vehicles-main-heading {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+}
+
+.rental-services-content-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.rental-services-max-width-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 0px 56px 50px 56px;
+}
+
+@media only screen and (max-width: 767px) {
+    .rental-services-max-width-container {
+        gap: 25px;
+        padding: 0 16px;
+    }
+    .rental-services-content-container {
+        gap: 32px;
+    }
+
+    .page-main-heading-container {
+        padding: 25px 16px 0 16px;
+        gap: 16px;
+        margin-bottom: 25px;
+    }
+
+    .vehicles-main-heading {
+        font-size: var(--font-heading-md);
+        line-height: var(--line-height-heading);
+        font-weight: var(--font-weight-bold);
+    }
+}

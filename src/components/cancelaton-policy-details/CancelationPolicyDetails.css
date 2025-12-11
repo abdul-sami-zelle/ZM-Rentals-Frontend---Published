@@ -1,0 +1,134 @@
+.service-detail-main-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.service-detail-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.service-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 25px;
+    max-width: 540px;
+}
+
+.service-detail-description-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: start;
+    justify-content: space-evenly;
+    gap: 16px;
+}
+
+.service-heading-contaienr {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* .service-heading-contaienr > h3 {
+    font-size: var(--font-bofy-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+} */
+
+.service-heading-underline-main-container {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+}
+
+.service-heading-top-line-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 50px;
+    height: max-content;
+}
+
+.service-heading-right-side-line {
+    width: 80%;
+    height: 3px;
+    background-color: var(--primary-color);
+
+}
+
+.service-heading-bottom-line {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    width: 50px;
+    height: max-content;
+}
+
+.service-heading-left-line {
+    width: 80%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.cancelation-booking-policies-points-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+}
+
+.services-detail-single-point {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 7px;
+    text-align: start;
+}
+
+/* .services-detail-single-point > p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+} */
+
+.points-arrow {
+    display: flex;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+}
+
+@media only screen and (max-width: 767px) {
+    .service-detail-main-container {
+        flex-direction: column !important;
+        padding: 0px;
+    }
+    .service-detail-image-container {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .service-detail-description-container {
+        
+        width: 100%;
+    }
+
+}

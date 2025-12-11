@@ -1,0 +1,86 @@
+.rolling-outer-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: start;
+    width: 100%;
+    max-width: 1323px;
+    /* padding-right: 32px; */
+}
+
+.rolling-content-main-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    column-gap: 32px;
+    grid-row: 32px;
+    padding: 25px 56px;
+    margin-bottom: 25px;
+    max-width: 1323px;
+    
+}
+
+.rolling-empty-container {
+    display: flex;
+    width: 100%;
+}
+
+.rolling-single-details-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+}
+
+.rolling-single-details-container > h3 {
+    font-size: var(--font-heading-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.rolling-single-details-container > p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    /* color: var(--primary-color); */
+    color: #000;
+}
+
+@media only screen and (max-width: 767px) {
+    .rolling-outer-container {
+        align-items: start;
+        justify-content: start;
+        margin-bottom: 25px;
+    }
+
+    .rolling-content-main-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 16px;
+        padding: 0 16px;
+        margin-bottom: 0;
+    }
+    .rolling-single-details-container {
+        gap: 16px;
+    }
+
+    .rolling-single-details-container > h3 {
+        font-size: var(--font-body-xl);
+        line-height: var(--line-height-heading);
+        font-weight: var(--font-weight-bold);
+        color: var(--primary-color);
+    }
+    .rolling-single-details-container > p {
+        font-size: var(--font-body-md);
+        line-height: var(--line-height-body);
+        font-weight: var(--font-weight-regular);
+        color: #000;
+    }
+    .rolling-empty-container {
+        display: none;
+    }
+}

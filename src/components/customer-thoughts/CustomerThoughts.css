@@ -1,0 +1,103 @@
+.customer-thoughts-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 35px 56px;
+}
+
+.customer-thoughts-inner-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+    align-items: start;
+    justify-content: start;
+    /* padding: 0 0 56px 0; */
+}
+
+.customer-thoughts-inner-container > h3 {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.customer-thoughts-first-para {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.customer-thoughts-second {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.customer-comments-cards-container {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    flex-shrink: 0;
+    row-gap: 16px;
+    column-gap: 16px;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.customer-comments-cards-container::scroll-marker {
+    display: none;
+}
+
+
+
+.customer-thought-single-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+    max-width: 310px;
+    flex-shrink: 0;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    overflow: hidden;
+}
+
+.customer-cmment-card-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 16px 10px;
+    gap: 16px;
+}
+
+.customer-cmment-card-details > h3 {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-bold);
+}
+
+.customer-cmment-card-details > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+@media only screen and (max-width: 767px) {
+    .customer-thoughts-main-container {
+        padding: 16px;
+    }
+    .customer-thoughts-inner-container {
+        
+        gap: 16px;
+    }
+
+    .customer-thoughts-inner-container > h3 {
+        font-size: var(--font-heading-md);
+        line-height: var(--line-height-heading);
+        font-weight: var(--font-weight-bold);
+        color: var(--primary-color);
+    }
+}

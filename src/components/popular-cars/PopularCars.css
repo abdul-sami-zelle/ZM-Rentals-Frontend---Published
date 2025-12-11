@@ -1,0 +1,142 @@
+.popular-cars-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 57px;
+
+}
+
+.popular-cars-inner-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 1323px;
+    padding: 56px;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+}
+
+.popular-cars-inner-container > h3 {
+    font-size: var(--font-heading-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.popular-cars-inner-container > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.popular-cars-cards-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+}
+
+.popular-car-card {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    cursor: pointer;
+}
+
+.popular-car-card-detail-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+    padding: 5px;
+}
+
+.popular-car-card-detail-container > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.one-way-rental-detail-container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: start;
+    width: 80%;
+    gap: 16px;
+    padding: 0 56px 56px 56px;
+}
+
+.one-way-rental-detail-container > h3 {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.one-way-rental-second-heading {
+    font-size: var(--font-body-xl) !important;
+    line-height: var(--line-height-heading) !important;
+    font-weight: var(--font-weight-bold) !important;
+}
+
+.one-way-rental-detail-container > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.one-way-rental-detail-container > span {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+@media only screen and (max-width: 480px) {
+    .popular-cars-inner-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 16px;
+        gap: 16px;
+    }
+    .popular-cars-cards-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 16px;
+        row-gap: 16px;
+
+    }
+
+    .one-way-rental-detail-container {
+        padding: 16px;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .one-way-rental-detail-container > h3 {
+        font-size: var(--font-heading-md);
+    }
+
+    .popular-car-card {
+        width: 100%;
+    }
+    
+}

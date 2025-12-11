@@ -1,0 +1,59 @@
+.after-journey-main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.after-journey-width {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 25px 56px;
+    gap: 32px;
+}
+
+.after-journey-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+}
+
+.after-journey-list-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 16px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.after-journey-list-container > ul {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    flex-direction: column;
+    list-style: disc;
+    padding: 0 25px;
+}
+
+.understanding-bills-contianer {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    flex-direction: column;
+}

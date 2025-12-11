@@ -1,0 +1,126 @@
+.why-choose-us-main-contianer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.why-choose-us-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 32px;
+}
+
+.why-choose-top-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+}
+
+.why-choose-top-heading > p {
+    font-size: var(--font-heading-sm);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-medium);
+}
+
+/* .why-choose-top-heading > h3 {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+} */
+
+.why-choose-us-inner-container > p {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.why-we-defrent-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+
+}
+
+.why-we-defrent-main-container > h3 {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.why-we-faq-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 16px;
+}
+
+.why-we-single-faq {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 16px;
+}
+
+.why-we-faq-arrow {
+    display: flex;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.why-we-single-faq > span {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* .why-we-single-faq > span > h3 {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+}
+
+.why-we-single-faq > span > p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-regular);
+} */
+
+@media only screen and (max-width: 767px) {
+    .why-choose-us-inner-container {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .why-choose-top-heading > p {
+        font-size: var(--font-body-lg);
+
+    }
+    .why-choose-top-heading > h3 {
+        font-size: var(--font-heading-md);
+    }
+
+    .why-choose-us-inner-container > p {
+        font-size: var(--font-body-md);
+    }
+
+    .why-we-defrent-main-container > h3 {
+        font-size: var(--font-heading-md);
+    }
+}

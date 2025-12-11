@@ -1,0 +1,104 @@
+.quick-facts-main-container {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+}
+
+.quick-facts-inner-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    background-color: rgba(253, 241, 246, 1);
+    padding: 16px;
+    gap: 32px;
+}
+
+.quick-facts-list-and-space-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+}
+
+.empty-space-for-location {
+    display: none;
+    width: 20%;
+    height: auto;
+}
+
+.quick-facts-list {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 16px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.quick-facts-heading {
+    /* font-size: var(--font-body-xl) !important;
+    line-height: var(--line-height-heading) !important;
+    font-weight: var(--font-weight-bold) !important;
+    color: var(--primary-color) !important; */
+    font-size: var(--font-body-xl);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.quick-fact-item {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    list-style: none;
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.quick-facts-icon {
+    font-size: var(--font-heading-sm);
+    flex-shrink: 0;
+}
+
+.quick-facts-detals {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+}
+
+
+
+@media only screen and (min-width: 481px) {
+    .quick-facts-inner-container {
+        padding: 0;
+    }
+    
+    .quick-facts-list-and-space-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 32px;
+        align-items: center;
+        justify-content: center;
+        /* padding-right: 50px; */
+    }
+    .quick-facts-list {
+        width: 80%;
+        padding: 56px;
+    }
+    /* .empty-space-for-location {
+        display: flex;
+    } */
+}

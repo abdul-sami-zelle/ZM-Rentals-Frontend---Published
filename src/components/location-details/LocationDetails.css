@@ -1,0 +1,234 @@
+.location-details-desktop-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: url('/assets/images/nzMapBackground.png');
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(150, 21, 2, 0.2);
+    border-bottom-left-radius: 25px;
+    padding: 35px 56px;
+
+}
+
+.location-detail-desktop-inner-container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: start;
+    gap: 32px;
+    width: 100%;
+    max-width: 1323px;
+
+}
+
+.location-details-row-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.location-detain-desktop-map-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: auto;
+    background-image: url('/assets/images/nzMap.png');
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size: cover;
+}
+
+.location-detain-desktop-map-section > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-left: 80px;
+    width: max-content;
+    color: #000;
+}
+
+
+.location-details-desktop-details-section {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+}
+
+.location-details-desktop-details-section > h3 {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.location-details-para-one {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    color: #000;
+}
+
+.location-details-para-two {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    color: var(--primary-color);
+}
+
+.location-details-desktop-details-section > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 16px;
+    color: var(--primary-color);
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.city-details-section {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    max-width: 310px;
+    gap: 32px;
+}
+
+.city-details-section > h3 {
+    font-size: var(--font-heading-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.city-and-opening-times-contianer {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+}
+
+.city-and-opening-times-contianer > p {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    color: #000;
+}
+
+/* Mobile View */
+.mobile-location-details-main-container {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    padding: 16px;
+    justify-content: center;
+    width: 100%;
+    background-image: url('/assets/images/nzMapBackground.png');
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size: cover;
+    gap: 32px;
+    background-color: rgba(150, 21, 2, 0.2);
+}
+
+.mobile-location-details-inner-container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    height: auto;
+    gap: 16px;
+    background-image: url('/assets/images/nzMap.png');
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size: contain;
+}
+
+.mobile-location-details-inner-container > h3 {
+    font-size: var(--font-heading-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.mobile-location-details-inner-container > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    color: #000;
+}
+
+
+.mobile-location-details-inner-container > span {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: max-content;
+    gap: 16px;
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.mobile-city-details-section {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mobile-city-details-section > h3 {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    /* color: var(--color-white); */
+    color: var(--primary-color);
+}
+
+.mobile-city-and-opening-times-contianer {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mobile-city-and-opening-times-contianer > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    color: #000;
+    /* color: var(--color-white); */
+
+}
+
+
+@media only screen and (max-width: 767px) {
+    .location-details-desktop-main-container {
+        display: none;
+    }
+    .mobile-location-details-main-container {
+        display: flex;
+    }
+}

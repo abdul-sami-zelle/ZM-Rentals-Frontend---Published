@@ -1,0 +1,289 @@
+.address-and-phone-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.address-and-phone-width-controller {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 750px;
+    padding: 10px 0;
+}
+
+.address-input-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.address-and-phone-heading {
+    font-size: 38px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.address-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.two-input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.zip-and-city-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+
+
+.two-input-row > label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    background-color: #FFF;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #535353;
+    padding: 5px 15px;
+
+}
+
+.two-input-row > label > input {
+    width: 100%;
+    height: 28px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #535353;
+}
+
+.two-input-row > label > input::placeholder {
+    color: #535353;
+}
+
+
+/* Town and city labels */
+.zip-and-city-contianer > label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    background-color: #FFF;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #535353;
+    padding: 5px 15px;
+
+}
+
+.zip-and-city-contianer > label > input {
+    width: 100%;
+    height: 28px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #535353;
+}
+
+.zip-and-city-contianer > label > input::placeholder {
+    color: #535353;
+}
+
+
+.country-dropdown-main-continar {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+    padding: 5px 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+    
+}
+
+.country-dropdown-main-continar-label {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #535353;
+}
+
+.country-dropdown-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 28px;
+    cursor: pointer;
+}
+
+.country-dropdown-label > p {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #535353;
+}
+
+.country-dropdown-list-container {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.country-dropdown-list-container.show-countries-list {
+    height: auto;
+    max-height: 220px;
+    background-color: #FFF;
+    border: 1px solid var(--primary-color);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.country-dropdown-list-container::-webkit-scrollbar {
+    display: none;
+}
+
+.countries-list-item {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #535353;
+    cursor: pointer;
+    padding: 5px 15px;
+    width: 100%;
+}
+
+.countries-list-item:hover {
+    background-color: var(--primary-color);
+    color: #FFF;
+}
+
+.countries-list-item.active-country-list-item {
+    background-color: var(--primary-color);
+    color: #FFF;
+}
+
+.phone-input-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.phone-input {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+    padding: 5px 15px;
+    background-color: #FFF;
+    border-radius: 5px;
+}
+
+.phone-input > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #535353;
+}
+
+.phone-input > input {
+    width: 100%;
+    height: 28px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #535353;
+}
+
+.protected-data-message {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 400;
+    color: #535353;
+}
+
+.address-and-phone-save-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+    padding: 10px 25px;
+    background-color: var(--primary-color);
+    color: #FFF;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 767px) {
+    .two-input-row {
+        flex-direction: column;
+    }
+
+    .two-input-row > label {
+        width: 100%;
+    }
+}

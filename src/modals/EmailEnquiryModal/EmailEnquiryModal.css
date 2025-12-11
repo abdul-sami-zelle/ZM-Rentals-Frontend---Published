@@ -1,0 +1,440 @@
+.email-enquiry-modal-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 999999999999;
+  transition: all 0.3s ease-in-out;
+}
+
+.email-enquiry-modal-main-container.show-email-enquiry {
+  visibility: visible;
+  opacity: 1;
+}
+
+.emaill-enquiry-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 50%;
+  height: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  transform: translate(0%, 200%);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.emaill-enquiry-inner.show-email-enquiry-inner {
+  transform: translate(0%, 0%);
+}
+
+.email-enquiry-modal-head {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  padding: 10px 20px;
+  gap: 5px;
+  width: 100%;
+  border-bottom: 1px solid rgba(89, 89, 89, 0.4);
+}
+
+.email-moda-head-close-and-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+.emain-moda-head-close-and-heading > p {
+  font-size: var(--font-body-md);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-semibold);
+  color: #000;
+}
+
+.email-enquiry-modal-car-name {
+  font-size: var(--font-body-lg);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-color);
+}
+
+/* Qoute  */
+.email-qoute-vehicle-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.email-qoute-left {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: max-content;
+  height: auto;
+}
+
+.email-pick-and-drop-dates {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  width: max-content;
+}
+
+.email-pick-and-drop-dates > p {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #000;
+}
+
+.email-qoute-price-total {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: max-content;
+  height: auto;
+  gap: 5px;
+}
+
+.email-qoute-price-total > h3 {
+  font-size: var(--font-body-lg);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-color);
+}
+
+.email-qoute-price-total > p {
+  font-size: var(--font-body-sm);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-regular);
+  color: #595959;
+  opacity: 0.7;
+}
+
+.email-qoute-ask-for-qoute-right {
+  width: 130px !important;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.email-qoute-ask-for-qoute-right > img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Inputs */
+.email-enquiry-inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  gap: 10px;
+  padding: 20px;
+}
+
+.email-ask-for-qoute {
+  font-size: var(--font-body-md);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-color);
+}
+
+.email-enquiry-first-and-last-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  gap: 10px;
+}
+
+.email-enquiry-input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 50%;
+  height: auto;
+  background-color: rgba(102, 102, 102, 0.1);
+  padding: 6px 16px;
+  border-radius: 3px;
+}
+
+.email-enquiry-input-box > p {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.email-enquiry-input-box > input {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  height: 25px;
+  border: none;
+  outline: none;
+  font-size: var(--font-body-lg);
+  line-height: var(--line-height-heading);
+  font-weight: 500;
+  color: #000;
+}
+
+.email-enquiry-country-select {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  position: relative;
+  height: auto;
+  gap: 5px;
+  background-color: rgba(102, 102, 102, 0.1);
+  padding: 6px 16px;
+  border-radius: 3px;
+}
+
+.email-enquiry-country-select > p {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.email-enquiry-country-select-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+.email-enquiry-country-select-head > h3 {
+  font-size: var(--font-body-lg);
+  line-height: var(--line-height-heading);
+  font-weight: 500;
+  color: #000;
+}
+
+.email-enquiry-country-select-body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  height: 0;
+  max-height: 0;
+  /* overflow: hidden; */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999999;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.email-enquiry-country-select-body.email-enquiry-country-list-show {
+  height: auto;
+  max-height: 180px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #afafaf;
+}
+
+.email-enquiry-country-select-body::-webkit-scrollbar {
+  display: none;
+}
+
+.email-enquiry-country-select-body > p {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: var(--font-body-md);
+  line-height: var(--line-height-heading);
+  color: #000;
+  font-weight: var(--font-weight-regular);
+  background-color: transparent;
+  width: 100%;
+}
+
+.email-enquiry-country-select-body > p:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.email-enquiry-input-box-email {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  height: auto;
+  background-color: rgba(102, 102, 102, 0.1);
+  padding: 6px 16px;
+  border-radius: 3px;
+}
+
+.email-enquiry-input-box-email > p {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.email-enquiry-input-box-email > input {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  height: 25px;
+  border: none;
+  outline: none;
+  font-size: var(--font-body-lg);
+  line-height: var(--line-height-heading);
+  font-weight: 500;
+  color: #000;
+}
+
+.email-enquiry-text-field {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  padding: 6px 16px;
+  gap: 5px;
+  height: 130px;
+  border-radius: 3px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.email-enquiry-text-field > p {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.email-enquiry-text-field > textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
+/* Footer */
+.email-enquiry-footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  /* border-top: 1px solid rgba(89, 89, 89, 0.4); */
+}
+
+.email-enquiry-footer-section > span {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: var(--font-body-md);
+  line-height: 1;
+  font-weight: var(--font-weight-regular);
+}
+
+.send-email-enquiry-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  font-size: var(--font-body-lg);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-semibold);
+  color: var(--white-color);
+  /* background-color: rgba(102, 102, 102, 0.3); */
+  background-color: var(--primary-color);
+}
+
+.active-booking-button {
+  background-color: var(--primary-color);
+}
+
+@media only screen and (max-width: 767px) {
+  .email-enquiry-modal-main-container {
+    padding: 15px;
+  }
+  .emaill-enquiry-inner {
+    width: 100%;
+  }
+
+  .email-enquiry-input-box {
+    padding: 2px 16px;
+  }
+
+  .email-enquiry-input-box > p {
+    font-size: 12px;
+  }
+
+  .email-enquiry-input-box > input {
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .email-enquiry-country-select {
+    padding: 2px 16px;
+  }
+
+  .email-enquiry-country-select > p {
+    font-size: 12px;
+  }
+
+  .email-enquiry-country-select-head > h3 {
+    font-size: 12px;
+  }
+
+  .email-enquiry-input-box-email {
+    padding: 2px 16px;
+  }
+
+  .email-enquiry-input-box-email > p {
+    font-size: 12px;
+  }
+
+  .email-enquiry-input-box-email > input {
+    height: 20px;
+    font-size: 12px;
+  }
+
+
+.email-enquiry-text-field {
+  padding: 2px 16px;
+  height: 50px;
+}
+
+.email-enquiry-text-field > p {
+  font-size: 12px;
+}
+
+}

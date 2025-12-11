@@ -1,0 +1,21 @@
+.primary-button-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: linear-gradient(to right top, #113b84, #0e3f92, #0c43a1, #0c47af, #0f4bbe); */
+    background-color: var(--primary-color);
+    color: var(--color-white);
+    border-radius: 25px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.primary-button-main-container:hover {
+    background-color: var(--primary-color);
+    /* background-image: linear-gradient(to right top, #0f3577, #0c3985, #0a3c93, #0a409f, #0d43ac); */
+}
+
+.primary-button-main-container:hover .primary-icon {
+    transform: translateX(5%);
+}

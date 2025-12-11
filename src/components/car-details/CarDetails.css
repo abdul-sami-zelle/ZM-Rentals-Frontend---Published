@@ -1,0 +1,115 @@
+.car-details-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+    padding: 25px 56px;
+}
+
+/* .car-details-main-container > h3 {
+    font-size: var(--font-heading-sm);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+} */
+
+.main-page-section-heading {
+    font-size: 2rem;
+    line-height: var(--line-height-heading);
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.car-details-description-and-all-vehicles-link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+}
+
+/* .car-details-description-and-all-vehicles-link-container > p {
+    font-size: var(--font-body-18);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+} */
+
+/* .car-details-description-and-all-vehicles-link-container > a {
+    color: var(--primary-color);
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-bold);
+} */
+
+.car-details-description-and-all-vehicles-link-container>a:hover {
+    color: var(--secondary-color);
+}
+
+.cars-cars-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    column-gap: 32px;
+    row-gap: 32px;
+}
+
+.vehicle-page-cars-details {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+
+}
+
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    .cars-cars-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        column-gap: 16px;
+        row-gap: 16px;
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .cars-cars-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        column-gap: 32px;
+        row-gap: 32px;
+    }
+}
+
+
+@media only screen and (max-width: 767px) {
+    .car-details-main-container {
+        padding: 0 16px;
+        margin-bottom: 25px;
+        gap: 16px;
+    }
+
+    .cars-cars-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 16px;
+        padding: 5px 5px 10px 5px;
+        /* padding-bottom: 10px; */
+        /* Optional: avoid scrollbar hiding cards */
+    }
+
+    .car-details-description-and-all-vehicles-link-container>p {
+        font-size: var(--font-body-lg);
+        font-weight: var(--font-weight-regular);
+        line-height: var(--line-height-body);
+    }
+}

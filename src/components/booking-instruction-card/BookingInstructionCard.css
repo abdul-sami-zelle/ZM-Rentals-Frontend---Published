@@ -1,0 +1,55 @@
+.booking-instruction-card-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    align-items: start;
+    justify-content: start;
+    border: 1px solid #f7f7f7;
+    border-radius: 15px;
+}
+
+.booking-instruction-single-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    /* gap: 16px; */
+    border-bottom: 1px solid #f7f7f7;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.booking-instruction-single-item:nth-last-child(1){
+    border-bottom: none;
+}
+
+.booking-instruction-card-arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  .booking-instruction-single-item:hover .booking-instruction-card-arrow {
+    transform: translateX(6px); /* move to the right */
+  }
+
+.booking-instruction-single-item > p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    width: 70%;
+}
+
+.booking-instruction-single-item:hover > p {
+    color: var(--secondary-color);
+    
+}
+
+/* .booking-instruction-card-arrow {
+    transition: all 0.3s ease-in-out;
+} */
+
+.booking-instruction-single-item:hover .booking-instruction-card-arrow {
+    color: var(--secondary-color);
+    font-weight: 700;
+} 
+

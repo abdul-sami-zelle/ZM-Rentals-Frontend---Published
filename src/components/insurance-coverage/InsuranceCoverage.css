@@ -1,0 +1,136 @@
+.insurance-coverage-main-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.insurance-coverage-inner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 80%;
+    max-width: 1323px;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+    padding: 56px;
+}
+
+.insurance-coverage-inner-container > h3 {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.insurance-coverage-inner-container > p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-bold);
+}
+
+.insurance-coverage-inner-container > span {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.insurance-coverage-colums-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    column-gap: 16px;
+    row-gap: 16px;
+}
+
+.insurance-covrage-single-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+}
+
+.insurance-covrage-single-col > h3 {
+    font-size: var(--font-heading-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.insurance-single-col-details > h3 {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+}
+
+.insurance-single-col-details > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    text-align: start;
+}
+
+.electric-car-insurance-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 16px;
+}
+
+.electric-car-insurance-container > h3 {
+    font-size: var(--font-heading-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.electric-car-insurance-container > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.electric-car-insurance-container > span {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+} 
+
+@media only screen and (max-width: 480px)  {
+    .insurance-coverage-inner-container {
+        width: 100%;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .insurance-coverage-inner-container > h3 {
+        font-size: var(--font-heading-md);
+    }
+
+    .insurance-coverage-colums-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: start;
+        justify-content: start;
+
+    }
+
+    .insurance-covrage-single-col  {
+        gap: 16px;
+    }
+
+    .insurance-single-col-details {
+        gap: 7px;
+    }
+}

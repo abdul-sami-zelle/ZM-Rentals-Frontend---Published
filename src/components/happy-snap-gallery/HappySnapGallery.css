@@ -1,0 +1,199 @@
+.happy-snap-mobile-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    margin-bottom: 25px;
+    align-items: start;
+    justify-content: start;
+}
+
+.happy-snap-mobile-single-image-container {
+    display: flex;
+    width: 100%;
+    height: 393px;
+    position: relative;
+}
+
+.happy-snap-single-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-right-radius: 25px;
+}
+
+.happy-snap-single-image,
+.mobile-happy-snap-gallery-image-one,
+.mobile-happy-snap-gallery-image-two,
+.desktop-snap-gallery-main-image,
+.desktop-snap-gallery-image-one,
+.desktop-snap-gallery-image-two {
+  pointer-events: none;
+}
+
+.happy-snap-description-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+    align-items: start;
+    justify-content: start;
+    padding: 16px;
+    background-color: rgba(150, 21, 2, 0.2);
+}
+
+.happy-snap-logo {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.happy-snap-description-main-container > h3 {
+    font-size: var(--font-heading-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.happy-snap-description-main-container > p {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+    color: #000;
+}
+
+.happy-snap-gallery-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 15px !important;
+}
+
+.mobile-happy-snap-gallery-image {
+    width: 50%;
+    height: 393px;
+    position: relative;
+}
+
+.mobile-happy-snap-gallery-image-one {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-bottom-left-radius: 25px;
+}
+
+.mobile-happy-snap-gallery-image-two {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Desktop Component */
+.happy-snap-desktop-main-container {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    max-width: 1323px;
+    padding: 25px 56px;
+    gap: 32px;
+}
+
+.happy-snap-desktop-gallery-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.happy-snap-desktop-single-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 393px;
+    position: relative;
+}
+
+.desktop-snap-gallery-main-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.happy-snap-desktop-multi-images-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+}
+
+.desktop-snap-dual-images {
+    display: flex;
+    width: 100%;
+    height: 393px;
+    position: relative;
+}
+
+.desktop-snap-gallery-image-one {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom-left-radius: 25px;
+}
+
+.desktop-snap-gallery-image-two {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.happy-snap-desktop-description-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: start;
+    justify-content: center;
+    gap: 32px;
+    padding: 25px 50px;
+    /* background-color: rgba(17, 59, 132, 0.2); */
+    background-color: rgba(150, 21, 2, 0.2);
+}
+
+.happy-snap-desktop-logo {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.happy-snap-desktop-description-container > h3 {
+    font-size: var(--font-heading-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+}
+
+.happy-snap-desktop-description-container > p {
+    font-size: var(--font-body-18);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    .happy-snap-mobile-main-container {
+        display: none;
+    }
+    .happy-snap-desktop-main-container {
+        display: flex;
+    }
+    
+}

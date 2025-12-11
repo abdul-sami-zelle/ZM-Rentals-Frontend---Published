@@ -1,0 +1,40 @@
+.rental-policy-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 16px;
+    border: 1px solid #f7f7f7;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.rental-policy-single-card-item {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
+}
+
+.rental-policy-icon {
+    display: flex;
+    flex-shrink: 0;
+    width: 30px;
+    height: 20px;
+}
+
+.rental-policy-single-card-item > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-body);
+    font-weight: var(--font-weight-regular);
+}
+
+.rental-policy-single-card-item:hover > p {
+    color: var(--secondary-color);
+}
+
+.rental-policy-single-card-item:hover .rental-policy-icon {
+    color: var(--secondary-color);
+}
+

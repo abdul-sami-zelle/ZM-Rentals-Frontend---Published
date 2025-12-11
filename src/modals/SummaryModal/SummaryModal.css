@@ -1,0 +1,79 @@
+.summary-modal-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    padding: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.summary-modal-main-contianer.show-summary-main {
+    visibility: visible;
+    opacity: 1;
+}
+
+.summary-modal-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: max-content;
+    padding: 15px;
+    gap: 25px;
+    border-radius: 10px;
+    background-color: #FFF;
+    transform: translate(0%, 200%);
+    transition: all 0.3s ease-in-out;
+}
+
+.summary-modal-inner.show-summary-inner {
+    transform: translate(0%, 0%);
+}
+
+.summary-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.summary-values-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.summary-values-contianer > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.summary-values-contianer > span > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+.summary-values-contianer > span > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}

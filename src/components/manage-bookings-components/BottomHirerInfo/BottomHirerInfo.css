@@ -1,0 +1,318 @@
+.hirer-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.hirer-inputs-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+
+}
+
+.labels-outer-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.labels-outer-contianer > label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.labels-outer-contianer > label > input {
+    width: 100%;
+    height: 32px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    outline: none;
+
+}
+
+
+/* Living Country */
+.mobile-living-country-main-contianr {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    gap: 5px;
+    position: relative;
+}
+
+.mobile-living-country-main-contianr > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.mobile-living-country-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 32px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+}
+
+.mobile-living-country-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.living-country-list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.living-country-list::-webkit-scrollbar {
+    display: none;
+}
+
+.living-country-list.show-living-country-list {
+    height: auto;
+    max-height: 150px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.living-country-item {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.how-find-us-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+    width: 50%;
+    position: relative;
+}
+
+.how-find-us-main-contianer > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.how-find-us-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid #afafaf;
+    height: 32px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.how-find-us-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.how-find-us-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.how-find-us-body::-webkit-scrollbar {
+    display: none;
+}
+
+.how-find-us-body.show-how-find-us {
+    height: auto;
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+}
+
+.how-find-us-item {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.how-find-us-item:hover {
+    background-color: #961502;
+    color: #000;
+}
+
+
+
+.purpose-of-visit-main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 50%;
+    position: relative;
+    gap: 5px;
+}
+
+.purpose-of-visit-main > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.purpose-of-visit-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 32px;
+    padding: 5px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 5px;
+
+}
+
+.purpose-of-visit-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.purpose-of-visit-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+    height: 0;
+    max-height: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.purpose-of-visit-body::-webkit-scrollbar {
+    display: none;
+}
+
+.purpose-of-visit-body.show-purposes-list {
+    height: auto;
+    max-height: 140px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.purposes-list-item {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.purposes-list-item:hover {
+    background-color: #961502;
+    color: #FFF;
+}
+
+.hirer-info-update-button-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    flex-shrink: 0;
+}
+
+.update-hirer-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    border-radius: 5px;
+    background-color: #961502;
+    border: 1px solid #961502;
+    color: #FFF;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+}

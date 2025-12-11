@@ -1,0 +1,796 @@
+.mobile-pick-and-drop-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+
+.pick-up-location-label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    position: relative;
+}
+
+.pick-up-location-head {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    padding: 10px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+}
+
+.pick-up-location-head.remove-bottom-redius {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.pick-up-location-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.pick-up-location-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 0;
+    max-height: 0;
+    z-index: 999999;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.pick-up-location-body::-webkit-scrollbar {
+    display: none;
+}
+
+.pick-up-location-body.show-pick-up-location {
+    height: auto;
+    max-height: 120px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    border-top: none !important;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.pick-location-items {
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #000;
+    background-color: transparent;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.pick-location-items:hover {
+    color: #FFF;
+    background-color: #961502;
+}
+
+.pick-up-date-and-time-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.pick-up-calender-contianer-drop-down {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 60%;
+    position: relative;
+}
+
+.pick-up-calender-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #afafaf;
+    padding: 10px 15px;
+    gap: 10px;
+    border-radius: 10px;
+}
+.pick-up-calender-head.remove-pick-date-radius {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.pick-up-calender-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.pick-up-calender-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 0;
+    max-height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999999;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.pick-up-calender-contianer.show-pick-up-date {
+    height: auto;
+    max-height: 220px;
+    border: 1px solid #afafaf;
+    background-color: #fff;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top: none;
+}
+
+.pick-up-time-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 40%;
+    position: relative;
+}
+
+.mobile-pick-up-time-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.mobile-pick-up-time-head.remove-pick-up-time-bottom-radius {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.mobile-pick-up-time-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.mobile-pick-up-time-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    height: 0;
+    max-height: 0;
+    border-radius: 10px;
+    z-index: 999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-pick-up-time-body::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-pick-up-time-body.show-mobile-pick-time {
+    height: auto;
+    max-height: 120px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-top: none;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.mobile-pick-up-time-item {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.mobile-pick-up-time-item:hover{
+    background-color: #961502;
+    color: #FFF;
+}
+
+
+/* Drop off */
+.drop-location-label {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    position: relative;
+}
+
+.drop-off-location-name-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.drop-off-location-name-head.remove-bottom-redius-on-drop {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.drop-off-location-name-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.drop-off-location-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 0;
+    z-index: 999999;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.drop-off-location-body.drop-location-show {
+    height: auto;
+    max-height: 120px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: none;
+}
+
+.drop-location-list-item {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.drop-location-list-item:hover {
+    background-color: #961502;
+    color: #FFF;
+}
+
+
+/* Drop Calender */
+.drop-calender-and-time-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.drop-calender-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 60%;
+    position: relative;
+}
+
+.drop-calender-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.drop-calender-head.remove-drop-calender-radius {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.drop-calender-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.drop-calender-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border: 1px solid transparent;
+    background-color: transparent;
+    overflow: hidden;
+    height: 0;
+    max-height: 0;
+    z-index: 999999;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.drop-calender-body.show-drop-calender-container {
+    height: auto;
+    max-height: 220px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+}
+
+
+/* Calander style */
+
+
+.react-calendar {
+    width: 100%;
+    min-width: unset !important;
+}
+
+.pick-up-calender-contianer .react-calendar,
+.drop-calender-body .react-calendar {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px !important;
+    border: none !important;
+}
+
+
+
+.pick-up-calender-contianer .react-calendar .react-calendar__navigation,
+.drop-calender-body .react-calendar .react-calendar__navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px !important;
+    background-color: transparent !important;
+    height: max-content;
+    margin: 0;
+}
+
+.pick-up-calender-contianer .react-calendar .react-calendar__viewContainer,
+.drop-calender-body .react-calendar .react-calendar__viewContainer {
+    padding: 10px 10px 10px 10px !important;
+    background-color: transparent !important;
+}
+
+.pick-up-calender-contianer .react-calendar__navigation__label,
+.drop-calender-body .react-calendar__navigation__label {
+    padding-top: 2px !important;
+    background-color: transparent !important;
+}
+
+.pick-up-calender-contianer .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from,
+.drop-calender-body .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+}
+
+.pick-up-calender-contianer .react-calendar__navigation__arrow.react-calendar__navigation__prev-button,
+.drop-calender-body .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: transparent !important;
+}
+
+.pick-up-calender-contianer .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover,
+.drop-calender-body .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover {
+    background-color: transparent !important; 
+}
+
+.pick-up-calender-contianer .react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.drop-calender-body .react-calendar__navigation__arrow.react-calendar__navigation__next-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    background-color: transparent !important;
+}
+
+.pick-up-calender-contianer .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover,
+.drop-calender-body .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover {
+    background-color: transparent !important;
+}
+
+.pick-up-calender-contianer .react-calendar__month-view__weekdays__weekday,
+.drop-calender-body .react-calendar__month-view__weekdays__weekday {
+    color: var(--primary-color) !important;
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+}
+
+
+.pick-up-calender-contianer .react-calendar__month-view__weekdays abbr,
+.drop-calender-body .react-calendar__month-view__weekdays abbr {
+    text-decoration: none !important;
+}
+
+.pick-up-calender-contianer .react-calendar__tile,
+.drop-calender-body .react-calendar__tile {
+    color: var(--primary-color) !important;
+    font-size: 10px;
+    font-weight: var(--font-weight-regular);
+    padding: 5px;
+}
+
+
+
+
+.pick-up-calender-contianer .react-calendar__tile--active,
+.pick-up-calender-contianer .react-calendar__tile--now,
+.drop-calender-body .react-calendar__tile--active,
+.drop-calender-body .react-calendar__tile--now {
+    width: 100% !important;
+    line-height: 18px !important;
+    font-size: 10px !important;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* Selected date background */
+.pick-up-calender-contianer .react-calendar__tile--active, 
+.drop-calender-body .react-calendar__tile--active  {
+    background: var(--primary-color);
+    color: var(--color-white) !important;
+}
+
+/* Today (only if not selected) - light border */
+.pick-up-calender-contianer .react-calendar__tile--now:not(.react-calendar__tile--active), 
+.drop-calender-body .react-calendar__tile--now:not(.react-calendar__tile--active){
+    border: 1px solid #ccc;
+    background: transparent;
+}
+
+.react-calendar__tile:disabled {
+    background-color: transparent !important;
+    color: #aaa !important;        
+    opacity: 0.5 !important;       
+    cursor: not-allowed !important; 
+    pointer-events: none;           
+  }
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #f0f8ff !important; 
+  color: #000;
+  border-radius: 5px; 
+}
+
+/* Calander Style */
+
+
+/* Drop Time */
+.drop-time-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 40%;
+    position: relative;
+}
+
+.drop-time-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+    padding: 10px 15px;
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+}
+
+.drop-time-head.remove-drop-time-redius {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.drop-time-head > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.drop-time-list-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid transparent;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 999999;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.drop-time-list-contianer::-webkit-scrollbar {
+    display: none;
+}
+
+.drop-time-list-contianer.show-drop-time-list {
+    height: auto;
+    max-height: 120px;
+    background-color: #FFF;
+    border: 1px solid #afafaf;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.mobile-drop-off-time-item {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.mobile-drop-off-time-item:hover {
+    background-color: #961502;
+    color: #fff;
+}
+
+.mobille-car-availability-check-contianer {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: start;
+    justify-content: end;
+}
+
+.mobile-recheck-availability {
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.mobile-car-availability-check-button-contianer {
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    width: 100%;
+    height: max-content;
+}
+
+.mobile-car-availability-check-button-contianer > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-decoration: underline;
+    color: #961502;
+}
+
+.mobile-available-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.mobile-available-icon-color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #223A84;
+}
+
+.mobile-available-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.mobile-available-message > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #223A84;
+}
+
+.mobile-available-message > p {
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #223A84;
+}
+
+.mobile-not-available-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.mobile-not-available-icon-color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #961502;
+}
+
+.mobile-not-available-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.mobile-not-available-message > h3 {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #961502;
+}
+.mobile-not-available-message > p {
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #961502;
+}
+
+.mobile-car-availability-update {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    width: 100%;
+    height: max-content;
+}
+.update-mobile-booking-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    padding: 10px 20px;
+    background-color: transparent;
+    opacity: 1;
+    cursor: pointer;
+    color: #961502;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+    border: 1px solid #961502;
+}
+
+.update-mobile-booking-info.disable-update {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.check-mobile-booking-info  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    padding: 10px 20px;
+    background-color: #961502;
+    opacity: 1;
+    cursor: pointer;
+    color: #FFF;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.check-mobile-booking-info.disable-button {
+    opacity: 0.4;
+    cursor: not-allowed;
+}

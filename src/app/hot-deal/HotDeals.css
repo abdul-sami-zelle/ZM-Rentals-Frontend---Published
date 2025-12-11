@@ -1,0 +1,40 @@
+.hot-deals-main-contianer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.hot-deals-width-controller {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    max-width: 1323px;
+    padding: 25px 56px;
+    gap: 32px;
+}
+
+.hot-deal-list-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 32px;
+}
+
+.hot-deal-list {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 16px;
+    flex-direction: column;
+    padding: 0 25px;
+    list-style: disc;
+}

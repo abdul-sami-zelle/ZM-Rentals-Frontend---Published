@@ -1,0 +1,319 @@
+.sticky-booking-form-main-contianer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    height: auto;
+}
+
+.sticky-booking-fields-contianer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+
+
+/* Pick up details */
+.sticky-pickup-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    gap: 5px;
+}
+
+.sticky-booking-time-container {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-width: 300px;
+}
+
+.sticky-select-pickup-date-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    position: relative;
+}
+
+/* Drop off details */
+.sticky-drop-off-dtails {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    gap: 5px;
+}
+
+.sticky-select-drop-up-date-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    position: relative;
+}
+
+/* Driver Age and find cars */
+.sticky-booking-dates-find-car-button-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.sticky-booking-driver-age-and-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+.sticky-driver-age-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+}
+
+.sticky-vehicle-book-btn {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 85%;
+    transition: all 0.3s ease-in-out;
+}
+
+.driver-detail-aligned-with-all-inputs {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 12%;
+
+}
+
+.sticky-search-vehilce-rounded-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 40px;
+    height: 40px; */
+    width: max-content;
+    height: max-content;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.sticky-booking-pickup-calender-container {
+    width: 100% !important;
+    position: absolute;
+    max-width: 280px;
+    top: 85%;
+    left: 25px;
+    z-index: 9999;
+    background-color: var(--color-white);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 15px;
+}
+
+.sticky-booking-drop-calender-container {
+    width: 100% !important;
+    position: absolute;
+    max-width: 280px;
+    top: 85%;
+    left: 25px;
+    z-index: 9999;
+    background-color: var(--color-white);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 15px;
+}
+
+
+.sticky-booking-drop-calender-container {
+    width: 100% !important;
+    position: absolute;
+    /* max-width: 280px; */
+    top: 85%;
+    left: 25px;
+    z-index: 9999;
+    background-color: var(--color-white);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 15px;
+}
+.react-calendar {
+    width: 100%;
+    min-width: 280px;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar,
+.sticky-booking-drop-calender-container .react-calendar {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 15px;
+    border: none !important;
+}
+
+
+
+.sticky-booking-pickup-calender-container .react-calendar .react-calendar__navigation,
+.sticky-booking-drop-calender-container .react-calendar .react-calendar__navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px !important;
+    background-color: transparent !important;
+    height: max-content;
+    margin: 0;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar .react-calendar__viewContainer,
+.sticky-booking-drop-calender-container .react-calendar .react-calendar__viewContainer {
+    padding: 10px 10px 10px 10px !important;
+    background-color: transparent !important;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar__navigation__label,
+.sticky-booking-drop-calender-container .react-calendar__navigation__label {
+    padding-top: 2px !important;
+    background-color: transparent !important;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from,
+.sticky-booking-drop-calender-container .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar__navigation__arrow.react-calendar__navigation__prev-button,
+.sticky-booking-drop-calender-container .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: transparent !important;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover,
+.sticky-booking-drop-calender-container .react-calendar__navigation__arrow.react-calendar__navigation__prev-button:hover {
+    background-color: transparent !important; 
+}
+
+.sticky-booking-pickup-calender-container .react-calendar__navigation__arrow.react-calendar__navigation__next-button,
+.sticky-booking-drop-calender-container .react-calendar__navigation__arrow.react-calendar__navigation__next-button {
+    color: var(--primary-color) !important;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    background-color: transparent !important;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover,
+.sticky-booking-drop-calender-container .react-calendar__navigation__arrow.react-calendar__navigation__next-button:hover {
+    background-color: transparent !important;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar__month-view__weekdays__weekday,
+.sticky-booking-drop-calender-container .react-calendar__month-view__weekdays__weekday {
+    color: var(--primary-color) !important;
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+}
+
+
+.sticky-booking-pickup-calender-container .react-calendar__month-view__weekdays abbr,
+.sticky-booking-drop-calender-container .react-calendar__month-view__weekdays abbr {
+    text-decoration: none !important;
+}
+
+.sticky-booking-pickup-calender-container .react-calendar__tile,
+.sticky-booking-drop-calender-container .react-calendar__tile {
+    color: var(--primary-color) !important;
+    font-size: 10px;
+    font-weight: var(--font-weight-regular);
+    padding: 5px;
+}
+
+
+
+
+.sticky-booking-pickup-calender-container .react-calendar__tile--active,
+.sticky-booking-pickup-calender-container .react-calendar__tile--now,
+.sticky-booking-drop-calender-container .react-calendar__tile--active,
+.sticky-booking-drop-calender-container .react-calendar__tile--now {
+    width: 100% !important;
+    line-height: 18px !important;
+    font-size: 10px !important;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* Selected date background */
+.sticky-booking-pickup-calender-container .react-calendar__tile--active, 
+.sticky-booking-drop-calender-container .react-calendar__tile--active  {
+    background: var(--primary-color);
+    color: var(--color-white) !important;
+}
+
+/* Today (only if not selected) - light border */
+.sticky-booking-pickup-calender-container .react-calendar__tile--now:not(.react-calendar__tile--active), 
+.sticky-booking-drop-calender-container .react-calendar__tile--now:not(.react-calendar__tile--active){
+    border: 1px solid #ccc;
+    background: transparent;
+}
+
+.react-calendar__tile:disabled {
+    background-color: transparent !important;
+    color: #aaa !important;        
+    opacity: 0.5 !important;       
+    cursor: not-allowed !important; 
+    pointer-events: none;           
+  }
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #f0f8ff !important; 
+  color: #000;
+  border-radius: 5px; 
+}
+
+@media only screen and (min-width: 1300px) {
+    .sticky-pickup-details {
+        width: 44%;
+    }
+
+    .sticky-drop-off-dtails {
+        width: 44%;
+    }
+
+    .driver-detail-aligned-with-all-inputs {
+        display: flex;
+    }
+
+    .sticky-booking-driver-age-and-button-container {
+        display: none;
+    }
+    .sticky-vehicle-book-btn {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1060px) {
+    .select-date-button {
+        font-size: 12px;
+    }
+}
