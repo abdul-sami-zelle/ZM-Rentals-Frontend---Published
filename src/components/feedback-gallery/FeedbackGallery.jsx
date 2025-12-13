@@ -1,7 +1,8 @@
 import React from 'react'
 import './FeedbackGallery.css';
 import Image from 'next/image';
-import SecondaryButton from '@/global-components/secondary-button/SecondaryButton';
+import SecondaryButton from '../../global-components/secondary-button/SecondaryButton';
+// import SecondaryButton from '@/global-components/secondary-button/SecondaryButton';
 
 import imgOne from '../../assets/home/home_pageFlexible_Car_Rental_Services_image_2.jpg'
 import { useRouter } from 'next/navigation';

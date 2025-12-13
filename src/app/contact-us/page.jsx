@@ -1,9 +1,8 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './ContactUs.css';
-import ServicesHero from '@/components/services-hero/ServicesHero';
+import ServicesHero from '../../components/services-hero/ServicesHero';
 import GetInTouch from '../../components/get-in-touch/GetInTouch'
-import Image from 'next/image';
 
 const ContactUs = () => {
   

@@ -4,11 +4,10 @@ import React, { useEffect, useState } from 'react'
 import './Signup.css'
 import Login from '../../components/LoginSingupComponents/Login/Login'
 import Signup from '../../components/LoginSingupComponents/Signup/Signup'
-import Link from 'next/link'
-import MainLoader from '@/loaders/MainLoader/MainLoader'
+import MainLoader from '../../loaders/MainLoader/MainLoader'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import { url } from '@/utils/services'
+import { url } from '../../utils/services'
 
 const SignUp = () => {
     const router = useRouter();

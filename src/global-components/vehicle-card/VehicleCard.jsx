@@ -6,11 +6,11 @@ import { FaDroplet } from "react-icons/fa6";
 import { handleScrolllTop } from "../../utils/midlewares";
 import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
-import { useBookingContext } from "@/context/bookingContext/bookingContext";
-import { useSearchVehicle } from "@/context/searchVehicleContext/searchVehicleContext";
-import Toust from "@/modals/Toust/Toust";
+import { useBookingContext } from "../../context/bookingContext/bookingContext";
+import { useSearchVehicle } from "../../context/searchVehicleContext/searchVehicleContext.js";
+import Toust from "../../modals/Toust/Toust.jsx";
 import { formatPrice } from "../../utils/fotmateValues.js";
-import { url } from "@/utils/services";
+import { url } from "../../utils/services.js";
 
 const VehicleCard = ({
   vehicleImage,

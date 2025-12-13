@@ -16,17 +16,16 @@ import { BsArrowRight } from "react-icons/bs";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { MdLuggage } from "react-icons/md";
 import { BsFillGearFill } from "react-icons/bs";
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext';
+import { useSearchVehicle } from '../../context/searchVehicleContext/searchVehicleContext.js';
+// import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext';
 import { handleScrolllTop } from '../../utils/midlewares'
 
-import { CgFileDocument } from "react-icons/cg";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { useBookingContext } from '@/context/bookingContext/bookingContext';
+import { useBookingContext } from '../../context/bookingContext/bookingContext.js';
 
 import { formatPrice } from '../../utils/fotmateValues.js'
-import VehicleCard from '@/global-components/vehicle-card/VehicleCard';
-import { url } from '@/utils/services';
+import { url } from '../../utils/services.js';
 
 
 const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSearched, emailModal }) => {

@@ -6,20 +6,17 @@ import Extras from '../../components/book-now-components/extras/Extras'
 import HirerDetails from '../../components/book-now-components/hirer-details/HirerDetails'
 import Payments from '../../components/book-now-components/payments/Payments'
 import Image from 'next/image';
-import { FaQuestionCircle } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
-import { CgFileDocument } from "react-icons/cg";
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useBookingContext } from '@/context/bookingContext/bookingContext';
+import { useBookingContext } from '../../context/bookingContext/bookingContext';
 import CarDateNotAvailable from '../../modals/CarDateNotAvailable/CarDateNotAvailable'
 import axios from 'axios';
-import Toust from '@/modals/Toust/Toust';
+import Toust from '../../modals/Toust/Toust';
 import Link from 'next/link';
-import EmailEnquiryModal from '@/modals/EmailEnquiryModal/EmailEnquiryModal';
-import MainLoader from '@/loaders/MainLoader/MainLoader';
+import EmailEnquiryModal from '../../modals/EmailEnquiryModal/EmailEnquiryModal';
+import MainLoader from '../../loaders/MainLoader/MainLoader';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext';
-import { disconnect } from 'process';
+import { useSearchVehicle } from '../../context/searchVehicleContext/searchVehicleContext';
 import countries from "i18n-iso-countries";
 import en from "i18n-iso-countries/langs/en.json";
 import { checkIsZero } from '../../utils/checkZero'

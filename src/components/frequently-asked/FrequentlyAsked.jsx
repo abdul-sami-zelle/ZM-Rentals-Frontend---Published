@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './FrequentlyAsked.css';
-import SecondaryButton from '@/global-components/secondary-button/SecondaryButton';
 import { FiPlus } from "react-icons/fi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 

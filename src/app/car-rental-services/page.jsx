@@ -1,15 +1,12 @@
 'use client'
 import React, { useState } from 'react'
 import './CarRentalServices.css'
-import ServicesHero from '../../components/services-hero/ServicesHero'
-import DiscountBanner from '@/global-components/discount-banner/DiscountBanner'
+import DiscountBanner from '../../global-components/discount-banner/DiscountBanner'
 import discountBannerImage from '../../assets/images/discount-banners/GO_Rentals_Newsletter.jpg'
 import RentalServiceHeader from '../../components/rental-services-head/RentalServiceHeader'
 import ServiceDetail from '../../components/service-details/ServiceDetail'
-import serviceImage from '../../assets/images/mix/speedy-rentasl-4.jpg';
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext'
-import BookingForm from '@/global-components/booking-form/BookingForm'
-import Hero from '@/global-components/hero-section/Hero'
+import { useSearchVehicle } from '../../context/searchVehicleContext/searchVehicleContext'
+import Hero from '../../global-components/hero-section/Hero'
 import { url } from '../../utils/services'
 
 const CarRentalServices = () => {

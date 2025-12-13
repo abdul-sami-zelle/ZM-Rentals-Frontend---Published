@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Hero.css'
 import BookingForm from '../booking-form/BookingForm'
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext'
+import { useSearchVehicle } from '../../context/searchVehicleContext/searchVehicleContext'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import Toust from '../../modals/Toust/Toust'
-import DropdownInput from '../dropdown-input/DropdownInput'
 import StickySection from '../../global-components/sticky-section/StickySection'
-import { url } from '@/utils/services'
+import { url } from '../../utils/services'
 
 
 const Hero = ({ bgImage, locationHeading, locationPara, dualHeading = true, marginBottom = '50px', minHeight = 'auto' }) => {

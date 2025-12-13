@@ -180,14 +180,14 @@
 
 .footer-design-by-container>p {
     font-size: var(--font-body-lg);
-    line-height: var(--line=height-body);
+    line-height: var(--line-height-body);
     font-weight: var(--font-weight-regular);
     color: var(--secondary-color);
 }
 
 .footer-design-by-container>a {
     font-size: var(--font-body-lg);
-    line-height: var(--line=height-body);
+    line-height: var(--line-height-body);
     font-weight: var(--font-weight-semibold);
     color: var(--secondary-color);
 }
@@ -310,14 +310,14 @@
 
     .footer-design-by-container>p {
         font-size: var(--font-body-lg);
-        line-height: var(--line=height-body);
+        line-height: var(--line-height-body);
         font-weight: var(--font-weight-regular);
         color: var(--secondary-color);
     }
 
     .footer-design-by-container>a {
         font-size: var(--font-body-lg);
-        line-height: var(--line=height-body);
+        line-height: var(--line-height-body);
         font-weight: var(--font-weight-semibold);
         color: var(--secondary-color);
     }

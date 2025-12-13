@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './UpdateBooking.css'
 import axios from 'axios';
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 import { GiGearStickPattern } from "react-icons/gi";
 import { FaBluetoothB } from "react-icons/fa";
 import { TbAirConditioning } from "react-icons/tb";
@@ -9,24 +9,19 @@ import { HiUserGroup } from "react-icons/hi2";
 import { CiEdit } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import CarAvailabilityModal from '../CarAvailabilityModal/CarAvailabilityModal'
-import { useOutsideClick } from '@/utils/DetectClickOutside';
-import useDropdownNavigationWithSearch, { useDropdownNavigation } from '@/utils/keyPress';
+import { useOutsideClick } from '../../../utils/DetectClickOutside';
+import useDropdownNavigationWithSearch from '../../../utils/keyPress';
 import InsuranceUpdateModal from '../InsuranceUpdateModal/InsuranceUpdateModal';
 import ExtrasUpdateModal from '../ExtrasUpdateModal/ExtrasUpdateModal'
 import { GoPlus } from "react-icons/go";
 import EditDriverModal from '../EdtiDriverModal/EditDriverModal'
-import MainLoader from '@/loaders/MainLoader/MainLoader';
+import MainLoader from '../../../loaders/MainLoader/MainLoader';
 import { CgCloseO } from "react-icons/cg";
 import SignatureModal from '../../../global-components/SignatureModal/SignatureModal'
 import CarDateNotAvailable from '../../../modals/CarDateNotAvailable/CarDateNotAvailable'
 
 const UpdateBooking = ({ setManageBookingSteper }) => {
 
-    
-
-    // Gernel States
-    
-    
     const [loading, setLoading] = useState(false)
     const [vehicleData, setVehicleData] = useState([]);
     const [locations, setLocations] = useState([])
@@ -427,8 +422,6 @@ const UpdateBooking = ({ setManageBookingSteper }) => {
         }
     }
 
-
-
     useEffect(() => {
         setEditBookingPayload((prev) => ({
             ...prev,
@@ -471,7 +464,6 @@ const UpdateBooking = ({ setManageBookingSteper }) => {
             return null;
         }
     };
-
 
     const handleUpdateBooking = async () => {
         const bookingData = JSON.parse(sessionStorage.getItem('bookingDetails'));
@@ -564,9 +556,6 @@ const UpdateBooking = ({ setManageBookingSteper }) => {
     const handleClose = () => {
         setConfirmModal(false)
     }
-
-
-
 
     return (
         <div className='booking-edit-main-continair'>

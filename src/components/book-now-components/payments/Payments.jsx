@@ -4,8 +4,6 @@ import './Payments.css'
 import Image from 'next/image'
 import { FaQuestionCircle } from "react-icons/fa";
 import Link from 'next/link';
-import axios from 'axios';
-import { useBookingContext } from '@/context/bookingContext/bookingContext';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import {checkIsZero} from '../../../utils/checkZero'
 

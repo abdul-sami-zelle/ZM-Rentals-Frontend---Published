@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './SelectBooking.css'
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 import axios from 'axios';
-import MainLoader from '@/loaders/MainLoader/MainLoader';
+import MainLoader from '../../../loaders/MainLoader/MainLoader';
 
 const SelectBooking = ({ manageBookingSteper, setManageBookingSteper, imageChaneg }) => {
     const [loading, setLoading] = useState(false);
@@ -99,8 +99,6 @@ const SelectBooking = ({ manageBookingSteper, setManageBookingSteper, imageChane
 
         imageChaneg()
     };
-
-
 
     useEffect(() => {
 

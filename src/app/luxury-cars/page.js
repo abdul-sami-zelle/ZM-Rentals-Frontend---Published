@@ -1,6 +1,6 @@
 import React from 'react'
 import './LuxuryCar.css'
-import StaticPageContent from '@/components/StaticPageContent/StaticPageContent'
+import StaticPageContent from '../../components/StaticPageContent/StaticPageContent'
 
 const LuxuryCArs = () => {
   const secTwoParas = [
@@ -19,13 +19,11 @@ const LuxuryCArs = () => {
 
   return (
     <div className='van-people-carrier-main-contianer'>
-
       <StaticPageContent 
         sectionMainHeading={'Luxury Cars: Where Every Ride Feels First Class'}
         sectionMainPara={`Planning to explore Auckland in style and prestige? At ZM Rentals, our fleet of exquisite vehicles turns every journey into an unforgettable experience. Whether you’re on a corporate trip, attending a special event, or seeking a travel upgrade, our luxury car rental options ensure you arrive with elegance and confidence. Explore our premium selection to find the vehicle that best suits your needs.`}
         sectionTwoHeading={'Make Your Journey Unforgettable with Luxury Rentals'}
         secTwoParaErray={secTwoParas}
-
         sectionThreeHeading={'Level Up Your Auckland Experience'}
         sectionThreeItems={secThreeItems}
       />

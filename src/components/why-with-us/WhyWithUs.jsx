@@ -3,8 +3,7 @@ import './WhyWithUs.css';
 import { SiAdguard } from "react-icons/si";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { LiaLeafSolid } from "react-icons/lia";
-import { SiVlcmediaplayer } from "react-icons/si";
-import SecondaryButton from '@/global-components/secondary-button/SecondaryButton';
+import SecondaryButton from '../../global-components/secondary-button/SecondaryButton';
 import Image from 'next/image';
 // import peacIcon from '../../assets/peace.png'
 

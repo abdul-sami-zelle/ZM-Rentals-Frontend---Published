@@ -78,7 +78,7 @@
     object-fit: cover;
 }
 
-.car-details--image-slide::scroll-marker {
+.car-details--image-slide::-webkit-scrollbar {
     display: none;
 }
 

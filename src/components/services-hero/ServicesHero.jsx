@@ -2,7 +2,7 @@ import React from 'react'
 import './ServicesHero.css'
 // import servicesHeroBg from '../../assets/home/ZM_Home_Page__st_Slider.png'
 import Image from 'next/image'
-import PrimaryButton from '@/global-components/primary-button/PrimaryButton'
+import PrimaryButton from '../../global-components/primary-button/PrimaryButton'
 import { GoArrowRight } from "react-icons/go";
 import { useRouter } from 'next/navigation';
 

@@ -1,7 +1,8 @@
 'use client'
 import React from 'react'
 import './GalleryDetails.css'
-import PrimaryButton from '@/global-components/primary-button/PrimaryButton'
+import PrimaryButton from '../../global-components/secondary-button/SecondaryButton'
+// import PrimaryButton from '@/global-components/primary-button/PrimaryButton'
 import { GoArrowRight } from "react-icons/go";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';

@@ -1,11 +1,10 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import './InsuranceType.css';
-import { FaPlus, FaMinus } from "react-icons/fa6";
-import { useBookingContext } from '@/context/bookingContext/bookingContext';
+import { useBookingContext } from '../../../context/bookingContext/bookingContext';
 import { AiFillQuestionCircle } from "react-icons/ai";
 import { checkIsZero } from '../../../utils/checkZero'
-import { useOutsideClick } from '@/utils/DetectClickOutside';
+import { useOutsideClick } from '../../../utils/DetectClickOutside';
 
 const InsuranceType = ({ insurances, insuranceSeleted, setInsuranceSelected, packageSelected, setPackageSelected }) => {
 

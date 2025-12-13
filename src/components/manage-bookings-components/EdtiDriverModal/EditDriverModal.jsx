@@ -3,13 +3,11 @@ import './EditDriverModal.css'
 import { CgCloseO } from 'react-icons/cg';
 import { IoIosArrowDown } from "react-icons/io";
 import Calendar from 'react-calendar';
-import { url } from '@/utils/services';
-import { useOutsideClick } from '@/utils/DetectClickOutside';
-import useDropdownNavigationWithSearch from '@/utils/keyPress';
-import useCalendarNavigation from '@/utils/calanderKeyPress';
+import { url } from '../../../utils/services';
+import { useOutsideClick } from '../../../utils/DetectClickOutside';
+import useDropdownNavigationWithSearch from '../../../utils/keyPress';
+import useCalendarNavigation from '../../../utils/calanderKeyPress';
 import { CiCalendarDate, CiEdit } from "react-icons/ci";
-import { FaEye } from "react-icons/fa";
-import { LuEyeClosed } from "react-icons/lu";
 
 const EditDriverModal = (
     { 
@@ -17,23 +15,14 @@ const EditDriverModal = (
         setIsEdit, 
         isViewOnly, 
         setIsViewOnly, 
-        payload, 
         setPayload, 
-        data, 
-        setData, 
+        data,  
     }) => {
-
 
     const dobRef = useRef();
     const driverAgeRef = useRef();
     const licenceCountryRef = useRef();
     const expiryCalenderRef = useRef();
-
-    // const [isViewOnly, setIsViewOnly] = useState(true)
-
-
-
-
     const [showDobCalender, setShowDobCalender] = useState(false);
     const [countryList, setCountryList] = useState([]);
 
@@ -132,11 +121,7 @@ const EditDriverModal = (
     }, []);
 
     const [showCountries, setShowCountries] = useState(false);
-
     const [showExpiry, setShowExpiry] = useState(false);
-
-
-
     const handleSetDriverDetails = (event) => {
         const { name, value } = event.target;
 
@@ -156,7 +141,6 @@ const EditDriverModal = (
 
         return `${day}-${month}-${year}`;
     }
-
 
     // No time zone iso selected date
     function toISOStringWithoutTimezone(date) {
@@ -202,7 +186,7 @@ const EditDriverModal = (
         }))
         setShowCountries(false)
     }
-
+    
     const fileInputRef = useRef()
     const [licenceSide, setLicenceSide] = useState('front')
     // ✅ Trigger file input when div clicked

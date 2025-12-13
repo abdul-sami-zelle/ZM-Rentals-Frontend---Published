@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './ExtrasUpdateModal.css';
 import { CgCloseO } from 'react-icons/cg';
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 import axios from 'axios';
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { useBookingContext } from '@/context/bookingContext/bookingContext';
 
 const ExtrasUpdateModal = ({ showExtrasModal, setShowExtrasModal, payload, setPayload, carId }) => {
 

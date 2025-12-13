@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './CarAvailabilityModal.css';
 import { CgCloseO } from "react-icons/cg";
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 import { IoMdArrowDropdown } from "react-icons/io";
 import axios from 'axios';
 import { useOutsideClick } from '../../../utils/DetectClickOutside';
 import Calendar from 'react-calendar';
-import { useDropdownNavigation } from '@/utils/keyPress';
-import useCalendarNavigation from '@/utils/calanderKeyPress';
+import { useDropdownNavigation } from '../../../utils/keyPress';
+import useCalendarNavigation from '../../../utils/calanderKeyPress';
 import { IoWarningOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import Spinner from '../../../loaders/Spinner/Spinner'
 import { CiCalendarDate } from "react-icons/ci";
-import { useBookingContext } from '@/context/bookingContext/bookingContext';
 
 const CarAvailabilityModal = ({
     showModal,

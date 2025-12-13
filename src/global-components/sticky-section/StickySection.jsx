@@ -11,10 +11,10 @@ import { useRouter } from 'next/navigation';
 // import { useBookingContext } from '@/context/bookingContext/bookingContext';
 import axios from 'axios';
 import DropdownInput from '../dropdown-input/DropdownInput';
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext';
+import { useSearchVehicle } from '../../context/searchVehicleContext/searchVehicleContext';
 import PrimaryButton from '../primary-button/PrimaryButton';
 import useCalendarNavigation from '../../utils/calanderKeyPress'
-import { url } from '@/utils/services';
+import { url } from '../../utils/services';
 
 
 const StickySection = ({ bgColor, textColor, textShadow, primaryButtonText, boxShadow, handleSearchVehicles, setHeight = false, isPickupSelected, setIsPickupSelected }) => {

@@ -2,15 +2,14 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import './Vehicles.css'
-import BookingForm from '@/global-components/booking-form/BookingForm'
+import BookingForm from '../../global-components/booking-form/BookingForm'
 import CarDetails from '../../components/car-details/CarDetails'
-import PackageDetails from '@/components/package-details/PackageDetails'
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext'
+import PackageDetails from '../../components/package-details/PackageDetails'
+import { useSearchVehicle } from '../../context/searchVehicleContext/searchVehicleContext'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import Toust from '../../modals/Toust/Toust'
-import StickySection from '@/global-components/sticky-section/StickySection'
-import RefundPolicyModal from '@/modals/RefundPolicyModal/RefundPolicyModal'
+import StickySection from '../../global-components/sticky-section/StickySection'
 import { url } from '../../utils/services'
 
 

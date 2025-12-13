@@ -4,7 +4,8 @@ import React from 'react'
 import './HappySnapGallery.css';
 import mainLogo from '../../assets/logo.png';
 import Image from 'next/image';
-import SecondaryButton from '@/global-components/secondary-button/SecondaryButton';
+import SecondaryButton from '../../global-components/secondary-button/SecondaryButton';
+// import SecondaryButton from '@/global-components/secondary-button/SecondaryButton';
 import discountBannerImage from '../../assets/home/Beyond_Rentals_image_1.jpg'
 import { useRouter } from 'next/navigation';
 

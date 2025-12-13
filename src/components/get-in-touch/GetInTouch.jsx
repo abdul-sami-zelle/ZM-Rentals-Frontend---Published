@@ -1,30 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './GetinTouch.css'
-import Link from 'next/link'
-import { IoArrowDown } from "react-icons/io5";
 
-import { FaLocationArrow, FaPhone, FaClock, FaEnvelope, FaMapLocation, FaMinus } from "react-icons/fa6";
+import { FaLocationArrow, FaPhone,  FaEnvelope,   } from "react-icons/fa6";
 import Image from 'next/image';
-import SecondaryButton from '@/global-components/secondary-button/SecondaryButton';
-import { url } from '@/utils/services';
+import { url } from '../../utils/services';
 import axios from 'axios';
-import MainLoader from '@/loaders/MainLoader/MainLoader';
+import MainLoader from '../../loaders/MainLoader/MainLoader';
 
 
 const GetInTouch = () => {
 
     const [loading, setLoading] = useState(false);
-    const [showAddrss, setShowAddress] = useState(false);
     const [isFormSubmited, setIsFormSubmited] = useState(false);
-    const addresses = [
-        {
-            city: 'Auckland City',
-            address: `Aero Auckland Airport Hotel 190 Kirkbride Road, Māngere, Auckland 2022`,
-            phone: `+64221708848`,
-            openingHours: `Operating Hours: 9am - 5pm`,
-            googleLocation: 'Google Location'
-        }
-    ]
 
     const [contactData, setContactData] = useState({
         name: '',

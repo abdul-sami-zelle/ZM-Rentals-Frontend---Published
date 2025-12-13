@@ -4,8 +4,8 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
 import Calendar from 'react-calendar';
 import { CgCloseO } from 'react-icons/cg';
-import { url } from '@/utils/services';
-import { useOutsideClick } from '@/utils/DetectClickOutside';
+import { url } from '../../../utils/services';
+import { useOutsideClick } from '../../../utils/DetectClickOutside';
 import { FiPlus } from "react-icons/fi";
 
 const BottomDrivers = ({ editBookingPayload, setEditBookingPayload, setBottomModal, isEditabel }) => {

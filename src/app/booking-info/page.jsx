@@ -1,18 +1,13 @@
 'use client'
 import React, { useState } from 'react'
 import './BookingInfo.css';
-import ServicesHero from '@/components/services-hero/ServicesHero';
-import RentalServiceHeader from '@/components/rental-services-head/RentalServiceHeader';
+import RentalServiceHeader from '../../components/rental-services-head/RentalServiceHeader';
 import BookingInstruction from '../../components/booking-instruction/BookingInstruction'
 import RentalPolicy from '../../components/rental-policy/RentalPolicy'
-import DiscountBanner from '@/global-components/discount-banner/DiscountBanner';
-import discountBannerImage from '../../assets/images/discount-banners/GO_Rentals_Newsletter.jpg'
-import ServiceDetail from '@/components/service-details/ServiceDetail';
-import insuranceImage from '../../assets/images/mix/Insurance-Coverage12-600x436.jpg'
+import DiscountBanner from '../../global-components/discount-banner/DiscountBanner';
 import CancelationPolicyDetails from '../../components/cancelaton-policy-details/CancelationPolicyDetails'
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext';
-import BookingForm from '@/global-components/booking-form/BookingForm';
-import Hero from '@/global-components/hero-section/Hero';
+import { useSearchVehicle } from '../../context/searchVehicleContext/searchVehicleContext';
+import Hero from '../../global-components/hero-section/Hero';
 import { url } from '../../utils/services';
 
 const BookingInfo = () => {

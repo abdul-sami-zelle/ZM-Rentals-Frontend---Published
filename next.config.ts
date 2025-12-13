@@ -1,12 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: [
-      "dev.zmrentals.co.nz",
-      "api.zmrentals.co.nz"
-    ], // replace with your actual domain or IP
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dev.zmrentals.co.nz",
+      },
+      {
+        protocol: "https",
+        hostname: "api.zmrentals.co.nz",
+      },
+    ],
   },
 };
 

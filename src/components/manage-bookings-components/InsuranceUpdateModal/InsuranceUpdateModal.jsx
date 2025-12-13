@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './InsuranceUpdateModal.css';
 import { CgCloseO } from "react-icons/cg";
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 import axios from 'axios';
-import { useBookingContext } from '@/context/bookingContext/bookingContext'; 
 
 const InsuranceUpdateModal = ({ insuranceModal, setInsuranceModal, carId, payload, setPayload }) => {
 
@@ -39,9 +38,7 @@ const InsuranceUpdateModal = ({ insuranceModal, setInsuranceModal, carId, payloa
             }
         }))
     }
-
-
-
+    
     return (
         <div className={`insurance-update-modal-main-contianer ${insuranceModal ? 'show-insurance-modal' : ''}`} onClick={() => setInsuranceModal(false)}>
             <div className={`insurance-modal-inner-contianer ${insuranceModal ? 'show-inner-modal' : ''}`} onClick={(e) => e.stopPropagation()}>

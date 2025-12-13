@@ -1,15 +1,15 @@
 // import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
-import Header from "@/global-components/header/Header";
-import Footer from '@/global-components/footer/Footer';
+import Header from "../global-components/header/Header";
+import Footer from '../global-components/footer/Footer';
 import { SearchVehicleProvider } from '../context/searchVehicleContext/searchVehicleContext'
 import { BookingProvider } from '../context/bookingContext/bookingContext'
 import WhatsappButton from '../global-components/WhatsappButton/WhatsappButton'
 import StripeProvider from '../context/stripeProvider/stripeProvider'
-import { UserDashboardProvider } from "@/context/dashContext/dashContext";
-import { ManageBookingProvider } from '@/context/manageBooking/manageBooking'
-import Navbar from "@/global-components/navbar/Navbar";
+import { UserDashboardProvider } from "../context/dashContext/dashContext";
+import { ManageBookingProvider } from '../context/manageBooking/manageBooking'
+import Navbar from "../global-components/navbar/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

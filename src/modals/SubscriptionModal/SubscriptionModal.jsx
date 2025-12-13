@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './SubscriptionModal.css'
 import { IoIosClose, IoMdArrowDropdown } from 'react-icons/io'
-import { url } from '@/utils/services';
+// import { url } from '@/utils/services';
+import {url} from '../../utils/services'
 import axios from 'axios';
-import MainLoader from '@/loaders/MainLoader/MainLoader';
+import MainLoader from '../../loaders/MainLoader/MainLoader';
 import Link from 'next/link';
 import Image from 'next/image';
 

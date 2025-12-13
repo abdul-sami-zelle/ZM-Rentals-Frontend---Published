@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
-import { useOutsideClick } from "@/utils/DetectClickOutside";
+import { useOutsideClick } from "../../../utils/DetectClickOutside";
 
 const CountryCodeDropdown = ({
   countryList,

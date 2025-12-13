@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react'
 import './CarDetails.css';
 import Link from 'next/link';
 import VehicleCard from '../../global-components/vehicle-card/VehicleCard'
-import CarDetailsModal from '@/modals/car-details-modal/CarDetailsModal';
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext';
+import CarDetailsModal from '../../modals/car-details-modal/CarDetailsModal';
 import CardShimmer from './CardShimmer'
 import { usePathname } from 'next/navigation';
 import EmailEnquiryModal from '../../modals/EmailEnquiryModal/EmailEnquiryModal'
-import { url } from '@/utils/services';
+import { url } from '../../utils/services';
 
 
 

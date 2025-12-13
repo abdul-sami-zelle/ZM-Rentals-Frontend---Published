@@ -5,7 +5,7 @@ import { GiGearStickPattern } from "react-icons/gi";
 import { FaBluetoothB } from "react-icons/fa";
 import { TbAirConditioning } from "react-icons/tb";
 import { HiUserGroup } from "react-icons/hi2";
-import { url } from "@/utils/services";
+import { url } from "../../utils/services";
 import axios from "axios";
 
 const ManageBookingContext = createContext();

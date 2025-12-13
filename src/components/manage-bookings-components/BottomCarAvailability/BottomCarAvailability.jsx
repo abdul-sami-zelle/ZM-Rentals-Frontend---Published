@@ -4,14 +4,13 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
 import axios from 'axios';
 import Calendar from 'react-calendar';
-import { url } from '@/utils/services';
-import Spinner from '@/loaders/Spinner/Spinner';
+import { url } from '../../../utils/services';
+import Spinner from '../../../loaders/Spinner/Spinner';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import { IoWarningOutline } from 'react-icons/io5';
-import { useOutsideClick } from '@/utils/DetectClickOutside';
-import { CgCloseO } from 'react-icons/cg';
+import { useOutsideClick } from '../../../utils/DetectClickOutside';
 
-const BottomCarAvailability = ({isEditabel, setIsEditable, editBookingPayload, setEditBookingPayload, locations, setLocations, setBottomModal }) => {
+const BottomCarAvailability = ({isEditabel, editBookingPayload, setEditBookingPayload, locations, setBottomModal }) => {
 
   const [showpickLocations, setShowPickLocations] = useState(false)
   const [dropoffLocationShow, setDropoffLocationShow] = useState(false);
@@ -263,10 +262,6 @@ const BottomCarAvailability = ({isEditabel, setIsEditable, editBookingPayload, s
     } finally {
       setLoading(false)
     }
-  }
-
-  const handleRecheckAvailability = () => {
-    setCarAvailabilityCheck('')
   }
 
   const handleUpdateBookingInfo = () => {

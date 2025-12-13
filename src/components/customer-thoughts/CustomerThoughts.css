@@ -47,7 +47,7 @@
     overflow-x: auto;
 }
 
-.customer-comments-cards-container::scroll-marker {
+.customer-comments-cards-container::-webkit-scrollbar {
     display: none;
 }
 

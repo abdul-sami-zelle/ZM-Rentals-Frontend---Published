@@ -1,9 +1,9 @@
 'use client';
 import React from "react";
 import './AboutPage.css';
-import ServicesHero from "@/components/services-hero/ServicesHero";
+import ServicesHero from "../../components/services-hero/ServicesHero";
 import WhyChooseZM from '../../components/why-choose-zm/WhyChooseZM'
-import ServiceDetail from "@/components/service-details/ServiceDetail";
+import ServiceDetail from "../../components/service-details/ServiceDetail";
 
 
 export default function AboutUs() {

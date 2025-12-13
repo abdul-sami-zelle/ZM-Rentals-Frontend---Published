@@ -10,15 +10,12 @@ import HappySnapGallery from '../components/happy-snap-gallery/HappySnapGallery'
 import Locations from '../components/locations/Locations'
 import FrequentlyAsked from '../components/frequently-asked/FrequentlyAsked'
 import RollingContent from '../components/rolling-content/RollingContent'
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext';
+import { useSearchVehicle } from '../context/searchVehicleContext/searchVehicleContext'
 import MainLoader from '../loaders/MainLoader/MainLoader'
-import CarDetails from '@/components/car-details/CarDetails';
+import CarDetails from '../components/car-details/CarDetails'
 import { useEffect } from 'react';
 import axios from 'axios';
-import { useBookingContext } from '@/context/bookingContext/bookingContext';
-import { url } from '@/utils/services';
-
-
+import { url } from '../utils/services';
 
 export default function Home() {
 
@@ -118,8 +115,6 @@ export default function Home() {
       }
     
   }, []);
-
-
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', backgroundColor: 'var(--background)' }}>

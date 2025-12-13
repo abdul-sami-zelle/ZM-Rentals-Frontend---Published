@@ -1,5 +1,4 @@
-import StaticPageContent from '@/components/StaticPageContent/StaticPageContent'
-import React from 'react'
+import StaticPageContent from '../../components/StaticPageContent/StaticPageContent'
 import './FourWheelDrive.css'
 
 const FourWheelsDrive = () => {

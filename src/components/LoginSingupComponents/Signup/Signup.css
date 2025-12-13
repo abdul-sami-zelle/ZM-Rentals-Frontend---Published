@@ -146,7 +146,7 @@
     font-weight: 400;
 }
 .register-user-terms-and-button > span > a {
-    font-size: 500 !important;
+    font-size: 15px !important;
     color: var(--primary-color);
     text-decoration: underline;
 }

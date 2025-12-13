@@ -18,7 +18,7 @@
 
 .exclusive-discounts-inner-container > h3 {
     font-size: var(--font-heading-lg);
-    line-height: var(--line=height-heading);
+    line-height: var(--line-height-heading);
     font-weight: var(--font-weight-bold);
     color: var(--primary-color);
 }

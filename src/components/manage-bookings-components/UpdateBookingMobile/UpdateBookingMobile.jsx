@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './UpdateBookingMobile.css'
 import axios from 'axios'
-import { url } from '@/utils/services'
+import { url } from '../../../utils/services';
 import { CgCloseO } from "react-icons/cg";
 
 import BottomCarAvailability from '../BottomCarAvailability/BottomCarAvailability'
@@ -14,9 +14,9 @@ import { GiGearStickPattern } from 'react-icons/gi'
 import { FaBluetoothB } from 'react-icons/fa'
 import { TbAirConditioning } from 'react-icons/tb'
 import { HiUserGroup } from 'react-icons/hi2'
-import ConfirmBookingModal from '@/modals/ConfirmBookingModal/ConfirmBookingModal';
-import SummaryModal from '@/modals/SummaryModal/SummaryModal';
-import Spinner from '@/loaders/Spinner/Spinner';
+import ConfirmBookingModal from '../../../modals/ConfirmBookingModal/ConfirmBookingModal';
+import SummaryModal from '../../../modals/SummaryModal/SummaryModal';
+import Spinner from '../../../loaders/Spinner/Spinner';
 
 const UpdateBookingMobile = () => {
 
@@ -154,36 +154,6 @@ const UpdateBookingMobile = () => {
         { id: 4, icon: HiUserGroup, value: `${vehicleData?.Car?.CarDetailAssociations[0]?.passenger_capacity}` },
     ]
 
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-
-        // Get day with suffix
-        const day = date.getUTCDate();
-        const suffix =
-            day % 10 === 1 && day !== 11
-                ? "st"
-                : day % 10 === 2 && day !== 12
-                    ? "nd"
-                    : day % 10 === 3 && day !== 13
-                        ? "rd"
-                        : "th";
-
-        // Get month name
-        const monthNames = [
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
-        const month = monthNames[date.getUTCMonth()];
-
-        // Get time
-        const hours = date.getUTCHours().toString().padStart(2, "0");
-        const minutes = date.getUTCMinutes().toString().padStart(2, "0");
-        const seconds = date.getUTCSeconds().toString().padStart(2, "0");
-        const time = `${hours}:${minutes}:${seconds}`;
-
-        return { day, suffix, month, time };
-    }
-
     // old states
     const [carData, setCarData] = useState({})
 
@@ -211,22 +181,6 @@ const UpdateBookingMobile = () => {
 
     useEffect(() => { handleGetCarWithId() }, [vehicleData?.car_id])
 
-    // Summary Functions
-    const handleExtrasTotal = () => {
-        const extrasPrices = [];
-
-        let extrasTotal = 0
-
-        editBookingPayload?.booking?.extras.map((item, index) => {
-            extrasPrices.push((parseFloat(item.rate) * vehicleData?.rates?.length) * item.quantity)
-        })
-
-        extrasPrices.map((item) => {
-            extrasTotal += parseFloat(item)
-        })
-
-        return extrasTotal
-    }
     const handleGrandTotal = () => {
 
         const extraArray = []
@@ -298,7 +252,6 @@ const UpdateBookingMobile = () => {
             }))
         }
     }
-
 
     const bottomModalManage = (item) => {
         setBottomStepper(item.id);
@@ -431,9 +384,6 @@ const UpdateBookingMobile = () => {
                 // window.location.href = '/manage-booking'
             }
 
-
-
-
         } catch (error) {
             console.error("UnExpected Servr Error", error);
 
@@ -451,8 +401,6 @@ const UpdateBookingMobile = () => {
     const handleClose = () => {
         setShowSummary(false)
     }
-
-
 
     return (
         <div className='edit-booking-mobile-main'>

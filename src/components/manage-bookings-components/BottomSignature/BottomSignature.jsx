@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import './BottomSignature.css'
 import SignaturePad from 'react-signature-pad-wrapper';
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 
 const BottomSignature = ({ editBookingPayload, setEditBookingPayload, setCustomerSignature, isEditabel, setBottomModal }) => {
   const sigPadRef = useRef(null);

@@ -6,14 +6,13 @@ import PrimaryButton from '../primary-button/PrimaryButton';
 import { GoArrowRight } from "react-icons/go";
 import Calendar from 'react-calendar';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { useSearchVehicle } from '@/context/searchVehicleContext/searchVehicleContext';
+import { useSearchVehicle } from '../../context/searchVehicleContext/searchVehicleContext';
 import { useRouter } from 'next/navigation';
-import { useBookingContext } from '@/context/bookingContext/bookingContext';
 import axios from 'axios';
 import ScreenResize from '../../utils/screenSize'
 
 import useCalendarNavigation from '../../utils/calanderKeyPress'
-import { url } from '@/utils/services';
+import { url } from '../../utils/services';
 
 const BookingForm = (
     {

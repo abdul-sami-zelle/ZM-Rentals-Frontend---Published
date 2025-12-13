@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import "./HirerDetails.css";
-import { useBookingContext } from "@/context/bookingContext/bookingContext";
+import { useBookingContext } from "../../../context/bookingContext/bookingContext";
 import { useOutsideClick } from "../../../utils/DetectClickOutside";
-import useDropdownNavigation from "@/utils/keyPress";
+import useDropdownNavigation from "../../../utils/keyPress";
 import Select from "react-select";
 import { IoIosArrowDown } from "react-icons/io";
 import CountryCodeDropdown from "../SearchCountryPhone/SearchCountryPhone";
