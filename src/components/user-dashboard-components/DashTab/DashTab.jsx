@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './DashTab.css'
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 import axios from 'axios';
 import DashCard from '../DashCard/DashCard'
 import { GiGearStickPattern } from "react-icons/gi";

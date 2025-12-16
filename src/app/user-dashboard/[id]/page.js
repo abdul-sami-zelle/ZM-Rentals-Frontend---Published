@@ -1,17 +1,17 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import './UserDashoard.css'
-import { useDashoard } from '@/context/dashContext/dashContext'
+import { useDashoard } from '../../../context/dashContext/dashContext'
 import DashboardHead from '../../../components/user-dashboard-components/DashboardHead/DashboardHead'
 import DashTab from '../../../components/user-dashboard-components/DashTab/DashTab'
 import MyBookings from '../../../components/user-dashboard-components/MyBookings/MyBookings'
 import DashProfile from '../../../components/user-dashboard-components/DashProfile/DashProfile'
 import AddressAndPhone from '../../../components/user-dashboard-components/AddressAndPhone/AddressAndPhone'
 import LicenceTab from '../../../components/user-dashboard-components/LisenceTab/LicenceTab'
-import { url } from '@/utils/services'
+import { url } from '../../../utils/services'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
-import MainLoader from '@/loaders/MainLoader/MainLoader'
+import MainLoader from '../../../loaders/MainLoader/MainLoader'
 
 
 const UserDashoard = () => {

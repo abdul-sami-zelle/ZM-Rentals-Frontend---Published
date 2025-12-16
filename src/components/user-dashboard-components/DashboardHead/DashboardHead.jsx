@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./DashboardHead.css"
-import { useDashoard } from '@/context/dashContext/dashContext'
+import { useDashoard } from '../../../context/dashContext/dashContext'
 
 const DashboardHead = () => {
     const {dashTabs, selectedTab, setSelectedTab} = useDashoard()

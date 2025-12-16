@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './LicenceTab.css'
 import { IoIosLock, IoMdArrowDropdown } from "react-icons/io";
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 import axios from 'axios';
-import MainLoader from '@/loaders/MainLoader/MainLoader';
-import { useOutsideClick } from '@/utils/DetectClickOutside';
-import useDropdownNavigationWithSearch from '@/utils/keyPress';
+import MainLoader from '../../../loaders/MainLoader/MainLoader';
+import { useOutsideClick } from '../../../utils/DetectClickOutside';
+import useDropdownNavigationWithSearch from '../../../utils/keyPress';
 
 const LisenceTab = ({ userDetails }) => {
 

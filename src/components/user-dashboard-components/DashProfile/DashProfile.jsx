@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './DashProfile.css'
 import { IoIosLock } from "react-icons/io";
-import { url } from '@/utils/services';
+import { url } from '../../../utils/services';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import MainLoader from '@/loaders/MainLoader/MainLoader';
+import MainLoader from '../../../loaders/MainLoader/MainLoader';
 
 const DashProfile = () => {
 
