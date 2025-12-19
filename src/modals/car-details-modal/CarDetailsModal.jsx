@@ -167,6 +167,12 @@ const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSear
         document.getElementById("imagesScrollContainer").scrollLeft += 0
     }
 
+    const calculateBaseRate = (rates = []) => {
+    const total_rates = rates.reduce((sum, item) => sum + item.rate, 0)
+    const base_rate = rates?.length ? total_rates / rates?.length : 0;
+    return base_rate
+  }
+
     useEffect(() => {
         handleScrollContainer()
     }, [showModal])
@@ -232,7 +238,8 @@ const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSear
                             {vehicleDetails.available !== 0 && (
                                 <div className='car-detail-modal-footer-after-vehicle-searched-total-and-per-day'>
                                     <span>
-                                        <h3>NZ$ {vehicleDetails?.base_rate}</h3><p>/day</p>
+                                        {/* <h3>NZ$ {vehicleDetails?.base_rate}</h3><p>/day</p> */}
+                                        <h3>NZ$ {calculateBaseRate(vehicleDetails?.daily_rates)}</h3><p>/day</p>
                                     </span>
 
                                     <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'max-content', gap: '5px' }}>

@@ -80,6 +80,7 @@ const CarDetails = ({ searchedVehicles, isVehicleSearched, data, openModal, show
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+
   return (
     <div className='car-details-main-container' onClick={openModal} style={{ maxWidth: maxWidth }}>
       <h3 className={pathname === '/' ? 'main-page-section-heading' : 'section-main-heading'}>{data?.heading}</h3>

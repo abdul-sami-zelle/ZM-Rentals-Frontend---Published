@@ -84,6 +84,12 @@ const VehicleCard = ({
     setBookingDays(bookingDetails);
   }, []);
 
+  const calculateBaseRate = (rates = []) => {
+    const total_rates = rates.reduce((sum, item) => sum + item.rate, 0)
+    const base_rate = rates?.length ? total_rates / rates?.length : 0;
+    return base_rate
+  }
+
   function countDays(startDate, endDate) {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -109,6 +115,9 @@ const VehicleCard = ({
 
   const pathname = usePathname();
 
+
+  
+
   return (
     <div className="vehicle-card-main-container" onClick={handleModalOpen}>
       <div
@@ -123,7 +132,7 @@ const VehicleCard = ({
           <span>
             <h3>{vehicleName}</h3>
             <div className="vehicle-age-and-fuel-efficiency-container">
-              <p>{vehicleAge} Year Old</p>
+              {/* <p>{vehicleAge} Year Old</p> */}
               {vehicleData.details.fuel_efficiency === 1 ? (
                 <Image
                   src={"/assets/Meter-Chart/red.png"}
@@ -172,7 +181,8 @@ const VehicleCard = ({
                 <div className="price-and-book-now-ammount">
                   <span>
                     {" "}
-                    <h3>NZ$ {vehicleData.base_rate}</h3>
+                    <h3>NZ$ {calculateBaseRate(vehicleData?.daily_rates)}</h3>
+                    {/* <h3>NZ$ {vehicleData.base_rate}</h3> */}
                     <p>/day</p>{" "}
                   </span>
                   {vehicleData.duration_discount !== 0 ? (
@@ -253,11 +263,6 @@ const VehicleCard = ({
                 </button>
               ))}
 
-            {/* {vehicleData.available === 0 ? (
-              <button disabled className={`sold-button ${pathname !== '/' && showBookingButton ? 'show-booking-button' : ''}`}>Sold Out</button>
-            ) : (
-              <button className={`booking-button ${showBookingButton ? 'show-booking-button' : ''}`} onClick={handleBookVehicle}>Book Now</button>
-            )} */}
           </div>
         </div>
         <div className="vehicle-type">
