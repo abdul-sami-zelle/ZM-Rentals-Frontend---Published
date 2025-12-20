@@ -27,6 +27,7 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     opacity: 1;
+    position: relative;
     border-bottom: none;
 }
 
@@ -201,7 +202,7 @@
 
 .sold-button {
     display: none;
-    width: 140px;
+    /* width: 140px; */
     align-items: center;
     justify-content: center;
     height: max-content;
@@ -210,7 +211,7 @@
     line-height: 1.2;
     color: #FFF;
     font-weight: 500;
-    background-color: #D10000;
+    background-color: var(--primary-color);
     /* background-image: linear-gradient(to right top, #113b84, #0e3f92, #0c43a1, #0c47af, #0f4bbe); */
     color: var(--color-white);
     border-radius: 25px;

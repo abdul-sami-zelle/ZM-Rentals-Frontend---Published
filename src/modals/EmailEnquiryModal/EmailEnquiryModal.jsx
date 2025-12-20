@@ -5,7 +5,7 @@ import { url } from '../../utils/services'
 import axios from 'axios'
 import Spinner from '../../loaders/Spinner/Spinner'
 
-const EmailEnquiryModal = ({ showEmailEnquiry, setShowEmailEnquiry, carObj, modalType, bookingPayload = {} }) => {
+const EmailEnquiryModal = ({ showEmailEnquiry, setShowEmailEnquiry, carObj, modalType, bookingPayload = {}, }) => {
 
 
     const [countries, setCountries] = useState([]);

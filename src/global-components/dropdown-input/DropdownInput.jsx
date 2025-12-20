@@ -3,7 +3,21 @@ import './DropdownInput.css'
 import { MdOutlineArrowDropDown } from "react-icons/md";
 import useDropdownNavigation from '../../utils/keyPress'
 
-const DropdownInput = ({ width, setSelectedCity, type, setClicktype, mobilePlaceholder, height, defaultValue, placeholder, data, bgColor, selectedValue, setSelectedValue , setHeight = false }) => {
+const DropdownInput = ({ 
+    width, 
+    setSelectedCity, 
+    type, 
+    setClicktype, 
+    mobilePlaceholder, 
+    height, 
+    defaultValue, 
+    placeholder, 
+    data, 
+    bgColor, 
+    selectedValue, 
+    setSelectedValue , 
+    setHeight = false,
+ }) => {
 
     const [showList, setShowList] = useState(false);
     // const [selectedValue, setSelectedValue] = useState('')

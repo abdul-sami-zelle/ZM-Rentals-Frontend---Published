@@ -85,10 +85,10 @@ const VehicleCard = ({
   }, []);
 
   const calculateBaseRate = (rates = []) => {
-    const total_rates = rates.reduce((sum, item) => sum + item.rate, 0)
+    const total_rates = rates.reduce((sum, item) => sum + item.rate, 0);
     const base_rate = rates?.length ? total_rates / rates?.length : 0;
-    return base_rate
-  }
+    return base_rate;
+  };
 
   function countDays(startDate, endDate) {
     const start = new Date(startDate);
@@ -115,8 +115,7 @@ const VehicleCard = ({
 
   const pathname = usePathname();
 
-
-  
+  console.log("vehicle data ", vehicleData);
 
   return (
     <div className="vehicle-card-main-container" onClick={handleModalOpen}>
@@ -171,6 +170,7 @@ const VehicleCard = ({
               )}
             </div>
           </span>
+
           <div
             className={`price-and-book-now ${
               vehicleData.available === 0 ? "items-align-end" : ""
@@ -182,7 +182,6 @@ const VehicleCard = ({
                   <span>
                     {" "}
                     <h3>NZ$ {calculateBaseRate(vehicleData?.daily_rates)}</h3>
-                    {/* <h3>NZ$ {vehicleData.base_rate}</h3> */}
                     <p>/day</p>{" "}
                   </span>
                   {vehicleData.duration_discount !== 0 ? (
@@ -219,29 +218,39 @@ const VehicleCard = ({
                 </h3>
               )
             ) : (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "start",
-                  width: "100%",
-                }}
-              >
-                <h3
-                  className="vehicle-price-heading"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleScrolllTop();
+              !isVehicleSearched && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "start",
+                    width: "100%",
                   }}
                 >
-                  {seePrice}
-                </h3>
-              </div>
+                  <h3
+                    className="vehicle-price-heading"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleScrolllTop();
+                    }}
+                  >
+                    {seePrice}
+                  </h3>
+                </div>
+              )
             )}
 
-            {vehicleData?.daily_rates &&
-              vehicleData?.daily_rates &&
-              (vehicleData.available === 0 ? (
+            {isVehicleSearched &&
+              (vehicleData?.daily_rates && vehicleData?.available !== 0 ? (
+                <button
+                  className={`booking-button ${
+                    showBookingButton ? "show-booking-button" : ""
+                  }`}
+                  onClick={handleBookVehicle}
+                >
+                  Book Now
+                </button>
+              ) : (
                 <button
                   disabled
                   className={`sold-button ${
@@ -252,17 +261,7 @@ const VehicleCard = ({
                 >
                   Sold Out
                 </button>
-              ) : (
-                <button
-                  className={`booking-button ${
-                    showBookingButton ? "show-booking-button" : ""
-                  }`}
-                  onClick={handleBookVehicle}
-                >
-                  Book Now
-                </button>
               ))}
-
           </div>
         </div>
         <div className="vehicle-type">

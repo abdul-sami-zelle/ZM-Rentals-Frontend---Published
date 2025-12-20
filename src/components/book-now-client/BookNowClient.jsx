@@ -36,13 +36,12 @@ const BookNowClient = () => {
     }
   }, [])
 
-
-
   countries.registerLocale(en);
   const stripe = useStripe();
   const elements = useElements();
   const {
     bookingVehicleData,
+    setBookingVehicleData,
     bookingPayload,
     setBookingPayload,
     activeShuttle,
@@ -147,7 +146,6 @@ const BookNowClient = () => {
     const allFilled = Object.keys(newErrors).length === 0;
     return allFilled;
   };
-
 
   const isArrivalDetailsAdded = () => {
     const flightNumber = bookingPayload?.booking?.flight_number || "";
@@ -574,7 +572,7 @@ const BookNowClient = () => {
     const pickDrop = JSON.parse(sessionStorage.getItem('pick_and_drop_details'));
     setTotalDays(vehicleSesionData?.daily_rates?.length)
     setPickDropLocation(pickDrop)
-    if (pickDrop.pickup_location === null && pickDrop.drop_location === null) {
+    if (pickDrop?.pickup_location === null && pickDrop?.drop_location === null) {
       sessionStorage.removeItem('pick_and_drop_details');
       sessionStorage.removeItem('selected-vehicle-details');
       sessionStorage.removeItem('vehicle-details');
@@ -629,7 +627,6 @@ const BookNowClient = () => {
       return "Invalid Time";
     }
   };
-
 
   const handleBookNow = () => {
     if (selectedTabIndex < 3) {
@@ -861,7 +858,9 @@ const BookNowClient = () => {
                       <Link href={'/vehicles'}>Change Vehicle</Link>
                     </div>
                     <div className='vehicle-image-container'>
-                      <Image src={url + bookingVehicleData?.image} alt='vehicle image' width={192} height={96} className='vehicle-image' />
+                      {console.log("image url", url+bookingVehicleData?.image)}
+                      {bookingVehicleData?.image && <Image src={url + bookingVehicleData?.image} alt='vehicle image' width={192} height={96} className='vehicle-image' />}
+                      
                     </div>
                   </div>
 
@@ -886,7 +885,7 @@ const BookNowClient = () => {
 
 
 
-                    {Object.keys(insuranceSeleted).length > 0 && (
+                    {insuranceSeleted && (
                       <span>
                         <p>{insuranceSeleted?.name}</p>
                         {

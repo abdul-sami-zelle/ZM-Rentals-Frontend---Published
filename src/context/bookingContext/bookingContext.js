@@ -61,6 +61,7 @@ export const BookingProvider = ({ children }) => {
 
     useEffect(() => {
         const sellectedVehicleSessionData = JSON.parse(sessionStorage.getItem('selected-vehicle-details'));
+        
         if (Object.keys(bookingVehicleData).length === 0) {
             setBookingVehicleData(sellectedVehicleSessionData);
         }
@@ -110,8 +111,6 @@ export const BookingProvider = ({ children }) => {
         //     window.removeEventListener("storage", handleStorageChange);
         // };
     }, []);
-
-
 
     return (
         <BookingContext.Provider value={{

@@ -28,7 +28,7 @@ import { formatPrice } from '../../utils/fotmateValues.js'
 import { url } from '../../utils/services.js';
 
 
-const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSearched, emailModal }) => {
+const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSearched, emailModal, setBookingModal, setCarId, setCheckCarAvailable }) => {
 
     const { searchVehiclePayload, setSearchVehiclePayload, searchedVehicles } = useSearchVehicle()
     useEffect(() => {
@@ -177,6 +177,14 @@ const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSear
         handleScrollContainer()
     }, [showModal])
 
+    const handleShoeBookingModal = () => {
+        handleClose();
+        setBookingModal(true)
+        setCarId(vehicleDetails?.car_id)
+        setCheckCarAvailable(true)
+
+    }
+
 
 
 
@@ -222,7 +230,7 @@ const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSear
                             Email Enquiry
                         </span>
 
-                        <span onClick={handleScrolllTop}>
+                        <span onClick={handleShoeBookingModal}>
                             {showBookingButton ? 'Book Now' : 'Enter your itinerary to show price'}
                             <BsArrowRight size={20} color='var(--primary-color)' />
                         </span>

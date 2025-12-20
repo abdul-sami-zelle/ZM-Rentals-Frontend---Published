@@ -7,6 +7,7 @@ import CardShimmer from './CardShimmer'
 import { usePathname } from 'next/navigation';
 import EmailEnquiryModal from '../../modals/EmailEnquiryModal/EmailEnquiryModal'
 import { url } from '../../utils/services';
+import BookingDatesModal from '../../modals/BookingDatesModal/BookingDatesModal';
 
 
 
@@ -17,6 +18,7 @@ const CarDetails = ({ searchedVehicles, isVehicleSearched, data, openModal, show
 
   const [modalData, setModalData] = useState([])
   const [showDetalModal, setShowDetailModal] = useState(false);
+  const [bookingModal, setBookingModal] = useState(false);
 
   const [emailModal, setEmailModal] = useState(false);
 
@@ -80,6 +82,10 @@ const CarDetails = ({ searchedVehicles, isVehicleSearched, data, openModal, show
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const [carId, setCarId] = useState(null);
+  const [checkCarAvailable, setCheckCarAvailable] = useState(false)
+  
+
 
   return (
     <div className='car-details-main-container' onClick={openModal} style={{ maxWidth: maxWidth }}>
@@ -121,6 +127,9 @@ const CarDetails = ({ searchedVehicles, isVehicleSearched, data, openModal, show
         vehicleDetails={modalData}
         isVehicleSearched={isVehicleSearched}
         emailModal={handleOpenEmailEnquiry}
+        setBookingModal={setBookingModal}
+        setCarId={setCarId}
+        setCheckCarAvailable={setCheckCarAvailable}
       />
 
       <EmailEnquiryModal
@@ -128,7 +137,14 @@ const CarDetails = ({ searchedVehicles, isVehicleSearched, data, openModal, show
         setShowEmailEnquiry={setEmailModal}
         carObj={modalData}
         modalType={modalType}
+        
+      />
 
+      <BookingDatesModal 
+        showBookingModal={checkCarAvailable}
+        setShowBookingModal={setCheckCarAvailable}
+        carId={carId}
+        carData={modalData}
       />
     </div>
   )
