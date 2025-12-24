@@ -18,7 +18,7 @@ const BookingDatesModal = ({
   showBookingModal,
   setShowBookingModal,
   carId,
-  carData
+  carData,
 }) => {
   const [searchPayload, setSearchPayload] = useState({
     car_id: carId,
@@ -263,39 +263,45 @@ const BookingDatesModal = ({
 
   useEffect(() => {
     setSearchPayload((prev) => ({
-        ...prev,
-        car_id: carId
-    }))
-  }, [carId])
+      ...prev,
+      car_id: carId,
+    }));
+  }, [carId]);
 
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
   const { setVehicleSesionData } = useBookingContext();
   const { setBookingVehicleData } = useBookingContext();
-  const router = useRouter()
+  const router = useRouter();
   const handleSearchCarAvailabile = async () => {
-    const api = `${url}/cars/specific-available-car`
-    const api2 = `${url}/cars/get/${searchPayload?.car_id}`
-    setLoader(true)
+    const api = `${url}/cars/specific-available-car`;
+    const api2 = `${url}/cars/get/${searchPayload?.car_id}`;
+    setLoader(true);
     try {
-        const response = await axios.post(api, searchPayload);
-        if(response.status === 200) {
-            const  carResponse = await axios.get(api2);
-            if(carResponse.status === 200) {
-              setVehicleSesionData(response.data)
-              setBookingVehicleData(carResponse.data)
-              sessionStorage.setItem(
-              "selected-vehicle-details",
-              JSON.stringify(carResponse.data))
-              sessionStorage.setItem("vehicle-details", JSON.stringify(response.data));
-              setLoader(false)
-            }
-            router.push("/book-now");
+      const response = await axios.post(api, searchPayload);
+      if (response.status === 200) {
+        const carResponse = await axios.get(api2);
+        if (carResponse.status === 200) {
+          setVehicleSesionData(response.data);
+          setBookingVehicleData(carResponse.data);
+          sessionStorage.setItem(
+            "selected-vehicle-details",
+            JSON.stringify(carResponse.data)
+          );
+          sessionStorage.setItem(
+            "vehicle-details",
+            JSON.stringify(response.data)
+          );
+          setLoader(false);
         }
+        router.push("/book-now");
+      }
     } catch (error) {
-        console.error("Error", error)
-        setLoader(false)
-    } finally {setLoader(false)}
-  }
+      console.error("Error", error);
+      setLoader(false);
+    } finally {
+      setLoader(false);
+    }
+  };
 
   const pickupLocationRef = useRef();
   const pickupDateRef = useRef();
@@ -305,21 +311,50 @@ const BookingDatesModal = ({
   const dropDateRef = useRef();
   const dropTimeRef = useRef();
 
-  useOutsideClick(pickupLocationRef, () => setPickupLocationDropdown(false))
-  useOutsideClick(pickupDateRef, () => setPickupDateDropdown(false))
-  useOutsideClick(pickupTimeRef, () => setPickupTimeDropdown(false))
-  const pickupLocationOptionIndex = useDropdownNavigation(pickupLocationRef, pickupLocationDropdown, 'booking-modal-pickup-single-item')
-  const pickupTimeIndex = useDropdownNavigation(pickupTimeRef, pickupTimeDropdown, 'booking-modal-time-single-item')
+  useOutsideClick(pickupLocationRef, () => setPickupLocationDropdown(false));
+  useOutsideClick(pickupDateRef, () => setPickupDateDropdown(false));
+  useOutsideClick(pickupTimeRef, () => setPickupTimeDropdown(false));
+  const pickupLocationOptionIndex = useDropdownNavigation(
+    pickupLocationRef,
+    pickupLocationDropdown,
+    "booking-modal-pickup-single-item"
+  );
+  const pickupTimeIndex = useDropdownNavigation(
+    pickupTimeRef,
+    pickupTimeDropdown,
+    "booking-modal-time-single-item"
+  );
   useCalendarNavigation(pickupDateRef, pickupDateDropdown, (el) => {
-           if (pickedDate) handleDropDateChange(pickedDate);
-      });
+    if (pickedDate) handleDropDateChange(pickedDate);
+  });
 
-  useOutsideClick(DropLocationRef, () => setDropLocationDropdown(false))
-  useOutsideClick(dropDateRef, () => setDropDateDropdown(false))
-  useOutsideClick(dropTimeRef, () => setDropTimeDropdown(false))
-  const dropLocationOptionIndex = useDropdownNavigation(DropLocationRef, dropLocationDropdown, 'booking-modal-pickup-single-item')
-  const dropTimeIndex = useDropdownNavigation(dropTimeRef, dropTimeDropdown, 'booking-modal-time-single-item')
-  
+  useOutsideClick(DropLocationRef, () => setDropLocationDropdown(false));
+  useOutsideClick(dropDateRef, () => setDropDateDropdown(false));
+  useOutsideClick(dropTimeRef, () => setDropTimeDropdown(false));
+  const dropLocationOptionIndex = useDropdownNavigation(
+    DropLocationRef,
+    dropLocationDropdown,
+    "booking-modal-pickup-single-item"
+  );
+  const dropTimeIndex = useDropdownNavigation(
+    dropTimeRef,
+    dropTimeDropdown,
+    "booking-modal-time-single-item"
+  );
+
+  const [dropCalendarMonth, setDropCalendarMonth] = useState(null);
+
+  useEffect(() => {
+    if (selectedPickupDate) {
+      setDropCalendarMonth(
+        new Date(
+          selectedPickupDate.getFullYear(),
+          selectedPickupDate.getMonth(),
+          1
+        )
+      );
+    }
+  }, [selectedPickupDate]);
 
   return (
     <div
@@ -338,25 +373,32 @@ const BookingDatesModal = ({
         <div className="booking-modal-head-and-content-main-container">
           <div className="booking-date-modal-head">
             <h3>Select Date</h3>
-            <IoClose size={30} color="#000" style={{ cursor: "pointer" }} onClick={() => setShowBookingModal(false)} />
+            <IoClose
+              size={30}
+              color="#000"
+              style={{ cursor: "pointer" }}
+              onClick={() => setShowBookingModal(false)}
+            />
           </div>
 
           <div className="booking-modal-form-inputs">
             <div className="booking-modal-form-input-single-col-pick-up">
               {/* Pickup Location */}
 
-              <div className="booking-modal-pickup-main" ref={pickupLocationRef}  >
+              <div
+                className="booking-modal-pickup-main"
+                ref={pickupLocationRef}
+              >
                 <p>Pick-up Location</p>
 
-                <div 
-                  className="booking-modal-pickup-dropdown-main" 
+                <div
+                  className="booking-modal-pickup-dropdown-main"
                   // tabIndex={0}
                   // onFocus={() => {
                   //   if (!pickupLocationDropdown) setPickupLocationDropdown(true);
                   // }}
                   // onBlur={() => setPickupLocationDropdown(false)}
                 >
-
                   <div
                     className="booking-modal-pickup-dropdown-head"
                     onMouseDown={() =>
@@ -364,19 +406,25 @@ const BookingDatesModal = ({
                     }
                   >
                     <h3>{pickupLocationValue}</h3>
-                    <MdOutlineArrowDropDown size={20} color="var-primary-color" />
+                    <MdOutlineArrowDropDown
+                      size={20}
+                      color="var-primary-color"
+                    />
                   </div>
 
                   <div
                     className={`booking-modal-pickup-dropdown-body ${
                       pickupLocationDropdown ? "show-pickup-locations" : ""
                     }`}
-
                   >
                     {locations.map((item, index) => (
                       <p
                         key={index}
-                        className={`booking-modal-pickup-single-item ${pickupLocationOptionIndex === index ? 'highlighted' : ''}`}
+                        className={`booking-modal-pickup-single-item ${
+                          pickupLocationOptionIndex === index
+                            ? "highlighted"
+                            : ""
+                        }`}
                         onClick={() => handleSelectLocation(item)}
                       >
                         {item.name}
@@ -388,12 +436,16 @@ const BookingDatesModal = ({
 
               {/* Pickup Date and Time  */}
               <div className="booking-modal-date-and-time-container">
-
                 {/* Pickup Date */}
-                <div className="booking-modal-date-container" ref={pickupDateRef}>
+                <div
+                  className="booking-modal-date-container"
+                  ref={pickupDateRef}
+                >
                   <div
                     className="booking-modal-date-head"
-                    onMouseDown={() => setPickupDateDropdown(!pickupDateDropdown)}
+                    onMouseDown={() =>
+                      setPickupDateDropdown(!pickupDateDropdown)
+                    }
                   >
                     <h3>
                       {selectedPickupDate
@@ -437,10 +489,10 @@ const BookingDatesModal = ({
                 </div>
 
                 {/* Pickup Time */}
-                <div 
-                  className="booking-modal-time-container" 
+                <div
+                  className="booking-modal-time-container"
                   ref={pickupTimeRef}
-                  // tabIndex={0} 
+                  // tabIndex={0}
                   // onFocus={() => {
                   //   if (!pickupTimeDropdown) setPickupTimeDropdown(true);
                   // }}
@@ -449,7 +501,6 @@ const BookingDatesModal = ({
                   <div
                     className="booking-modal-time-head"
                     onMouseDown={() => setPickupTimeDropdown((prev) => !prev)}
-
                   >
                     <h3>{pickupTime ? pickupTime : "Select Time"}</h3>
                     <MdOutlineArrowDropDown size={20} color="#000" />
@@ -463,7 +514,9 @@ const BookingDatesModal = ({
                     {generateTimeList().map((item, index) => (
                       <p
                         key={index}
-                        className={`booking-modal-time-single-item ${pickupTimeIndex === index ? 'highlighted' : ''}`}
+                        className={`booking-modal-time-single-item ${
+                          pickupTimeIndex === index ? "highlighted" : ""
+                        }`}
                         onClick={() => handlePickupTimeChange(item.name)}
                       >
                         {item.name}
@@ -471,7 +524,6 @@ const BookingDatesModal = ({
                     ))}
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -480,8 +532,8 @@ const BookingDatesModal = ({
               <div className="booking-modal-pickup-main" ref={DropLocationRef}>
                 <p>Drop-up Location</p>
 
-                <div 
-                  className="booking-modal-pickup-dropdown-main" 
+                <div
+                  className="booking-modal-pickup-dropdown-main"
                   // tabIndex={0}
                   // onFocus={() => {
                   //   if (!dropLocationDropdown) setDropLocationDropdown(true);
@@ -490,10 +542,15 @@ const BookingDatesModal = ({
                 >
                   <div
                     className="booking-modal-pickup-dropdown-head"
-                    onMouseDown={() => setDropLocationDropdown(!dropLocationDropdown)}
+                    onMouseDown={() =>
+                      setDropLocationDropdown(!dropLocationDropdown)
+                    }
                   >
                     <h3>{dropLocationValue}</h3>
-                    <MdOutlineArrowDropDown size={20} color="var-primary-color" />
+                    <MdOutlineArrowDropDown
+                      size={20}
+                      color="var-primary-color"
+                    />
                   </div>
 
                   <div
@@ -504,7 +561,9 @@ const BookingDatesModal = ({
                     {locations.map((item, index) => (
                       <p
                         key={index}
-                        className={`booking-modal-pickup-single-item ${dropLocationOptionIndex === index ? 'highlighted' : ''}`}
+                        className={`booking-modal-pickup-single-item ${
+                          dropLocationOptionIndex === index ? "highlighted" : ""
+                        }`}
                         onClick={() => handleSelectDropLocation(item)}
                       >
                         {item.name}
@@ -514,9 +573,8 @@ const BookingDatesModal = ({
                 </div>
               </div>
 
-                {/* Drop Date and Time */}
+              {/* Drop Date and Time */}
               <div className="booking-modal-date-and-time-container">
-
                 {/* Drop Date */}
                 <div className="booking-modal-date-container" ref={dropDateRef}>
                   <div
@@ -541,7 +599,23 @@ const BookingDatesModal = ({
                       defaultView="month"
                       next2Label={null}
                       prev2Label={null}
-                      minDate={new Date()}
+                      /* 🔑 Open calendar from pickup month */
+                      activeStartDate={dropCalendarMonth}
+                      onActiveStartDateChange={({ activeStartDate }) =>
+                        setDropCalendarMonth(activeStartDate)
+                      }
+                      minDate={selectedPickupDate || new Date()}
+                      /* 🔒 Disable dates before pickup date */
+                      // minDate={
+                      //   selectedPickupDate
+                      //     ? new Date(
+                      //         selectedPickupDate.getFullYear(),
+                      //         selectedPickupDate.getMonth(),
+                      //         selectedPickupDate.getDate()
+                      //       )
+                      //     : new Date()
+                      // }
+                      // minDate={new Date()}
                       formatShortWeekday={(locale, date) =>
                         date
                           .toLocaleDateString(locale, { weekday: "short" })
@@ -567,7 +641,7 @@ const BookingDatesModal = ({
                   </div>
                 </div>
 
-                  {/* Drop Time */}
+                {/* Drop Time */}
                 <div className="booking-modal-time-container" ref={dropTimeRef}>
                   <div
                     className="booking-modal-time-head"
@@ -593,17 +667,15 @@ const BookingDatesModal = ({
                     ))}
                   </div>
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
 
-
-    
         <div className="booking-modal-availability-check-button">
-            <button onClick={handleSearchCarAvailabile}>Check Availability</button>
+          <button onClick={handleSearchCarAvailabile}>
+            Check Availability
+          </button>
         </div>
       </div>
     </div>

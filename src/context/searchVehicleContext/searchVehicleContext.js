@@ -14,7 +14,7 @@ export const SearchVehicleProvider = ({ children }) => {
     const [pickupTime, setPickupTime] = useState('')
     const [dropupCity, setDropupCity] = useState('')
     const [dropupTime, setDropupTime] = useState('')
-    const [driverAge, setDriverAge] = useState('24')
+    const [driverAge, setDriverAge] = useState('26+')
     const [showBookingButton, setShowBookingButton] = useState(false);
     const [isVehicleSearched, setIsVehicleSearched] = useState(false)
     const [searchedVehicles, setSearchedVehicles] = useState([])
@@ -34,7 +34,7 @@ export const SearchVehicleProvider = ({ children }) => {
             drop_location: null,
             pickup_time: "",
             drop_time: "",
-            driver_age: "24",
+            driver_age: "26+",
         };
     });
 

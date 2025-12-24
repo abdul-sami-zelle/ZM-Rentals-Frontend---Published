@@ -228,8 +228,8 @@
 .booking-modal-date-body.show-pickup-date-calender {
     height: auto;
     max-height: 280px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     border: 1px solid #d7d7d7;
 }
 

@@ -72,9 +72,7 @@ export const BookingProvider = ({ children }) => {
             const storedData = sessionStorage.getItem("selected-vehicle-details");
             if (storedData) {
                 setVehicleSesionData(JSON.parse(storedData));
-            }
-
-            
+            }  
         };
 
         // Run once on mount

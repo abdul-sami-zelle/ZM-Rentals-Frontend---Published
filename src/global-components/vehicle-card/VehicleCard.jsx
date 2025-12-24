@@ -115,7 +115,6 @@ const VehicleCard = ({
 
   const pathname = usePathname();
 
-  console.log("vehicle data ", vehicleData);
 
   return (
     <div className="vehicle-card-main-container" onClick={handleModalOpen}>

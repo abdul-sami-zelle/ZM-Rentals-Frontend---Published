@@ -54,7 +54,7 @@ const BookingForm = (
     } = useSearchVehicle();
 
     const driverAgeList = [
-        { name: '21' }, { name: '22' }, { name: '23' }, { name: '24' }, { name: '25+' }
+        { name: '21' }, { name: '22' }, { name: '23' }, { name: '24' }, { name: '25' }, {name: '26+'}
     ]
 
     const [locations, setLocations] = useState([])

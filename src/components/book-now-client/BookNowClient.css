@@ -310,6 +310,22 @@
     
 }
 
+.daily-rates-list-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+}
+
+.daily-rates-list-main-container > h3 {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+
 .vehicle-image-container {
     width: 50%;
     height: auto;
