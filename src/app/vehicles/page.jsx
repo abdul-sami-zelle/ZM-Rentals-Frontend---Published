@@ -141,7 +141,6 @@ const Vehicles = () => {
     },
   ]
 
-
   const router = useRouter()
 
   const isValidDropDate = (pickup, drop) => {

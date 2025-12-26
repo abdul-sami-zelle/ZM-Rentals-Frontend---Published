@@ -307,7 +307,7 @@ const HirerDetails = () => {
     setMenuOpen(false);
   };
 
-  const driverAgeList = ["21", "22", "23", "24", "25+"];
+  const driverAgeList = ["21", "22", "23", "24", "25", '26+'];
 
   const handleSellectDriverAge = (item) => {
     setBookingPayload((prev) => ({

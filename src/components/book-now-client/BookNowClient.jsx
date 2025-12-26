@@ -936,11 +936,11 @@ const formatDate = (dateStr) => {
                         {
                           locations.find(
                             (item) =>
-                              item.id === pickDropLocation.pickup_location
+                              item.id === pickDropLocation?.pickup_location
                           )?.name
                         }
                       </h3>
-                      <p>{formatDateFromISO(pickDropLocation.pickup_time)}</p>
+                      <p>{formatDateFromISO(pickDropLocation?.pickup_time)}</p>
                       <p className="pick-drop-time">
                         {formatTimeFromISO(pickDropLocation?.pickup_time)}
                       </p>
@@ -953,7 +953,7 @@ const formatDate = (dateStr) => {
                       <h3>
                         {
                           locations.find(
-                            (item) => item.id === pickDropLocation.drop_location
+                            (item) => item.id === pickDropLocation?.drop_location
                           )?.name
                         }
                       </h3>
@@ -963,7 +963,7 @@ const formatDate = (dateStr) => {
                   </div>
                   <div className="vehicle-details-section">
                     <div className="vehicle-details">
-                      <h3>{bookingVehicleData.name}</h3>
+                      <h3>{bookingVehicleData?.name}</h3>
 
                       {/* {vehicleSesionData?.duration_discount !== 0 ? (
                         <div

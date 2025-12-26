@@ -38,12 +38,18 @@ export const SearchVehicleProvider = ({ children }) => {
         };
     });
 
+    console.log("vehicle payload", searchVehiclePayload)
+
     // 🔹 Save to session whenever payload changes
     useEffect(() => {
         if (typeof window !== "undefined") {
+            console.log("pick and drop details")
             sessionStorage.setItem("pick_and_drop_details", JSON.stringify(searchVehiclePayload));
+            console.log("pick drop details payload", searchVehiclePayload);
         }
     }, [searchVehiclePayload]);
+
+
 
 
     const getCurrentFormattedHourInAuckland = () => {
@@ -65,7 +71,6 @@ export const SearchVehicleProvider = ({ children }) => {
 
     useEffect(() => {
         if (typeof window === 'undefined') return
-
 
         if (!pickupTime && !dropupTime) {
             getCurrentFormattedHourInAuckland()

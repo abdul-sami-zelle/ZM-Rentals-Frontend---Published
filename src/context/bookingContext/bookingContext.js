@@ -33,7 +33,7 @@ export const BookingProvider = ({ children }) => {
             phone: "",
             local_phone: "",
             country: "New Zealand",
-            driver_age: '24',
+            driver_age: '26+',
             how_find_us: "Google",
             travel_reason: "Leisure",
             customer_id: null,

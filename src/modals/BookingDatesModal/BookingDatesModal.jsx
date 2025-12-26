@@ -262,11 +262,30 @@ const BookingDatesModal = ({
   };
 
   useEffect(() => {
-    setSearchPayload((prev) => ({
-      ...prev,
-      car_id: carId,
-    }));
+    if(showBookingModal) {
+      console.log("car id set")
+        setSearchPayload((prev) => ({
+          ...prev,
+          car_id: carId,
+        }));
+    }
   }, [carId]);
+
+  useEffect(() => {console.log("search payload modal", searchPayload)}, [searchPayload])
+
+  useEffect(() => {
+
+    if (showBookingModal && typeof window !== "undefined") {
+          const sessionPayload = {
+            driver_age: "26+",
+            drop_location: searchPayload?.drop_location,
+            drop_time: searchPayload?.drop_time,
+            pickup_location: searchPayload?.pickup_location,
+            pickup_time: searchPayload?.pickup_time,
+          }
+          sessionStorage.setItem("pick_and_drop_details", JSON.stringify(sessionPayload));
+        }
+  }, [searchPayload])
 
   const [loader, setLoader] = useState(false);
   const { setVehicleSesionData } = useBookingContext();
