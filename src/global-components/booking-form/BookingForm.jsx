@@ -112,8 +112,13 @@ const BookingForm = ({
   const [dropDateManuallyChanged, setDropDateManuallyChanged] = useState(false);
   const handlePickupDateChange = (date) => {
     setSelectedPickupDate(date);
+    if(!dropDateManuallyChanged) {
+        const futureDrop = new Date(date);
+        futureDrop.setDate(futureDrop.getDate() + 4);
         formatePickupDateAndTime(date, pickupTime);
-    
+        getDropOffDateAt10AM(futureDrop);
+        setSelectedDropDate(futureDrop);
+    }
     setPickupCalender(false); // hide after selection
   };
 
@@ -274,20 +279,20 @@ const BookingForm = ({
     // getDropOffDateAt10AM(futureDate)
     // setSelectedDropDate(futureDate)
 
-     if (!date) return;
+    if (!date) return;
 
-    // Only auto-set drop date if it is empty or equals old default
+    // Only auto-set drop date if drop date not manually changed OR matches old default
     const oldDefaultDrop = new Date(date);
     oldDefaultDrop.setDate(oldDefaultDrop.getDate() + 4);
 
-    // If user manually set drop date, do NOT overwrite
-    if (!selectedDropDate || selectedDropDate.getTime() === oldDefaultDrop.getTime()) {
-        const futureDrop = new Date(date);
-        futureDrop.setDate(futureDrop.getDate() + 4);
-
-        // Safely update payload
-        getDropOffDateAt10AM(futureDrop);
-        setSelectedDropDate(futureDrop);
+    if (
+      !selectedDropDate ||
+      selectedDropDate.getTime() === oldDefaultDrop.getTime()
+    ) {
+      const futureDate = new Date(date);
+      futureDate.setDate(futureDate.getDate() + 4);
+      getDropOffDateAt10AM(futureDate);
+      setSelectedDropDate(futureDate);
     }
   };
 
