@@ -299,6 +299,7 @@ const BookingDatesModal = ({
     setLoader(true);
     try {
       const response = await axios.post(api, searchPayload);
+      console.log("respo", response);
       if (response.status === 200) {
         const carResponse = await axios.get(api2);
         if (carResponse.status === 200) {
@@ -314,7 +315,9 @@ const BookingDatesModal = ({
           );
           setLoader(false);
         }
-        router.push("/book-now");
+        if(response?.data?.available !== 0) {
+          router.push("/book-now");
+        }
       }
     } catch (error) {
       console.error("Error", error);
