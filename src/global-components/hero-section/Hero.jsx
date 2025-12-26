@@ -101,7 +101,7 @@ const Hero = ({ bgImage, locationHeading, locationPara, dualHeading = true, marg
 
         const handleScroll = () => {
             const rect = bookingFormRef?.current?.getBoundingClientRect();
-            if (rect.bottom <= 57) {
+            if (rect?.bottom <= 57) {
                 setIsSticky(true);
             } else {
                 setIsSticky(false);

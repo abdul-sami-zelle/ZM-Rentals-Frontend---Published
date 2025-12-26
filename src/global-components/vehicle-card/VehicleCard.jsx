@@ -87,8 +87,14 @@ const VehicleCard = ({
   const calculateBaseRate = (rates = []) => {
     const total_rates = rates.reduce((sum, item) => sum + item.rate, 0);
     const base_rate = rates?.length ? total_rates / rates?.length : 0;
-    return base_rate;
+
+    // Format the number
+    const formattedRate =
+      base_rate % 1 === 0 ? base_rate : base_rate.toFixed(2);
+
+    return formattedRate;
   };
+
 
   function countDays(startDate, endDate) {
     const start = new Date(startDate);

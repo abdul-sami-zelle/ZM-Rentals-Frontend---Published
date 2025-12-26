@@ -20,19 +20,22 @@ const BookingDatesModal = ({
   carId,
   carData,
 }) => {
+  
   const [searchPayload, setSearchPayload] = useState({
     car_id: carId,
     pickup_location: null,
     drop_location: null,
     pickup_time: "",
     drop_time: "",
-    driver_age: "24",
+    driver_age: "26+",
   });
   const [locations, setLocations] = useState([]);
   const getApi = async () => {
     try {
       const response = await axios.get(`${url}/locations/get`);
       setLocations(response.data.data);
+        
+
     } catch (error) {
       console.error(error);
     }
@@ -262,30 +265,29 @@ const BookingDatesModal = ({
   };
 
   useEffect(() => {
-    if(showBookingModal) {
-      console.log("car id set")
-        setSearchPayload((prev) => ({
-          ...prev,
-          car_id: carId,
-        }));
+    if (showBookingModal) {
+      setSearchPayload((prev) => ({
+        ...prev,
+        car_id: carId,
+      }));
     }
   }, [carId]);
 
-  useEffect(() => {console.log("search payload modal", searchPayload)}, [searchPayload])
-
   useEffect(() => {
-
     if (showBookingModal && typeof window !== "undefined") {
-          const sessionPayload = {
-            driver_age: "26+",
-            drop_location: searchPayload?.drop_location,
-            drop_time: searchPayload?.drop_time,
-            pickup_location: searchPayload?.pickup_location,
-            pickup_time: searchPayload?.pickup_time,
-          }
-          sessionStorage.setItem("pick_and_drop_details", JSON.stringify(sessionPayload));
-        }
-  }, [searchPayload])
+      const sessionPayload = {
+        driver_age: "26+",
+        drop_location: searchPayload?.drop_location,
+        drop_time: searchPayload?.drop_time,
+        pickup_location: searchPayload?.pickup_location,
+        pickup_time: searchPayload?.pickup_time,
+      };
+      sessionStorage.setItem(
+        "pick_and_drop_details",
+        JSON.stringify(sessionPayload)
+      );
+    }
+  }, [searchPayload]);
 
   const [loader, setLoader] = useState(false);
   const { setVehicleSesionData } = useBookingContext();
@@ -375,6 +377,15 @@ const BookingDatesModal = ({
     }
   }, [selectedPickupDate]);
 
+  const [isSearchPayloadValid, setIsSearchPayloadValid] = useState(false);
+  useEffect(() => {
+    const isValid = Object.values(searchPayload).every(
+      (value) => value !== null && value !== ""
+    );
+
+    setIsSearchPayloadValid(isValid);
+  }, [searchPayload]);
+
   return (
     <div
       className={`booking-date-select-modal-main-container ${
@@ -391,13 +402,16 @@ const BookingDatesModal = ({
       >
         <div className="booking-modal-head-and-content-main-container">
           <div className="booking-date-modal-head">
-            <h3>Select Date</h3>
-            <IoClose
-              size={30}
-              color="#000"
-              style={{ cursor: "pointer" }}
-              onClick={() => setShowBookingModal(false)}
-            />
+            <div className="booking-date-modal-headings">
+              <h3>Check Availability For</h3>
+              <IoClose
+                size={20}
+                color="#000"
+                style={{ cursor: "pointer" }}
+                onClick={() => setShowBookingModal(false)}
+              />
+            </div>
+            <h3 className="booking-modal-vehicle-name">{carData?.name}</h3>
           </div>
 
           <div className="booking-modal-form-inputs">
@@ -549,7 +563,7 @@ const BookingDatesModal = ({
             <div className="booking-modal-form-input-single-col-pick-up">
               {/* Drop Location  */}
               <div className="booking-modal-pickup-main" ref={DropLocationRef}>
-                <p>Drop-up Location</p>
+                <p>Drop-off Location</p>
 
                 <div
                   className="booking-modal-pickup-dropdown-main"
@@ -692,7 +706,11 @@ const BookingDatesModal = ({
         </div>
 
         <div className="booking-modal-availability-check-button">
-          <button onClick={handleSearchCarAvailabile}>
+          <button 
+            className={`booking-modal-check-button ${isSearchPayloadValid ? 'active-check-button' : ''}`} 
+            disabled={!isSearchPayloadValid} 
+            onClick={handleSearchCarAvailabile} 
+          >
             Check Availability
           </button>
         </div>

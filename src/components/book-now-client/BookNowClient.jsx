@@ -1040,7 +1040,7 @@ const formatDate = (dateStr) => {
                               >
                                 <h3>
                                   {item.totalDays}{" "}
-                                  {item.totalDays > 1 ? "days" : "day"} | NZ$
+                                  {item.totalDays > 1 ? "days" : "day"} | NZ${" "}
                                   {item.rate}
                                 </h3>
                               </Tooltip>

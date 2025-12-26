@@ -122,7 +122,6 @@ const BookingForm = ({
     setPickupCalender(false); // hide after selection
   };
 
-  
   const handleDropDateChange = (date) => {
     setSelectedDropDate(date);
     handleDropofTimeAndDate(date, dropupTime);
@@ -298,8 +297,6 @@ const BookingForm = ({
 
   useEffect(() => {
     if (!selectedPickupDate) return;
-    console.log("selected pickup date", selectedPickupDate)
-    console.log("check for future date");
     selectFutureDate(selectedPickupDate);
   }, [selectedPickupDate]);
 
