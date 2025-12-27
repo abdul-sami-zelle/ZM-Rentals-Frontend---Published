@@ -20,7 +20,6 @@ const BookingDatesModal = ({
   carId,
   carData,
 }) => {
-  
   const [searchPayload, setSearchPayload] = useState({
     car_id: carId,
     pickup_location: null,
@@ -34,8 +33,6 @@ const BookingDatesModal = ({
     try {
       const response = await axios.get(`${url}/locations/get`);
       setLocations(response.data.data);
-        
-
     } catch (error) {
       console.error(error);
     }
@@ -166,7 +163,7 @@ const BookingDatesModal = ({
   const [dropDateDropdown, setDropDateDropdown] = useState(false);
   const [dropTimeDropdown, setDropTimeDropdown] = useState(false);
   const [dropLocationValue, setDropLocationValue] = useState(
-    "Select Drop Location"
+    "Select Drop off Location"
   );
   const [dropDate, setDropDate] = useState();
 
@@ -292,6 +289,7 @@ const BookingDatesModal = ({
   const [loader, setLoader] = useState(false);
   const { setVehicleSesionData } = useBookingContext();
   const { setBookingVehicleData } = useBookingContext();
+  const [isAvailable, setIsAvailable] = useState(true);
   const router = useRouter();
   const handleSearchCarAvailabile = async () => {
     const api = `${url}/cars/specific-available-car`;
@@ -315,8 +313,10 @@ const BookingDatesModal = ({
           );
           setLoader(false);
         }
-        if(response?.data?.available !== 0) {
+        if (response?.data?.available !== 0) {
           router.push("/book-now");
+        } else {
+          setIsAvailable(false);
         }
       }
     } catch (error) {
@@ -389,12 +389,29 @@ const BookingDatesModal = ({
     setIsSearchPayloadValid(isValid);
   }, [searchPayload]);
 
+  const handleCloseBookingModal = () => {
+    setShowBookingModal(false);
+    setSearchPayload({
+      car_id: null,
+      pickup_location: null,
+      drop_location: null,
+      pickup_time: "",
+      drop_time: "",
+      driver_age: "26+",
+    });
+
+    setPickupLocationValue("Select Pickup Location");
+    setDropLocationValue("Select Drop off Location");
+    setSelectedPickupDate("");
+    setSelectedDropDate("")
+  };
+
   return (
     <div
       className={`booking-date-select-modal-main-container ${
         showBookingModal ? "show-booking-date-modal" : ""
       }`}
-      onClick={() => setShowBookingModal(false)}
+      onClick={handleCloseBookingModal}
     >
       {loader && <MainLoader />}
       <div
@@ -411,308 +428,314 @@ const BookingDatesModal = ({
                 size={20}
                 color="#000"
                 style={{ cursor: "pointer" }}
-                onClick={() => setShowBookingModal(false)}
+                onClick={handleCloseBookingModal}
               />
             </div>
             <h3 className="booking-modal-vehicle-name">{carData?.name}</h3>
           </div>
 
-          <div className="booking-modal-form-inputs">
-            <div className="booking-modal-form-input-single-col-pick-up">
-              {/* Pickup Location */}
+          {isAvailable ? (
+            <div className="booking-modal-form-inputs">
+              <div className="booking-modal-form-input-single-col-pick-up">
+                {/* Pickup Location */}
 
-              <div
-                className="booking-modal-pickup-main"
-                ref={pickupLocationRef}
+                <div
+                  className="booking-modal-pickup-main"
+                  ref={pickupLocationRef}
+                >
+                  <p>Pick-up Location</p>
+
+                  <div className="booking-modal-pickup-dropdown-main">
+                    <div
+                      className="booking-modal-pickup-dropdown-head"
+                      onMouseDown={() =>
+                        setPickupLocationDropdown(!pickupLocationDropdown)
+                      }
+                    >
+                      <h3>{pickupLocationValue}</h3>
+                      <MdOutlineArrowDropDown
+                        size={20}
+                        color="var(--primary-color)"
+                      />
+                    </div>
+
+                    <div
+                      className={`booking-modal-pickup-dropdown-body ${
+                        pickupLocationDropdown ? "show-pickup-locations" : ""
+                      }`}
+                    >
+                      {locations.map((item, index) => (
+                        <p
+                          key={index}
+                          className={`booking-modal-pickup-single-item ${
+                            pickupLocationOptionIndex === index
+                              ? "highlighted"
+                              : ""
+                          }`}
+                          onClick={() => handleSelectLocation(item)}
+                        >
+                          {item.name}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pickup Date and Time  */}
+                <div className="booking-modal-date-and-time-container">
+                  {/* Pickup Date */}
+                  <div
+                    className="booking-modal-date-container"
+                    ref={pickupDateRef}
+                  >
+                    <div
+                      className="booking-modal-date-head"
+                      onMouseDown={() =>
+                        setPickupDateDropdown(!pickupDateDropdown)
+                      }
+                    >
+                      <h3>
+                        {selectedPickupDate
+                          ? selectedPickupDate.toDateString()
+                          : "Date"}
+                      </h3>
+                      <CiCalendarDate size={25} color="#000" />
+                    </div>
+                    <div
+                      className={`booking-modal-date-body ${
+                        pickupDateDropdown ? "show-pickup-date-calender" : ""
+                      }`}
+                    >
+                      <Calendar
+                        onChange={handlePickupDateChange}
+                        value={pickupDate}
+                        defaultView="month"
+                        next2Label={null}
+                        prev2Label={null}
+                        minDate={new Date()}
+                        formatShortWeekday={(locale, date) =>
+                          date
+                            .toLocaleDateString(locale, { weekday: "short" })
+                            .slice(0, 3)
+                        }
+                        nextLabel={<IoIosArrowForward />}
+                        prevLabel={<IoIosArrowBack />}
+                        tileDisabled={({ date, view }) => {
+                          if (view !== "month") return false;
+
+                          const today = new Date();
+                          today.setHours(0, 0, 0, 0);
+
+                          const checkDate = new Date(date);
+                          checkDate.setHours(0, 0, 0, 0);
+
+                          return checkDate < today;
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Pickup Time */}
+                  <div
+                    className="booking-modal-time-container"
+                    ref={pickupTimeRef}
+                  >
+                    <div
+                      className="booking-modal-time-head"
+                      onMouseDown={() => setPickupTimeDropdown((prev) => !prev)}
+                    >
+                      <h3>{pickupTime ? pickupTime : "Select Time"}</h3>
+                      <MdOutlineArrowDropDown size={20} color="#000" />
+                    </div>
+
+                    <div
+                      className={`booking-modal-time-body ${
+                        pickupTimeDropdown ? "show-pickup-time-list" : ""
+                      }`}
+                    >
+                      {generateTimeList().map((item, index) => (
+                        <p
+                          key={index}
+                          className={`booking-modal-time-single-item ${
+                            pickupTimeIndex === index ? "highlighted" : ""
+                          }`}
+                          onClick={() => handlePickupTimeChange(item.name)}
+                        >
+                          {item.name}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="booking-modal-form-input-single-col-pick-up">
+                {/* Drop Location  */}
+                <div
+                  className="booking-modal-pickup-main"
+                  ref={DropLocationRef}
+                >
+                  <p>Drop-off Location</p>
+
+                  <div className="booking-modal-pickup-dropdown-main">
+                    <div
+                      className="booking-modal-pickup-dropdown-head"
+                      onMouseDown={() =>
+                        setDropLocationDropdown(!dropLocationDropdown)
+                      }
+                    >
+                      <h3>{dropLocationValue}</h3>
+                      <MdOutlineArrowDropDown
+                        size={20}
+                        color="var(--primary-color)"
+                      />
+                    </div>
+
+                    <div
+                      className={`booking-modal-pickup-dropdown-body ${
+                        dropLocationDropdown ? "show-pickup-locations" : ""
+                      }`}
+                    >
+                      {locations.map((item, index) => (
+                        <p
+                          key={index}
+                          className={`booking-modal-pickup-single-item ${
+                            dropLocationOptionIndex === index
+                              ? "highlighted"
+                              : ""
+                          }`}
+                          onClick={() => handleSelectDropLocation(item)}
+                        >
+                          {item.name}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Drop Date and Time */}
+                <div className="booking-modal-date-and-time-container">
+                  {/* Drop Date */}
+                  <div
+                    className="booking-modal-date-container"
+                    ref={dropDateRef}
+                  >
+                    <div
+                      className="booking-modal-date-head"
+                      onClick={() => setDropDateDropdown(!dropDateDropdown)}
+                    >
+                      <h3>
+                        {selectedDropDate
+                          ? selectedDropDate.toDateString()
+                          : "Date"}
+                      </h3>
+                      <CiCalendarDate size={25} color="#000" />
+                    </div>
+                    <div
+                      className={`booking-modal-date-body ${
+                        dropDateDropdown ? "show-pickup-date-calender" : ""
+                      }`}
+                    >
+                      <Calendar
+                        onChange={handleDropDateChange}
+                        value={dropDate}
+                        defaultView="month"
+                        next2Label={null}
+                        prev2Label={null}
+                        /* 🔑 Open calendar from pickup month */
+                        activeStartDate={dropCalendarMonth}
+                        onActiveStartDateChange={({ activeStartDate }) =>
+                          setDropCalendarMonth(activeStartDate)
+                        }
+                        minDate={selectedPickupDate || new Date()}
+                        formatShortWeekday={(locale, date) =>
+                          date
+                            .toLocaleDateString(locale, { weekday: "short" })
+                            .slice(0, 3)
+                        }
+                        nextLabel={<IoIosArrowForward />}
+                        prevLabel={<IoIosArrowBack />}
+                        tileDisabled={({ date, view }) => {
+                          if (view !== "month") return false;
+
+                          // Disable until pickup date is selected
+                          if (!selectedPickupDate) return true;
+
+                          const pickup = new Date(selectedPickupDate);
+                          pickup.setHours(0, 0, 0, 0);
+
+                          const checkDate = new Date(date);
+                          checkDate.setHours(0, 0, 0, 0);
+
+                          return checkDate < pickup;
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Drop Time */}
+                  <div
+                    className="booking-modal-time-container"
+                    ref={dropTimeRef}
+                  >
+                    <div
+                      className="booking-modal-time-head"
+                      onClick={() => setDropTimeDropdown(!dropTimeDropdown)}
+                    >
+                      <h3>{dropTime ? dropTime : "Select Time"}</h3>
+                      <MdOutlineArrowDropDown size={20} color="#000" />
+                    </div>
+
+                    <div
+                      className={`booking-modal-time-body ${
+                        dropTimeDropdown ? "show-pickup-time-list" : ""
+                      }`}
+                    >
+                      {generateTimeList().map((item, index) => (
+                        <p
+                          key={index}
+                          className="booking-modal-time-single-item"
+                          onClick={() => handleDropTimeChange(item.name)}
+                        >
+                          {item.name}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="booking-modal-vehicle-not-available-main-container">
+              <h3>Car Not Available for Selected Dates</h3>
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                  flexDirection: "column",
+                }}
               >
-                <p>Pick-up Location</p>
-
-                <div
-                  className="booking-modal-pickup-dropdown-main"
-                  // tabIndex={0}
-                  // onFocus={() => {
-                  //   if (!pickupLocationDropdown) setPickupLocationDropdown(true);
-                  // }}
-                  // onBlur={() => setPickupLocationDropdown(false)}
-                >
-                  <div
-                    className="booking-modal-pickup-dropdown-head"
-                    onMouseDown={() =>
-                      setPickupLocationDropdown(!pickupLocationDropdown)
-                    }
-                  >
-                    <h3>{pickupLocationValue}</h3>
-                    <MdOutlineArrowDropDown
-                      size={20}
-                      color="var-primary-color"
-                    />
-                  </div>
-
-                  <div
-                    className={`booking-modal-pickup-dropdown-body ${
-                      pickupLocationDropdown ? "show-pickup-locations" : ""
-                    }`}
-                  >
-                    {locations.map((item, index) => (
-                      <p
-                        key={index}
-                        className={`booking-modal-pickup-single-item ${
-                          pickupLocationOptionIndex === index
-                            ? "highlighted"
-                            : ""
-                        }`}
-                        onClick={() => handleSelectLocation(item)}
-                      >
-                        {item.name}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Pickup Date and Time  */}
-              <div className="booking-modal-date-and-time-container">
-                {/* Pickup Date */}
-                <div
-                  className="booking-modal-date-container"
-                  ref={pickupDateRef}
-                >
-                  <div
-                    className="booking-modal-date-head"
-                    onMouseDown={() =>
-                      setPickupDateDropdown(!pickupDateDropdown)
-                    }
-                  >
-                    <h3>
-                      {selectedPickupDate
-                        ? selectedPickupDate.toDateString()
-                        : "Date"}
-                    </h3>
-                    <CiCalendarDate size={25} color="#000" />
-                  </div>
-                  <div
-                    className={`booking-modal-date-body ${
-                      pickupDateDropdown ? "show-pickup-date-calender" : ""
-                    }`}
-                  >
-                    <Calendar
-                      onChange={handlePickupDateChange}
-                      value={pickupDate}
-                      defaultView="month"
-                      next2Label={null}
-                      prev2Label={null}
-                      minDate={new Date()}
-                      formatShortWeekday={(locale, date) =>
-                        date
-                          .toLocaleDateString(locale, { weekday: "short" })
-                          .slice(0, 3)
-                      }
-                      nextLabel={<IoIosArrowForward />}
-                      prevLabel={<IoIosArrowBack />}
-                      tileDisabled={({ date, view }) => {
-                        if (view !== "month") return false;
-
-                        const today = new Date();
-                        today.setHours(0, 0, 0, 0);
-
-                        const checkDate = new Date(date);
-                        checkDate.setHours(0, 0, 0, 0);
-
-                        return checkDate < today;
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Pickup Time */}
-                <div
-                  className="booking-modal-time-container"
-                  ref={pickupTimeRef}
-                  // tabIndex={0}
-                  // onFocus={() => {
-                  //   if (!pickupTimeDropdown) setPickupTimeDropdown(true);
-                  // }}
-                  // onBlur={() => setPickupTimeDropdown(false)}
-                >
-                  <div
-                    className="booking-modal-time-head"
-                    onMouseDown={() => setPickupTimeDropdown((prev) => !prev)}
-                  >
-                    <h3>{pickupTime ? pickupTime : "Select Time"}</h3>
-                    <MdOutlineArrowDropDown size={20} color="#000" />
-                  </div>
-
-                  <div
-                    className={`booking-modal-time-body ${
-                      pickupTimeDropdown ? "show-pickup-time-list" : ""
-                    }`}
-                  >
-                    {generateTimeList().map((item, index) => (
-                      <p
-                        key={index}
-                        className={`booking-modal-time-single-item ${
-                          pickupTimeIndex === index ? "highlighted" : ""
-                        }`}
-                        onClick={() => handlePickupTimeChange(item.name)}
-                      >
-                        {item.name}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                <p>This car is already booked for the dates you selected.</p>
+                <p>
+                  Please try different dates or choose another available car.
+                </p>
+              </span>
+              <button onClick={() => setIsAvailable(true)}>
+                Try another dates
+              </button>
             </div>
-
-            <div className="booking-modal-form-input-single-col-pick-up">
-              {/* Drop Location  */}
-              <div className="booking-modal-pickup-main" ref={DropLocationRef}>
-                <p>Drop-off Location</p>
-
-                <div
-                  className="booking-modal-pickup-dropdown-main"
-                  // tabIndex={0}
-                  // onFocus={() => {
-                  //   if (!dropLocationDropdown) setDropLocationDropdown(true);
-                  // }}
-                  // onBlur={() => setDropLocationDropdown(false)}
-                >
-                  <div
-                    className="booking-modal-pickup-dropdown-head"
-                    onMouseDown={() =>
-                      setDropLocationDropdown(!dropLocationDropdown)
-                    }
-                  >
-                    <h3>{dropLocationValue}</h3>
-                    <MdOutlineArrowDropDown
-                      size={20}
-                      color="var-primary-color"
-                    />
-                  </div>
-
-                  <div
-                    className={`booking-modal-pickup-dropdown-body ${
-                      dropLocationDropdown ? "show-pickup-locations" : ""
-                    }`}
-                  >
-                    {locations.map((item, index) => (
-                      <p
-                        key={index}
-                        className={`booking-modal-pickup-single-item ${
-                          dropLocationOptionIndex === index ? "highlighted" : ""
-                        }`}
-                        onClick={() => handleSelectDropLocation(item)}
-                      >
-                        {item.name}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Drop Date and Time */}
-              <div className="booking-modal-date-and-time-container">
-                {/* Drop Date */}
-                <div className="booking-modal-date-container" ref={dropDateRef}>
-                  <div
-                    className="booking-modal-date-head"
-                    onClick={() => setDropDateDropdown(!dropDateDropdown)}
-                  >
-                    <h3>
-                      {selectedDropDate
-                        ? selectedDropDate.toDateString()
-                        : "Date"}
-                    </h3>
-                    <CiCalendarDate size={25} color="#000" />
-                  </div>
-                  <div
-                    className={`booking-modal-date-body ${
-                      dropDateDropdown ? "show-pickup-date-calender" : ""
-                    }`}
-                  >
-                    <Calendar
-                      onChange={handleDropDateChange}
-                      value={dropDate}
-                      defaultView="month"
-                      next2Label={null}
-                      prev2Label={null}
-                      /* 🔑 Open calendar from pickup month */
-                      activeStartDate={dropCalendarMonth}
-                      onActiveStartDateChange={({ activeStartDate }) =>
-                        setDropCalendarMonth(activeStartDate)
-                      }
-                      minDate={selectedPickupDate || new Date()}
-                      /* 🔒 Disable dates before pickup date */
-                      // minDate={
-                      //   selectedPickupDate
-                      //     ? new Date(
-                      //         selectedPickupDate.getFullYear(),
-                      //         selectedPickupDate.getMonth(),
-                      //         selectedPickupDate.getDate()
-                      //       )
-                      //     : new Date()
-                      // }
-                      // minDate={new Date()}
-                      formatShortWeekday={(locale, date) =>
-                        date
-                          .toLocaleDateString(locale, { weekday: "short" })
-                          .slice(0, 3)
-                      }
-                      nextLabel={<IoIosArrowForward />}
-                      prevLabel={<IoIosArrowBack />}
-                      tileDisabled={({ date, view }) => {
-                        if (view !== "month") return false;
-
-                        // Disable until pickup date is selected
-                        if (!selectedPickupDate) return true;
-
-                        const pickup = new Date(selectedPickupDate);
-                        pickup.setHours(0, 0, 0, 0);
-
-                        const checkDate = new Date(date);
-                        checkDate.setHours(0, 0, 0, 0);
-
-                        return checkDate < pickup;
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Drop Time */}
-                <div className="booking-modal-time-container" ref={dropTimeRef}>
-                  <div
-                    className="booking-modal-time-head"
-                    onClick={() => setDropTimeDropdown(!dropTimeDropdown)}
-                  >
-                    <h3>{dropTime ? dropTime : "Select Time"}</h3>
-                    <MdOutlineArrowDropDown size={20} color="#000" />
-                  </div>
-
-                  <div
-                    className={`booking-modal-time-body ${
-                      dropTimeDropdown ? "show-pickup-time-list" : ""
-                    }`}
-                  >
-                    {generateTimeList().map((item, index) => (
-                      <p
-                        key={index}
-                        className="booking-modal-time-single-item"
-                        onClick={() => handleDropTimeChange(item.name)}
-                      >
-                        {item.name}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
 
         <div className="booking-modal-availability-check-button">
-          <button 
-            className={`booking-modal-check-button ${isSearchPayloadValid ? 'active-check-button' : ''}`} 
-            disabled={!isSearchPayloadValid} 
-            onClick={handleSearchCarAvailabile} 
+          <button
+            className={`booking-modal-check-button ${
+              isSearchPayloadValid ? "active-check-button" : ""
+            }`}
+            disabled={!isSearchPayloadValid}
+            onClick={handleSearchCarAvailabile}
           >
             Check Availability
           </button>

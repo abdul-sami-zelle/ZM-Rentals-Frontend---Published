@@ -496,6 +496,49 @@
     opacity: 1;
 }
 
+.booking-modal-vehicle-not-available-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    min-height: 253px;
+    gap: 15px;
+}
+
+.booking-modal-vehicle-not-available-main-container > h3 {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.booking-modal-vehicle-not-available-main-container > span > p {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+.booking-modal-vehicle-not-available-main-container > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 40px;
+    padding: 5px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--color-white);
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
     .booking-date-select-modal-inner-container {
         width: 45%;
