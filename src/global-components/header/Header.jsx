@@ -64,6 +64,27 @@ const Header = () => {
     return () => clearInterval(interval); // cleanup
   }, []);
 
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const nzTime = new Date().toLocaleTimeString("en-US", {
+        timeZone: "Pacific/Auckland", // 🇳🇿 New Zealand local time
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      });
+
+      setTime(nzTime);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
 
 
 
@@ -117,6 +138,11 @@ const Header = () => {
               Manage Booking
             </Link>
 
+          </div>
+
+          <div className="new-zealand-digital-time-container">
+            <p>Local Time: </p>
+            <h3>{time}</h3>
           </div>
 
 

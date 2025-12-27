@@ -579,6 +579,14 @@ const BookNowClient = () => {
       sessionStorage.removeItem("vehicle-details");
       router.push("/vehicles");
     }
+
+    setBookingPayload((prev) => ({
+      ...prev,
+      user: {
+        ...prev.user,
+        driver_age: pickDrop?.driver_age
+      }
+    }))
   }, []);
 
   const [locations, setLocations] = useState([]);

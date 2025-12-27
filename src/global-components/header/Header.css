@@ -71,7 +71,7 @@
 .promotion-announcement {
     position: absolute;
     opacity: 0;
-    margin-left: -171px;
+    margin-left: 0;
     transform: translateY(100%);
     transition: all 0.8s ease-in-out;
 }
@@ -167,6 +167,31 @@
     transition: all 0.3s ease-in-out;
 }
 
+.new-zealand-digital-time-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: max-content;
+    height: 100%;
+    gap: 5px;
+    flex-shrink: 0;
+    min-width: 150px;
+}
+
+.new-zealand-digital-time-container > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--white-color);
+}
+
+.new-zealand-digital-time-container > h3 {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--white-color);
+}
+
 @media only screen and (max-width: 1023px) {
     .promotion-login-and-manage-booking {
         display: flex !important;
@@ -178,6 +203,10 @@
     .promotion-announcement {
         margin-left: 0;
     }
+    .new-zealand-digital-time-container {
+        display: none;
+    }
+    
 }
 
 @media only screen and (max-width: 767px) {

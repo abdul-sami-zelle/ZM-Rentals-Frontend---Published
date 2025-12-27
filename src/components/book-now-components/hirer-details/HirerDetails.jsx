@@ -419,6 +419,10 @@ const HirerDetails = () => {
 
   const selectedAge = bookingPayload.user.driver_age || "Please Select";
 
+  useEffect(() => {
+    console.log("booking payload", bookingPayload)
+  }, [bookingPayload])
+
   // close dropdown when clicked outside
   useEffect(() => {
     const handleClickOutside = (e) => {

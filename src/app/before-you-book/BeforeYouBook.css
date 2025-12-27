@@ -49,3 +49,20 @@
     padding: 0 25px;
     list-style: disc;
 }
+
+.pdf-download-one {
+    font-size: 18px;
+    color: var(--primary-color);
+    text-decoration: underline;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.pdf-download-two {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 400;
+}
+

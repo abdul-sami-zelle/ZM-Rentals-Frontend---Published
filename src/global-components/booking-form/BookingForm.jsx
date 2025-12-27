@@ -13,6 +13,11 @@ import ScreenResize from "../../utils/screenSize";
 
 import useCalendarNavigation from "../../utils/calanderKeyPress";
 import { url } from "../../utils/services";
+import {
+  getDateAtNZ10AM_UTC,
+  nzDateTimeToUTCISO,
+  toNZMidnight,
+} from "../../utils/midlewares";
 
 const BookingForm = ({
   bgColor,
@@ -93,15 +98,25 @@ const BookingForm = ({
 
   const generateTimeList = () => {
     const times = [];
-    for (let hour = 6; hour <= 21; hour++) {
-      // 6 AM (6) to 9 PM (21)
-      const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+
+    // From 6:00 AM to 9:00 PM
+    const startMinutes = 6 * 60; // 360
+    const endMinutes = 21 * 60; // 1260
+
+    for (let mins = startMinutes; mins <= endMinutes; mins += 30) {
+      let hour = Math.floor(mins / 60);
+      let minute = mins % 60;
+
       const suffix = hour < 12 ? "AM" : "PM";
-      const formattedTime = `${displayHour
+      const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+
+      const formattedTime = `${displayHour.toString().padStart(2, "0")}:${minute
         .toString()
-        .padStart(2, "0")}:00 ${suffix}`;
+        .padStart(2, "0")} ${suffix}`;
+
       times.push({ name: formattedTime });
     }
+
     return times;
   };
 
@@ -112,12 +127,12 @@ const BookingForm = ({
   const [dropDateManuallyChanged, setDropDateManuallyChanged] = useState(false);
   const handlePickupDateChange = (date) => {
     setSelectedPickupDate(date);
-    if(!dropDateManuallyChanged) {
-        const futureDrop = new Date(date);
-        futureDrop.setDate(futureDrop.getDate() + 4);
-        formatePickupDateAndTime(date, pickupTime);
-        getDropOffDateAt10AM(futureDrop);
-        setSelectedDropDate(futureDrop);
+    if (!dropDateManuallyChanged) {
+      const futureDrop = new Date(date);
+      futureDrop.setDate(futureDrop.getDate() + 4);
+      formatePickupDateAndTime(date, pickupTime);
+      getDropOffDateAt10AM(futureDrop);
+      setSelectedDropDate(futureDrop);
     }
     setPickupCalender(false); // hide after selection
   };
@@ -186,9 +201,8 @@ const BookingForm = ({
   };
 
   const handleDropofTimeAndDate = (date, time) => {
-    // Combine selected date and selected time
-    const [hourMin, meridiem] = time.split(" ");
-    let [hour, minute] = hourMin.split(":").map(Number);
+    const [hourMin, meridiem] = time?.split(" ");
+    let [hour, minute] = hourMin?.split(":").map(Number);
 
     if (meridiem === "PM" && hour !== 12) hour += 12;
     if (meridiem === "AM" && hour === 12) hour = 0;
@@ -196,16 +210,16 @@ const BookingForm = ({
     // Create a new Date object in New Zealand Time (NZT)
     const nzDateTime = new Date(
       Date.UTC(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
+        date?.getFullYear(),
+        date?.getMonth(),
+        date?.getDate(),
         hour,
         minute
       )
     );
 
     // Convert the date to ISO string with Z (treated as UTC)
-    const formatted = nzDateTime.toISOString(); // gives: 2025-06-20T11:00:00.000Z
+    const formatted = nzDateTime?.toISOString(); // gives: 2025-06-20T11:00:00.000Z
 
     // Update your payload here:
     setSearchVehiclePayload((prev) => ({
@@ -232,24 +246,41 @@ const BookingForm = ({
     return `${year}-${month}-${day}T10:00:00.000Z`;
   };
 
-  const getPickupDateAt10AM = (dateString) => {
-    const date = new Date(dateString);
-    const formattedDate = formatDateAt10AM(date);
+  
 
-    setSearchVehiclePayload((prev) => ({
-      ...prev,
-      pickup_time: formattedDate,
-    }));
+  const getPickupDateAt10AM = (dateString) => {
+    setSearchVehiclePayload((prev) => {
+      // ⛔ Don't override user's selected time
+      if (prev.pickup_time) return prev;
+
+      const date = new Date(dateString);
+      const formattedDate = formatDateAt10AM(date);
+
+      console.log("drop date time call", formattedDate);
+
+      return {
+        ...prev,
+        pickup_time: formattedDate,
+      };
+    });
   };
 
-  const getDropOffDateAt10AM = (dateString) => {
-    const date = new Date(dateString);
-    const formattedDate = formatDateAt10AM(date);
 
-    setSearchVehiclePayload((prev) => ({
-      ...prev,
-      drop_time: formattedDate,
-    }));
+  const getDropOffDateAt10AM = (dateString) => {
+    setSearchVehiclePayload((prev) => {
+      // ⛔ Don't override user's selected time
+      if (prev.drop_time) return prev;
+
+      const date = new Date(dateString);
+      const formattedDate = formatDateAt10AM(date);
+
+      console.log("drop date time call", formattedDate);
+
+      return {
+        ...prev,
+        drop_time: formattedDate,
+      };
+    });
   };
 
   const selectPickDate = (daysAhead) => {
@@ -272,12 +303,6 @@ const BookingForm = ({
   };
 
   const selectFutureDate = (date) => {
-    // const current = new Date(date);
-    // const futureDate = new Date(current);
-    // futureDate.setDate(current.getDate() + 4)
-    // getDropOffDateAt10AM(futureDate)
-    // setSelectedDropDate(futureDate)
-
     if (!date) return;
 
     // Only auto-set drop date if drop date not manually changed OR matches old default

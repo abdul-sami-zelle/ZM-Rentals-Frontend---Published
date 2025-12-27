@@ -28,6 +28,32 @@ const BeforeYouBook = () => {
           </ul>
         </div>
 
+        <h2 className='global-heading-style'>Driving in New Zealand</h2>
+        <p className='global-content-style'>
+          An overview for immigrants and visitors about driving in New Zealand. You can download the multilingual booklet or the booklet in english from the links below.
+        </p>
+
+        <span style={{
+          display: 'flex',
+          alignItems: 'start',
+          justifyContent: 'start',
+          width: '100%',
+          gap: '10px',
+          flexDirection: 'column'
+        }}>
+          <a className='pdf-download-one' href="/assets/driving-in-nz-english.pdf" download="driving-in-nz-english.pdf">multilingual booklet [PDF, 9 MB]</a>
+          <a className='pdf-download-two' href="/assets/driving-in-nz.pdf" download="driving-in-nz.pdf">English (PDF)  - 6 Pages, 783 KB</a>
+        </span>
+
+
+        <div className='before-you-book-requirments'>
+            <h2 className='global-content-style'>Publication Details</h2>
+            <ul>
+              <li className='global-content-style'>Author: NZ Transport Agency Waka Kotahi</li>
+               <li className='global-content-style'>Published: May 2024</li>
+            </ul>
+        </div>
+
         <h2 className='global-heading-style'>Credit Card Considerations</h2>
         <p className='global-content-style'>
           Your credit card is more than just a payment method; it's your security deposit and often your insurance lifeline. We require a major credit card with sufficient available credit to cover the estimated rental cost plus a security hold, typically ranging from $200-$500, depending on the vehicle class.

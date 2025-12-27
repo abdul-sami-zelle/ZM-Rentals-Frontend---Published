@@ -170,7 +170,10 @@ const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSear
     const calculateBaseRate = (rates = []) => {
     const total_rates = rates.reduce((sum, item) => sum + item.rate, 0)
     const base_rate = rates?.length ? total_rates / rates?.length : 0;
-    return base_rate
+    // Format the number
+    const formattedRate =
+      base_rate % 1 === 0 ? base_rate : base_rate.toFixed(2);
+    return formattedRate
   }
 
     useEffect(() => {
@@ -282,14 +285,14 @@ const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSear
                                 vehicleDetails.available !== 0 && (
                                     <div className='mob-view-car-price'>
                                         <span>
-                                            <h3>NZ$ {vehicleDetails?.base_rate}</h3>
+                                            <h3>NZ$ {calculateBaseRate(vehicleDetails?.daily_rates)}</h3>
                                             <p>/day</p>
                                         </span>
 
                                         {
                                             vehicleDetails.duration_discount === 0 ? (
                                                 <span>
-                                                    <h3 style={{marginRight: '5px'}}>NZ$ {formatPrice(vehicleDetails.sub_total)}</h3>
+                                                    <h3 style={{marginRight: '5px'}}>NZ$ {formatPrice(vehicleDetails.sub_total)} </h3>
                                                     <p>Total</p>
                                                 </span>
                                             ) : (
