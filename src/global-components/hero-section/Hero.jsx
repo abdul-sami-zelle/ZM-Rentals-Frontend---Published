@@ -16,8 +16,6 @@ const Hero = ({ bgImage, locationHeading, locationPara, dualHeading = true, marg
     const [toustMessage, setToustMessage] = useState('')
     const [isPickupSelected, setIsPickupSelected] = useState(false);
 
-    
-
     const isValidDropDate = (pickup, drop) => {
         if (!pickup || !drop) return false; // both must exist
         return new Date(drop) >= new Date(pickup);
@@ -92,8 +90,6 @@ const Hero = ({ bgImage, locationHeading, locationPara, dualHeading = true, marg
 
     };
 
-
-
     const [isSticky, setIsSticky] = useState(false);
     const bookingFormRef = useRef(null)
     useEffect(() => {
@@ -115,20 +111,20 @@ const Hero = ({ bgImage, locationHeading, locationPara, dualHeading = true, marg
 
     return (
         <div className='hero-section-main-container' style={{ marginBottom: marginBottom, }}>
+
             <div
                 className='hero-section-inner-container'
                 style={{ backgroundImage: `url(${bgImage})`, minHeight: minHeight }}
             >
                 <div className='hero-section-content-container'>
                     <div className='hero-section-main-heading-container'>
+
                         {dualHeading ? (
                             <h3>
-                                {/* Celebrating 25 Years of ZM: <br />  WIN Your Share of $25,000!* */}
                                 Your Auckland <br /> Adventure Starts Here
                             </h3>
                         ) : (
                             <h3>
-                                {/* Celebrating 25 Years of ZM: <br />  WIN Your Share of $25,000!* */}
                                 {locationHeading}
                             </h3>
                         )}
@@ -151,6 +147,7 @@ const Hero = ({ bgImage, locationHeading, locationPara, dualHeading = true, marg
                     </div>
                 </div>
             </div>
+
             <Toust
                 showToust={toustShow}
                 setShowToust={setTOustShow}

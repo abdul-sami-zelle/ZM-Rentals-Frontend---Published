@@ -13,6 +13,7 @@ import { useBookingContext } from "../../context/bookingContext/bookingContext";
 import { useOutsideClick } from "../../utils/DetectClickOutside";
 import { useDropdownNavigation } from "../../utils/keyPress";
 import useCalendarNavigation from "../../utils/calanderKeyPress";
+import { nzStartOfToday } from "../../utils/midlewares";
 
 const BookingDatesModal = ({
   showBookingModal,
@@ -63,58 +64,138 @@ const BookingDatesModal = ({
   const [selectedPickupDate, setSelectedPickupDate] = useState("");
   const [pickupTime, setPickupTime] = useState("10:00 AM");
 
+  // const handlePickupDateChange = (date) => {
+  //   if (!date) return;
+  //   const d = new Date(date);
+
+  //   // pickupTime example: "10:00 AM"
+  //   const [time, modifier] = pickupTime.split(" ");
+  //   let [hours, minutes] = time.split(":");
+
+  //   hours = Number(hours);
+  //   minutes = Number(minutes);
+
+  //   // Convert to 24-hour format
+  //   if (modifier === "PM" && hours !== 12) {
+  //     hours += 12;
+  //   }
+  //   if (modifier === "AM" && hours === 12) {
+  //     hours = 0;
+  //   }
+
+  //   d.setHours(hours);
+  //   d.setMinutes(minutes);
+  //   d.setSeconds(0);
+  //   d.setMilliseconds(0);
+
+  //   const year = d.getFullYear();
+  //   const month = String(d.getMonth() + 1).padStart(2, "0");
+  //   const day = String(d.getDate()).padStart(2, "0");
+  //   const hh = String(d.getHours()).padStart(2, "0");
+  //   const mm = String(d.getMinutes()).padStart(2, "0");
+  //   const ss = String(d.getSeconds()).padStart(2, "0");
+
+  //   setSearchPayload((prev) => ({
+  //     ...prev,
+  //     pickup_time: `${year}-${month}-${day}T${hh}:${mm}:${ss}.000Z`,
+  //   }));
+
+  //   setSelectedPickupDate(date);
+
+  //   setPickupDateDropdown(false); // hide after selection
+  // };
+
   const handlePickupDateChange = (date) => {
-    if (!date) return;
-    const d = new Date(date);
+    if (!date || !pickupTime) return;
 
     // pickupTime example: "10:00 AM"
     const [time, modifier] = pickupTime.split(" ");
-    let [hours, minutes] = time.split(":");
-
-    hours = Number(hours);
-    minutes = Number(minutes);
+    let [hours, minutes] = time.split(":").map(Number);
 
     // Convert to 24-hour format
-    if (modifier === "PM" && hours !== 12) {
-      hours += 12;
-    }
-    if (modifier === "AM" && hours === 12) {
-      hours = 0;
-    }
+    if (modifier === "PM" && hours !== 12) hours += 12;
+    if (modifier === "AM" && hours === 12) hours = 0;
 
-    d.setHours(hours);
-    d.setMinutes(minutes);
-    d.setSeconds(0);
-    d.setMilliseconds(0);
+    // 🇳🇿 Extract NZ date parts (NO browser timezone influence)
+    const nzParts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Pacific/Auckland",
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    }).formatToParts(date);
 
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const mm = String(d.getMinutes()).padStart(2, "0");
-    const ss = String(d.getSeconds()).padStart(2, "0");
+    const year = Number(nzParts.find((p) => p.type === "year").value);
+    const month = Number(nzParts.find((p) => p.type === "month").value) - 1;
+    const day = Number(nzParts.find((p) => p.type === "day").value);
+
+    // ✅ Build UTC date assuming input was NZ local
+    const nzPickupUTC = new Date(
+      Date.UTC(year, month, day, hours, minutes, 0, 0)
+    );
+
+    const iso = nzPickupUTC.toISOString();
 
     setSearchPayload((prev) => ({
       ...prev,
-      pickup_time: `${year}-${month}-${day}T${hh}:${mm}:${ss}.000Z`,
+      pickup_time: iso,
     }));
 
-    setSelectedPickupDate(date);
+    // Keep calendar date as NZ-local date
+    setSelectedPickupDate(new Date(year, month, day));
 
-    setPickupDateDropdown(false); // hide after selection
+    setPickupDateDropdown(false);
   };
 
-  const generateTimeList = () => {
+  const generateTimeList = (selectedDate) => {
     const times = [];
-    for (let hour = 6; hour <= 21; hour++) {
-      // 6 AM (6) to 9 PM (21)
-      const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+
+    if (!selectedDate) return times;
+
+    // 🇳🇿 Current NZ datetime
+    const nzNow = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "Pacific/Auckland" })
+    );
+
+    // Normalize selectedDate to NZ 00:00
+    const nzSelected = new Date(
+      new Date(selectedDate).toLocaleString("en-US", {
+        timeZone: "Pacific/Auckland",
+      })
+    );
+    nzSelected.setHours(0, 0, 0, 0);
+
+    // Normalize today to NZ 00:00
+    const nzToday = new Date(nzNow);
+    nzToday.setHours(0, 0, 0, 0);
+
+    const isToday = nzSelected.getTime() === nzToday.getTime();
+
+    // Current minutes only matter if date is today
+    const currentMinutes = isToday
+      ? nzNow.getHours() * 60 + nzNow.getMinutes()
+      : -1;
+
+    // From 6:00 AM to 9:00 PM
+    const startMinutes = 6 * 60; // 360
+    const endMinutes = 21 * 60; // 1260
+
+    for (let mins = startMinutes; mins <= endMinutes; mins += 30) {
+      let hour = Math.floor(mins / 60);
+      let minute = mins % 60;
+
       const suffix = hour < 12 ? "AM" : "PM";
-      const formattedTime = `${displayHour
+      const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+
+      const formattedTime = `${displayHour.toString().padStart(2, "0")}:${minute
         .toString()
-        .padStart(2, "0")}:00 ${suffix}`;
-      times.push({ name: formattedTime });
+        .padStart(2, "0")} ${suffix}`;
+
+      times.push({
+        name: formattedTime,
+        isPassed: isToday ? mins < currentMinutes : false, // ✅ disable past times only for today
+      });
     }
+
     return times;
   };
 
@@ -297,7 +378,6 @@ const BookingDatesModal = ({
     setLoader(true);
     try {
       const response = await axios.post(api, searchPayload);
-      console.log("respo", response);
       if (response.status === 200) {
         const carResponse = await axios.get(api2);
         if (carResponse.status === 200) {
@@ -403,8 +483,17 @@ const BookingDatesModal = ({
     setPickupLocationValue("Select Pickup Location");
     setDropLocationValue("Select Drop off Location");
     setSelectedPickupDate("");
-    setSelectedDropDate("")
+    setSelectedDropDate("");
   };
+
+  // 🇳🇿 Pickup date normalized
+  const nzPickupDate = selectedPickupDate
+    ? (() => {
+        const d = new Date(selectedPickupDate);
+        d.setHours(0, 0, 0, 0); // normalize to 00:00
+        return d;
+      })()
+    : null;
 
   return (
     <div
@@ -508,11 +597,11 @@ const BookingDatesModal = ({
                     >
                       <Calendar
                         onChange={handlePickupDateChange}
-                        value={pickupDate}
+                        value={selectedPickupDate}
                         defaultView="month"
                         next2Label={null}
                         prev2Label={null}
-                        minDate={new Date()}
+                        minDate={nzStartOfToday}
                         formatShortWeekday={(locale, date) =>
                           date
                             .toLocaleDateString(locale, { weekday: "short" })
@@ -529,7 +618,7 @@ const BookingDatesModal = ({
                           const checkDate = new Date(date);
                           checkDate.setHours(0, 0, 0, 0);
 
-                          return checkDate < today;
+                          return checkDate < nzStartOfToday;
                         }}
                       />
                     </div>
@@ -553,17 +642,21 @@ const BookingDatesModal = ({
                         pickupTimeDropdown ? "show-pickup-time-list" : ""
                       }`}
                     >
-                      {generateTimeList().map((item, index) => (
-                        <p
-                          key={index}
-                          className={`booking-modal-time-single-item ${
-                            pickupTimeIndex === index ? "highlighted" : ""
-                          }`}
-                          onClick={() => handlePickupTimeChange(item.name)}
-                        >
-                          {item.name}
-                        </p>
-                      ))}
+                      {generateTimeList(selectedPickupDate).map(
+                        (item, index) => (
+                          <p
+                            key={index}
+                            className={`booking-modal-time-single-item ${
+                              pickupTimeIndex === index ? "highlighted" : ""
+                            }
+                            ${item.isPassed === true ? "disable-time" : ""}
+                            `}
+                            onClick={() => handlePickupTimeChange(item.name)}
+                          >
+                            {item.name}
+                          </p>
+                        )
+                      )}
                     </div>
                   </div>
                 </div>
@@ -638,7 +731,7 @@ const BookingDatesModal = ({
                     >
                       <Calendar
                         onChange={handleDropDateChange}
-                        value={dropDate}
+                        value={selectedDropDate}
                         defaultView="month"
                         next2Label={null}
                         prev2Label={null}
@@ -647,7 +740,7 @@ const BookingDatesModal = ({
                         onActiveStartDateChange={({ activeStartDate }) =>
                           setDropCalendarMonth(activeStartDate)
                         }
-                        minDate={selectedPickupDate || new Date()}
+                        minDate={nzPickupDate || nzStartOfToday}
                         formatShortWeekday={(locale, date) =>
                           date
                             .toLocaleDateString(locale, { weekday: "short" })
@@ -658,16 +751,16 @@ const BookingDatesModal = ({
                         tileDisabled={({ date, view }) => {
                           if (view !== "month") return false;
 
-                          // Disable until pickup date is selected
-                          if (!selectedPickupDate) return true;
+                          const tileDate = new Date(date);
+                          tileDate.setHours(0, 0, 0, 0);
 
-                          const pickup = new Date(selectedPickupDate);
-                          pickup.setHours(0, 0, 0, 0);
+                          // ❌ If pickup selected → disable same day & past days
+                          if (nzPickupDate) {
+                            return tileDate <= nzPickupDate;
+                          }
 
-                          const checkDate = new Date(date);
-                          checkDate.setHours(0, 0, 0, 0);
-
-                          return checkDate < pickup;
+                          // 🔒 If pickup not selected yet, disable today & past (NZ)
+                          return tileDate < nzStartOfToday;
                         }}
                       />
                     </div>
@@ -691,10 +784,12 @@ const BookingDatesModal = ({
                         dropTimeDropdown ? "show-pickup-time-list" : ""
                       }`}
                     >
-                      {generateTimeList().map((item, index) => (
+                      {generateTimeList(selectedDropDate).map((item, index) => (
                         <p
                           key={index}
-                          className="booking-modal-time-single-item"
+                          className={`booking-modal-time-single-item ${
+                            item.isPassed === true ? "disable-time" : ""
+                          }`}
                           onClick={() => handleDropTimeChange(item.name)}
                         >
                           {item.name}
@@ -737,7 +832,7 @@ const BookingDatesModal = ({
             disabled={!isSearchPayloadValid}
             onClick={handleSearchCarAvailabile}
           >
-            Check Availability
+            Continue
           </button>
         </div>
       </div>

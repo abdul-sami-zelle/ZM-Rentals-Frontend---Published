@@ -86,7 +86,6 @@ export default function Home() {
     },
   ]
 
-
   const carsDetails = [
     {
       heading: 'Wide Collection of Rental Cars in Auckland',
@@ -136,8 +135,6 @@ export default function Home() {
         discountImage={'/assets/images/discount-banners/Go_Rentals_Newsletter.jpg'}
         marginBottom={'25px'}
       />
-
-      
 
       <GalleryDetails
         flexDirection={'row'}

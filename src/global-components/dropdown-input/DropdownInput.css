@@ -154,6 +154,11 @@
     color: #FFF;
 }
 
+.drop-down-list-single-item.disable-time {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
 @media only screen and (min-width: 1024px) and (max-width: 1060px) {
     .dropdown-option-select-head > p {
         font-size: 12px;

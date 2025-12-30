@@ -68,7 +68,7 @@ const DropdownInput = ({
         </div>
         <div className={`dropdown-list-container ${showList ? 'show-drop-down-list' : ''}`} style={{height: showList ? height : 0}}>
             {data.map((item, index) => (
-                <p className={`drop-down-list-single-item ${refIndex === index ? 'active-dropdown-item' : ''}`}  key={index} onClick={() => handleSelectValue(item)}>{item.name}</p>
+                <p className={`drop-down-list-single-item ${refIndex === index ? 'active-dropdown-item' : ''} ${item.isPassed ? 'disable-time' : ''}`}  key={index} onClick={() => {item.isPassed ? null : handleSelectValue(item)} }>{item.name}</p>
             ))}
         </div>
     </div>

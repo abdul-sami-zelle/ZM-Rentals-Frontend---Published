@@ -225,6 +225,7 @@ const Vehicles = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, []);
 
+  
 
   return (
     <div className='page-main-container '>

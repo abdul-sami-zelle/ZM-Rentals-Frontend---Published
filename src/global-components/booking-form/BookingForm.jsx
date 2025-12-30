@@ -7,32 +7,27 @@ import { GoArrowRight } from "react-icons/go";
 import Calendar from "react-calendar";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useSearchVehicle } from "../../context/searchVehicleContext/searchVehicleContext";
-import { useRouter } from "next/navigation";
 import axios from "axios";
 import ScreenResize from "../../utils/screenSize";
 
 import useCalendarNavigation from "../../utils/calanderKeyPress";
 import { url } from "../../utils/services";
 import {
-  getDateAtNZ10AM_UTC,
-  nzDateTimeToUTCISO,
-  toNZMidnight,
+  convertToNZDate,
+  nzStartOfToday,
+  nzToday,
 } from "../../utils/midlewares";
 
 const BookingForm = ({
   bgColor,
-  textColor,
-  textShadow,
   primaryButtonText,
   boxShadow,
   handleSearchVehicles,
   setHeight = false,
-  isPickupSelected,
   setIsPickupSelected,
 }) => {
   const [pickupCalender, setPickupCalender] = useState(false);
   const [dropCalender, setDropCalender] = useState(false);
-  const router = useRouter();
   const { isInRange, width } = ScreenResize(768, 1310);
   const { isMobile, mobWidth } = ScreenResize(0, 767);
 
@@ -96,8 +91,34 @@ const BookingForm = ({
     }
   }, [locations]);
 
-  const generateTimeList = () => {
+  const generateTimeList = (selectedDate) => {
     const times = [];
+
+    if (!selectedDate) return times;
+
+    // 🇳🇿 Current NZ datetime
+    const nzNow = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "Pacific/Auckland" })
+    );
+
+    // Normalize selectedDate to NZ 00:00
+    const nzSelected = new Date(
+      new Date(selectedDate).toLocaleString("en-US", {
+        timeZone: "Pacific/Auckland",
+      })
+    );
+    nzSelected.setHours(0, 0, 0, 0);
+
+    // Normalize today to NZ 00:00
+    const nzToday = new Date(nzNow);
+    nzToday.setHours(0, 0, 0, 0);
+
+    const isToday = nzSelected.getTime() === nzToday.getTime();
+
+    // Current minutes only matter if date is today
+    const currentMinutes = isToday
+      ? nzNow.getHours() * 60 + nzNow.getMinutes()
+      : -1;
 
     // From 6:00 AM to 9:00 PM
     const startMinutes = 6 * 60; // 360
@@ -114,7 +135,10 @@ const BookingForm = ({
         .toString()
         .padStart(2, "0")} ${suffix}`;
 
-      times.push({ name: formattedTime });
+      times.push({
+        name: formattedTime,
+        isPassed: isToday ? mins < currentMinutes : false, // ✅ disable past times only for today
+      });
     }
 
     return times;
@@ -126,11 +150,13 @@ const BookingForm = ({
 
   const [dropDateManuallyChanged, setDropDateManuallyChanged] = useState(false);
   const handlePickupDateChange = (date) => {
-    setSelectedPickupDate(date);
+    const nzPickupDate = convertToNZDate(date);
+
+    setSelectedPickupDate(nzPickupDate);
     if (!dropDateManuallyChanged) {
-      const futureDrop = new Date(date);
+      const futureDrop = new Date(nzPickupDate);
       futureDrop.setDate(futureDrop.getDate() + 4);
-      formatePickupDateAndTime(date, pickupTime);
+      formatePickupDateAndTime(nzPickupDate, pickupTime);
       getDropOffDateAt10AM(futureDrop);
       setSelectedDropDate(futureDrop);
     }
@@ -138,8 +164,9 @@ const BookingForm = ({
   };
 
   const handleDropDateChange = (date) => {
-    setSelectedDropDate(date);
-    handleDropofTimeAndDate(date, dropupTime);
+    const nzDropDate = convertToNZDate(date);
+    setSelectedDropDate(nzDropDate);
+    handleDropofTimeAndDate(nzDropDate, dropupTime);
     setDropCalender(false); // hide after selection
     setDropDateManuallyChanged(true);
   };
@@ -170,6 +197,7 @@ const BookingForm = ({
   const handleDropofTime = (value) => {
     setDropupTime(value.name);
     handleDropofTimeAndDate(selectedDropDate, value.name);
+    setDropDateManuallyChanged(true);
   };
 
   const formatePickupDateAndTime = (date, time) => {
@@ -180,19 +208,24 @@ const BookingForm = ({
     if (meridiem === "PM" && hour !== 12) hour += 12;
     if (meridiem === "AM" && hour === 12) hour = 0;
 
-    // Create a new Date object in New Zealand Time (NZT)
-    const nzDateTime = new Date(
-      Date.UTC(
-        date?.getFullYear(),
-        date?.getMonth(),
-        date?.getDate(),
-        hour,
-        minute
-      )
-    );
+    // 2️⃣ Get NZ date parts
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Pacific/Auckland",
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    }).formatToParts(date);
+
+    const year = Number(parts.find((p) => p.type === "year").value);
+    const month = Number(parts.find((p) => p.type === "month").value) - 1;
+    const day = Number(parts.find((p) => p.type === "day").value);
+
+    // 3️⃣ Build NZ date object
+    const nzDate = new Date(Date.UTC(year, month, day, hour, minute, 0));
 
     // Convert the date to ISO string with Z (treated as UTC)
-    const formatted = nzDateTime?.toISOString(); // gives: 2025-06-20T11:00:00.000Z
+    const formatted = nzDate?.toISOString(); // gives: 2025-06-20T11:00:00.000Z
+    console.log("NZ ISO string:", formatted);
     // Update your payload here:
     setSearchVehiclePayload((prev) => ({
       ...prev,
@@ -207,19 +240,23 @@ const BookingForm = ({
     if (meridiem === "PM" && hour !== 12) hour += 12;
     if (meridiem === "AM" && hour === 12) hour = 0;
 
-    // Create a new Date object in New Zealand Time (NZT)
-    const nzDateTime = new Date(
-      Date.UTC(
-        date?.getFullYear(),
-        date?.getMonth(),
-        date?.getDate(),
-        hour,
-        minute
-      )
-    );
+    // 2️⃣ Get NZ date parts
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Pacific/Auckland",
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    }).formatToParts(date);
+
+    const year = Number(parts.find((p) => p.type === "year").value);
+    const month = Number(parts.find((p) => p.type === "month").value) - 1;
+    const day = Number(parts.find((p) => p.type === "day").value);
+
+    // 3️⃣ Build NZ date object
+    const nzDate = new Date(Date.UTC(year, month, day, hour, minute, 0));
 
     // Convert the date to ISO string with Z (treated as UTC)
-    const formatted = nzDateTime?.toISOString(); // gives: 2025-06-20T11:00:00.000Z
+    const formatted = nzDate?.toISOString(); // gives: 2025-06-20T11:00:00.000Z
 
     // Update your payload here:
     setSearchVehiclePayload((prev) => ({
@@ -236,31 +273,41 @@ const BookingForm = ({
     setDriverAge(age.name);
   };
 
-  // Reusable formatter (keeps calendar date, ignores timezone)
-  const formatDateAt10AM = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-
-    // Always fix to 10 AM
-    return `${year}-${month}-${day}T10:00:00.000Z`;
-  };
-
-  
-
   const getPickupDateAt10AM = (dateString) => {
+    if(pickupTime) return
     setSearchVehiclePayload((prev) => {
       // ⛔ Don't override user's selected time
       if (prev.pickup_time) return prev;
 
       const date = new Date(dateString);
-      const formattedDate = formatDateAt10AM(date);
 
-      console.log("drop date time call", formattedDate);
+      const nzParts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Pacific/Auckland",
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+      }).formatToParts(date);
+
+      const year = Number(nzParts.find((p) => p.type === "year").value);
+      const month = Number(nzParts.find((p) => p.type === "month").value) - 1;
+      const day = Number(nzParts.find((p) => p.type === "day").value);
+
+      // Split hour and minute
+      const [hourMin, meridiem] = pickupTime?.split(" "); // ["10:00", "AM"]
+      let [hour, minute] = hourMin?.split(":")?.map(Number); // [10, 0]
+
+      // Convert to 24-hour format if needed
+      if (meridiem === "PM" && hour !== 12) hour += 12;
+      if (meridiem === "AM" && hour === 12) hour = 0;
+
+      // Build NZ 10 AM date in UTC
+      const nzPickDate = new Date(Date.UTC(year, month, day, hour !== 0 ? hour : 10, minute ?? 0, 0));
+
+      const formatted = nzPickDate.toISOString();
 
       return {
         ...prev,
-        pickup_time: formattedDate,
+        pickup_time: formatted,
       };
     });
   };
@@ -268,25 +315,47 @@ const BookingForm = ({
 
   const getDropOffDateAt10AM = (dateString) => {
     setSearchVehiclePayload((prev) => {
-      // ⛔ Don't override user's selected time
-      if (prev.drop_time) return prev;
+      // ✅ Only auto-set if user did not select drop time
+      if (prev.drop_time && dropDateManuallyChanged) return prev;
 
       const date = new Date(dateString);
-      const formattedDate = formatDateAt10AM(date);
 
-      console.log("drop date time call", formattedDate);
+      // 🇳🇿 Get NZ date components
+      const nzParts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Pacific/Auckland",
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+      }).formatToParts(date);
+
+      const year = Number(nzParts.find((p) => p.type === "year").value);
+      const month = Number(nzParts.find((p) => p.type === "month").value) - 1;
+      const day = Number(nzParts.find((p) => p.type === "day").value);
+
+      // Split hour and minute
+      const [hourMin, meridiem] = dropupTime.split(" "); // ["10:00", "AM"]
+      let [hour, minute] = hourMin.split(":").map(Number); // [10, 0]
+
+      // // Convert to 24-hour format if needed
+      if (meridiem === "PM" && hour !== 12) hour += 12;
+      if (meridiem === "AM" && hour === 12) hour = 0;
+
+      // Build NZ 10 AM date in UTC
+      const nzDropDate = new Date(Date.UTC(year, month, day, hour, minute, 0));
+
+      const formatted = nzDropDate.toISOString();
 
       return {
         ...prev,
-        drop_time: formattedDate,
+        drop_time: formatted,
       };
     });
   };
 
-  const selectPickDate = (daysAhead) => {
-    const today = new Date();
+  const selectPickDate = () => {
+    const today = nzToday;
     const futureDate = new Date(today);
-    futureDate.setDate(today.getDate() + daysAhead);
+    futureDate.setDate(today.getDate());
     getPickupDateAt10AM(futureDate);
     setSelectedPickupDate(futureDate); // Update selected date
   };
@@ -328,8 +397,8 @@ const BookingForm = ({
   // 🔹 Set default dates only if empty
   useEffect(() => {
     if (!searchVehiclePayload.pickup_time && !searchVehiclePayload.drop_time) {
-      selectPickDate(4);
-      selectDropDate(8);
+      selectPickDate();
+      selectDropDate(4);
     }
   }, []);
 
@@ -378,6 +447,15 @@ const BookingForm = ({
     if (pickedDate) handleDropDateChange(pickedDate);
   });
 
+  // 🇳🇿 Pickup date normalized
+  const nzPickupDate = selectedPickupDate
+    ? (() => {
+        const d = new Date(selectedPickupDate);
+        d.setHours(0, 0, 0, 0); // normalize to 00:00
+        return d;
+      })()
+    : null;
+
   return (
     <div
       className={`booking-form-main-container ${
@@ -388,7 +466,9 @@ const BookingForm = ({
       style={{ boxShadow: boxShadow }}
     >
       <div className="booking-form-inputs-container">
+
         <div className="booking-form-inputs">
+
           <div className="booking-form-input-single-col-pick-up">
             <DropdownInput
               width={isInRange ? "70%" : "100%"}
@@ -405,6 +485,7 @@ const BookingForm = ({
               setSelectedValue={setPickupCity}
               setHeight={setHeight}
             />
+
             <div className="booking-time-container">
               <div
                 ref={pickupCalanderRef}
@@ -427,7 +508,7 @@ const BookingForm = ({
                       defaultView="month"
                       next2Label={null}
                       prev2Label={null}
-                      minDate={new Date()}
+                      minDate={nzStartOfToday}
                       formatShortWeekday={(locale, date) =>
                         date
                           .toLocaleDateString(locale, { weekday: "short" })
@@ -438,13 +519,11 @@ const BookingForm = ({
                       tileDisabled={({ date, view }) => {
                         if (view !== "month") return false;
 
-                        const today = new Date();
-                        today.setHours(0, 0, 0, 0);
+                        const tileDate = new Date(date);
+                        tileDate.setHours(0, 0, 0, 0);
 
-                        const checkDate = new Date(date);
-                        checkDate.setHours(0, 0, 0, 0);
-
-                        return checkDate < today;
+                        // ✅ Disable past dates based on NZ
+                        return tileDate < nzStartOfToday;
                       }}
                     />
                   </div>
@@ -455,7 +534,7 @@ const BookingForm = ({
                 width={isInRange ? "75%" : "65%"}
                 height={"162px"}
                 defaultValue={"Time"}
-                data={generateTimeList()}
+                data={generateTimeList(selectedPickupDate)}
                 setSelectedCity={handleSelectPickupTime}
                 bgColor={bgColor}
                 setClicktype={setClicktype}
@@ -463,9 +542,11 @@ const BookingForm = ({
                 setSelectedValue={setPickupTime}
               />
             </div>
+
           </div>
 
           <div className={`booking-form-input-single-col-drop-off`}>
+
             <DropdownInput
               width={isInRange ? "70%" : "100%"}
               height={"64px"}
@@ -483,7 +564,9 @@ const BookingForm = ({
             />
 
             <div className="booking-time-container">
+
               <div ref={dropCalandrRef} className="select-drop-up-date-button">
+
                 <button
                   className="select-date-button"
                   onClick={() => setDropCalender((prev) => !prev)}
@@ -506,38 +589,45 @@ const BookingForm = ({
                           .slice(0, 3)
                       }
                       // 🔹 minDate = pickup date (allows selecting 1+ day bookings)
-                      minDate={selectedPickupDate || new Date()}
+                      minDate={nzPickupDate || nzStartOfToday}
                       tileDisabled={({ date, view }) => {
-                        if (view !== "month") return false; // only disable days
+                        if (view !== "month") return false;
 
-                        if (!selectedPickupDate) return true;
+                        const tileDate = new Date(date);
+                        tileDate.setHours(0, 0, 0, 0);
 
-                        const pickupDate = new Date(selectedPickupDate);
-                        pickupDate.setHours(0, 0, 0, 0);
+                        // ❌ If pickup selected → disable same day & past days
+                        if (nzPickupDate) {
+                          return tileDate <= nzPickupDate;
+                        }
 
-                        const checkDate = new Date(date);
-                        checkDate.setHours(0, 0, 0, 0);
-
-                        return checkDate < pickupDate; // disable days before pickup
+                        // 🔒 If pickup not selected yet, disable today & past (NZ)
+                        return tileDate < nzStartOfToday;
                       }}
                     />
                   </div>
                 )}
+
               </div>
+
               <DropdownInput
                 width={isInRange ? "75%" : "65%"}
                 height={"162px"}
                 defaultValue={"Time"}
-                data={generateTimeList()}
+                data={generateTimeList(selectedDropDate)}
                 setClicktype={setClicktype}
                 setSelectedCity={handleDropofTime}
                 bgColor={bgColor}
                 selectedValue={dropupTime}
                 setSelectedValue={setDropupTime}
               />
+
             </div>
+
           </div>
+
         </div>
+
       </div>
 
       <div className="booking-form-confirm-button-container">

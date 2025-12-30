@@ -84,6 +84,7 @@ const CarDetails = ({ searchedVehicles, isVehicleSearched, data, openModal, show
 
   const [carId, setCarId] = useState(null);
   const [checkCarAvailable, setCheckCarAvailable] = useState(false)
+
   
 
 

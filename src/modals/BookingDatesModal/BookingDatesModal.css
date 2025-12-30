@@ -425,6 +425,11 @@
     color: var(--color-white);
 }
 
+.booking-modal-time-single-item.disable-time {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
 .booking-modal-time-body.show-pickup-time-list {
     height: auto;
     max-height: 180px;
