@@ -5,6 +5,10 @@ import { useBookingContext } from '../../../context/bookingContext/bookingContex
 import { AiFillQuestionCircle } from "react-icons/ai";
 import { checkIsZero } from '../../../utils/checkZero'
 import { useOutsideClick } from '../../../utils/DetectClickOutside';
+// import { FaPlus, FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus } from "react-icons/fa6";
+
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
 const InsuranceType = ({ insurances, insuranceSeleted, setInsuranceSelected, packageSelected, setPackageSelected }) => {
 
@@ -14,6 +18,7 @@ const InsuranceType = ({ insurances, insuranceSeleted, setInsuranceSelected, pac
     { id: 3, name: <><strong>No,</strong> I'll make my own way to the branch </> },
   ]
 
+  const [excessAndBond, setExcessAndBond] = useState(false);
   const [pickAndDrop, setPickAndDrop] = useState({})
   useEffect(() => {
     const locationData = JSON.parse(sessionStorage.getItem('pick_and_drop_details'));
@@ -166,6 +171,35 @@ const InsuranceType = ({ insurances, insuranceSeleted, setInsuranceSelected, pac
           <div></div>
         </div>
       )}
+
+      <label className={`driver-age-container`}>
+          <input type='radio' readOnly checked={true} />
+          <span className='driver-age-radio'></span>
+            NZ$ 500 excess applies to drivers aged 21–25, irrespective of the insurance coverage selected.
+      </label>
+
+      <div className='excess-and-bond-details'>
+        <span className='excess-and-bond-head' onClick={() => setExcessAndBond(!excessAndBond)}>
+          {excessAndBond ? <MdKeyboardArrowUp size={20} color='var(--primary-color)' /> : <MdKeyboardArrowDown size={20} color='var(--primary-color)' />}
+          <h3>What are Excess and Bond?</h3>
+        </span>
+
+        <div className={`excess-and-bond-body ${excessAndBond ? 'show-excess-and-bond' : ''}`}>
+          <div className='excess-bond-main'>
+            <h3>Excess</h3>
+            <p>
+              This amount will be charged to your credit card in the event of any damage to the car. If the cost of the damage is lower than the excess, the difference will be refunded to you once the claim has been processed.
+            </p>
+          </div>
+
+          <div className='excess-bond-main'>
+            <h3>Bond</h3>
+            <p>
+              When you pick up your car, this amount will be held on your credit card for 5-10 working days, depending on your bank and card type. Please note debit cards cannot be used for the bond.
+            </p>
+          </div>
+        </div>
+      </div>
 
 
       {insurances?.length !== 0 ? (

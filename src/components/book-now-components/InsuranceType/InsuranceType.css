@@ -4,7 +4,7 @@
     width: 100%;
     align-items: start;
     justify-content: start;
-    gap: 25px;
+    gap: 20px;
 }
 
 .insurance-type-body {
@@ -131,6 +131,42 @@
     gap: 15px;
 }
 
+.driver-age-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 5px 15px 5px 45px;
+    font-size: 12px;
+    text-align: start;
+    line-height: 1.5;
+    font-weight: 400;
+    position: relative;
+    cursor: pointer;
+    background-color: #FFF;
+    border: 2px solid var(--primary-color);
+}
+
+.driver-age-container>input[type="radio"] {
+    display: none;
+}
+
+.driver-age-radio {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    background: var(--primary-color);
+}
+
 .shuttle-single-option {
     display: flex;
     align-items: center;
@@ -147,6 +183,19 @@
     font-weight: 400;
     position: relative;
     cursor: pointer;
+}
+
+/* white tick */
+.shuttle-single-option::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
 }
 
 .shuttle-single-option.selected-shuttle-option {
@@ -421,6 +470,77 @@
     }
 }
 
+
+.excess-and-bond-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+}
+
+.excess-and-bond-head {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 5px;
+    background-color: #f1f1f1;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+.excess-and-bond-head > h3 {
+    font-size: var(--font-body-lg);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.excess-and-bond-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 20px;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.excess-and-bond-body.show-excess-and-bond {
+    height: auto;
+    max-height: 1500px;
+    margin-top: 20px;
+}
+
+.excess-bond-main {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.excess-bond-main > h3 {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.excess-bond-main > p {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000;
+}
+
+
+
 @media only screen and (min-width: 999px) and (max-width: 1250px) {
     .insurance-type-body {
         column-gap: 10px;
@@ -541,5 +661,9 @@
 
     .arrival-city-container {
         width: 50%;
+    }
+
+    .driver-age-container {
+        line-height: 1.2;
     }
 }
