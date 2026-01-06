@@ -7,10 +7,7 @@ import useDropdownNavigation from "../../../utils/keyPress";
 import Select from "react-select";
 import { IoIosArrowDown } from "react-icons/io";
 import CountryCodeDropdown from "../SearchCountryPhone/SearchCountryPhone";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
-
-// import { MdOutlineArrowDropDown } from "react-icons/md";
 
 const customStyles = {
   control: (provided, state) => ({
@@ -73,24 +70,6 @@ const customStyles = {
     minHeight: "24px",
     fontSize: "13px",
   }),
-  // option: (provided, state) => ({
-  //   ...provided,
-  //   backgroundColor: state.isSelected ? "#961502" : "white",
-  //   color: state.isSelected ? "white" : "black",
-  //   ...(state.isFocused &&
-  //     !state.isSelected && {
-  //       backgroundColor: "white", // remove default focus red
-  //       color: "black",
-  //     }),
-  //   "&:hover": {
-  //     backgroundColor: "#961502",
-  //     color: "white",
-  //   },
-  //   borderRadius: 0,
-  //   cursor: "pointer",
-  //   minHeight: "24px",
-  //   fontSize: "13px",
-  // }),
   menu: (provided) => ({
     ...provided,
     borderRadius: 0,
@@ -126,15 +105,10 @@ const HirerDetails = () => {
     setBookingPayload,
     errors,
     setErrors,
-    validateForm,
-    countryCode,
-    setCountryCode,
     selectedCountryDetails,
     setSelectedCountryDetails,
   } = useBookingContext();
 
-  const [parentCountryShow, setParentCountryShow] = useState(false);
-  const [driverAgeShow, setDriverAgeShow] = useState(false);
   const [findUs, setFindUs] = useState(false);
   const [countryList, setCountryList] = useState([]);
   const [filterLivingCountry, setFilterLivingCountry] = useState([]);
@@ -168,7 +142,6 @@ const HirerDetails = () => {
     handleGetAllCountries();
   }, []);
 
-  const [showCountryCodeList, setShowCountryCodeList] = useState(false);
 
   const handleHirerDetailsAdd = (e) => {
     const { name, value } = e.target;
@@ -287,12 +260,9 @@ const HirerDetails = () => {
       user: {
         ...prev.user,
         country: item.value,
-        // phone: item.code
       },
     }));
-    // setLivingCountryQuery(item.value)
 
-    // ✅ Clear error for country when a valid value is selected
     setErrors((prev) => {
       const newErrors = { ...prev };
       if (item && item.value?.trim() !== "") {
@@ -303,8 +273,6 @@ const HirerDetails = () => {
       return newErrors;
     });
 
-    setParentCountryShow(false);
-    setMenuOpen(false);
   };
 
   const driverAgeList = ["21", "22", "23", "24", "25", '26+'];
@@ -329,7 +297,6 @@ const HirerDetails = () => {
       return newErrors;
     });
 
-    setDriverAgeShow(false);
   };
 
   const handleFoundTell = (item) => {
@@ -354,9 +321,6 @@ const HirerDetails = () => {
     setFindUs(false);
   };
 
-  const [filteredCountries, setFilteredCountries] = useState(countryList);
-  // const [query, setQuery] = useState('');
-
   useEffect(() => {
     const defaultCountry = bookingPayload.user.country; // or however you set it
     const countryObj = countryList?.find(
@@ -366,7 +330,6 @@ const HirerDetails = () => {
     if (countryObj) {
       setSelectedCountryDetails(countryObj);
     }
-    setFilteredCountries(countryList);
     setFilterLivingCountry(countryList);
   }, [countryList, bookingPayload?.user?.country]);
 
@@ -375,35 +338,16 @@ const HirerDetails = () => {
     label: item.country,
   }));
 
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // track if user actually confirmed selection
-  const [isConfirmedSelection, setIsConfirmedSelection] = useState(false);
 
   const handleChange = (selectedOption, actionMeta) => {
     if (actionMeta.action === "select-option") {
-      // only trigger when user clicks or presses Enter/Space
-      setIsConfirmedSelection(true);
       handleSelectLivingCountry(selectedOption);
     }
   };
 
-  const handleBlur = () => {
-    setMenuOpen(false);
-    setIsConfirmedSelection(false);
-  };
-
-  const livingCountryRef = useRef();
-  const driverAgeRef = useRef();
   const foundUsRef = useRef();
-  const countryCodeRef = useRef();
-
-  useOutsideClick(livingCountryRef, () => setParentCountryShow(false));
-  useOutsideClick(driverAgeRef, () => setDriverAgeShow(false));
   useOutsideClick(foundUsRef, () => setFindUs(false));
-  useOutsideClick(countryCodeRef, () => setShowCountryCodeList(false));
 
-  // const ageIndex = useDropdownNavigation(driverAgeRef, driverAgeShow, 'hirer-age-list-item')
   const foundUsIndex = useDropdownNavigation(
     foundUsRef,
     findUs,
@@ -411,14 +355,11 @@ const HirerDetails = () => {
   );
 
   // Age Select
-
   const [open, setOpen] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const dropdownRef = useRef(null);
   const listRef = useRef(null);
-
   const selectedAge = bookingPayload.user.driver_age || "Please Select";
-
 
   // close dropdown when clicked outside
   useEffect(() => {
@@ -554,16 +495,12 @@ const HirerDetails = () => {
             isSearchable
             className="my-country-input"
             placeholder="Which country do you live in?"
-            // menuIsOpen={menuOpen} // force open/close
-            onFocus={() => setMenuOpen(true)} // open on focus (Tab)
-            onBlur={handleBlur}
             filterOption={(option, inputValue) =>
               option.label.toLowerCase().startsWith(inputValue.toLowerCase())
             }
           />
         </div>
 
-        {/* driver age */}
 
         <div className="smooth-dropdown" ref={dropdownRef}>
           <label

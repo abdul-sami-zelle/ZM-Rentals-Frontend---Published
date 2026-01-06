@@ -14,16 +14,11 @@
     transition: all 0.3s ease-in-out;
 }
 
-/* .booking-form-main-container.control-booking-location-contianer {
-    width: 100%;
-} */
-
 .booking-form-inputs-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* width: 70%; */
     width: 100%;
 }
 
@@ -35,8 +30,6 @@
     gap: 8px;
     width: 100%;
 }
-
-
 
 .booking-form-input-single-col-pick-up {
     width: 100%;
@@ -56,8 +49,6 @@
     gap: 8px;
     transition: all0.3s ease-in-out;
 }
-
-
 
 .booking-time-container {
     display: flex;
@@ -89,17 +80,14 @@
     justify-content: start;
     height: 47px;
     max-height: 60px;
-
     font-size: var(--font-body-lg);
     line-height: var(--font-body-lg);
     font-weight: var(--font-weight-medium);
-
     color: var(--primary-color);
     padding: 8px;
     border-radius: 5px;
     cursor: pointer;
 }
-
 
 .booking-form-confirm-button-container {
     display: flex;
@@ -108,9 +96,6 @@
     height: 100%;
     gap: 8px;
     justify-content: start;
-    /* width: 30%; */
-    /* width: max-content; */
-    /* flex-shrink: 0; */
 }
 
 .add-promo-option {
@@ -124,7 +109,6 @@
 .booking-pickup-calender-container {
     width: 100% !important;
     position: absolute;
-    /* max-width: 280px; */
     top: 100%;
     left: 0px;
     z-index: 99999;
@@ -136,7 +120,6 @@
 .booking-drop-calender-container {
     width: 100% !important;
     position: absolute;
-    /* max-width: 280px; */
     top: 85%;
     left: 25px;
     z-index: 9999;
@@ -148,7 +131,6 @@
 .react-calendar {
     width: 100%;
     min-width: 280px;
-    
 }
 
 .booking-pickup-calender-container .react-calendar,
@@ -157,8 +139,6 @@
     border-radius: 15px;
     border: none !important;
 }
-
-
 
 .booking-pickup-calender-container .react-calendar .react-calendar__navigation,
 .booking-drop-calender-container .react-calendar .react-calendar__navigation {
@@ -225,7 +205,6 @@
     font-weight: var(--font-weight-semibold);
 }
 
-
 .booking-pickup-calender-container .react-calendar__month-view__weekdays abbr,
 .booking-drop-calender-container .react-calendar__month-view__weekdays abbr {
     text-decoration: none !important;
@@ -238,9 +217,6 @@
     font-weight: var(--font-weight-regular);
     padding: 5px;
 }
-
-
-
 
 .booking-pickup-calender-container .react-calendar__tile--active,
 .booking-pickup-calender-container .react-calendar__tile--now,
@@ -276,7 +252,7 @@
     opacity: 0.5 !important;       
     cursor: not-allowed !important; 
     pointer-events: none;           
-  }
+}
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
@@ -285,9 +261,7 @@
   border-radius: 5px; 
 }
 
-
 /* Drop Time Calender */
-
 .booking-drop-calender-container {
     width: 250px;
     position: absolute;
@@ -336,12 +310,10 @@
         
     }
 
-    /* .booking-form-main-container.control-booking-location-contianer {
-        width: 100%;
-    } */
     .booking-form-inputs {
         flex-direction: column;
     }
+
     .booking-form-input-single-col-pick-up {
         flex-direction: column;
     }
@@ -361,10 +333,6 @@
         gap: 10px;
     }
 
-    /* .booking-form-main-container.control-booking-location-contianer {
-        width: 100%;
-    } */
-
     .booking-form-inputs-container {
         width: 100%;
     }
@@ -381,9 +349,11 @@
         gap: 10px;
         
     }
+
     .booking-form-input-single-col-pick-up {
         flex-direction: column;
     }
+    
     .booking-form-input-single-col-drop-off {
         flex-direction: column;
     }

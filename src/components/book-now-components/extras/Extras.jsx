@@ -1,15 +1,13 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import './Extras.css'
 import { useBookingContext } from '../../../context/bookingContext/bookingContext'
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import {checkIsZero} from '../../../utils/checkZero'
 
-
 const Extras = ({ extras }) => {
 
   const { setBookingPayload, extraQuantities, setExtraQuantities } = useBookingContext();
-  // const [extraQuantities, setExtraQuantities] = useState({});
 
   const handleQuantityChange = (index, type, item) => {
     setExtraQuantities((prev) => {
@@ -63,8 +61,6 @@ const Extras = ({ extras }) => {
       return updated;
     });
   };
-
-
 
   return (
     <div className='extras-main-container'>

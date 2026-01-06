@@ -6,10 +6,6 @@
     width: 100%;
 }
 
-
-
-
-
 .book-now-inner-section {
     display: flex;
     width: 100%;
@@ -93,8 +89,6 @@
     line-height: var(--line-height-heading);
     font-weight: var(--font-weight-regular);
     cursor: pointer;
-    
-
 }
 
 .booking-tabs-numbers.booking-selected-tab {
@@ -108,7 +102,6 @@
     justify-content: center;
     border-radius: 50%;
 }
-
 
 .payment-continue-button {
     display: flex;
@@ -136,7 +129,6 @@
 }
 
 /* Booking Summary Section */
-
 .booking-summary-main-container {
     display: flex;
     flex-shrink: 0;
@@ -200,7 +192,6 @@
     font-weight: var(--font-weight-regular);
 }
 
-
 .pick-drop-time {
     font-size: var(--font-body-md);
     line-height: var(--line-height-heading);
@@ -256,7 +247,6 @@
     opacity: 0.5;
 }
 
-
 /* Vehicle Details */
 .vehicle-details-section {
     display: flex;
@@ -281,7 +271,6 @@
     font-size: var(--font-body-md);
     line-height: var(--line-height-heading);
     font-weight: var(--font-weight-bold);
-    /* color: var(--primary-color); */
     color: #000;
 }
 
@@ -305,9 +294,7 @@
     font-size: var(--font-body-md);
     line-height: var(--line-height-heading);
     font-weight: var(--font-weight-bold);
-    /* color: var(--secondary-color); */
     color: #000;
-    
 }
 
 .daily-rates-list-main-container {
@@ -324,7 +311,6 @@
     font-weight: 500;
     color: #000;
 }
-
 
 .vehicle-image-container {
     width: 50%;
@@ -446,7 +432,6 @@
 .close-on-mobile-view {
     display: none;
 }
-
 
 .booking-vehicle-detailsshimmer {
     display: flex;

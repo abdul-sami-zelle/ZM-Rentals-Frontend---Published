@@ -34,7 +34,6 @@ const BookingForm = ({
   const {
     searchVehiclePayload,
     setSearchVehiclePayload,
-    setSearchedVehicles,
     pickupCity,
     setPickupCity,
     pickupTime,
@@ -225,7 +224,6 @@ const BookingForm = ({
 
     // Convert the date to ISO string with Z (treated as UTC)
     const formatted = nzDate?.toISOString(); // gives: 2025-06-20T11:00:00.000Z
-    console.log("NZ ISO string:", formatted);
     // Update your payload here:
     setSearchVehiclePayload((prev) => ({
       ...prev,
@@ -273,35 +271,94 @@ const BookingForm = ({
     setDriverAge(age.name);
   };
 
+  const getCurrentNZTime = () => {
+    // Get current NZ time
+    const formatter = new Intl.DateTimeFormat("en-NZ", {
+      timeZone: "Pacific/Auckland",
+      hour: "numeric",
+      minute: "numeric",
+      // hour12: true,
+    });
+
+    const parts = formatter.formatToParts(new Date());
+
+    let hour = Number(parts.find((p) => p.type === "hour")?.value);
+    let minute = Number(parts.find((p) => p.type === "minute")?.value);
+    const dayPeriod = parts.find((p) => p.type === "dayPeriod")?.value;
+
+    // ✅ Handle 12 AM explicitly
+    if (hour === 12 && dayPeriod === "am") {
+      hour = 0; // midnight
+    } else if (dayPeriod === "pm" && hour !== 12) {
+      hour += 12; // convert PM to 24-hour
+    }
+
+    // --- Default/rounding logic in 24-hour format ---
+    if (hour < 10) {
+      // 12:00 AM → 9:59 AM → default 10:00
+      hour = 10;
+      minute = 0;
+    } else {
+      // After 10 AM → round to next 30-min slot
+      if (minute > 0 && minute <= 30) {
+        minute = 30;
+      } else if (minute > 30) {
+        minute = 0;
+        hour += 1;
+      }
+
+      // Wrap around midnight
+      if (hour === 24) hour = 0;
+    }
+
+    // --- Convert to 12-hour format for display only ---
+    const displayMeridiem = hour >= 12 ? "PM" : "AM";
+    let displayHour = hour % 12;
+    if (displayHour === 0) displayHour = 12;
+    const displayMinute = minute.toString().padStart(2, "0");
+
+    const pickupTimeValue = `${displayHour}:${displayMinute} ${displayMeridiem}`;
+
+    return { hour, minute, pickupTimeValue };
+  };
+
+  const parsePickupTime = (pickupTime) => {
+    if (!pickupTime) return null;
+
+    const [time, meridiem] = pickupTime.split(" ");
+    if (!time || !meridiem) return null;
+
+    let [hour, minute] = time.split(":").map(Number);
+
+    if (meridiem === "PM" && hour !== 12) hour += 12;
+    if (meridiem === "AM" && hour === 12) hour = 0;
+
+    return { hour, minute };
+  };
+
   const getPickupDateAt10AM = (dateString) => {
-    if(pickupTime) return
+    if (pickupTime) return;
+
     setSearchVehiclePayload((prev) => {
       // ⛔ Don't override user's selected time
       if (prev.pickup_time) return prev;
 
       const date = new Date(dateString);
 
-      const nzParts = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Pacific/Auckland",
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-      }).formatToParts(date);
+      const year = dateString.getFullYear();
+      const month = dateString.getMonth();
+      const day = dateString.getDate();
 
-      const year = Number(nzParts.find((p) => p.type === "year").value);
-      const month = Number(nzParts.find((p) => p.type === "month").value) - 1;
-      const day = Number(nzParts.find((p) => p.type === "day").value);
-
-      // Split hour and minute
-      const [hourMin, meridiem] = pickupTime?.split(" "); // ["10:00", "AM"]
-      let [hour, minute] = hourMin?.split(":")?.map(Number); // [10, 0]
-
-      // Convert to 24-hour format if needed
-      if (meridiem === "PM" && hour !== 12) hour += 12;
-      if (meridiem === "AM" && hour === 12) hour = 0;
+      let time = parsePickupTime(pickupTime);
+      if (!time || (time.hour === 0 && time.minute === 0)) {
+        time = getCurrentNZTime();
+      }
 
       // Build NZ 10 AM date in UTC
-      const nzPickDate = new Date(Date.UTC(year, month, day, hour !== 0 ? hour : 10, minute ?? 0, 0));
+      const nzPickDate = new Date(
+        Date.UTC(year, month, day, time.hour, time.minute, 0)
+      );
+      // const nzPickDate = new Date(Date.UTC(year, month, day, hour !== 0 ? hour : 10, minute ?? 0, 0));
 
       const formatted = nzPickDate.toISOString();
 
@@ -312,25 +369,14 @@ const BookingForm = ({
     });
   };
 
-
   const getDropOffDateAt10AM = (dateString) => {
     setSearchVehiclePayload((prev) => {
       // ✅ Only auto-set if user did not select drop time
       if (prev.drop_time && dropDateManuallyChanged) return prev;
 
-      const date = new Date(dateString);
-
-      // 🇳🇿 Get NZ date components
-      const nzParts = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Pacific/Auckland",
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-      }).formatToParts(date);
- 
-      const year = Number(nzParts.find((p) => p.type === "year").value);
-      const month = Number(nzParts.find((p) => p.type === "month").value) - 1;
-      const day = Number(nzParts.find((p) => p.type === "day").value);
+      const year = dateString.getFullYear();
+      const month = dateString.getMonth();
+      const day = dateString.getDate();
 
       // Split hour and minute
       const [hourMin, meridiem] = dropupTime.split(" "); // ["10:00", "AM"]
@@ -456,7 +502,6 @@ const BookingForm = ({
       })()
     : null;
 
-
   return (
     <div
       className={`booking-form-main-container ${
@@ -467,9 +512,7 @@ const BookingForm = ({
       style={{ boxShadow: boxShadow }}
     >
       <div className="booking-form-inputs-container">
-
         <div className="booking-form-inputs">
-
           <div className="booking-form-input-single-col-pick-up">
             <DropdownInput
               width={isInRange ? "70%" : "100%"}
@@ -543,11 +586,9 @@ const BookingForm = ({
                 setSelectedValue={setPickupTime}
               />
             </div>
-
           </div>
 
           <div className={`booking-form-input-single-col-drop-off`}>
-
             <DropdownInput
               width={isInRange ? "70%" : "100%"}
               height={"64px"}
@@ -565,9 +606,7 @@ const BookingForm = ({
             />
 
             <div className="booking-time-container">
-
               <div ref={dropCalandrRef} className="select-drop-up-date-button">
-
                 <button
                   className="select-date-button"
                   onClick={() => setDropCalender((prev) => !prev)}
@@ -608,7 +647,6 @@ const BookingForm = ({
                     />
                   </div>
                 )}
-
               </div>
 
               <DropdownInput
@@ -622,13 +660,9 @@ const BookingForm = ({
                 selectedValue={dropupTime}
                 setSelectedValue={setDropupTime}
               />
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
       <div className="booking-form-confirm-button-container">
@@ -654,14 +688,12 @@ const BookingForm = ({
           mobilePlaceholder={"Driver Age"}
           setSelectedCity={handleDriverAge}
           data={driverAgeList}
-          // type={'pick'}
           bgColor={bgColor}
           setClicktype={setClicktype}
           selectedValue={driverAge}
           setSelectedValue={setDriverAge}
           setHeight={setHeight}
         />
-        {/* <p className='add-promo-option' style={{ color: textColor, fontWeight: 700, }}> Add a promo code</p> */}
       </div>
     </div>
   );

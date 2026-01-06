@@ -36,28 +36,19 @@ const BookNowClient = () => {
   countries.registerLocale(en);
   const stripe = useStripe();
   const elements = useElements();
+
   const {
     bookingVehicleData,
-    setBookingVehicleData,
     bookingPayload,
     setBookingPayload,
     activeShuttle,
     setActiveShuttle,
-    validateForm,
     vehicleSesionData,
-    setVehicleSesionData,
-    errors,
     setErrors,
     userType,
-    setUserType,
-    userData,
-    setUserData,
-    countryCode,
-    setCountryCode,
     selectedCountryDetails,
     setSelectedCountryDetails,
     setExtraQuantities,
-    arrivlaErrors,
     setArrivalErrors,
   } = useBookingContext();
 
@@ -584,9 +575,9 @@ const BookNowClient = () => {
       ...prev,
       user: {
         ...prev.user,
-        driver_age: pickDrop?.driver_age
-      }
-    }))
+        driver_age: pickDrop?.driver_age,
+      },
+    }));
   }, []);
 
   const [locations, setLocations] = useState([]);
@@ -740,8 +731,54 @@ const BookNowClient = () => {
       total += offHourCharges;
     }
 
+
+    if (
+      bookingPayload?.booking?.extras?.length > 0 &&
+      bookingPayload?.user?.driver_age < 26
+    ) {
+      let findDriver = bookingVehicleData?.extras?.find(
+        (item) => item.name === "Extra Driver"
+      );
+
+      const totalDrivers = bookingPayload?.booking?.extras?.find(
+        (item) => item.main_id === findDriver?.extras_option_id
+      );
+      const youngDriverCharges =
+        10 * totalDrivers?.quantity * vehicleSesionData?.daily_rates?.length;
+      total += youngDriverCharges;
+    }
+
     return total.toFixed(0); // format to 2 decimal places if needed
   };
+
+  const youngDriverAmount = () => {
+    if(bookingPayload?.user?.driver_age >= 26) return 
+
+    let driverQuantity = 0;
+
+    if(bookingPayload?.booking?.extras?.length > 0) {
+      if (
+      bookingPayload?.booking?.extras?.length > 0 &&
+      bookingPayload?.user?.driver_age < 26
+    ) {
+      let findDriver = bookingVehicleData?.extras?.find(
+        (item) => item.name === "Extra Driver"
+      );
+
+      const totalDrivers = bookingPayload?.booking?.extras?.find(
+        (item) => item.main_id === findDriver?.extras_option_id
+      );
+
+      driverQuantity = totalDrivers?.quantity
+
+
+      let total = 10 * driverQuantity * vehicleSesionData?.daily_rates?.length
+
+      return total
+    }
+  }
+
+  }
 
   const [emailModal, setEmailModal] = useState(false);
   const [modalType, setModalType] = useState("");
@@ -761,13 +798,13 @@ const BookNowClient = () => {
   const [refundModal, setRefundModal] = useState(false);
 
   // Helper to format date as "DD MMM YYYY"
-const formatDate = (dateStr) => {
-  const date = new Date(dateStr);
-  const day = String(date.getDate()).padStart(2, "0"); // 01, 02, etc.
-  const month = date.toLocaleString("en-GB", { month: "short" }); // May, Jun...
-  const year = date.getFullYear();
-  return `${day} ${month} ${year}`;
-};
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    const day = String(date.getDate()).padStart(2, "0"); // 01, 02, etc.
+    const month = date.toLocaleString("en-GB", { month: "short" }); // May, Jun...
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
 
   const groupDailyRates = (dailyRates) => {
     if (!Array.isArray(dailyRates) || dailyRates.length === 0) return [];
@@ -832,25 +869,6 @@ const formatDate = (dateStr) => {
     setDailyRatesList(dailyRates);
   }, [vehicleSesionData]);
 
-  const getDateSuffix = (dateStr) => {
-    if (!dateStr) return "";
-
-    const day = Number(dateStr.split("-")[2]); // "01" → 1
-    if (!day) return "";
-
-    if (day >= 11 && day <= 13) return "th";
-
-    switch (day % 10) {
-      case 1:
-        return "st";
-      case 2:
-        return "nd";
-      case 3:
-        return "rd";
-      default:
-        return "th";
-    }
-  };
 
   return (
     <div className="book-now-page-main-container">
@@ -961,7 +979,8 @@ const formatDate = (dateStr) => {
                       <h3>
                         {
                           locations.find(
-                            (item) => item.id === pickDropLocation?.drop_location
+                            (item) =>
+                              item.id === pickDropLocation?.drop_location
                           )?.name
                         }
                       </h3>
@@ -1052,7 +1071,6 @@ const formatDate = (dateStr) => {
                                   {item.rate}
                                 </h3>
                               </Tooltip>
-
                             </div>
                           );
                         })}
@@ -1144,6 +1162,17 @@ const formatDate = (dateStr) => {
                         </h3>
                       </span>
                     )}
+
+                    {bookingPayload?.booking?.extras?.length &&
+                      bookingPayload?.user?.driver_age < 26 ? (
+                        <span>
+                          <p>Young driver surcharge</p>
+                          <h3>
+                            NZ${" "}
+                            {checkIsZero(youngDriverAmount())}
+                          </h3>
+                        </span>
+                      ) : (<></>)}
                   </div>
                   <div className="grand-total-section">
                     <p>Grand Total</p>
