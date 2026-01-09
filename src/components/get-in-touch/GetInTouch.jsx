@@ -110,7 +110,7 @@ const GetInTouch = () => {
                             </span>
                             <span className='contact-type-section'>
                                 <FaLocationArrow size={20} color='var(--color-white)' />
-                                Aero Auckland Airport Hotel 190 Kirkbride Road, Māngere, Auckland 2022
+                                VR Hotel 190 Kirkbride Road, Māngere, Auckland 2022
                             </span>
                         </div>
 
@@ -174,7 +174,7 @@ const GetInTouch = () => {
                         </span>
                         <span>
                             <h3>Address</h3>
-                            Aero Auckland Airport Hotel 190 Kirkbride Road, Māngere, Auckland 2022
+                            VR Hotel 190 Kirkbride Road, Māngere, Auckland 2022
                         </span>
                     </div>
 

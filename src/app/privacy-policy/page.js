@@ -140,7 +140,7 @@ const PrivacyAndPolicy = () => {
 
           <h2 className='global-heading-style'>Communication Preferences and Opt-Out Options</h2>
           <p className='global-content-style'>Newsletter and marketing material provision, plus research survey invitations, occur only with your consent. We may contact you to confirm the appropriateness of your preference.</p>
-          <p className='global-content-style'>Newsletter, marketing email, or research request cessation is available through unsubscribe instructions in emails or by contacting us at <Link href={'mailto:info@zmrentals.co.nz'} className='anchor-inside-para '>info@zmrentals.co.nz.</Link> </p>
+          <p className='global-content-style'>Newsletter, marketing email, or research request cessation is available through unsubscribe instructions in emails or by contacting us at <Link href={'mailto:info@zmrentals.co.nz'} className='anchor-inside-para '>info@zmrentals.co.nz</Link> </p>
       
       
           <h2 className='global-heading-style'>Third-Party Information Sources</h2>
@@ -172,8 +172,8 @@ const PrivacyAndPolicy = () => {
           <p className='global-content-style' style={{fontWeight: '700'}}>Personal Information collection results in our data custody.</p>
           <p className='global-content-style'>Website or service usage from outside New Zealand involves Personal Information transmission to New Zealand, where our offices are located. Personal Information transfer to third-party service providers (technology providers, business and marketing services, software tools) occurs for service performance, information processing, or storage on our behalf. These third parties may be offshore, including Australia and the United States. Some third-party service provider countries may lack comprehensive privacy laws compared to your residence country, and for EU residents, may lack European Commission adequacy decisions. Third parties are not authorized to use such information for independent purposes.</p>
           <p className='global-content-style'>Information retention occurs for active account duration or service provision needs (including newsletter, marketing email, and research request subscriptions), plus legal obligation fulfillment, including service-related obligation management. When Personal Information is no longer required for Privacy Act permitted purposes, reasonable deletion steps will be taken.</p>
-          <p className='global-content-style'>Account cancellation, service cessation requests, or Personal Information consent withdrawal should be directed to <Link href={'mailto: info@zmrentals.co.nz'} className='anchor-inside-para'>info@zmrentals.co.nz.</Link> Information retention and usage in such cases will be limited to legal compliance, dispute resolution, and agreement enforcement requirements.</p>
-          <p className='global-content-style' style={{fontWeight: '700'}}>Website security questions may be directed to <Link href={'mailto:info@zmrentals.co.nz'} className='anchor-inside-para'> info@zmrentals.co.nz.</Link></p>
+          <p className='global-content-style'>Account cancellation, service cessation requests, or Personal Information consent withdrawal should be directed to <Link href={'mailto: info@zmrentals.co.nz'} className='anchor-inside-para'>info@zmrentals.co.nz</Link> Information retention and usage in such cases will be limited to legal compliance, dispute resolution, and agreement enforcement requirements.</p>
+          <p className='global-content-style' style={{fontWeight: '700'}}>Website security questions may be directed to <Link href={'mailto:info@zmrentals.co.nz'} className='anchor-inside-para'> info@zmrentals.co.nz</Link></p>
 
 
           <h2 className='global-heading-style'>Additional Policy Provisions</h2>
@@ -185,15 +185,15 @@ const PrivacyAndPolicy = () => {
       
           <h2 className='global-heading-style'>Access, Correction, and Update Procedures</h2>
           <p className='global-content-style' style={{fontWeight: '700'}}>Account information correction and preference changes are available through account login.</p>
-          <p className='global-content-style'>Newsletter, marketing email, and research request unsubscription is available anytime through email footer unsubscribe links or by contacting <Link href={'mailto:info@zmrentals.co.nz'} className='anchor-inside-para'> info@zmrentals.co.nz.</Link> </p>
+          <p className='global-content-style'>Newsletter, marketing email, and research request unsubscription is available anytime through email footer unsubscribe links or by contacting <Link href={'mailto:info@zmrentals.co.nz'} className='anchor-inside-para'> info@zmrentals.co.nz</Link> </p>
           <p className='global-content-style'>Personal Information access and correction requests are available if the information appears incorrect. Subject to Privacy Act exceptions, Personal Information access or correction requests may be submitted by contacting us at:</p>
 
           <span style={{display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'start', width: '100%', gap: '5px'}}>
             
             <p className='global-content-style'>ZM Rentals</p>
-            <p className='global-content-style'>165 Beach Road, Auckland City,</p>
-            <p className='global-content-style'>Auckland, 1010</p>
-            <p className='global-content-style'>Email: <Link href={'mailto:info@zmrentals.co.nz'} className='anchor-inside-para'> info@zmrentals.co.nz.</Link></p>
+            <p className='global-content-style'>VR Hotel 190 Kirkbride Road,</p>
+            <p className='global-content-style'>Māngere, Auckland 2022</p>
+            <p className='global-content-style'>Email: <Link href={'mailto:info@zmrentals.co.nz'} className='anchor-inside-para'> info@zmrentals.co.nz</Link></p>
             <p className='global-content-style'>+64221708848</p>
           </span>
 

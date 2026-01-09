@@ -11,7 +11,7 @@ const LocationDetails = () => {
                         <div className='location-detain-desktop-map-section'>
                             <span>
                                 <TfiLocationPin size={20} color='#000' />
-                                Aukland City
+                                Aukland
                             </span>
                         </div>
                         <div className='location-details-desktop-details-section'>
@@ -22,10 +22,10 @@ const LocationDetails = () => {
                                 Aukland City
                             </span> */}
                             <div className='city-details-section'>
-                                <h3>Auckland City</h3>
+                                <h3>Auckland</h3>
                                 <div className='city-and-opening-times-contianer'>
                                     {/* <p><strong>Address: </strong> 11 peninsula road Mangere Auckland 2022</p> */}
-                                    <p><strong>Address: </strong> Aero Auckland Airport Hotel 190 Kirkbride Road, Māngere, Auckland 2022</p>
+                                    <p><strong>Address: </strong> VR Hotel 190 Kirkbride Road, Māngere, Auckland 2022</p>
                                     <p><strong>Office Hours: </strong> 9:00AM TO 5:00PM</p>
                                     <p><strong>Pick Up & Drop Off : </strong> 6:00AM to 9:00PM</p>
 
@@ -51,13 +51,13 @@ const LocationDetails = () => {
                     <p>At ZM Rentals, we prioritize your convenience, which is why we’ve chosen the perfect location for both travelers and locals. Our South Auckland Car Rental Depot, located in Mangere, is just minutes from the Auckland Airport, making it easy for tourists to pick up their pre-booked car or make a walk-in reservation upon arrival. For locals, our depot is the ideal spot for renting a car, whether it's for occasional use or a long-term car rental in Auckland. With our strategic location, we ensure a smooth, hassle-free experience, whether you’re a visitor or live here and need to rent a car in Auckland.</p>
                     <span>
                         <TfiLocationPin size={20} color='#000' />
-                        Aukland City
+                        Aukland
                     </span>
                 </div>
                 <div className='mobile-city-details-section'>
-                    <h3>Auckland City</h3>
+                    <h3>Auckland</h3>
                     <div className='mobile-city-and-opening-times-contianer'>
-                        <p><strong>Address: </strong> Aero Auckland Airport Hotel 190 Kirkbride Road, Māngere, Auckland 2022</p>
+                        <p><strong>Address: </strong> VR Hotel 190 Kirkbride Road, Māngere, Auckland 2022</p>
                         <p><strong>Office Hours: </strong> 9:00AM TO 5:00PM</p>
                         <p><strong>Pick Up & Drop Off : </strong> 6:00AM to 9:00PM</p>
 
