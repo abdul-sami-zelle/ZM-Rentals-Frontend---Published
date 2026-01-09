@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Locations = () => {
   const locationsData = [
-    { branchName: 'Auckland City', link: '#' },
+    { branchName: 'Auckland', link: '#' },
   ]
   return (
     <>
@@ -14,7 +14,7 @@ const Locations = () => {
           <div className='nz-map-locations'>
             <span>
               <TfiLocationPin size={40} color='#000' />
-              Auckland City
+              Auckland
             </span>
           </div>
           <div className='locations-details-container'>
