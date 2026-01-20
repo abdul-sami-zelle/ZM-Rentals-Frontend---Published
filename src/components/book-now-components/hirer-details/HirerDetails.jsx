@@ -116,7 +116,7 @@ const HirerDetails = () => {
   useEffect(() => {
     const handleGetAllCountries = async () => {
       try {
-        const res = await fetch("https://countries.skyhub.pk/countries");
+        const res = await fetch("https://countries.zmrentals.co.nz/countries");
         if (!res.ok) throw new Error("Network response was not ok");
 
         const data = await res.json();
