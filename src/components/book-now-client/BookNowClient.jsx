@@ -1129,8 +1129,12 @@ const BookNowClient = () => {
                     )}
 
                     {insuranceSeleted && (
-                      <span>
-                        <p>{insuranceSeleted?.name}</p>
+                      <span onClick={()=>{console.log(insuranceSeleted)}}>
+                        <span>
+                          <p>{insuranceSeleted?.name}</p>
+                          <p className="sub_para">Excess NZ$ {checkIsZero(insuranceSeleted?.excess)}</p>
+                          <p className="sub_para">Bond NZ$ {checkIsZero(insuranceSeleted?.bond)}</p>
+                        </span>
                         {parseFloat(insuranceSeleted?.rate) === 0 ? (
                           <h3>Free</h3>
                         ) : (
@@ -1144,11 +1148,13 @@ const BookNowClient = () => {
                         const extra = bookingVehicleData?.extras?.find(
                           (extra) => extra.id === item?.extras_option_id
                         );
-                        const rate = extra?.rate * item.quantity * totalDays;
+                        const rate = extra?.is_daily_rate === true ? extra?.rate * item.quantity * totalDays : extra?.rate * item.quantity;
 
                         return (
                           <span key={index}>
-                            <p>{extra?.name}</p>
+                            <p onClick={()=>{
+                              console.log(extra)
+                            }}>{extra?.name} </p>
                             <h3>NZ$ {rate ? checkIsZero(rate) : ""}</h3>
                           </span>
                         );

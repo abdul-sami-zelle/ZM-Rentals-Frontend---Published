@@ -348,6 +348,17 @@
     gap: 7px;
 }
 
+.booking-prices-details-section > span > span > p {
+    font-size: var(--font-body-md);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-regular);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: max-content;
+    gap: 7px;
+}
+
 .booking-prices-details-section > span > h3 {
     font-size: var(--font-body-lg);
     line-height: var(--line-height-heading);
@@ -479,6 +490,12 @@
         flex-shrink: 0;
     }
 
+        .booking-prices-details-section > span > span > p {
+        font-size: 10px;
+        line-height: 1.2;
+        flex-shrink: 0;
+    }
+
     .booking-prices-details-section > span > h3 {
         font-size: 12px;
     }
@@ -509,4 +526,12 @@
     .booking-summary-main-container {
         width: 100% !important;
     }
+}
+
+
+.sub_para{
+    font-size: 10px !important;
+    margin-bottom: 2px !important;
+    line-height: 12px !important;
+    font-weight: 500;
 }
