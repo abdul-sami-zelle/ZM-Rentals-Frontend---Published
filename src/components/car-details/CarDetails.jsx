@@ -108,6 +108,7 @@ const CarDetails = ({ searchedVehicles, isVehicleSearched, data, openModal, show
               transmission={car.details.transmission}
               fuelType={car.details.fuel_type}
               handleModalOpen={() => handleOpenDetailsModal(car)}
+              handleSeePriceFunction={()=>{setCarId(car.car_id); setCheckCarAvailable(true)}}
             />
           ))
         ) : (

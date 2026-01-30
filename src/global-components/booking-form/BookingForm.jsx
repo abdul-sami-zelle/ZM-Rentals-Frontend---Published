@@ -162,13 +162,66 @@ const BookingForm = ({
     setPickupCalender(false); // hide after selection
   };
 
+  // const handleDropDateChange = (date) => {
+  //   const nzDropDate = convertToNZDate(date);
+  //   setSelectedDropDate(nzDropDate);
+  //   handleDropofTimeAndDate(nzDropDate, dropupTime);
+  //   setDropCalender(false); // hide after selection
+  //   setDropDateManuallyChanged(true);
+  // };
+
   const handleDropDateChange = (date) => {
-    const nzDropDate = convertToNZDate(date);
-    setSelectedDropDate(nzDropDate);
-    handleDropofTimeAndDate(nzDropDate, dropupTime);
-    setDropCalender(false); // hide after selection
-    setDropDateManuallyChanged(true);
+  const nzDropDate = convertToNZDate(date);
+  setSelectedDropDate(nzDropDate);
+
+  let finalDropTime = dropupTime;
+
+  // 🔥 If same day → force drop time > pickup time
+  if (
+    selectedPickupDate &&
+    nzDropDate.toDateString() === selectedPickupDate.toDateString()
+  ) {
+    const parse = (str) => {
+      const [time, mer] = str.split(" ");
+      let [h, m] = time.split(":").map(Number);
+      if (mer === "PM" && h !== 12) h += 12;
+      if (mer === "AM" && h === 12) h = 0;
+      return h * 60 + m;
+    };
+
+    const pickupMin = parse(pickupTime);
+    const dropMin = parse(dropupTime);
+
+    if (dropMin <= pickupMin) {
+      const times = generateTimeList(nzDropDate);
+
+      const nextValid = times.find((t) => {
+        const mins = parse(t.name);
+        return mins > pickupMin;
+      });
+
+      if (nextValid) {
+        finalDropTime = nextValid.name;
+        setDropupTime(nextValid.name);
+      }
+    }
+  }
+
+  handleDropofTimeAndDate(nzDropDate, finalDropTime);
+  setDropCalender(false);
+  setDropDateManuallyChanged(true);
+};
+
+
+  const isSameDay = () => {
+    if (!selectedPickupDate || !selectedDropDate) return false;
+
+    return (
+      selectedPickupDate.toDateString() ===
+      selectedDropDate.toDateString()
+    );
   };
+
 
   const [clickType, setClicktype] = useState("");
   const handleLocationChange = (item) => {
@@ -188,10 +241,50 @@ const BookingForm = ({
     }
   };
 
+  // const handleSelectPickupTime = (value) => {
+  //   formatePickupDateAndTime(selectedPickupDate, value.name);
+  //   setPickupTime(value.name);
+  // };
+
   const handleSelectPickupTime = (value) => {
     formatePickupDateAndTime(selectedPickupDate, value.name);
     setPickupTime(value.name);
+
+    // 🔥 AUTO FIX DROP TIME IF SAME DAY
+    if (
+      selectedPickupDate &&
+      selectedDropDate &&
+      selectedPickupDate.toDateString() ===
+      selectedDropDate.toDateString()
+    ) {
+      const parse = (str) => {
+        const [time, mer] = str.split(" ");
+        let [h, m] = time.split(":").map(Number);
+        if (mer === "PM" && h !== 12) h += 12;
+        if (mer === "AM" && h === 12) h = 0;
+        return h * 60 + m;
+      };
+
+      const pickupMin = parse(value.name);
+      const dropMin = parse(dropupTime);
+
+      // ❌ if drop <= pickup → auto move to next slot
+      if (dropMin <= pickupMin) {
+        const times = generateTimeList(selectedDropDate);
+
+        const nextValid = times.find((t) => {
+          const mins = parse(t.name);
+          return mins > pickupMin;
+        });
+
+        if (nextValid) {
+          setDropupTime(nextValid.name);
+          handleDropofTimeAndDate(selectedDropDate, nextValid.name);
+        }
+      }
+    }
   };
+
 
   const handleDropofTime = (value) => {
     setDropupTime(value.name);
@@ -496,19 +589,18 @@ const BookingForm = ({
   // 🇳🇿 Pickup date normalized
   const nzPickupDate = selectedPickupDate
     ? (() => {
-        const d = new Date(selectedPickupDate);
-        d.setHours(0, 0, 0, 0); // normalize to 00:00
-        return d;
-      })()
+      const d = new Date(selectedPickupDate);
+      d.setHours(0, 0, 0, 0); // normalize to 00:00
+      return d;
+    })()
     : null;
 
   return (
     <div
-      className={`booking-form-main-container ${
-        searchVehiclePayload.pickup_location !== null
-          ? "control-booking-location-contianer"
-          : ""
-      }`}
+      className={`booking-form-main-container ${searchVehiclePayload.pickup_location !== null
+        ? "control-booking-location-contianer"
+        : ""
+        }`}
       style={{ boxShadow: boxShadow }}
     >
       <div className="booking-form-inputs-container">
@@ -638,7 +730,8 @@ const BookingForm = ({
 
                         // ❌ If pickup selected → disable same day & past days
                         if (nzPickupDate) {
-                          return tileDate <= nzPickupDate;
+                          // return tileDate <= nzPickupDate;
+                          return tileDate < nzPickupDate;
                         }
 
                         // 🔒 If pickup not selected yet, disable today & past (NZ)
@@ -653,7 +746,26 @@ const BookingForm = ({
                 width={isInRange ? "75%" : "65%"}
                 height={"162px"}
                 defaultValue={"Time"}
-                data={generateTimeList(selectedDropDate)}
+                data={generateTimeList(selectedDropDate).map((t) => {
+                  if (!isSameDay() || !pickupTime) return t;
+
+                  const parse = (str) => {
+                    const [time, mer] = str.split(" ");
+                    let [h, m] = time.split(":").map(Number);
+                    if (mer === "PM" && h !== 12) h += 12;
+                    if (mer === "AM" && h === 12) h = 0;
+                    return h * 60 + m;
+                  };
+
+                  const pickupMinutes = parse(pickupTime);
+                  const dropMinutes = parse(t.name);
+
+                  return {
+                    ...t,
+                    isPassed: dropMinutes <= pickupMinutes, // ❌ block invalid drop times
+                  };
+                })}
+
                 setClicktype={setClicktype}
                 setSelectedCity={handleDropofTime}
                 bgColor={bgColor}

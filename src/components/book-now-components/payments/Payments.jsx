@@ -5,13 +5,14 @@ import Image from 'next/image'
 import { FaQuestionCircle } from "react-icons/fa";
 import Link from 'next/link';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-import {checkIsZero} from '../../../utils/checkZero'
+import {checkIsZero, getTenPercent} from '../../../utils/checkZero'
+import CardElementStripe from './cardElement';
 
 
-const Payments = ({ grandTotal, isChecked, setIsChecked, selectPaymentType, setSelectPaymentType, setRefundModal }) => {
+const Payments = ({ grandTotal, isChecked, setIsChecked, selectPaymentType, setSelectPaymentType, setRefundModal,showRetryCardInModal, setShowRetryCardInModal,cardElement }) => {
   const payTime = [
-    {id: 1, title: 'Pay Later', val: 'pay-leter', disc: 'Pay when you check in or pick-up.', total: `NZ$ 0` },
-    {id: 2, title: 'Pay Now', val: 'pay-now', disc: 'Pay the full amount now, save time later.', total: `NZ$ ${checkIsZero(grandTotal)}` },
+    {id: 1, title: 'Pay Later', val: 'pay-leter', disc: 'Pay when you check in or pick-up.', total: `NZ$ ${getTenPercent(checkIsZero(grandTotal))}`,subtitle:'10% of total amount' },
+    {id: 2, title: 'Pay Now', val: 'pay-now', disc: 'Pay the full amount now, save time later.', total: `NZ$ ${checkIsZero(grandTotal)}`,subtitle:'' },
   ]
   const paymentTypeCards = [
     '/assets/icons/american-express.png',
@@ -32,7 +33,7 @@ const Payments = ({ grandTotal, isChecked, setIsChecked, selectPaymentType, setS
             <div className='selected-pay-type-detail'>
               <h3>{item.title}</h3>
               <p>{item.disc}</p>
-              <span>{item.total}</span>
+              <span style={{display:"flex",alignItems:"flex-end",justifyContent:"center"}} >{item.total}  {item.subtitle !== "" && <p style={{fontSize:"12px" , fontWeight:"500",marginLeft:"5px"}}>({item.subtitle})</p> }</span>
             </div>
           </div>)
         })}
@@ -41,19 +42,11 @@ const Payments = ({ grandTotal, isChecked, setIsChecked, selectPaymentType, setS
       
 
       {/* Stripe Card Input */}
-      {selectPaymentType === 2 && (
-        <div className={`payment-input-details`}>
-          <CardElement
-            options={{
-              style: {
-                base: { fontSize: '16px', color: '#000' },
-                invalid: { color: 'red' },
-              },
-              hidePostalCode: true,
-            }}
-          />
-        </div>
-      )}
+      {/* {selectPaymentType === 2 && ( */}
+       {cardElement && <div className={`payment-input-details`}>
+         {cardElement}
+        </div>}
+      {/* )} */}
 
       <span className='payment-policy-hightlight'>
         <p>Heads up, all online payments are subject to a non-refundable payment processing fee. </p>

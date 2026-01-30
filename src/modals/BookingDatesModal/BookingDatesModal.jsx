@@ -146,6 +146,25 @@ const BookingDatesModal = ({
     setPickupDateDropdown(false);
   };
 
+  const isSameDay = () => {
+    if (!selectedPickupDate || !selectedDropDate) return false;
+
+    return (
+      selectedPickupDate.toDateString() ===
+      selectedDropDate.toDateString()
+    );
+  };
+
+  const parseMinutes = (str) => {
+    const [time, mer] = str.split(" ");
+    let [h, m] = time.split(":").map(Number);
+    if (mer === "PM" && h !== 12) h += 12;
+    if (mer === "AM" && h === 12) h = 0;
+    return h * 60 + m;
+  };
+
+
+
   const generateTimeList = (selectedDate) => {
     const times = [];
 
@@ -198,6 +217,43 @@ const BookingDatesModal = ({
 
     return times;
   };
+
+  const generateDropTimeList = (selectedDropDate, selectedPickupDate, pickupTime) => {
+    const times = generateTimeList(selectedDropDate);
+
+    // Only adjust if pickup & drop are same day and pickupTime exists
+    if (
+      selectedPickupDate &&
+      selectedDropDate &&
+      selectedPickupDate.toDateString() === selectedDropDate.toDateString() &&
+      pickupTime
+    ) {
+      // Convert pickupTime to total minutes
+      const [pTime, pModifier] = pickupTime.split(" ");
+      let [pHour, pMinute] = pTime.split(":").map(Number);
+      if (pModifier === "PM" && pHour !== 12) pHour += 12;
+      if (pModifier === "AM" && pHour === 12) pHour = 0;
+
+      const pickupTotalMinutes = pHour * 60 + pMinute;
+
+      // Disable drop times <= pickup time
+      return times.map((t) => {
+        const [time, modifier] = t.name.split(" ");
+        let [h, m] = time.split(":").map(Number);
+        if (modifier === "PM" && h !== 12) h += 12;
+        if (modifier === "AM" && h === 12) h = 0;
+
+        const totalMinutes = h * 60 + m;
+        return {
+          ...t,
+          isPassed: t.isPassed || totalMinutes <= pickupTotalMinutes,
+        };
+      });
+    }
+
+    return times;
+  };
+
 
   const handlePickupTimeChange = (pickupTime) => {
     if (!pickupTime) return;
@@ -260,87 +316,107 @@ const BookingDatesModal = ({
     setDropLocationDropdown(false);
   };
 
-  const handleDropDateChange = (date) => {
-    if (!date) return;
-    const d = new Date(date);
+const handleDropDateChange = (date) => {
+  if (!date) return;
 
-    // pickupTime example: "10:00 AM"
-    const [time, modifier] = dropTime.split(" ");
-    let [hours, minutes] = time.split(":");
+  let finalDropTime = dropTime; // current dropTime
 
-    hours = Number(hours);
-    minutes = Number(minutes);
+  if (selectedPickupDate && date < selectedPickupDate) {
+    date = selectedPickupDate;
+  }
 
-    // Convert to 24-hour format
-    if (modifier === "PM" && hours !== 12) {
-      hours += 12;
+  if (
+    selectedPickupDate &&
+    date.toDateString() === selectedPickupDate.toDateString()
+  ) {
+    const pickupMin = parseMinutes(pickupTime);
+    const dropMin = parseMinutes(finalDropTime);
+    if (dropMin <= pickupMin) {
+      const times = generateTimeList(date);
+      const nextValid = times.find((t) => parseMinutes(t.name) > pickupMin);
+      if (nextValid) finalDropTime = nextValid.name;
     }
-    if (modifier === "AM" && hours === 12) {
-      hours = 0;
+  }
+
+  // 🇳🇿 Convert finalDropTime + date to NZ-local ISO (like pickup)
+  const [time, modifier] = finalDropTime.split(" ");
+  let [hours, minutes] = time.split(":").map(Number);
+  if (modifier === "PM" && hours !== 12) hours += 12;
+  if (modifier === "AM" && hours === 12) hours = 0;
+
+  const nzParts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Pacific/Auckland",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).formatToParts(date);
+
+  const year = Number(nzParts.find((p) => p.type === "year").value);
+  const month = Number(nzParts.find((p) => p.type === "month").value) - 1;
+  const day = Number(nzParts.find((p) => p.type === "day").value);
+
+  const nzDropUTC = new Date(Date.UTC(year, month, day, hours, minutes, 0, 0));
+
+  setSearchPayload((prev) => ({
+    ...prev,
+    drop_time: nzDropUTC.toISOString(),
+  }));
+
+  setDropTime(finalDropTime);
+  setSelectedDropDate(date);
+  setDropDateDropdown(false);
+};
+
+
+
+
+const handleDropTimeChange = (dropTimeValue) => {
+  if (!dropTimeValue) return;
+
+  // 🔥 Prevent drop time before pickup time on same day
+
+  console.log(dropTimeValue,"here drop time")
+  if (
+    selectedPickupDate &&
+    selectedDropDate &&
+    selectedDropDate.toDateString() === selectedPickupDate.toDateString()
+  ) {
+    const pickupMin = parseMinutes(pickupTime);
+    const dropMin = parseMinutes(dropTimeValue);
+    if (dropMin <= pickupMin) {
+      alert("Drop time cannot be earlier than pickup time!");
+      return;
     }
+  }
 
-    d.setHours(hours);
-    d.setMinutes(minutes);
-    d.setSeconds(0);
-    d.setMilliseconds(0);
+  const d = new Date(selectedDropDate);
 
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const mm = String(d.getMinutes()).padStart(2, "0");
-    const ss = String(d.getSeconds()).padStart(2, "0");
+  // Convert time to 24-hour format
+  const [time, modifier] = dropTimeValue.split(" ");
+  let [hours, minutes] = time.split(":").map(Number);
+  if (modifier === "PM" && hours !== 12) hours += 12;
+  if (modifier === "AM" && hours === 12) hours = 0;
 
-    setSearchPayload((prev) => ({
-      ...prev,
-      drop_time: `${year}-${month}-${day}T${hh}:${mm}:${ss}.000Z`,
-    }));
+  d.setHours(hours);
+  d.setMinutes(minutes);
+  d.setSeconds(0);
+  d.setMilliseconds(0);
 
-    setSelectedDropDate(date);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  const hh = String(d.getHours()).padStart(2, "0");
+  const mm = String(d.getMinutes()).padStart(2, "0");
+  const ss = String(d.getSeconds()).padStart(2, "0");
 
-    setDropDateDropdown(false); // hide after selection
-  };
+  setSearchPayload((prev) => ({
+    ...prev,
+    drop_time: `${year}-${month}-${day}T${hh}:${mm}:${ss}.000Z`,
+  }));
 
-  const handleDropTimeChange = (dropTime) => {
-    if (!dropTime) return;
-    const d = new Date(selectedDropDate);
-
-    // pickupTime example: "10:00 AM"
-    const [time, modifier] = dropTime.split(" ");
-    let [hours, minutes] = time.split(":");
-
-    hours = Number(hours);
-    minutes = Number(minutes);
-
-    // Convert to 24-hour format
-    if (modifier === "PM" && hours !== 12) {
-      hours += 12;
-    }
-    if (modifier === "AM" && hours === 12) {
-      hours = 0;
-    }
-
-    d.setHours(hours);
-    d.setMinutes(minutes);
-    d.setSeconds(0);
-    d.setMilliseconds(0);
-
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const mm = String(d.getMinutes()).padStart(2, "0");
-    const ss = String(d.getSeconds()).padStart(2, "0");
-
-    setSearchPayload((prev) => ({
-      ...prev,
-      drop_time: `${year}-${month}-${day}T${hh}:${mm}:${ss}.000Z`,
-    }));
-
-    setDropTime(dropTime);
-
-    setDropTimeDropdown(false); // hide after selection
-  };
+  setDropTime(dropTimeValue);
+  setDropTimeDropdown(false);
+};
 
   useEffect(() => {
     if (showBookingModal) {
@@ -467,7 +543,9 @@ const BookingDatesModal = ({
     );
 
     setIsSearchPayloadValid(isValid);
+    console.log("workingggg", searchPayload)
   }, [searchPayload]);
+
 
   const handleCloseBookingModal = () => {
     setShowBookingModal(false);
@@ -489,24 +567,22 @@ const BookingDatesModal = ({
   // 🇳🇿 Pickup date normalized
   const nzPickupDate = selectedPickupDate
     ? (() => {
-        const d = new Date(selectedPickupDate);
-        d.setHours(0, 0, 0, 0); // normalize to 00:00
-        return d;
-      })()
+      const d = new Date(selectedPickupDate);
+      d.setHours(0, 0, 0, 0); // normalize to 00:00
+      return d;
+    })()
     : null;
 
   return (
     <div
-      className={`booking-date-select-modal-main-container ${
-        showBookingModal ? "show-booking-date-modal" : ""
-      }`}
+      className={`booking-date-select-modal-main-container ${showBookingModal ? "show-booking-date-modal" : ""
+        }`}
       onClick={handleCloseBookingModal}
     >
       {loader && <MainLoader />}
       <div
-        className={`booking-date-select-modal-inner-container ${
-          showBookingModal ? "show-booking-date-inner-modal" : ""
-        }`}
+        className={`booking-date-select-modal-inner-container ${showBookingModal ? "show-booking-date-inner-modal" : ""
+          }`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="booking-modal-head-and-content-main-container">
@@ -549,18 +625,16 @@ const BookingDatesModal = ({
                     </div>
 
                     <div
-                      className={`booking-modal-pickup-dropdown-body ${
-                        pickupLocationDropdown ? "show-pickup-locations" : ""
-                      }`}
+                      className={`booking-modal-pickup-dropdown-body ${pickupLocationDropdown ? "show-pickup-locations" : ""
+                        }`}
                     >
                       {locations.map((item, index) => (
                         <p
                           key={index}
-                          className={`booking-modal-pickup-single-item ${
-                            pickupLocationOptionIndex === index
-                              ? "highlighted"
-                              : ""
-                          }`}
+                          className={`booking-modal-pickup-single-item ${pickupLocationOptionIndex === index
+                            ? "highlighted"
+                            : ""
+                            }`}
                           onClick={() => handleSelectLocation(item)}
                         >
                           {item.name}
@@ -591,9 +665,8 @@ const BookingDatesModal = ({
                       <CiCalendarDate size={25} color="#000" />
                     </div>
                     <div
-                      className={`booking-modal-date-body ${
-                        pickupDateDropdown ? "show-pickup-date-calender" : ""
-                      }`}
+                      className={`booking-modal-date-body ${pickupDateDropdown ? "show-pickup-date-calender" : ""
+                        }`}
                     >
                       <Calendar
                         onChange={handlePickupDateChange}
@@ -638,17 +711,15 @@ const BookingDatesModal = ({
                     </div>
 
                     <div
-                      className={`booking-modal-time-body ${
-                        pickupTimeDropdown ? "show-pickup-time-list" : ""
-                      }`}
+                      className={`booking-modal-time-body ${pickupTimeDropdown ? "show-pickup-time-list" : ""
+                        }`}
                     >
                       {generateTimeList(selectedPickupDate).map(
                         (item, index) => (
                           <p
                             key={index}
-                            className={`booking-modal-time-single-item ${
-                              pickupTimeIndex === index ? "highlighted" : ""
-                            }
+                            className={`booking-modal-time-single-item ${pickupTimeIndex === index ? "highlighted" : ""
+                              }
                             ${item.isPassed === true ? "disable-time" : ""}
                             `}
                             onClick={() => handlePickupTimeChange(item.name)}
@@ -685,18 +756,16 @@ const BookingDatesModal = ({
                     </div>
 
                     <div
-                      className={`booking-modal-pickup-dropdown-body ${
-                        dropLocationDropdown ? "show-pickup-locations" : ""
-                      }`}
+                      className={`booking-modal-pickup-dropdown-body ${dropLocationDropdown ? "show-pickup-locations" : ""
+                        }`}
                     >
                       {locations.map((item, index) => (
                         <p
                           key={index}
-                          className={`booking-modal-pickup-single-item ${
-                            dropLocationOptionIndex === index
-                              ? "highlighted"
-                              : ""
-                          }`}
+                          className={`booking-modal-pickup-single-item ${dropLocationOptionIndex === index
+                            ? "highlighted"
+                            : ""
+                            }`}
                           onClick={() => handleSelectDropLocation(item)}
                         >
                           {item.name}
@@ -725,9 +794,8 @@ const BookingDatesModal = ({
                       <CiCalendarDate size={25} color="#000" />
                     </div>
                     <div
-                      className={`booking-modal-date-body ${
-                        dropDateDropdown ? "show-pickup-date-calender" : ""
-                      }`}
+                      className={`booking-modal-date-body ${dropDateDropdown ? "show-pickup-date-calender" : ""
+                        }`}
                     >
                       <Calendar
                         onChange={handleDropDateChange}
@@ -756,7 +824,9 @@ const BookingDatesModal = ({
 
                           // ❌ If pickup selected → disable same day & past days
                           if (nzPickupDate) {
-                            return tileDate <= nzPickupDate;
+                            // return tileDate <= nzPickupDate;
+                            return tileDate < nzPickupDate;
+
                           }
 
                           // 🔒 If pickup not selected yet, disable today & past (NZ)
@@ -780,22 +850,19 @@ const BookingDatesModal = ({
                     </div>
 
                     <div
-                      className={`booking-modal-time-body ${
-                        dropTimeDropdown ? "show-pickup-time-list" : ""
-                      }`}
+                      className={`booking-modal-time-body ${dropTimeDropdown ? "show-pickup-time-list" : ""}`}
                     >
-                      {generateTimeList(selectedDropDate).map((item, index) => (
+                      {generateDropTimeList(selectedDropDate, selectedPickupDate, pickupTime).map((item, index) => (
                         <p
                           key={index}
-                          className={`booking-modal-time-single-item ${
-                            item.isPassed === true ? "disable-time" : ""
-                          }`}
-                          onClick={() => handleDropTimeChange(item.name)}
+                          className={`booking-modal-time-single-item ${item.isPassed ? "disable-time" : ""}`}
+                          onClick={() => !item.isPassed && handleDropTimeChange(item.name)}
                         >
                           {item.name}
                         </p>
                       ))}
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -826,9 +893,8 @@ const BookingDatesModal = ({
 
         <div className="booking-modal-availability-check-button">
           <button
-            className={`booking-modal-check-button ${
-              isSearchPayloadValid ? "active-check-button" : ""
-            }`}
+            className={`booking-modal-check-button ${isSearchPayloadValid ? "active-check-button" : ""
+              }`}
             disabled={!isSearchPayloadValid}
             onClick={handleSearchCarAvailabile}
           >

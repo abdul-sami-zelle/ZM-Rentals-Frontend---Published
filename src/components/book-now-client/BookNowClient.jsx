@@ -19,10 +19,11 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useSearchVehicle } from "../../context/searchVehicleContext/searchVehicleContext";
 import countries from "i18n-iso-countries";
 import en from "i18n-iso-countries/langs/en.json";
-import { checkIsZero } from "../../utils/checkZero";
+import { checkIsZero, getTenPercent } from "../../utils/checkZero";
 import RefundPolicyModal from "../../modals/RefundPolicyModal/RefundPolicyModal";
 import { url } from "../../utils/services";
 import Tooltip from "@mui/material/Tooltip";
+import CardElementStripe from "../book-now-components/payments/cardElement";
 
 const BookNowClient = () => {
   const router = useRouter();
@@ -65,6 +66,10 @@ const BookNowClient = () => {
   const searchParam = useSearchParams();
 
   const step = parseInt(searchParam.get("step")) || 1;
+
+  const [showRetryCardInModal, setShowRetryCardInModal] = useState(false);
+  const cardElement = <CardElementStripe />;
+
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   const [insuranceSeleted, setInsuranceSelected] = useState({});
   const [packageSelected, setPackageSelected] = useState(null);
@@ -160,6 +165,10 @@ const BookNowClient = () => {
     head: "",
     para: "",
     link: "",
+    tryAnother: true,
+    amount: 0,
+    pay_type: "",
+    booking_id: 0
   });
 
   const handleCompleteBooking = async () => {
@@ -193,6 +202,10 @@ const BookNowClient = () => {
           head: "Thank You For Booking",
           para: `We'll monitor your arrival to make sure we have your car ready on time`,
           link: "Explore More Options",
+          tryAnother: false,
+          pay_type: "",
+          amount: 0,
+          booking_id: 0
         });
 
         setBookingPayload({
@@ -248,6 +261,10 @@ const BookNowClient = () => {
           head: "Something went wrong",
           para: `Please try again later`,
           link: "Try Again",
+          tryAnother: false,
+          pay_type: "",
+          amount: 0,
+          booking_id: 0
         });
       }
     } catch (error) {
@@ -262,6 +279,10 @@ const BookNowClient = () => {
         head: "Something went wrong",
         para: `Please try again later`,
         link: "Try Again",
+        tryAnother: false,
+        pay_type: "",
+        amount: 0,
+        booking_id: 0
       });
     } finally {
       setISloading(false);
@@ -297,7 +318,7 @@ const BookNowClient = () => {
   };
 
   // Handle Pay Now
-  const handlePayNowAndBook = async () => {
+  const handlePayNowAndBook = async (is10Percent) => {
     const payloadWithPhoneCode = {
       ...bookingPayload,
       user: {
@@ -322,10 +343,15 @@ const BookNowClient = () => {
       if (bookingResponse.status !== 201) {
         setShowAvailableModal(true);
         setCloseType("reject");
+
         setSubmitBookingMessage({
           head: "Something went wrong",
           para: `Please try again later`,
           link: "Try Again",
+          tryAnother: false,
+          pay_type: "",
+          amount: 0,
+          booking_id: 0
         });
         return;
       }
@@ -333,10 +359,15 @@ const BookNowClient = () => {
       // 2️⃣ Proceed with Stripe Payment
       if (!stripe || !elements) throw new Error("Stripe not initialized");
 
+      const grand = getGrandTotal();
+      const ten = getTenPercent(grand);
+      const finalAmount = is10Percent ? ten : grand;
+
       const { data } = await axios.post(`${url}/create-payment-intent`, {
-        amount: getGrandTotal() * 100, // convert to cents
+        amount: Math.round(finalAmount * 100), // convert to cents
         currency: "NZD",
-        booking_id: bookingResponse.data.booking_id, // send booking id
+        booking_id: bookingResponse.data.booking_id,
+        type: is10Percent ? "fully_paid" : "partial_paid"
       });
 
       const clientSecret = data.clientSecret;
@@ -346,9 +377,8 @@ const BookNowClient = () => {
         payment_method: {
           card: elements.getElement(CardElement),
           billing_details: {
-            name: `${bookingPayload.user.firstname || "Guest"} ${
-              bookingPayload.user.lastname || ""
-            }`.trim(),
+            name: `${bookingPayload.user.firstname || "Guest"} ${bookingPayload.user.lastname || ""
+              }`.trim(),
             // country: bookingPayload?.user?.country
             address: {
               country: countries.getAlpha2Code(
@@ -366,10 +396,15 @@ const BookNowClient = () => {
         console.error("Payment error:", result.error.message);
         setShowAvailableModal(true);
         setCloseType("reject");
+        setShowRetryCardInModal(true);
         setSubmitBookingMessage({
-          head: "Payment Failed",
+          head: "Try Again",
           para: result.error.message,
-          link: "Try Again",
+          link: "Try Another Card",
+          tryAnother: true,
+          pay_type: is10Percent ? "partial_paid" : "fully_paid",
+          amount: Math.round(finalAmount * 100),
+          booking_id: bookingResponse.data.booking_id
         });
       } else {
         const status = result.paymentIntent.status;
@@ -384,6 +419,10 @@ const BookNowClient = () => {
             head: "Paid Successfully!",
             para: `Your Booking has been Confirmed. We'll monitor your arrival to make sure we have your car ready on time`,
             link: "Explore More Options",
+            tryAnother: false,
+            pay_type: "",
+            amount: 0,
+            booking_id: 0
           });
 
           // Reset booking form
@@ -439,10 +478,15 @@ const BookNowClient = () => {
             setPaymentError(confirmResult.error.message);
             setShowAvailableModal(true);
             setCloseType("reject");
+            setShowRetryCardInModal(true);
             setSubmitBookingMessage({
-              head: "Payment Failed",
+              head: "Try Again",
               para: confirmResult.error.message,
-              link: "Try Again",
+              link: "Try Another Card",
+              tryAnother: true,
+              pay_type: is10Percent ? "partial_paid" : "fully_paid",
+              amount: Math.round(finalAmount * 100),
+              booking_id: bookingResponse.data.booking_id
             });
           } else if (confirmResult.paymentIntent.status === "succeeded") {
             setCloseType("success");
@@ -450,6 +494,10 @@ const BookNowClient = () => {
               head: "Paid Successfully!",
               para: `Your Booking has been Confirmed. We'll monitor your arrival to make sure we have your car ready on time`,
               link: "Explore More Options",
+              tryAnother: false,
+              pay_type: "",
+              amount: 0,
+              booking_id: 0
             });
 
             setShowBookingButton(false);
@@ -501,10 +549,15 @@ const BookNowClient = () => {
           setPaymentError("Payment could not be completed.");
           setShowAvailableModal(true);
           setCloseType("reject");
+          setShowRetryCardInModal(true);
           setSubmitBookingMessage({
-            head: "Payment Failed",
+            head: "Try Again",
             para: "Your payment could not be completed. Please try again.",
-            link: "Try Again",
+            link: "Try Another Card",
+            tryAnother: true,
+            pay_type: is10Percent ? "partial_paid" : "fully_paid",
+            amount: Math.round(finalAmount * 100),
+            booking_id: bookingResponse.data.booking_id
           });
         }
       }
@@ -518,6 +571,10 @@ const BookNowClient = () => {
         head: "Something went wrong",
         para: `Please try again later`,
         link: "Try Again",
+        tryAnother: false,
+        pay_type: "",
+        amount: 0,
+        booking_id: 0
       });
     } finally {
       setISloading(false);
@@ -551,6 +608,85 @@ const BookNowClient = () => {
       setActiveShuttle(3);
     }
   };
+
+
+  const handleRetryPayment = async () => {
+    try {
+
+      setISloading(true);
+      setShowAvailableModal(false);
+      // setUseAnotherCard(false)
+      setPaymentError("");
+
+      if (!stripe || !elements) throw new Error("Stripe not initialized");
+
+      const { amount, booking_id, pay_type } = submitBookingMessage;
+
+      // 🔥 Create new payment intent for retry
+      const { data } = await axios.post(`${url}/create-payment-intent`, {
+        amount, // already in cents
+        currency: "NZD",
+        booking_id,
+        type: pay_type
+      });
+
+      const clientSecret = data.clientSecret;
+
+      // 🔥 Confirm payment again
+      const result = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name: `${bookingPayload.user.firstname || "Guest"} ${bookingPayload.user.lastname || ""}`.trim(),
+            address: {
+              country: countries.getAlpha2Code(
+                bookingPayload?.user?.country,
+                "en"
+              ),
+            },
+          },
+        },
+      });
+
+      if (result.error) {
+        setUseAnotherCard(false)
+        setShowAvailableModal(true)
+        setPaymentError(result.error.message);
+        setSubmitBookingMessage(prev => ({
+          ...prev,
+          para: result.error.message
+        }));
+        return;
+      }
+
+      if (result.paymentIntent.status === "succeeded") {
+        setUseAnotherCard(false)
+        setShowAvailableModal(true)
+        setShowRetryCardInModal(false);
+        
+        setSubmitBookingMessage({
+          head: "Paid Successfully!",
+          para: "Your booking is confirmed.",
+          link: "Explore More Options",
+          tryAnother: false,
+          pay_type: "",
+          amount: 0,
+          booking_id: 0
+        });
+
+        setCloseType("success");
+      }
+
+    } catch (error) {
+      setUseAnotherCard(false)
+      console.error("Retry payment error:", error);
+      setShowAvailableModal(true)
+      setPaymentError(error.message);
+    } finally {
+      setISloading(false);
+    }
+  };
+
 
   const [pickDropLocation, setPickDropLocation] = useState({});
   const [totalDays, setTotalDays] = useState(0);
@@ -655,15 +791,21 @@ const BookNowClient = () => {
       }
     } else {
       if (selectPaymentType === 1) {
-        handleCompleteBooking();
+        // handleCompleteBooking();
+        handlePayNowAndBook(true);
       } else if (selectPaymentType === 2) {
-        handlePayNowAndBook();
+        handlePayNowAndBook(false);
       } else {
       }
     }
   };
 
   const [showCarAvailableModal, setShowAvailableModal] = useState(false);
+  const [useAnotherCard, setUseAnotherCard] = useState(false);
+
+  const handleUseAnotherCard = () => {
+    setUseAnotherCard(true)
+  }
   const [closeType, setCloseType] = useState("");
   const handleCloseCarNotAvailableModal = () => {
     if (closeType === "success") {
@@ -752,31 +894,31 @@ const BookNowClient = () => {
   };
 
   const youngDriverAmount = () => {
-    if(bookingPayload?.user?.driver_age >= 26) return 
+    if (bookingPayload?.user?.driver_age >= 26) return
 
     let driverQuantity = 0;
 
-    if(bookingPayload?.booking?.extras?.length > 0) {
+    if (bookingPayload?.booking?.extras?.length > 0) {
       if (
-      bookingPayload?.booking?.extras?.length > 0 &&
-      bookingPayload?.user?.driver_age < 26
-    ) {
-      let findDriver = bookingVehicleData?.extras?.find(
-        (item) => item.name === "Extra Driver"
-      );
+        bookingPayload?.booking?.extras?.length > 0 &&
+        bookingPayload?.user?.driver_age < 26
+      ) {
+        let findDriver = bookingVehicleData?.extras?.find(
+          (item) => item.name === "Extra Driver"
+        );
 
-      const totalDrivers = bookingPayload?.booking?.extras?.find(
-        (item) => item.main_id === findDriver?.extras_option_id
-      );
+        const totalDrivers = bookingPayload?.booking?.extras?.find(
+          (item) => item.main_id === findDriver?.extras_option_id
+        );
 
-      driverQuantity = totalDrivers?.quantity
+        driverQuantity = totalDrivers?.quantity
 
 
-      let total = 10 * driverQuantity * vehicleSesionData?.daily_rates?.length
+        let total = 10 * driverQuantity * vehicleSesionData?.daily_rates?.length
 
-      return total
+        return total
+      }
     }
-  }
 
   }
 
@@ -844,8 +986,8 @@ const BookNowClient = () => {
       // Calculate days for this range
       const rangeDays = grp.range.to
         ? (new Date(grp.range.to) - new Date(grp.range.from)) /
-            (1000 * 60 * 60 * 24) +
-          1
+        (1000 * 60 * 60 * 24) +
+        1
         : 1;
 
       if (existing) {
@@ -884,20 +1026,19 @@ const BookNowClient = () => {
                     {selectedTabIndex === 0
                       ? `${selectedTabIndex + 1}. Choose Insurance`
                       : selectedTabIndex === 1
-                      ? `${selectedTabIndex + 1}. Extras`
-                      : selectedTabIndex === 2
-                      ? `${selectedTabIndex + 1}. Hirer Details`
-                      : `${selectedTabIndex + 1}. Payments`}
+                        ? `${selectedTabIndex + 1}. Extras`
+                        : selectedTabIndex === 2
+                          ? `${selectedTabIndex + 1}. Hirer Details`
+                          : `${selectedTabIndex + 1}. Payments`}
                   </span>
                   <div className="insurance-tab-number">
                     {Array.from({ length: 4 }).map((_, index) => (
                       <p
                         key={index}
-                        className={`booking-tabs-numbers ${
-                          selectedTabIndex === index
-                            ? "booking-selected-tab"
-                            : ""
-                        }`}
+                        className={`booking-tabs-numbers ${selectedTabIndex === index
+                          ? "booking-selected-tab"
+                          : ""
+                          }`}
                         onClick={() => {
                           if (index < selectedTabIndex) {
                             setSelectedTabIndex(index);
@@ -932,17 +1073,19 @@ const BookNowClient = () => {
                     selectPaymentType={selectPaymentType}
                     setSelectPaymentType={setSelectPaymentType}
                     setRefundModal={setRefundModal}
+                    setShowRetryCardInModal={setShowRetryCardInModal}
+                    showRetryCardInModal={showRetryCardInModal}
+                    cardElement={!showRetryCardInModal ? cardElement : null}
                   />
                 )}
               </div>
 
               <button
                 disabled={selectedTabIndex > 2 && !isChecked}
-                className={`payment-continue-button ${
-                  selectedTabIndex > 2 && !isChecked
-                    ? "disable-continue-booking"
-                    : ""
-                }`}
+                className={`payment-continue-button ${selectedTabIndex > 2 && !isChecked
+                  ? "disable-continue-booking"
+                  : ""
+                  }`}
                 onClick={() => handleBookNow()}
               >
                 {selectedTabIndex > 2 ? "Complete Booking" : "Continue"}
@@ -1129,7 +1272,7 @@ const BookNowClient = () => {
                     )}
 
                     {insuranceSeleted && (
-                      <span onClick={()=>{console.log(insuranceSeleted)}}>
+                      <span onClick={() => { console.log(insuranceSeleted) }}>
                         <span>
                           <p>{insuranceSeleted?.name}</p>
                           <p className="sub_para">Excess NZ$ {checkIsZero(insuranceSeleted?.excess)}</p>
@@ -1152,7 +1295,7 @@ const BookNowClient = () => {
 
                         return (
                           <span key={index}>
-                            <p onClick={()=>{
+                            <p onClick={() => {
                               console.log(extra)
                             }}>{extra?.name} </p>
                             <h3>NZ$ {rate ? checkIsZero(rate) : ""}</h3>
@@ -1171,14 +1314,14 @@ const BookNowClient = () => {
 
                     {bookingPayload?.booking?.extras?.length &&
                       bookingPayload?.user?.driver_age < 26 ? (
-                        <span>
-                          <p>Young driver surcharge</p>
-                          <h3>
-                            NZ${" "}
-                            {checkIsZero(youngDriverAmount())}
-                          </h3>
-                        </span>
-                      ) : (<></>)}
+                      <span>
+                        <p>Young driver surcharge</p>
+                        <h3>
+                          NZ${" "}
+                          {checkIsZero(youngDriverAmount())}
+                        </h3>
+                      </span>
+                    ) : (<></>)}
                   </div>
                   <div className="grand-total-section">
                     <p>Grand Total</p>
@@ -1210,6 +1353,10 @@ const BookNowClient = () => {
         showModal={showCarAvailableModal}
         handleCloseModal={handleCloseCarNotAvailableModal}
         modalMessages={submitBookingMessage}
+        cardElement={showRetryCardInModal ? cardElement : null}
+        handleRetryPayment={handleRetryPayment}
+        useAnotherCard={useAnotherCard}
+        handleUseAnotherCard={handleUseAnotherCard}
       />
 
       <Toust

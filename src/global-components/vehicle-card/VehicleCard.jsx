@@ -22,6 +22,8 @@ const VehicleCard = ({
   handleModalOpen,
   vehicleId,
   vehicleData,
+  handleSeePriceFunction
+
 }) => {
   // const { searchVehiclePayload, setSearchVehiclePayload } = useSearchVehicle()
   const { setVehicleSesionData } = useBookingContext();
@@ -125,9 +127,8 @@ const VehicleCard = ({
   return (
     <div className="vehicle-card-main-container" onClick={handleModalOpen}>
       <div
-        className={`vehicle-card-image-container ${
-          pathname !== "/" && vehicleData?.available === 0 ? "sold-out-car" : ""
-        }`}
+        className={`vehicle-card-image-container ${pathname !== "/" && vehicleData?.available === 0 ? "sold-out-car" : ""
+          }`}
       >
         <Image src={vehicleImage} alt="small car" width={315} height={160} />
       </div>
@@ -177,9 +178,8 @@ const VehicleCard = ({
           </span>
 
           <div
-            className={`price-and-book-now ${
-              vehicleData.available === 0 ? "items-align-end" : ""
-            }`}
+            className={`price-and-book-now ${vehicleData.available === 0 ? "items-align-end" : ""
+              }`}
           >
             {vehicleData.available && vehicleData.available !== 0 ? (
               isVehicleSearched ? (
@@ -215,12 +215,13 @@ const VehicleCard = ({
                 <h3
                   className="vehicle-price-heading"
                   onClick={(e) => {
-                    e.stopPropagation();
-                    handleScrolllTop();
+                    e.stopPropagation(); // Prevent parent onClick from firing
+                    handleSeePriceFunction(); // Your original function
                   }}
                 >
                   {seePrice}
                 </h3>
+
               )
             ) : (
               !isVehicleSearched && (
@@ -235,12 +236,13 @@ const VehicleCard = ({
                   <h3
                     className="vehicle-price-heading"
                     onClick={(e) => {
-                      e.stopPropagation();
-                      handleScrolllTop();
+                      e.stopPropagation(); // Prevent parent onClick from firing
+                      handleSeePriceFunction(); // Your original function
                     }}
                   >
                     {seePrice}
                   </h3>
+
                 </div>
               )
             )}
@@ -248,9 +250,8 @@ const VehicleCard = ({
             {isVehicleSearched &&
               (vehicleData?.daily_rates && vehicleData?.available !== 0 ? (
                 <button
-                  className={`booking-button ${
-                    showBookingButton ? "show-booking-button" : ""
-                  }`}
+                  className={`booking-button ${showBookingButton ? "show-booking-button" : ""
+                    }`}
                   onClick={handleBookVehicle}
                 >
                   Book Now
@@ -258,11 +259,10 @@ const VehicleCard = ({
               ) : (
                 <button
                   disabled
-                  className={`sold-button ${
-                    pathname !== "/" && showBookingButton
-                      ? "show-booking-button"
-                      : ""
-                  }`}
+                  className={`sold-button ${pathname !== "/" && showBookingButton
+                    ? "show-booking-button"
+                    : ""
+                    }`}
                 >
                   Sold Out
                 </button>
