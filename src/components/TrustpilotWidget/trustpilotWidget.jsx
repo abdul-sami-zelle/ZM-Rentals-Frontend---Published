@@ -44,20 +44,21 @@
 import Image from "next/image";
 
 export default function TrustpilotWidget() {
-  return (
-    <a
-      href="https://www.trustpilot.com/review/zmrentals.co.nz"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ display: "inline-block", cursor: "pointer" }}
-    >
-      <Image
-        src="/assets/trustpillot.webp" // put your badge image in /public folder
-        alt="Read our Trustpilot Reviews"
-        width={150}  // adjust as needed
-        height={50}  // adjust as needed
-        style={{ objectFit: "contain" }}
-      />
-    </a>
-  );
+    return (
+        <a
+            href="https://www.trustpilot.com/review/zmrentals.co.nz"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "inline-block", cursor: "pointer" }}
+        >
+            <img src="/assets/trustpillot.webp" style={{ width: "150px", height: "auto" }} alt="" srcset="" />
+            {/* <Image
+                src="/assets/trustpillot.webp" // put your badge image in /public folder
+                alt="Read our Trustpilot Reviews"
+                width={150}  // adjust as needed
+                height={50}  // adjust as needed
+                style={{ objectFit: "contain" }}
+            /> */}
+        </a>
+    );
 }
