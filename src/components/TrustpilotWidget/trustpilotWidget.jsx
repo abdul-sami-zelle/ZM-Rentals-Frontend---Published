@@ -51,7 +51,7 @@ export default function TrustpilotWidget() {
             rel="noopener noreferrer"
             style={{ display: "inline-block", cursor: "pointer" }}
         >
-            <img src="/assets/trustpillot.webp" style={{ width: "150px", height: "auto" }} alt="" srcset="" />
+            <img src="/assets/trustpillot.png" style={{ width: "150px", height: "auto" }} alt="" srcset="" />
             {/* <Image
                 src="/assets/trustpillot.webp" // put your badge image in /public folder
                 alt="Read our Trustpilot Reviews"
