@@ -10,6 +10,8 @@ import StripeProvider from '../context/stripeProvider/stripeProvider'
 import { UserDashboardProvider } from "../context/dashContext/dashContext";
 import { ManageBookingProvider } from '../context/manageBooking/manageBooking'
 import Navbar from "../global-components/navbar/Navbar";
+import Script from "next/script";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 
-  
+
 
 
   return (
@@ -39,25 +41,52 @@ export default function RootLayout({ children }) {
 
       </head>
 
-      <body 
-        suppressHydrationWarning 
+      <body
+        suppressHydrationWarning
       >
+
+          {/* Trustpilot Script */}
+        <Script
+          src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NY2HDVB54J"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NY2HDVB54J', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
         <SearchVehicleProvider>
           <BookingProvider>
             <StripeProvider>
               <UserDashboardProvider>
                 <ManageBookingProvider>
-                <Header />
-                <main className="page-content">
-                  {children}
-                </main>
-                <Footer />
-                <WhatsappButton />
+                  <Header />
+                  <main className="page-content">
+                    {children}
+                  </main>
+                  <Footer />
+                  <WhatsappButton />
                 </ManageBookingProvider>
               </UserDashboardProvider>
             </StripeProvider>
           </BookingProvider>
         </SearchVehicleProvider>
+
+      
+
+
+
       </body>
     </html>
   );

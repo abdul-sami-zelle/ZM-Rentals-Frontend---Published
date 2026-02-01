@@ -4,16 +4,19 @@ import React from 'react'
 import './Footer.css'
 import Link from 'next/link'
 // import logo from '../../assets/logo.png'
-import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube,FaLinkedinIn,FaPinterestP, FaThreads    } from "react-icons/fa6";
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import TrustpilotWidget from '../../components/TrustpilotWidget/trustpilotWidget';
+import KiwiBaseWidget from '../../components/TrustpilotWidget/kiwibase';
+import WeKiwi from '../../components/TrustpilotWidget/weKiwi';
 
 const Footer = () => {
 
   const pathname = usePathname()
 
   const excludedNotFooter = ['/manage-booking'];
-  
+
 
   const hideFooter = excludedNotFooter.includes(pathname)
 
@@ -48,82 +51,95 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    { icon: <FaFacebookF size={25} color='var(--secondary-color)' />, link: 'https://www.facebook.com/ZmRentalCars' },
-    { icon: <FaTiktok size={25} color='var(--secondary-color)' />, link: '#' },
-    { icon: <FaInstagram size={25} color='var(--secondary-color)' />, link: '#' },
+    { icon: <FaFacebookF size={25} color='var(--secondary-color)' />, link: 'https://www.facebook.com/zmrentalsnz' },
+    { icon: <FaTiktok size={25} color='var(--secondary-color)' />, link: 'https://www.tiktok.com/@zmrentalsnz' },
+    { icon: <FaInstagram size={25} color='var(--secondary-color)' />, link: 'https://www.instagram.com/zmrentalsnz/' },
+    { icon: <FaYoutube size={25} color='var(--secondary-color)' />, link: 'https://www.youtube.com/@ZMRENTALS' },
+    // { icon: <FaLinkedinIn size={25} color='var(--secondary-color)' />, link: '#' },
+    { icon: <FaPinterestP size={25} color='var(--secondary-color)' />, link: 'http://www.pinterest.com/zmrentalsnz' },
+    { icon: <FaThreads size={25} color='var(--secondary-color)' />, link: 'https://www.threads.com/@zmrentalsnz' },
   ]
 
-  return ( 
+  return (
     <div className='footer-main-container'>
-      <div className='footer-bg-container' style={{display: hideFooter ? 'none' : 'flex'}}>
+
+      <div className='footer-bg-container' style={{ display: hideFooter ? 'none' : 'flex' }}>
         <div className='footer-width-controller-container'>
 
-          <div className='footer-menu-items-main-container'>
+          <div className="footer-main-class">
+            <div className='footer-menu-items-main-container'>
 
-            <div className='footer-column footer-logo-container'>
-              <Image src={'/assets/logos/ZM-Rentals-Horizontal-logo-in-white.png'} width={150} height={50} alt='foote-logo' className='footer-logo-image' />
-              <p>Providing seamless, sustainable <br /> travel experiences with <br /> Auckland car rentals. <br /> Find out what makes us tick.</p>
-            </div>
-
-            {footerData.map((item, index) => (
-              <div key={index} className='footer-column'>
-                <Link className='footer-menu-heading' href={item.link}>{item.name}</Link>
-                <div className='footer-menu-items'>
-                  {item.footerItems && item.footerItems.length > 0 ? (
-                    item.footerItems.map((menuItem, itemIndex) => (
-                      typeof menuItem.itemLink === 'string' && menuItem.itemLink ? (
-                        <Link className='footer-menu-link' href={menuItem.itemLink} key={itemIndex}>
-                          {menuItem.itemName}
-                        </Link>
-                      ) : null
-                    ))
-                  ) : (<></>)
-
-                  }
-                </div>
+              <div className='footer-column footer-logo-container'>
+                <Image src={'/assets/logos/ZM-Rentals-Horizontal-logo-in-white.png'} width={150} height={50} alt='foote-logo' className='footer-logo-image' />
+                <p>Providing seamless, sustainable <br /> travel experiences with <br /> Auckland car rentals. <br /> Find out what makes us tick.</p>
+               
               </div>
-            ))}
-            <div className='footer-column'>
+
+              {footerData.map((item, index) => (
+                <div key={index} className='footer-column'>
+                  <Link className='footer-menu-heading' href={item.link}>{item.name}</Link>
+                  <div className='footer-menu-items'>
+                    {item.footerItems && item.footerItems.length > 0 ? (
+                      item.footerItems.map((menuItem, itemIndex) => (
+                        typeof menuItem.itemLink === 'string' && menuItem.itemLink ? (
+                          <Link className='footer-menu-link' href={menuItem.itemLink} key={itemIndex}>
+                            {menuItem.itemName}
+                          </Link>
+                        ) : null
+                      ))
+                    ) : (<></>)
+
+                    }
+                  </div>
+                </div>
+              ))}
+              <div className='footer-column'>
                 <div className='footer-deal-of-month-column'>
-                    <h3 className='footer-menu-heading'>Deals</h3>
-                    <Link href={'/hot-deal'} className='footer-menu-link'>Hot Deals</Link>
+                  <h3 className='footer-menu-heading'>Deals</h3>
+                  <Link href={'/hot-deal'} className='footer-menu-link'>Hot Deals</Link>
                 </div>
                 <div className='footer-locations-column'>
-                    <h3 className='footer-menu-heading'>Our Locations</h3>
-                    <Link href={'auckland-city'} className='footer-menu-link'>Auckland</Link>
+                  <h3 className='footer-menu-heading'>Our Locations</h3>
+                  <Link href={'auckland-city'} className='footer-menu-link'>Auckland</Link>
                 </div>
+              </div>
+            </div>
+            <div className="other-footer-embeddings">
+               <TrustpilotWidget />
+               <KiwiBaseWidget/>
+               <WeKiwi/>
             </div>
           </div>
 
 
         </div>
       </div>
-      <div className='footer-social-links-main-container' style={{display: hideFooter ? 'none' : 'flex'}} >
+      <div className='footer-social-links-main-container' style={{ display: hideFooter ? 'none' : 'flex' }} >
         <div className='footer-social-links-width-controller'>
 
-            <div className='footer-social-and-terms-inner-section'>
-              <div className='footer-terms-and-privacy-container'>
-                <Link className='footer-terms-item' href={'/privacy-policy'}>Privacy & Cookie Policy</Link>
-                <Link className='footer-terms-item' href={'/terms-and-conditions'}>Terms & Conditions</Link>
-                {/* <Link className='footer-terms-item' href={'#'}>Careers</Link> */}
-              </div>
-
-              
-
-              <div className='footer-social-links-container'>
-                {socialLinks.map((item, index) => (
-                  <Link key={index} href={item.link}>
-                    {item.icon}
-                  </Link>
-                ))}
-              </div>
-
-              <div className='footer-design-by-container'>
-                <p>Designed & Managed By</p>
-                <Link href={'https://zellesolutions.com/'} target='_blank'>Zelle Solutions</Link>
-              </div>
-
+          <div className='footer-social-and-terms-inner-section'>
+            <div className='footer-terms-and-privacy-container'>
+              <Link className='footer-terms-item' href={'/privacy-policy'}>Privacy & Cookie Policy</Link>
+              <Link className='footer-terms-item' href={'/terms-and-conditions'}>Terms & Conditions</Link>
+              {/* <Link className='footer-terms-item' href={'#'}>Careers</Link> */}
             </div>
+
+
+
+            <div className='footer-social-links-container'>
+              {socialLinks.map((item, index) => (
+                <Link key={index} href={item.link} target='blank'>
+                  {item.icon}
+                </Link>
+              ))}
+            </div>
+
+            <div className='footer-design-by-container'>
+              <p>Designed & Managed By</p>
+              <Link href={'https://zellesolutions.com/'} target='_blank'>Zelle Solutions</Link>
+            </div>
+
+          </div>
 
         </div>
       </div>
