@@ -68,7 +68,14 @@ const BookNowClient = () => {
   const step = parseInt(searchParam.get("step")) || 1;
 
   const [showRetryCardInModal, setShowRetryCardInModal] = useState(false);
-  const cardElement = <CardElementStripe />;
+  const [isCardComplete, setIsCardComplete] = useState(false);
+  const handleCardChange = (event) => {
+    setIsCardComplete(event.complete);
+  };
+
+  const cardElement = <CardElementStripe handleCardChange={handleCardChange} />;
+
+
 
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   const [insuranceSeleted, setInsuranceSelected] = useState({});
@@ -319,6 +326,8 @@ const BookNowClient = () => {
 
   // Handle Pay Now
   const handlePayNowAndBook = async (is10Percent) => {
+
+
     const payloadWithPhoneCode = {
       ...bookingPayload,
       user: {
@@ -329,6 +338,12 @@ const BookNowClient = () => {
           : "",
       },
     };
+
+    if (!isCardComplete) {
+      setTOustShow(true);
+      setToustMessage("Please complete your card details before proceeding.");
+      return;
+    }
 
     try {
       setISloading(true);
@@ -578,6 +593,7 @@ const BookNowClient = () => {
       });
     } finally {
       setISloading(false);
+      setIsCardComplete(false)
       setBookingPayload({
         booking: {
           car_id: null,
@@ -611,6 +627,12 @@ const BookNowClient = () => {
 
 
   const handleRetryPayment = async () => {
+    if (!isCardComplete) {
+      setTOustShow(true);
+      setToustMessage("Please complete your card details before proceeding.");
+      return;
+    }
+
     try {
 
       setISloading(true);
@@ -651,11 +673,13 @@ const BookNowClient = () => {
       if (result.error) {
         setUseAnotherCard(false)
         setShowAvailableModal(true)
+        setIsCardComplete(false)
         setPaymentError(result.error.message);
         setSubmitBookingMessage(prev => ({
           ...prev,
           para: result.error.message
         }));
+        
         return;
       }
 
@@ -663,7 +687,7 @@ const BookNowClient = () => {
         setUseAnotherCard(false)
         setShowAvailableModal(true)
         setShowRetryCardInModal(false);
-        
+        setIsCardComplete(false)
         setSubmitBookingMessage({
           head: "Paid Successfully!",
           para: "Your booking is confirmed.",
@@ -679,6 +703,7 @@ const BookNowClient = () => {
 
     } catch (error) {
       setUseAnotherCard(false)
+      setIsCardComplete(false)
       console.error("Retry payment error:", error);
       setShowAvailableModal(true)
       setPaymentError(error.message);
@@ -1081,8 +1106,8 @@ const BookNowClient = () => {
               </div>
 
               <button
-                disabled={selectedTabIndex > 2 && !isChecked}
-                className={`payment-continue-button ${selectedTabIndex > 2 && !isChecked
+                disabled={selectedTabIndex > 2 && (!isChecked || !isCardComplete)}
+                className={`payment-continue-button ${selectedTabIndex > 2 && (!isChecked || !isCardComplete)
                   ? "disable-continue-booking"
                   : ""
                   }`}
@@ -1357,6 +1382,7 @@ const BookNowClient = () => {
         handleRetryPayment={handleRetryPayment}
         useAnotherCard={useAnotherCard}
         handleUseAnotherCard={handleUseAnotherCard}
+        isCardCompleted={isCardComplete}
       />
 
       <Toust

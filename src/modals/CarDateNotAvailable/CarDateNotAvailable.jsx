@@ -2,20 +2,15 @@ import React, { useState, useEffect } from 'react'
 import './CarDateNotAvailable.css';
 import { IoIosClose } from "react-icons/io";
 import { FaCar } from "react-icons/fa";
-import CardElementStripe from '../../components/book-now-components/payments/cardElement';
+import { IoHome } from "react-icons/io5";
 
-const CarDateNotAvailable = ({ showModal, handleCloseModal, modalMessages, cardElement,handleRetryPayment,useAnotherCard,handleUseAnotherCard }) => {
+
+const CarDateNotAvailable = ({ showModal, handleCloseModal, modalMessages, cardElement,handleRetryPayment,useAnotherCard,handleUseAnotherCard, isCardCompleted }) => {
 
     const handleNavigateToHome = () => {
         handleCloseModal()
         window.location.href = '/';
     }
-
-    // const [useAnotherCard, setUseAnotherCard] = useState(false);
-
-    // const handleUseAnotherCard = () => {
-    //     setUseAnotherCard(true)
-    // }
 
     const handleRetryPay = () =>{
         console.log("workkkk")
@@ -26,7 +21,7 @@ const CarDateNotAvailable = ({ showModal, handleCloseModal, modalMessages, cardE
         <div className={`date-not-available-modal-main-container ${showModal ? 'show-car-not-available-modal' : ''}`} >
             <div className={`date-not-available-modal-inner-container ${showModal ? 'slide-modal-up' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <button className='date-not-available-close-modal-button' onClick={handleNavigateToHome}>
-                    <IoIosClose size={30} />
+                    <IoHome size={20} />
                 </button>
                 {!useAnotherCard ? <div className='date-not-available-modal-body'>
                     <FaCar size={50} color='var(--secondary-color)' />
@@ -38,7 +33,7 @@ const CarDateNotAvailable = ({ showModal, handleCloseModal, modalMessages, cardE
                     <p>Please enter card details</p>
                     {cardElement}
                 </div>}
-                <div className='date-not-available-modal-footer'>
+                <div className={`date-not-available-modal-footer ${useAnotherCard &&  !isCardCompleted ? "disabled" : ""}` }>
                     {useAnotherCard ?
                         <h3 onClick={handleRetryPay}>Confirm</h3> :
                         <h3 onClick={modalMessages?.tryAnother ? handleUseAnotherCard : handleNavigateToHome}>{modalMessages.link}</h3>

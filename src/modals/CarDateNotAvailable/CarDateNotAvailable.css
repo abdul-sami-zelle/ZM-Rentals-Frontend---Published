@@ -103,6 +103,11 @@
     background-color: var(--primary-color);
 }
 
+.date-not-available-modal-footer.disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
 .date-not-available-modal-footer > h3 {
     font-size: 18px;
     text-align: center;

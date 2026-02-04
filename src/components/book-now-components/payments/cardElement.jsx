@@ -3,7 +3,7 @@ import React from "react"
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
 
-export default function CardElementStripe() {
+export default function CardElementStripe({handleCardChange}) {
     return(
          <CardElement
                     options={{
@@ -13,6 +13,7 @@ export default function CardElementStripe() {
                       },
                       hidePostalCode: true,
                     }}
+                    onChange={handleCardChange} 
                   />
     )
 }

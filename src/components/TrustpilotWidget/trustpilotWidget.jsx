@@ -41,8 +41,6 @@
 
 "use client";
 
-import Image from "next/image";
-
 export default function TrustpilotWidget() {
     return (
         <a
