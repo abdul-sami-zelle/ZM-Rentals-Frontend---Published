@@ -89,21 +89,7 @@ const BookingInfo = () => {
     <div className='booking-info-main-container'>
 
       <Hero bgImage={'/assets/main-banners/booking-info.jpg'}/>
-
-      {/* <div className='page-main-heading-container'>
-          <div className='page-main-booking-form-container'>
-            <h3 className='vehicles-main-heading'>Vehicles for Rent in Auckland</h3>
-            <BookingForm bgColor={'#f7f7f7'} boxShadow={`none`} handleSearchVehicles={handleSearchVehicles} textColor={'var(--primary-color)'} primaryButtonText={'Find my car'} />
-
-          </div>
-        </div> */}
       
-      {/* <ServicesHero
-        heading={'Cruise Auckland in Style'}
-        paraOne={`Book your best car rental today and craft a journey to remember `}
-        // paraTwo={'Find out what makes us tick.'}
-        buttonText={'Book Now'}
-      /> */}
       <div className='bookinng-info-content-container' style={{marginBottom: '57px'}}> 
 
         <div className='booking-info-max-width-container'>

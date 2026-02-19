@@ -65,23 +65,9 @@ const CarRentalServices = () => {
   return (
     <div className='rental-services-details-main-container'> 
 
-      {/* <div className='page-main-heading-container'>
-          <div className='page-main-booking-form-container'>
-            <h3 className='vehicles-main-heading'>Vehicles for Rent in Auckland</h3>
-            <BookingForm bgColor={'#f7f7f7'} boxShadow={`none`} handleSearchVehicles={handleSearchVehicles} textColor={'var(--primary-color)'} primaryButtonText={'Find my car'} />
-
-          </div>
-        </div> */}
 
         <Hero bgImage={'/assets/main-banners/car-rental.jpg'} />
 
-
-      {/* <ServicesHero 
-        heading={'Drive Auckland Your Way'}
-        paraOne={`Discover reliable car rental services & explore Auckland with ease`}
-        // paraTwo={'Find out what makes us tick.'}
-        buttonText={'What we are about'}
-      />  */}
       <div className='rental-services-content-container'>
 
           

@@ -151,6 +151,7 @@ const Vehicles = () => {
   const handleSearchVehicles = async () => {
     const api = `${url}/cars/available-cars`;
     const { pickup_location, drop_location, pickup_time, drop_time } = searchVehiclePayload;
+    console.log(pickup_location, drop_location, pickup_time, drop_time,"here are timings")
 
     if (isValidDropDate(searchVehiclePayload.pickup_time, searchVehiclePayload.drop_time)) {
       try {

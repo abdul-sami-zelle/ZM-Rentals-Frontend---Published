@@ -148,19 +148,80 @@ const BookingForm = ({
   };
 
   const [dropDateManuallyChanged, setDropDateManuallyChanged] = useState(false);
+  // const handlePickupDateChange = (date) => {
+  //   const nzPickupDate = convertToNZDate(date);
+
+  //   setSelectedPickupDate(nzPickupDate);
+  //   console.log(nzPickupDate,"here 2")
+  //   if (!dropDateManuallyChanged) {
+  //     const futureDrop = new Date(nzPickupDate);
+  //     futureDrop.setDate(futureDrop.getDate() + 4);
+  //     formatePickupDateAndTime(nzPickupDate, pickupTime);
+  //     getDropOffDateAt10AM(futureDrop);
+  //     setSelectedDropDate(futureDrop);
+  //   }
+  //   setPickupCalender(false); // hide after selection
+  // };
+
   const handlePickupDateChange = (date) => {
     const nzPickupDate = convertToNZDate(date);
 
     setSelectedPickupDate(nzPickupDate);
-    if (!dropDateManuallyChanged) {
+
+    // 1️⃣ Always update pickup ISO with existing time
+    if (pickupTime) {
+      formatePickupDateAndTime(nzPickupDate, pickupTime);
+    }
+
+    // 🔥 FIX STARTS HERE
+    const isSameDay =
+      selectedDropDate &&
+      selectedDropDate.toDateString() === nzPickupDate.toDateString();
+
+    if (isSameDay) {
+      setDropDateManuallyChanged(false);
+    }
+
+    // if (!dropDateManuallyChanged || isSameDay) {
+    //   const futureDrop = new Date(nzPickupDate);
+    //   futureDrop.setDate(futureDrop.getDate() + 4);
+
+    //   setSelectedDropDate(futureDrop);
+    //   getDropOffDateAt10AM(futureDrop);
+    // }
+    // If drop is not valid relative to new pickup → auto update it
+    const shouldAutoUpdateDrop =
+      !selectedDropDate ||
+      selectedDropDate <= nzPickupDate;
+
+    if (shouldAutoUpdateDrop) {
       const futureDrop = new Date(nzPickupDate);
       futureDrop.setDate(futureDrop.getDate() + 4);
-      formatePickupDateAndTime(nzPickupDate, pickupTime);
-      getDropOffDateAt10AM(futureDrop);
+
       setSelectedDropDate(futureDrop);
+      getDropOffDateAt10AM(futureDrop);
     }
-    setPickupCalender(false); // hide after selection
+
+    // 🔥 FIX ENDS HERE
+
+    // 4️⃣ Validate pickup time
+    const times = generateTimeList(nzPickupDate);
+    const currentTimeObj = times.find(t => t.name === pickupTime);
+
+    if (currentTimeObj?.isPassed) {
+      const nextValid = times.find(t => !t.isPassed);
+
+      if (nextValid) {
+        setPickupTime(nextValid.name);
+        formatePickupDateAndTime(nzPickupDate, nextValid.name);
+      }
+    }
+
+    setPickupCalender(false);
   };
+
+
+
 
   // const handleDropDateChange = (date) => {
   //   const nzDropDate = convertToNZDate(date);
@@ -171,46 +232,46 @@ const BookingForm = ({
   // };
 
   const handleDropDateChange = (date) => {
-  const nzDropDate = convertToNZDate(date);
-  setSelectedDropDate(nzDropDate);
+    const nzDropDate = convertToNZDate(date);
+    setSelectedDropDate(nzDropDate);
 
-  let finalDropTime = dropupTime;
+    let finalDropTime = dropupTime;
 
-  // 🔥 If same day → force drop time > pickup time
-  if (
-    selectedPickupDate &&
-    nzDropDate.toDateString() === selectedPickupDate.toDateString()
-  ) {
-    const parse = (str) => {
-      const [time, mer] = str.split(" ");
-      let [h, m] = time.split(":").map(Number);
-      if (mer === "PM" && h !== 12) h += 12;
-      if (mer === "AM" && h === 12) h = 0;
-      return h * 60 + m;
-    };
+    // 🔥 If same day → force drop time > pickup time
+    if (
+      selectedPickupDate &&
+      nzDropDate.toDateString() === selectedPickupDate.toDateString()
+    ) {
+      const parse = (str) => {
+        const [time, mer] = str.split(" ");
+        let [h, m] = time.split(":").map(Number);
+        if (mer === "PM" && h !== 12) h += 12;
+        if (mer === "AM" && h === 12) h = 0;
+        return h * 60 + m;
+      };
 
-    const pickupMin = parse(pickupTime);
-    const dropMin = parse(dropupTime);
+      const pickupMin = parse(pickupTime);
+      const dropMin = parse(dropupTime);
 
-    if (dropMin <= pickupMin) {
-      const times = generateTimeList(nzDropDate);
+      if (dropMin <= pickupMin) {
+        const times = generateTimeList(nzDropDate);
 
-      const nextValid = times.find((t) => {
-        const mins = parse(t.name);
-        return mins > pickupMin;
-      });
+        const nextValid = times.find((t) => {
+          const mins = parse(t.name);
+          return mins > pickupMin;
+        });
 
-      if (nextValid) {
-        finalDropTime = nextValid.name;
-        setDropupTime(nextValid.name);
+        if (nextValid) {
+          finalDropTime = nextValid.name;
+          setDropupTime(nextValid.name);
+        }
       }
     }
-  }
 
-  handleDropofTimeAndDate(nzDropDate, finalDropTime);
-  setDropCalender(false);
-  setDropDateManuallyChanged(true);
-};
+    handleDropofTimeAndDate(nzDropDate, finalDropTime);
+    setDropCalender(false);
+    setDropDateManuallyChanged(true);
+  };
 
 
   const isSameDay = () => {
