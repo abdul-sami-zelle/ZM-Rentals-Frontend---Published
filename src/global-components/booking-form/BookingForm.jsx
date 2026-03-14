@@ -522,6 +522,7 @@ const BookingForm = ({
       };
     });
   };
+  
 
   const getDropOffDateAt10AM = (dateString) => {
     setSearchVehiclePayload((prev) => {
@@ -655,6 +656,8 @@ const BookingForm = ({
       return d;
     })()
     : null;
+
+    
 
   return (
     <div

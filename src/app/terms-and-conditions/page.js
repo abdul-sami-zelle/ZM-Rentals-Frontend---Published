@@ -398,7 +398,7 @@ const TermsAndConditions = () => {
             <strong>18.1.1</strong> Mechanical breakdowns not resulting from Customer error receive service provider callout fee refunds (examples: engine faults, electrical issues, cooling system problems, related vehicle recovery)
           </p>
           <p className='global-content-style'>
-            <strong>18.1.2</strong> Non-mechanical breakdowns caused by Customer fault (examples: fuel depletion, incorrect fueling/charging, tire issues, key loss/lockout, dead batteries from lights/keys left on) receive Company coverage for salvage/towing costs up to 100km only when Total Road Care fees are purchased per section 4. Without Total Road Care coverage, Customers pay all relevant callout and salvage/towing costs regardless of distance.
+            <strong>18.1.2</strong> Tyre problems—including flat tyres, punctures, blowouts, bursts, or rim damage—are considered non-mechanical. costs of repair or replacement are the responsibility of the hirer, no matter which insurance option is selected.
           </p>
 
           <h2 className='global-heading-style'>18.2 Breakdown Notification Requirements</h2>
