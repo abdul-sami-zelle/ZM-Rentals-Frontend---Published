@@ -558,21 +558,126 @@ const TermsAndConditions = () => {
           <p className='global-content-style'>Additional personal information management details and collection, use, and disclosure purposes are available in the Company's privacy policy at (http://zmrentals.co.nz/privacy-policy)</p>
         </div>
 
-        <h1 className='section-main-heading'>25. Additional Important Terms</h1>
+        <h1 className='section-main-heading'>25. Vehicle Collection and Recovery</h1>
+        <p style={{marginTop:"-15px"}} className='global-content-style'>This section sets out the Hirer’s obligations regarding the return of the Vehicle, the procedures and fees applicable if the Vehicle is left unattended or requires collection by ZM Rentals, off-hours service charges, and the Hirer’s responsibility for all related costs. <br/>
+            The Hirer has no right to retain, withhold, or use the Vehicle beyond the agreed rental period without the prior written authorization of ZM Rentals.</p>
         <div>
-          <h2 className='global-heading-style'>25.1 Currency and Exchange Considerations</h2>
+          <h2 className='global-heading-style'>25.1 Vehicle Return</h2>
+          <p className='global-content-style'>The Vehicle must be returned by the Hirer to the ZM Rentals office or the agreed return location on the agreed return date and time.<br/>
+              The Vehicle will be considered not returned until it is physically delivered to and accepted by ZM Rentals.<br/>
+              The Hirer remains fully responsible for the Vehicle until it is returned and accepted by ZM Rentals.</p>
+
+          <h2 className='global-heading-style'>25.2 Vehicle Collection and Recovery</h2>
+          <p className='global-content-style'>If the Hirer leaves the Vehicle unattended at any location, including leaving the Vehicle with the keys inside or without handing over to ZM Rentals, or requests ZM Rentals to collect the Vehicle from any address, ZM Rentals reserves the right to charge a Vehicle Collection or Recovery Fee.<br/>
+          Minimum Fixed Charge: $100 (regardless of distance) <br/>
+The Hirer agrees to pay all costs associated with the collection or recovery of the Vehicle, including but not limited to:<br/>
+          </p>
+          <p className='global-content-style'>
+            <strong>25.2.1</strong> Distance Charge: $4 per kilometre travelled
+          </p>
+          <p className='global-content-style'>
+            <strong>25.2.2</strong> Administration Fee: $100
+          </p>
+           <p className='global-content-style'>
+            <strong>25.2.3</strong> Staff Labour / Travel Time Costs
+          </p>
+          <p className='global-content-style'>
+            <strong>25.2.4</strong> Fuel / Travel Costs
+          </p>
+          <p className='global-content-style'>
+            <strong>25.2.5</strong> Toll Charges
+          </p>
+          <p className='global-content-style'>
+            <strong>25.2.6</strong> Parking Charges
+          </p>
+           <p className='global-content-style'>
+            <strong>25.2.7</strong> Traffic Infringement Costs
+          </p>
+          <p className='global-content-style'>
+            <strong>25.2.8</strong> Tow Truck / Recovery Charges (if required): Actual cost
+          </p>
+          <p className='global-content-style'>
+            <strong>25.2.9</strong> Any other reasonable costs incurred in recovering the Vehicle
+          </p>
+
+          <h2 className='global-heading-style'>25.3 Off-Hours Charges</h2>
+          <p className='global-content-style'>An additional $80 Off-Hours Service Fee will apply if vehicle collection or recovery is required outside normal business hours.
+          <br/>Off-Hours are defined as:</p>
+          <p className='global-content-style'>
+            <strong>25.3.1</strong> Before 9:00 AM or after 5:00 PM on weekdays
+          </p>
+          <p className='global-content-style'>
+            <strong>25.3.2</strong> All day on Saturdays
+          </p>
+          <p className='global-content-style'>
+            <strong>25.3.3</strong> All day on Sundays
+          </p>
+          <p className='global-content-style'>
+            <strong>25.3.4</strong>All Public Holidays
+          </p>
+
+          <h2 className='global-heading-style'>25.4 Vehicle Repossession Rights</h2>
+          <p className='global-content-style'>If the Vehicle is not returned as agreed, or is left unattended at any location, the Hirer authorizes ZM Rentals to locate and repossess the Vehicle without prior notice, in accordance with applicable laws.<br/>
+            The Hirer agrees to cooperate with ZM Rentals in the recovery of the Vehicle and will be responsible for all associated recovery costs, including loss of rental income until the Vehicle is recovered and returned to ZM Rentals.</p>
+
+          <h2 className='global-heading-style'>25.5 Authorization to Charge Costs</h2>
+          <p className='global-content-style'>The Hirer authorizes ZM Rentals to charge the Hirer’s credit card, debit card, or deduct from the security bond any amounts owed under this Agreement.
+          <br/>This includes but is not limited to charges for:</p>
+
+          <p className='global-content-style'>
+            <strong>25.5.1</strong> Rental fees and extensions
+          </p>
+          <p className='global-content-style'>
+            <strong>25.5.2</strong> Late return charges
+          </p>
+          <p className='global-content-style'>
+            <strong>25.5.3</strong> Vehicle collection or recovery fees
+          </p>
+          <p className='global-content-style'>
+            <strong>25.5.4</strong> Off-hours service charges
+          </p>
+           <p className='global-content-style'>
+            <strong>25.5.5</strong> Fuel charges
+          </p>
+          <p className='global-content-style'>
+            <strong>25.5.6</strong> Traffic infringements, tolls, and parking fines
+          </p>
+          <p className='global-content-style'>
+            <strong>25.5.7</strong> Damage, repair, or cleaning costs
+          </p>
+          <p className='global-content-style'>
+            <strong>25.5.8</strong> Loss of rental income
+          </p>
+          <p className='global-content-style'>
+            <strong>25.5.9</strong> Administration fees
+          </p>
+          <p className='global-content-style'>
+            <strong>25.5.10</strong> Any other costs incurred by ZM Rentals as a result of the Hirer’s use or possession of the Vehicle
+          </p>
+        </div>
+         <p style={{marginTop:"-15px"}} className='global-content-style'>
+          The Hirer agrees that ZM Rentals may process these charges without further authorization if the Hirer fails to make payment when due.<br/>
+The Hirer also agrees that these charges may be processed after the rental period has ended if additional costs are identified later
+         </p>
+
+
+
+
+        <h1 className='section-main-heading'>26. Additional Important Terms</h1>
+        <div>
+          <h2 className='global-heading-style'>26.1 Currency and Exchange Considerations</h2>
           <p className='global-content-style'>All rental transactions are conducted in New Zealand dollars. Exchange rate fluctuations and banking charges may create variances between charged and refunded amounts on Customer credit cards. The Company accepts no liability for such variations.</p>
 
-          <h2 className='global-heading-style'>25.2 Consumer Rights Protection</h2>
+          <h2 className='global-heading-style'>26.2 Consumer Rights Protection</h2>
           <p className='global-content-style'>Customer rights under this agreement supplement those available under applicable consumer legislation, including the Consumer Guarantees Act and Fair Trading Act.</p>
 
-          <h2 className='global-heading-style'>25.3 Refund Processing Timeline</h2>
+          <h2 className='global-heading-style'>26.3 Refund Processing Timeline</h2>
           <p className='global-content-style'>Company service refunds require up to 15 working days for processing completion.</p>
 
-          <h2 className='global-heading-style'>25.4 Agreement Severability</h2>
+          <h2 className='global-heading-style'>26.4 Agreement Severability</h2>
           <p className='global-content-style'>If any agreement provision is found illegal, conflicting with law, or otherwise invalid, remaining portions remain enforceable with party rights and obligations construed as if invalid provisions were excluded.</p>
 
-          <h2 className='global-heading-style'>25.5 Complete Agreement Declaration</h2>
+          <h2 className='global-heading-style'>26.5 Complete Agreement Declaration</h2>
           <p className='global-content-style'>Customers expressly warrant that they do not rely on oral or written representations, warranties, or agreements outside this contract. This agreement constitutes the complete understanding between the parties and supersedes all prior representations, understandings, undertakings, or agreements (oral or written, express or implied).</p>
         </div>
 
