@@ -26,14 +26,14 @@ const CountryCodeDropdown = ({
 
   // Filter countries
   useEffect(() => {
-    const lower = query.toLowerCase();
+    const lower = query?.toLowerCase();
     const filtered = countryList.filter(
       (c) =>
-        c.country.toLowerCase().includes(lower) ||
-        c.code.toLowerCase().includes(lower)
+        c?.country?.toLowerCase().includes(lower) ||
+        c?.code?.toLowerCase().includes(lower)
     ).sort((a, b) => {
-      const aName = a.country.toLowerCase();
-      const bName = b.country.toLowerCase();
+      const aName = a?.country?.toLowerCase();
+      const bName = b?.country?.toLowerCase();
 
       const aStart = aName.startsWith(lower);
       const bStart = bName.startsWith(lower);

@@ -54,7 +54,7 @@ const CarDetailsModal = ({ showModal, handleClose, vehicleDetails, isVehicleSear
     const isNullOrNA = (val) =>
         val === null ||
         val === undefined ||
-        (typeof val === 'string' && val.trim().toLowerCase() === 'n/a');
+        (typeof val === 'string' && val?.trim().toLowerCase() === 'n/a');
 
     const spacificationData = [
         {

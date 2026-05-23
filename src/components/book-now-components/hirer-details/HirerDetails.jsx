@@ -324,7 +324,7 @@ const HirerDetails = () => {
   useEffect(() => {
     const defaultCountry = bookingPayload.user.country; // or however you set it
     const countryObj = countryList?.find(
-      (c) => c.country.toLowerCase() === defaultCountry?.toLowerCase()
+      (c) => c.country?.toLowerCase() === defaultCountry?.toLowerCase()
     );
 
     if (countryObj) {
@@ -496,7 +496,7 @@ const HirerDetails = () => {
             className="my-country-input"
             placeholder="Which country do you live in?"
             filterOption={(option, inputValue) =>
-              option.label.toLowerCase().startsWith(inputValue.toLowerCase())
+              option.label?.toLowerCase().startsWith(inputValue?.toLowerCase())
             }
           />
         </div>

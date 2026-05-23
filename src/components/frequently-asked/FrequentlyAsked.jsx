@@ -15,7 +15,7 @@ const FrequentlyAsked = ({ faqData }) => {
 
     function toTitleCase(str) {
         return str
-            .toLowerCase()
+            ?.toLowerCase()
             .split(' ')
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');

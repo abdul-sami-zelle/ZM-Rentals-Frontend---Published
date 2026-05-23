@@ -40,7 +40,7 @@ export default function useDropdownNavigationWithSearch(ref, isOpen, itemClass, 
 
       // 🔽 Letter key navigation
       if (/^[a-z]$/i.test(e.key)) {
-        const char = e.key.toLowerCase();
+        const char = e?.key?.toLowerCase();
 
         if (searchChar === char) {
           setCharIndex((prev) => prev + 1);
@@ -51,7 +51,7 @@ export default function useDropdownNavigationWithSearch(ref, isOpen, itemClass, 
 
         const matches = Array.from(items)
           .map((el, i) => ({ el, index: i }))
-          .filter((c) => c.el.textContent.trim().toLowerCase().startsWith(char));
+          .filter((c) => c?.el?.textContent?.trim().toLowerCase().startsWith(char));
 
         if (matches.length > 0) {
           const match = matches[charIndex % matches.length];

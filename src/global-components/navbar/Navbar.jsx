@@ -130,7 +130,7 @@ const Navbar = () => {
   useEffect(() => {
     const pathWithoutSlash = currentPath.startsWith('/') ? currentPath.slice(1) : currentPath
     const splitedPath = pathWithoutSlash.split('-');
-    setNavItem(splitedPath.join(' ').toLowerCase())
+    setNavItem(splitedPath?.join(' ').toLowerCase())
 
   }, [currentPath])
 
@@ -171,8 +171,8 @@ const Navbar = () => {
             {navData.map((item) => (
               <li
                 key={item.id}
-                className={`navbar-item ${navItem === item.name.toLowerCase() ? 'active' : ''}`}
-                onClick={() => setNavItem(item.name.toLowerCase())}
+                className={`navbar-item ${navItem === item?.name?.toLowerCase() ? 'active' : ''}`}
+                onClick={() => setNavItem(item?.name?.toLowerCase())}
                 onMouseOver={() => setCurrentIndex(item.id)}
                 onMouseLeave={() => setCurrentIndex(null)}
               >
