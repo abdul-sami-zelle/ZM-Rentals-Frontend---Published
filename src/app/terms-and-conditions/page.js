@@ -88,7 +88,7 @@ const TermsAndConditions = () => {
             <strong>9.3.8</strong> Current daily rental rates for each day vehicles are returned beyond the agreed rental period, plus a one-time $250 late return penalty
           </p>
           <p className='global-content-style'>
-            <strong>9.3.9</strong> All traffic violations, parking citations, breach notices, or other infringements occurring during the rental period, plus $60 administrative processing fees (detailed further in section 20)
+            <strong>9.3.9</strong> All traffic violations, parking citations, breach notices, or other infringements occurring during the rental period, plus $30 administrative processing fees (detailed further in section 20)
           </p>
           <p className='global-content-style'>
             <strong>9.3.10</strong> Reasonable relocation expenses (typically $625-$2,500) when vehicles are abandoned or returned to unauthorized locations other than those specified in section 3
