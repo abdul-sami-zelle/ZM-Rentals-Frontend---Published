@@ -81,25 +81,6 @@ const PrivacyAndPolicy = () => {
           All third-party services operate under their respective privacy policies and practices, for which we bear no responsibility. Individuals preferring not to share Personal Data with third parties or make information publicly available should avoid using particular services.
         </p>
 
-
-
-        <h2 className='global-heading-style'>Traffic Infringements</h2>
-        <p className='global-content-style'>
-          Traffic infringements may be issued for various driving or parking offences in New Zealand, including speeding, red-light violations, unpaid parking, or exceeding parking time limits.          </p>
-        <p className='global-content-style'>
-          Website access from outside New Zealand constitutes agreement that any provided Personal Data falls under this Statement and the Privacy Act jurisdiction.
-        </p>
-        <p className='global-content-style'>
-          If an infringement is received for an incident that occurred during your rental period, a statutory declaration will be filled and sent to the relevant authority to transfer liability to the hirer using the details provided at the time of rental. The infringement notice will then be sent directly to you by the relevant authority.
-        </p>
-        <p className='global-content-style'>
-          NZ$30 administration fee will apply for each infringement received. This fee covers the processing and handling of the infringement and will be charged to the payment method provided at the time of rental.
-        </p>
-        <p className='global-content-style'>
-          Please note that ZM Rentals does not pay infringement fines on behalf of the hirer. The hirer remains fully responsible for payment of all fines, penalties, tolls, and related charges.        </p>
-
-
-
         <h2 className='global-heading-style'>Tracking Technologies and Cookies</h2>
         <p className='global-content-style'>
           Website cookies may be employed on our platform. Cookies are small data files stored on devices with web browsers (computers, tablets) containing information about devices, IP addresses, sessions, and online activity from device users. Most browsers provide options to disable or reject cookies. Cookie disabling or rejection may limit website functionality or increase loading times.

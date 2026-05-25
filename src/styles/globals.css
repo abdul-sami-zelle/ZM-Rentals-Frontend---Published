@@ -153,9 +153,9 @@ input:focus-visible {
 }
 
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 680px) {
   .section-main-heading {
-    font-size: var(--font-heading-md);
+    font-size: 22px;
     /* padding: 0 16px; */
   }
 
@@ -163,5 +163,9 @@ input:focus-visible {
     font-size: var(--font-body-16);
     line-height: var(--line-height-body);
     font-weight: var(--font-weight-regular);
+  }
+
+  .global-heading-style{
+    font-size: 18px;
   }
 }

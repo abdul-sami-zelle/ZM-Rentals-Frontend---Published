@@ -15,7 +15,6 @@ const TermsAndConditions = () => {
         <p className='global-content-style'>
           Both the Customer and Cardholder bear complete joint responsibility for all actions taken and obligations fulfilled under this rental contract, regardless of who actually performs these duties.
         </p>
-        
 
         <h1 className='section-main-heading'>8. Rental Agreement Foundation</h1>
         <div className='term-condition-points'>
@@ -29,13 +28,10 @@ const TermsAndConditions = () => {
             The vehicle rental period commences and concludes according to the timeframes specified in section 3, subject to approved extensions or early returns as outlined in sections 21 and 22. When vehicles are returned outside standard business hours or to designated airport facilities, the Customer maintains full responsibility for the vehicle, including applicable after-hours charges and any damage that occurs until a Company representative completes the return inspection process.
           </p>
 
-          <h2 className='global-heading-style'>
-            8.3 Vehicle Specification Flexibility
-          </h2>
+          <h2 className='global-heading-style'>8.3 Vehicle Specification Flexibility</h2>
           <p className='global-content-style'>
             The Customer grants the Company authority to modify section 3 details at pickup time, including updating vehicle registration numbers and, when reasonably necessary, adjusting the vehicle make or model to provide equivalent or superior transportation options.
           </p>
-
         </div>
 
         <h1 className='section-main-heading'>9. Financial Responsibilities and Charges</h1>
@@ -50,16 +46,11 @@ const TermsAndConditions = () => {
             Customers bear responsibility for all fuel or electricity consumed throughout the rental duration. The Company may offer prepaid fuel options with the following conditions:
           </p>
           <p className='global-content-style'>
-            <strong>9.2.1</strong>
-            Customers selecting prepaid fuel services receive no refund for unused fuel upon vehicle return
-
+            <strong>9.2.1</strong> Customers selecting prepaid fuel services receive no refund for unused fuel upon vehicle return
           </p>
           <p className='global-content-style'>
-            <strong>9.2.2</strong>
-            Customers declining prepaid fuel must return vehicles with completely filled fuel tanks. Incomplete fuel returns result in charges equal to current fuel prices plus a $35 refueling service fee. Alternative provisions for electric vehicles are detailed in Section 26.
-
+            <strong>9.2.2</strong> Customers declining prepaid fuel must return vehicles with completely filled fuel tanks. Incomplete fuel returns result in charges equal to current fuel prices plus a $35 refueling service fee. Alternative provisions for electric vehicles are detailed in Section 26.
           </p>
-          
 
           <h2 className='global-heading-style'>9.3 Additional Cost Categories</h2>
           <p className='global-content-style'>Customers accept financial responsibility for the following circumstances and associated fees:</p>
@@ -214,44 +205,44 @@ const TermsAndConditions = () => {
 
         <h1 className='section-main-heading'>13. ZM Rentals’ Rights and Obligations</h1>
         <div className='term-condition-points'>
-            <h2 className='global-heading-style'>13.1 Vehicle Condition Standards</h2>
-            <p className='global-content-style'>The Company provides vehicles in safe, roadworthy condition meeting current Certificate of Fitness requirements.</p>
-            
-            <h2 className='global-heading-style'>13.2 Contract Cancellation Authority</h2>
-            <p className='global-content-style'>The Company reserves the right to cancel rental agreements and immediately repossess vehicles under these circumstances:</p>
-            <p className='global-content-style'>
-              <strong>13.2.1</strong> Material breach of rental agreement terms by the Customer
-            </p>
-            <p className='global-content-style'>
-              <strong>13.2.2</strong> Customer's inability to provide the required driving license, credit card, or security deposit under their name
-            </p>
-            <p className='global-content-style'>
-              <strong>13.2.3</strong> Vehicle acquisition through fraudulent means or misrepresentation
-            </p>
-            <p className='global-content-style'>
-              <strong>13.2.4</strong> Vehicle abandonment
-            </p>
-            <p className='global-content-style'>
-              <strong>13.2.5</strong> Failure to return the vehicle on the agreed date
-            </p>
-            <p className='global-content-style'>
-              <strong>13.2.6</strong> Vehicle damage or reasonable risk of damage
-            </p>
-            <p className='global-content-style'>
-              <strong>13.2.7</strong> Driving behavior reasonably considered dangerous to the driver or others by Company representatives or enforcement officers
-            </p>
+          <h2 className='global-heading-style'>13.1 Vehicle Condition Standards</h2>
+          <p className='global-content-style'>The Company provides vehicles in safe, roadworthy condition meeting current Certificate of Fitness requirements.</p>
 
-            <h2 className='global-heading-style'>13.3 Cancellation Consequences</h2>
-            <p className='global-content-style'>Contract cancellation and vehicle repossession result in forfeiture of all rental charges without refund. Termination does not affect other Company rights under this agreement or applicable law.</p>
+          <h2 className='global-heading-style'>13.2 Contract Cancellation Authority</h2>
+          <p className='global-content-style'>The Company reserves the right to cancel rental agreements and immediately repossess vehicles under these circumstances:</p>
+          <p className='global-content-style'>
+            <strong>13.2.1</strong> Material breach of rental agreement terms by the Customer
+          </p>
+          <p className='global-content-style'>
+            <strong>13.2.2</strong> Customer's inability to provide the required driving license, credit card, or security deposit under their name
+          </p>
+          <p className='global-content-style'>
+            <strong>13.2.3</strong> Vehicle acquisition through fraudulent means or misrepresentation
+          </p>
+          <p className='global-content-style'>
+            <strong>13.2.4</strong> Vehicle abandonment
+          </p>
+          <p className='global-content-style'>
+            <strong>13.2.5</strong> Failure to return the vehicle on the agreed date
+          </p>
+          <p className='global-content-style'>
+            <strong>13.2.6</strong> Vehicle damage or reasonable risk of damage
+          </p>
+          <p className='global-content-style'>
+            <strong>13.2.7</strong> Driving behavior reasonably considered dangerous to the driver or others by Company representatives or enforcement officers
+          </p>
 
-            <h2 className='global-heading-style'>13.4 Information Sharing for Safety</h2>
-            <p className='global-content-style'>When canceling agreements under section 13.2.6, the Company may share Customer and Authorized Driver personal information with other rental operators to promote safe driving practices in New Zealand.</p>
+          <h2 className='global-heading-style'>13.3 Cancellation Consequences</h2>
+          <p className='global-content-style'>Contract cancellation and vehicle repossession result in forfeiture of all rental charges without refund. Termination does not affect other Company rights under this agreement or applicable law.</p>
 
-            <h2 className='global-heading-style'>13.5 Vehicle Recovery Authorization</h2>
-            <p className='global-content-style'>Customers authorize Company entry onto any premises they own or occupy and agree to facilitate entry to other properties for vehicle recovery purposes. All reasonable repossession costs are borne by the Customer.</p>
+          <h2 className='global-heading-style'>13.4 Information Sharing for Safety</h2>
+          <p className='global-content-style'>When canceling agreements under section 13.2.6, the Company may share Customer and Authorized Driver personal information with other rental operators to promote safe driving practices in New Zealand.</p>
 
-            <h2 className='global-heading-style'>13.6 Force Majeure Provisions</h2>
-            <p className='global-content-style'>When Force Majeure events prevent the Company from fulfilling obligations through no fault of its own, the Company's responsibilities are suspended for the duration of such events, with corresponding liability exemption.</p>
+          <h2 className='global-heading-style'>13.5 Vehicle Recovery Authorization</h2>
+          <p className='global-content-style'>Customers authorize Company entry onto any premises they own or occupy and agree to facilitate entry to other properties for vehicle recovery purposes. All reasonable repossession costs are borne by the Customer.</p>
+
+          <h2 className='global-heading-style'>13.6 Force Majeure Provisions</h2>
+          <p className='global-content-style'>When Force Majeure events prevent the Company from fulfilling obligations through no fault of its own, the Company's responsibilities are suspended for the duration of such events, with corresponding liability exemption.</p>
         </div>
 
         <h1 className='section-main-heading'>14. Customer Liability Parameters</h1>
@@ -265,7 +256,6 @@ const TermsAndConditions = () => {
             <strong>14.1.2</strong> Consequential damages, losses, or costs, including salvage expenses, lost rental income, and operational disruptions
           </p>
 
-
           <h2 className='global-heading-style'>14.2 Company Liability Limitations</h2>
           <p className='global-content-style'>The Company accepts no liability for actions, claims, demands, losses, damages, costs, expenses, harm, or other adverse events that Customers may experience related to vehicle rental, possession, use, or misuse. Customers release the Company, its agents, and employees from such liability.</p>
         </div>
@@ -274,7 +264,6 @@ const TermsAndConditions = () => {
         <div className='term-condition-points'>
           <h2 className='global-heading-style'>15.1 Insurance Policy Foundation</h2>
           <p className='global-content-style'>Unless Customers arrange independent insurance per section 17, vehicles are covered under motor vehicle insurance policies from companies licensed under the Insurance Prudential Supervision Act 2010, subject to exclusions detailed in section 16.</p>
-
 
           <h2 className='global-heading-style'>15.2 Insurance Service Clarification</h2>
           <p className='global-content-style'>The Company does not provide insurance services directly but manages insurance coverage and determines claim submissions. Customers agree to interact exclusively with the Company rather than insurers regarding vehicle damage.</p>
@@ -305,7 +294,6 @@ const TermsAndConditions = () => {
 
           <h2 className='global-heading-style'>15.9 Third-Party Claim Authorization</h2>
           <p className='global-content-style'>Customers authorize the Company to represent them and manage any claims, actions, or proceedings against third parties related to vehicle accidents or damage, with Customer cooperation in pursuing such matters.</p>
-
         </div>
 
         <h1 className='section-main-heading'>16. Insurance Coverage Exclusions</h1>
@@ -372,7 +360,6 @@ const TermsAndConditions = () => {
           <p className='global-content-style'>
             <strong>16.1.20</strong> Manufacturer warranty voidance resulting from Customer actions
           </p>
-
 
           <h2 className='global-heading-style'>16.2 Exclusion Application Standards</h2>
           <p className='global-content-style'>These exclusions follow Insurance Law Reform Act 1977 section 11 standards, meaning claims cannot be denied solely based on exclusion circumstances if those circumstances did not cause or contribute to the loss.</p>
@@ -442,7 +429,7 @@ const TermsAndConditions = () => {
 
           <h2 className='global-heading-style'>19.3 Post-Accident Vehicle Replacement</h2>
           <p className='global-content-style'>When accidents render vehicles unfit for operation and the Company determines Customer fault absence, vehicle repair or replacement arrangements are made promptly with replacement pickup from Company branches. For at-fault accidents or undetermined fault situations, the Company is not obligated to refund unused rental periods or insurance products, with replacement vehicle provision at the Company's discretion and Customer expense. Basic insurance products may not be available for replacement vehicles. The Company does not cover transportation costs from accident locations.</p>
-          
+
           <h2 className='global-heading-style'>19.4 Damage Definition Scope</h2>
           <p className='global-content-style'>Damage includes all third-party property damage, vehicle damage (including tires and windscreens), towing and recovery needs, theft, fire, break-in, and vandalism.</p>
 
@@ -451,35 +438,33 @@ const TermsAndConditions = () => {
 
           <h2 className='global-heading-style'>19.6 Vehicle Theft Procedures</h2>
           <p className='global-content-style'>Stolen vehicles require immediate Company notification, in-person police station visits for signed statements and police reports, written circumstance accounts to the Company, and key surrender at the nearest Company location.</p>
-
         </div>
-
 
         <h1 className='section-main-heading'>20. Traffic Violations and Infringement Management</h1>
         <div className='term-condition-points'>
-            <h2 className='global-heading-style'>20.1 Customer Violation Liability</h2>
-            <p className='global-content-style'>Customers are responsible for all penalties, fees, and fines incurred during rental periods for:</p>
-            <p className='global-content-style'>
-              <strong>21.1.1</strong> Speeding offenses, traffic signal violations, or toll offenses detected by approved surveillance equipment
-            </p>
-            <p className='global-content-style'>
-              <strong>21.1.2</strong> Parking violations, breach notices, and vehicle clamping fees, including roadway parking violations of road controlling authority bylaws or Land Transport (Road User) Rule 2004 Part 6 provisions, plus private parking entity violations
-            </p>
-            <p className='global-content-style'>
-              <strong>21.1.3</strong> Freedom Camping Act 2011 section 20(1) offenses involving vehicle use
-            </p>
+          <h2 className='global-heading-style'>20.1 Customer Violation Liability</h2>
+          <p className='global-content-style'>Customers are responsible for all penalties, fees, and fines incurred during rental periods for:</p>
+          <p className='global-content-style'>
+            <strong>21.1.1</strong> Speeding offenses, traffic signal violations, or toll offenses detected by approved surveillance equipment
+          </p>
+          <p className='global-content-style'>
+            <strong>21.1.2</strong> Parking violations, breach notices, and vehicle clamping fees, including roadway parking violations of road controlling authority bylaws or Land Transport (Road User) Rule 2004 Part 6 provisions, plus private parking entity violations
+          </p>
+          <p className='global-content-style'>
+            <strong>21.1.3</strong> Freedom Camping Act 2011 section 20(1) offenses involving vehicle use
+          </p>
 
-            <h2 className='global-heading-style'>20.2 Infringement Notice Distribution</h2>
-            <p className='global-content-style'>Upon receiving speeding, traffic, parking, breach, or freedom camping offense notices relevant to rental periods, the Company sends notice copies and reminder copies to Customers within 10 working days of receipt.</p>
+          <h2 className='global-heading-style'>20.2 Infringement Notice Distribution</h2>
+          <p className='global-content-style'>Upon receiving speeding, traffic, parking, breach, or freedom camping offense notices relevant to rental periods, the Company sends notice copies and reminder copies to Customers within 10 working days of receipt.</p>
 
-            <h2 className='global-heading-style'>20.3 Customer Challenge Rights</h2>
-            <p className='global-content-style'>Customers maintain the right to challenge, complain about, query, or object to alleged offenses with relevant enforcement authorities and seek court hearings within 56 days of infringement notice dates or 28 days of reminder notice dates.</p>
+          <h2 className='global-heading-style'>20.3 Customer Challenge Rights</h2>
+          <p className='global-content-style'>Customers maintain the right to challenge, complain about, query, or object to alleged offenses with relevant enforcement authorities and seek court hearings within 56 days of infringement notice dates or 28 days of reminder notice dates.</p>
 
-            <h2 className='global-heading-style'>20.4 Toll Payment Processing</h2>
-            <p className='global-content-style'>For unpaid toll reminder notices during rental periods, the Company pays outstanding toll fees, including penalties, on the Customer's behalf and recovers such amounts, plus $30 administration fees per notice from the Customer's credit cards.</p>
+          <h2 className='global-heading-style'>20.4 Toll Payment Processing</h2>
+          <p className='global-content-style'>For unpaid toll reminder notices during rental periods, the Company pays outstanding toll fees, including penalties, on the Customer's behalf and recovers such amounts, plus $30 administration fees per notice from the Customer's credit cards.</p>
 
-            <h2 className='global-heading-style'>20.5 Offense Transfer Procedures</h2>
-            <p className='global-content-style'>When Customers commit offenses during rental periods, the Company transfers liability to Customers and provides necessary information to enforcement authorities. Administrative fees of $60 are charged to the Customer's credit cards for transfer costs and notice processing.</p>
+          <h2 className='global-heading-style'>20.5 Offense Transfer Procedures</h2>
+          <p className='global-content-style'>When Customers commit offenses during rental periods, the Company transfers liability to Customers and provides necessary information to enforcement authorities. Administrative fees of $60 are charged to the Customer's credit cards for transfer costs and notice processing.</p>
         </div>
 
         <h1 className='section-main-heading'>21. Rental Extension Procedures</h1>
@@ -508,19 +493,18 @@ const TermsAndConditions = () => {
             <strong>22.1.1</strong> Returns more than 48 hours before expiration qualify for partial refunds, subject to vehicle inspection
           </p>
           <p className='global-content-style'>
-            <strong>22.1.1</strong> The Company retains 48 hours of rental charges plus 10% of the remaining rental as cancellation charges, plus 10% administration fees on the balance. Remaining initial payment amounts per section 9.1 are refunded to designated credit cards.
+            <strong>22.1.2</strong> The Company retains 48 hours of rental charges plus 10% of the remaining rental as cancellation charges, plus 10% administration fees on the balance. Remaining initial payment amounts per section 9.1 are refunded to designated credit cards.
           </p>
           <p className='global-content-style'>
-            <strong>22.1.1</strong> Refunds equal total Customer payments under section 9.1 minus Adjusted Rental Amounts (if applicable), less administration fees per section 23.3
+            <strong>22.1.3</strong> Refunds equal total Customer payments under section 9.1 minus Adjusted Rental Amounts (if applicable), less administration fees per section 23.3
           </p>
         </div>
-
 
         <h1 className='section-main-heading'>23. Booking Amendments and Cancellations</h1>
         <div className='term-condition-points'>
           <h2 className='global-heading-style'>23.1 Amendment Approval Process</h2>
           <p className='global-content-style'>All booking amendments require Company approval. Approved amendments may result in rental rate recalculations based on current applicable rates for requested vehicles.</p>
-          
+
           <h2 className='global-heading-style'>23.2 Rate Change Restrictions</h2>
           <p className='global-content-style'>The Company reserves the right to refuse reservation amendments to reduced rates when Customers find cheaper online rates. Daily rates are confirmed at booking time, with normal amendment and cancellation terms applying to subsequent changes.</p>
 
@@ -532,13 +516,12 @@ const TermsAndConditions = () => {
             <li className='global-content-style'>Online cancellations require at least 48 hours' advance notice, with the same fee structure</li>
           </ul>
 
-
           <h2 className='global-heading-style'>23.4 Refund Administration Fees</h2>
           <p className='global-content-style'>Refunds under sections 22 and 23 are subject to administration fees of 10% of refund amounts or $20.00 (whichever is higher) to cover processing costs. Online cancellation refunds incur 2% administration fee on the refund amounts.</p>
         </div>
 
         <h1 className='section-main-heading'>24. Personal Information Management</h1>
-        <div>
+        <div className='term-condition-points'>
           <h2 className='global-heading-style'>24.1 Information Collection Purposes</h2>
           <p className='global-content-style'>The Company collects Customer information for rental request assessment, contract completion, vehicle rental services, safe driving promotion in New Zealand, related customer services, contract performance, and customer satisfaction evaluation. With the Customer's consent, personal information may be used for direct marketing purposes.</p>
 
@@ -559,18 +542,23 @@ const TermsAndConditions = () => {
         </div>
 
         <h1 className='section-main-heading'>25. Vehicle Collection and Recovery</h1>
-        <p style={{marginTop:"-15px"}} className='global-content-style'>This section sets out the Hirer’s obligations regarding the return of the Vehicle, the procedures and fees applicable if the Vehicle is left unattended or requires collection by ZM Rentals, off-hours service charges, and the Hirer’s responsibility for all related costs. <br/>
-            The Hirer has no right to retain, withhold, or use the Vehicle beyond the agreed rental period without the prior written authorization of ZM Rentals.</p>
-        <div>
+        <p style={{ marginTop: "-15px" }} className='global-content-style'>
+          This section sets out the Hirer’s obligations regarding the return of the Vehicle, the procedures and fees applicable if the Vehicle is left unattended or requires collection by ZM Rentals, off-hours service charges, and the Hirer’s responsibility for all related costs. <br />
+          The Hirer has no right to retain, withhold, or use the Vehicle beyond the agreed rental period without the prior written authorization of ZM Rentals.
+        </p>
+        <div className='term-condition-points'>
           <h2 className='global-heading-style'>25.1 Vehicle Return</h2>
-          <p className='global-content-style'>The Vehicle must be returned by the Hirer to the ZM Rentals office or the agreed return location on the agreed return date and time.<br/>
-              The Vehicle will be considered not returned until it is physically delivered to and accepted by ZM Rentals.<br/>
-              The Hirer remains fully responsible for the Vehicle until it is returned and accepted by ZM Rentals.</p>
+          <p className='global-content-style'>
+            The Vehicle must be returned by the Hirer to the ZM Rentals office or the agreed return location on the agreed return date and time.<br />
+            The Vehicle will be considered not returned until it is physically delivered to and accepted by ZM Rentals.<br />
+            The Hirer remains fully responsible for the Vehicle until it is returned and accepted by ZM Rentals.
+          </p>
 
           <h2 className='global-heading-style'>25.2 Vehicle Collection and Recovery</h2>
-          <p className='global-content-style'>If the Hirer leaves the Vehicle unattended at any location, including leaving the Vehicle with the keys inside or without handing over to ZM Rentals, or requests ZM Rentals to collect the Vehicle from any address, ZM Rentals reserves the right to charge a Vehicle Collection or Recovery Fee.<br/>
-          Minimum Fixed Charge: $100 (regardless of distance) <br/>
-The Hirer agrees to pay all costs associated with the collection or recovery of the Vehicle, including but not limited to:<br/>
+          <p className='global-content-style'>
+            If the Hirer leaves the Vehicle unattended at any location, including leaving the Vehicle with the keys inside or without handing over to ZM Rentals, or requests ZM Rentals to collect the Vehicle from any address, ZM Rentals reserves the right to charge a Vehicle Collection or Recovery Fee.<br />
+            Minimum Fixed Charge: $100 (regardless of distance) <br />
+            The Hirer agrees to pay all costs associated with the collection or recovery of the Vehicle, including but not limited to:<br />
           </p>
           <p className='global-content-style'>
             <strong>25.2.1</strong> Distance Charge: $4 per kilometre travelled
@@ -578,7 +566,7 @@ The Hirer agrees to pay all costs associated with the collection or recovery of 
           <p className='global-content-style'>
             <strong>25.2.2</strong> Administration Fee: $100
           </p>
-           <p className='global-content-style'>
+          <p className='global-content-style'>
             <strong>25.2.3</strong> Staff Labour / Travel Time Costs
           </p>
           <p className='global-content-style'>
@@ -590,7 +578,7 @@ The Hirer agrees to pay all costs associated with the collection or recovery of 
           <p className='global-content-style'>
             <strong>25.2.6</strong> Parking Charges
           </p>
-           <p className='global-content-style'>
+          <p className='global-content-style'>
             <strong>25.2.7</strong> Traffic Infringement Costs
           </p>
           <p className='global-content-style'>
@@ -601,8 +589,10 @@ The Hirer agrees to pay all costs associated with the collection or recovery of 
           </p>
 
           <h2 className='global-heading-style'>25.3 Off-Hours Charges</h2>
-          <p className='global-content-style'>An additional $80 Off-Hours Service Fee will apply if vehicle collection or recovery is required outside normal business hours.
-          <br/>Off-Hours are defined as:</p>
+          <p className='global-content-style'>
+            An additional $80 Off-Hours Service Fee will apply if vehicle collection or recovery is required outside normal business hours.<br />
+            Off-Hours are defined as:
+          </p>
           <p className='global-content-style'>
             <strong>25.3.1</strong> Before 9:00 AM or after 5:00 PM on weekdays
           </p>
@@ -613,17 +603,20 @@ The Hirer agrees to pay all costs associated with the collection or recovery of 
             <strong>25.3.3</strong> All day on Sundays
           </p>
           <p className='global-content-style'>
-            <strong>25.3.4</strong>All Public Holidays
+            <strong>25.3.4</strong> All Public Holidays
           </p>
 
           <h2 className='global-heading-style'>25.4 Vehicle Repossession Rights</h2>
-          <p className='global-content-style'>If the Vehicle is not returned as agreed, or is left unattended at any location, the Hirer authorizes ZM Rentals to locate and repossess the Vehicle without prior notice, in accordance with applicable laws.<br/>
-            The Hirer agrees to cooperate with ZM Rentals in the recovery of the Vehicle and will be responsible for all associated recovery costs, including loss of rental income until the Vehicle is recovered and returned to ZM Rentals.</p>
+          <p className='global-content-style'>
+            If the Vehicle is not returned as agreed, or is left unattended at any location, the Hirer authorizes ZM Rentals to locate and repossess the Vehicle without prior notice, in accordance with applicable laws.<br />
+            The Hirer agrees to cooperate with ZM Rentals in the recovery of the Vehicle and will be responsible for all associated recovery costs, including loss of rental income until the Vehicle is recovered and returned to ZM Rentals.
+          </p>
 
           <h2 className='global-heading-style'>25.5 Authorization to Charge Costs</h2>
-          <p className='global-content-style'>The Hirer authorizes ZM Rentals to charge the Hirer’s credit card, debit card, or deduct from the security bond any amounts owed under this Agreement.
-          <br/>This includes but is not limited to charges for:</p>
-
+          <p className='global-content-style'>
+            The Hirer authorizes ZM Rentals to charge the Hirer’s credit card, debit card, or deduct from the security bond any amounts owed under this Agreement.<br />
+            This includes but is not limited to charges for:
+          </p>
           <p className='global-content-style'>
             <strong>25.5.1</strong> Rental fees and extensions
           </p>
@@ -636,7 +629,7 @@ The Hirer agrees to pay all costs associated with the collection or recovery of 
           <p className='global-content-style'>
             <strong>25.5.4</strong> Off-hours service charges
           </p>
-           <p className='global-content-style'>
+          <p className='global-content-style'>
             <strong>25.5.5</strong> Fuel charges
           </p>
           <p className='global-content-style'>
@@ -655,33 +648,44 @@ The Hirer agrees to pay all costs associated with the collection or recovery of 
             <strong>25.5.10</strong> Any other costs incurred by ZM Rentals as a result of the Hirer’s use or possession of the Vehicle
           </p>
         </div>
-         <p style={{marginTop:"-15px"}} className='global-content-style'>
-          The Hirer agrees that ZM Rentals may process these charges without further authorization if the Hirer fails to make payment when due.<br/>
-The Hirer also agrees that these charges may be processed after the rental period has ended if additional costs are identified later
-         </p>
+        <p style={{ marginTop: "-15px" }} className='global-content-style'>
+          The Hirer agrees that ZM Rentals may process these charges without further authorization if the Hirer fails to make payment when due.<br />
+          The Hirer also agrees that these charges may be processed after the rental period has ended if additional costs are identified later
+        </p>
 
-
-
-
-        <h1 className='section-main-heading'>26. Additional Important Terms</h1>
-        <div>
-          <h2 className='global-heading-style'>26.1 Currency and Exchange Considerations</h2>
-          <p className='global-content-style'>All rental transactions are conducted in New Zealand dollars. Exchange rate fluctuations and banking charges may create variances between charged and refunded amounts on Customer credit cards. The Company accepts no liability for such variations.</p>
-
-          <h2 className='global-heading-style'>26.2 Consumer Rights Protection</h2>
-          <p className='global-content-style'>Customer rights under this agreement supplement those available under applicable consumer legislation, including the Consumer Guarantees Act and Fair Trading Act.</p>
-
-          <h2 className='global-heading-style'>26.3 Refund Processing Timeline</h2>
-          <p className='global-content-style'>Company service refunds require up to 15 working days for processing completion.</p>
-
-          <h2 className='global-heading-style'>26.4 Agreement Severability</h2>
-          <p className='global-content-style'>If any agreement provision is found illegal, conflicting with law, or otherwise invalid, remaining portions remain enforceable with party rights and obligations construed as if invalid provisions were excluded.</p>
-
-          <h2 className='global-heading-style'>26.5 Complete Agreement Declaration</h2>
-          <p className='global-content-style'>Customers expressly warrant that they do not rely on oral or written representations, warranties, or agreements outside this contract. This agreement constitutes the complete understanding between the parties and supersedes all prior representations, understandings, undertakings, or agreements (oral or written, express or implied).</p>
+        <h1 className='section-main-heading'>26. Traffic Infringements</h1>
+        <div className='term-condition-points'>
+          <p className='global-content-style'>
+            <strong>26.1</strong> Traffic infringements may be issued for various driving or parking offences in New Zealand, including speeding, red-light violations, unpaid parking, or exceeding parking time limits.
+          </p>
+          <p className='global-content-style'>
+            <strong>26.2</strong> If an infringement is received for an incident that occurred during your rental period, a statutory declaration will be filled and sent to the relevant authority to transfer liability to the hirer using the details provided at the time of rental. The infringement notice will then be sent directly to you by the relevant authority.
+          </p>
+          <p className='global-content-style'>
+            <strong>26.3</strong> NZ$30 administration fee will apply for each infringement received. This fee covers the processing and handling of the infringement and will be charged to the payment method provided at the time of rental.
+          </p>
+          <p className='global-content-style'>
+            <strong>26.4</strong> Please note that ZM Rentals does not pay infringement fines on behalf of the hirer. The hirer remains fully responsible for payment of all fines, penalties, tolls, and related charges.
+          </p>
         </div>
 
+        <h1 className='section-main-heading'>27. Additional Important Terms</h1>
+        <div className='term-condition-points'>
+          <h2 className='global-heading-style'>27.1 Currency and Exchange Considerations</h2>
+          <p className='global-content-style'>All rental transactions are conducted in New Zealand dollars. Exchange rate fluctuations and banking charges may create variances between charged and refunded amounts on Customer credit cards. The Company accepts no liability for such variations.</p>
 
+          <h2 className='global-heading-style'>27.2 Consumer Rights Protection</h2>
+          <p className='global-content-style'>Customer rights under this agreement supplement those available under applicable consumer legislation, including the Consumer Guarantees Act and Fair Trading Act.</p>
+
+          <h2 className='global-heading-style'>27.3 Refund Processing Timeline</h2>
+          <p className='global-content-style'>Company service refunds require up to 15 working days for processing completion.</p>
+
+          <h2 className='global-heading-style'>27.4 Agreement Severability</h2>
+          <p className='global-content-style'>If any agreement provision is found illegal, conflicting with law, or otherwise invalid, remaining portions remain enforceable with party rights and obligations construed as if invalid provisions were excluded.</p>
+
+          <h2 className='global-heading-style'>27.5 Complete Agreement Declaration</h2>
+          <p className='global-content-style'>Customers expressly warrant that they do not rely on oral or written representations, warranties, or agreements outside this contract. This agreement constitutes the complete understanding between the parties and supersedes all prior representations, understandings, undertakings, or agreements (oral or written, express or implied).</p>
+        </div>
       </div>
     </div>
   )
